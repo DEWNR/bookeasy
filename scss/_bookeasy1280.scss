@@ -223,6 +223,11 @@
         }
       }
     }
+    div.specials {  // Region gadget booking specials
+      div.special {
+        width:  60px;
+      }
+    }
   }
   div.BE.details-gadget {
     color: inherit;
@@ -297,6 +302,11 @@
                 span.address {
                   color: $body-text-color;
                   font-size: 90%;
+                }
+                div.specials {  // Details gadget booking specials
+                  div.special {
+                    width:  60px;
+                  }
                 }
               }
               &.total {
