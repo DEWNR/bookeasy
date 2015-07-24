@@ -74,8 +74,8 @@ jsList = [
         source: [
             paths.src.js + "bookeasy.details.js"
         ],
-        destination: paths.dest.js + "/beta/good-living/",
-        filename: "enhance.js"
+        destination: paths.dest.js,
+        filename: "bookeasy.details.js"
     }
 ];
 
