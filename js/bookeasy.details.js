@@ -1,3 +1,12 @@
+/**
+ * This code is largely outdated and includes features that are no longer
+ * required. It is recommended that the gadget initialisation be moved into the
+ * HTML for easier customisation, while the remaining code can be split into
+ * Mustache templates (which could be embedded into HTML) and data processing 
+ * components.
+ **/
+
+
 // Initialise the global variables
 var readCookie, screenSize; // Variables set within vivify.js
 var operatorIDs, operatorPageType, operatorTitles, acceptBookings, unsupportedBrowser; // Variables set within the Seamless template
@@ -28,7 +37,7 @@ detailsGadgetOptions = {
   type: bookeasyType
 };
 
-// Get the selected operator ID 
+// Get the selected operator ID
 getSelectedOperatorID();
 
 // Load all the details
@@ -41,7 +50,7 @@ function loadBookEasyDetails() {
   } else if (!operatorIDs.length) {
     return
   };
-  
+
   // Add the CSS so the checkout lightbox is displayed correctly
   if ($('html').hasClass('backgroundsize') && readCookie("responsive") != "false" && screenSize == "small") {
     $(document).ready(function() {
@@ -68,25 +77,25 @@ function loadBookEasyDetails() {
       )
     });
   }
-  
+
   if (selectedOperatorID) {
     detailsGadgetOptions['productID'] = selectedOperatorID;
   }
-  
+
   if ((operatorPageType == 'camping' || operatorPageType == 'tours') && !$('html').hasClass('touch')) {
     detailsGadgetOptions['descriptionHover'] = true;
   }
-  
-  
+
+
   // Initialise the widget
   if (detailsGadgetOptions['productID'] && acceptBookings && !unsupportedBrowser) {
     $w(function() {
       BE.gadget.details("#operatorDetails", detailsGadgetOptions);
     })
   } else if (unsupportedBrowser) {
-    $("#operatorDetails").html('<div class=" closure-announcement full"><h2>Error</h2><p>Unfortunately the browser you are using is too old to run our booking system. Please <a href="mailto:DEWNR.OnlineBookings@sa.gov.au">email us</a> to make your booking, or <a href="http://whatbrowser.org/">choose a different browser</a>.</p></div>'); 
+    $("#operatorDetails").html('<div class=" closure-announcement full"><h2>Error</h2><p>Unfortunately the browser you are using is too old to run our booking system. Please <a href="mailto:DEWNR.OnlineBookings@sa.gov.au">email us</a> to make your booking, or <a href="http://whatbrowser.org/">choose a different browser</a>.</p></div>');
   }
-  
+
   // Request the operator information
   $.ajax({
     url: "//sjp.impartmedia.com/be/getOperatorsInformation?q=188&operators="+operatorIDString,
@@ -100,10 +109,10 @@ function loadBookEasyDetails() {
       loadOperatorDetails(selectedOperatorID);
     }
   })
-  
+
   // Request the room details, if applicable
   if (operatorPageType == 'accommodation' || operatorPageType == 'camping') {
-    $('.room, .campground').html('<em>Loading more information&hellip;</em>');  
+    $('.room, .campground').html('<em>Loading more information&hellip;</em>');
     $.ajax({
       url: "//sjp.impartmedia.com/be/getAccomRoomsDetails?q=188&operators="+operatorIDString,
       cache: true,
@@ -119,10 +128,10 @@ function loadBookEasyDetails() {
     })
     .done(function(data) {
       bookeasyData.Accommodation = data;
-      
+
       // Combine the array elements, if necessary
       bookeasyData.Accommodation = groupByOperator(bookeasyData.Accommodation, "Rooms", "RoomID");
-      
+
       // Set the room details, if applicable
       for (var operator in bookeasyData.Accommodation) {
         var currentOperatorID = bookeasyData.Accommodation[operator].OperatorId;
@@ -157,7 +166,7 @@ function loadBookEasyDetails() {
                     if (bookeasyData.Accommodation[operator].Rooms[room].Pictures.length) {
                       innerHTML += '<img class="campsite" alt="'+bookeasyData.Accommodation[operator].Rooms[room].Name+'" src="'+bookeasyData.Accommodation[operator].Rooms[room].Pictures[0]+'" />';
                     }
-                  }  
+                  }
                   innerHTML += '<div class="campsite">'+text2HTML(bookeasyData.Accommodation[operator].Rooms[room].Description);
                   if (acceptBookings) {  // Only append the "book now" link if the acceptBookings variable is true
                     innerHTML += '<p><a href="#bookings" onclick="resetGadget('+currentOperatorID+')">Book now</a>.</p>';
@@ -177,7 +186,7 @@ function loadBookEasyDetails() {
       }
     })
   } else if (operatorPageType == 'tours') {
-    $('.tour').html('<em>Loading more information&hellip;</em>');  
+    $('.tour').html('<em>Loading more information&hellip;</em>');
     $.ajax({
       url: "//sjp.impartmedia.com/be/getToursOperatorTourDetails?q=188&operators="+operatorIDString,
       cache: true,
@@ -190,7 +199,7 @@ function loadBookEasyDetails() {
     })
     .done(function(data) {
       bookeasyData.Tours = data.Operators;
-      
+
       // Set the room details, if applicable
       for (var operator in bookeasyData.Tours) {
         var currentOperatorID = bookeasyData.Tours[operator].OperatorId;
@@ -218,19 +227,19 @@ function loadBookEasyDetails() {
 function loadOperatorDetails(selectedOperatorID) {
   var selectedOperatorIndex = null;
   // Make sure a useful value is set for selectedOperatorID
-  
+
   if (!selectedOperatorID) {
     selectedOperatorID = operatorIDs;
   }
-  
+
   // Get the index of the selected operator in the BookEasy data
   for (var operator in bookeasyData.Operators) {
     if (bookeasyData.Operators[operator].OperatorID == selectedOperatorID) {
         selectedOperatorIndex = operator;
     }
   }
-  
-  // If the selectedOperatorIndex has been set, add the info to the page 
+
+  // If the selectedOperatorIndex has been set, add the info to the page
   if (selectedOperatorIndex) {
      // Set the directions, if applicable
     if (typeof bookeasyData.Operators[selectedOperatorIndex].Directions != 'undefined') {
@@ -264,24 +273,24 @@ function loadOperatorDetails(selectedOperatorID) {
   // If there are multiple operators for this page, add tabs to the details gadget
   if (bookeasyData.Operators.length > 1) {
     var innerHTML = '';
-    
+
     for (var i = 0, arrayLength = operatorIDs.length; i < arrayLength; i++) {
       var currentOperatorID = operatorIDs[i];
       var operatorTitle = "";
-      
+
       // Get the manually configured tab title
       if (typeof operatorTitles != "undefined") {
         if (operatorTitles.hasOwnProperty(currentOperatorID)) {
           operatorTitle = operatorTitles[currentOperatorID];
         }
       }
-      
+
       // If the title wasn't set by the previous block, get the name from the BookEasy data
       if (operatorTitle === "") {
         for (var operator in bookeasyData.Operators) {
           if (bookeasyData.Operators[operator].OperatorID == currentOperatorID) {
             operatorTitle = bookeasyData.Operators[operator].TradingName;
-            
+
             // Remove "campground" from the name of campgrounds
             if (operatorPageType == 'camping') {
               operatorTitle = operatorTitle.replace(' Campground', '');
@@ -289,7 +298,7 @@ function loadOperatorDetails(selectedOperatorID) {
           }
         }
       }
-      
+
       // Add a tab only if the title has been set
       if (operatorTitle !== "") {
         if (currentOperatorID == selectedOperatorID) {
@@ -304,7 +313,7 @@ function loadOperatorDetails(selectedOperatorID) {
   }
 }
 
-function groupByOperator(array, property, sortProperty) {  
+function groupByOperator(array, property, sortProperty) {
   var currentOperatorData = {}, currentOperatorID, operatorData = {}, newArray = [];
 
   // Loop through the array
@@ -323,7 +332,7 @@ function groupByOperator(array, property, sortProperty) {
     // Combine the existing properties with the new ones
     operatorData[currentOperatorID][property] = operatorData[currentOperatorID][property].concat(currentOperatorData[property]);
   }
-  
+
   // Convert the data to an array and order by name
   for (var operator in operatorData) {
     if (operatorData.hasOwnProperty(operator)) {
