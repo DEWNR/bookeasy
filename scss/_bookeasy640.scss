@@ -47,7 +47,7 @@ html.npsa.breakpoint-small {
         }
       }
     }
-    div.BE.details-gadget { 
+    div.BE.details-gadget {
       div.priceGrid {
         table {
           thead td.date, tbody td.price {
@@ -145,4 +145,8 @@ html.npsa.breakpoint-small {
     background-color: white !important;
     opacity: 1 !important;
   }
+}
+
+.personalDetails .comment {
+    display: none;
 }
