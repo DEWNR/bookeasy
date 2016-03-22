@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+
+
+        <div id="regionGadget"></div>
+
+
+        <script type="text/javascript" src="//gadgets.impartmedia.com/gadgets.jsz?key=7e5893292834eb2b34cd1d9b11437df9"></script>
+
+
+        <script type="text/javascript">
+          $w(function() {
+            var locationFilter = ["Deep Creek Conservation Park",""];
+            locationFilter.pop(); // Remove the last item from the array as it is empty
+
+            var bookingDate = new Date();
+            bookingDate.setDate(bookingDate.getDate() + 1);
+
+            BE.gadget.region("#regionGadget",{
+              vcID:188,
+              accomOnlyMode:true,
+              collapseRefineTools:true,
+              customMapIcons: {
+                'accom':{
+                  icon:'//www.environment.sa.gov.au/files/templates/00000000-0000-0000-0000-000000000000/c16a6c2a-2cdc-4f08-96b9-f1c11eb6f349/npsa-marker-general.png',
+                  pinpoint: [13,45],
+                  size: [26,45]
+                }
+              },
+              defaultDate: bookingDate,
+              defaultSort:'name',
+              enableRegionSearch:false,
+              forceAccomType:'',
+              ignoreSearchCookie:true,
+              limitLocations:locationFilter,
+              period:1,
+              adults:1,
+              showAllAccom:true,
+              showList:false,
+              showLocationFilter:false,
+              collapseRefineTools:false
+            });
+          });
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+
+
+        <div id="toolbar-cart"></div>
+
+        <div class="campground id73176"></div>
+
+        <div id="operatorDetails"></div>
+
+        <div id="operatorDirections"></div>
+        <div id="operatorConditions"></div>
+
+        <script src="https://code.jquery.com/jquery-1.9.1.min.js" integrity="sha256-wS9gmOZBqsqWxgIVgA8Y9WcQOa7PgSIX+rPA0VL2rbQ=" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="//gadgets.impartmedia.com/gadgets.jsz?key=7e5893292834eb2b34cd1d9b11437df9"></script>
+
+        <script>
+            var operatorIDs = [73176];
+            var operatorPageType = 'camping';
+
+            var acceptBookings = true;
+            </script>
+
+      <script type="text/javascript" src="js/bookeasy.details.js"></script>
+
+      <script type="text/javascript">
+        $w(function() {
+            BE.gadget.cart("#toolbar-cart", {
+                vcID:"188",
+                bookingURL:"https://www.environment.sa.gov.au/parks/checkout",
+                autoCollapse:true
+            });
+        });
+    </script>
+
+    </body>
+</html>
