@@ -1,0 +1,253 @@
+{
+    "parks": [{
+            "type": "tours",
+            "operatorID": "65345",
+            "parkName": "Belair National Park - Facilities"
+        },
+        {
+            "type": "tours",
+            "operatorID": "72841",
+            "parkName": "Belair National Park Tennis Courts"
+        },
+        {
+            "type": "tours",
+            "operatorID": "72402",
+            "parkName": "Bool Lagoon Entry Permit"
+        },
+        {
+            "type": "tours",
+            "operatorID": "65726",
+            "parkName": "Deep Creek Conservation Park Entry Fee"
+        },
+        {
+            "type": "tours",
+            "operatorID": "67456",
+            "parkName": "Innes National Park Entry Fee"
+        },
+        {
+            "type": "tours",
+            "operatorID": "75605",
+            "parkName": "KI Multi Day Walk"
+        },
+        {
+            "type": "tours",
+            "operatorID": "67634",
+            "parkName": "Mt Remarkable Entry Fee"
+        },
+        {
+            "type": "tours",
+            "operatorID": "65339",
+            "parkName": "Piccaninnie Ponds Dive Permits"
+        },
+        {
+            "type": "tours",
+            "operatorID": "72030",
+            "parkName": "Piccaninnie Ponds Snorkel Permits"
+        },
+        {
+            "type": "tours",
+            "operatorID": "75318",
+            "parkName": "Tallaringa Conservation Park Entry"
+        },
+        {
+            "operatorID": "71650",
+            "parkName": "28 Mile Crossing Campground"
+        },
+        {
+            "operatorID": "71531",
+            "parkName": "3 Mile Bend"
+        },
+        {
+            "operatorID": "71648",
+            "parkName": "42 Mile Crossing Campground"
+        },
+        {
+            "operatorID": "72075",
+            "parkName": "Acraman Campground - Flinders Ranges"
+        },
+        {
+            "operatorID": "67569",
+            "parkName": "Alligator Lodge"
+        },
+        {
+            "operatorID": "71631",
+            "parkName": "Barker Knoll Boating Campsites"
+        },
+        {
+            "operatorID": "69837",
+            "parkName": "Baroota Campground"
+        },
+        {
+            "operatorID": "71651",
+            "parkName": "Bool Lagoon"
+        },
+        {
+            "operatorID": "72076",
+            "parkName": "Brachina East Campground"
+        },
+        {
+            "operatorID": "69781",
+            "parkName": "Browns Beach Campground"
+        },
+        {
+            "operatorID": "69783",
+            "parkName": "Cable Bay Beach Campground"
+        },
+        {
+            "operatorID": "72077",
+            "parkName": "Cambrian Campground"
+        },
+        {
+            "operatorID": "72885",
+            "parkName": "Cape Banks Campground"
+        },
+        {
+            "operatorID": "65283",
+            "parkName": "Cape Willoughby Lighthouse Keepers Heritage Accomm"
+        },
+        {
+            "operatorID": "69839",
+            "parkName": "Casuarina Campground"
+        },
+        {
+            "operatorID": "72078",
+            "parkName": "Dingly Dell"
+        },
+        {
+            "operatorID": "67564",
+            "parkName": "Dutchmans Stern Accommodation"
+        },
+        {
+            "operatorID": "71595",
+            "parkName": "Geltwood Beach Campground"
+        },
+        {
+            "operatorID": "71635",
+            "parkName": "Godfreys Landing Boating Campsites"
+        },
+        {
+            "operatorID": "67592",
+            "parkName": "Gym Beach Campground"
+        },
+        {
+            "operatorID": "67434",
+            "parkName": "Innes Heritage Accommodation"
+        },
+        {
+            "operatorID": "69923",
+            "parkName": "Kangaroo Island Heritage Accommodation"
+        },
+        {
+            "operatorID": "72221",
+            "parkName": "Kangaroo Island Multi Day Walk"
+        },
+        {
+            "operatorID": "71636",
+            "parkName": "Kartoo Road Campsites"
+        },
+        {
+            "operatorID": "71593",
+            "parkName": "Kotgee Campground"
+        },
+        {
+            "operatorID": "71628",
+            "parkName": "Long Gully Campground"
+        },
+        {
+            "operatorID": "71638",
+            "parkName": "Long Point Campsites"
+        },
+        {
+            "operatorID": "67570",
+            "parkName": "Mambray Creek Cabin"
+        },
+        {
+            "operatorID": "67320",
+            "parkName": "Mambray Creek Campground"
+        },
+        {
+            "operatorID": "71720",
+            "parkName": "Mark Point Campground"
+        },
+        {
+            "operatorID": "71594",
+            "parkName": "Nalawort Campground"
+        },
+        {
+            "operatorID": "72920",
+            "parkName": "Non-vehicle Based Camping"
+        },
+        {
+            "operatorID": "71597",
+            "parkName": "Number Two Rocks Campground"
+        },
+        {
+            "operatorID": "71721",
+            "parkName": "Ocean Beach Camping"
+        },
+        {
+            "operatorID": "71596",
+            "parkName": "Oil Rig Square Campground"
+        },
+        {
+            "operatorID": "71629",
+            "parkName": "Old Man Lake Campground"
+        },
+        {
+            "operatorID": "67453",
+            "parkName": "Pondalowie Bay Bush Campground"
+        },
+        {
+            "operatorID": "69782",
+            "parkName": "Pondalowie Caravan and Trailers Campground"
+        },
+        {
+            "operatorID": "69784",
+            "parkName": "Shell Beach Campground"
+        },
+        {
+            "operatorID": "67590",
+            "parkName": "Shepherds Hut"
+        },
+        {
+            "operatorID": "67985",
+            "parkName": "Stenhouse Bay Campground"
+        },
+        {
+            "operatorID": "71598",
+            "parkName": "Stony Rise Campground"
+        },
+        {
+            "operatorID": "73149",
+            "parkName": "Tallaringa Conservation Park Camping"
+        },
+        {
+            "operatorID": "75755",
+            "parkName": "Tasmanias Overland Track - Groups"
+        },
+        {
+            "operatorID": "71719",
+            "parkName": "Tea Tree Crossing Campground"
+        },
+        {
+            "operatorID": "72080",
+            "parkName": "Teamsters Campground - Flinders Ranges"
+        },
+        {
+            "operatorID": "71627",
+            "parkName": "The Gums Campground"
+        },
+        {
+            "operatorID": "72081",
+            "parkName": "Trezona Campground - Flinders Ranges"
+        },
+        {
+            "operatorID": "71649",
+            "parkName": "Wreck Crossing Campground"
+        },
+        {
+            "operatorID": "72082",
+            "parkName": "Youngoona Campground - Flinders Ranges"
+        }
+    ]
+}

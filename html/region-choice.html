@@ -89,7 +89,7 @@
     </head>
     <body>
 
-    <!-- <div class="quickselect">
+    <div class="quickselect">
 
         <div class="park-choice  quickselect__item">
             <div class="styled-select">
@@ -115,7 +115,7 @@
             <span class="message"></span>
         </div>
 
-    </div> -->
+    </div>
 
 
 <script>    // Script for grabbing JSON data and populating select list
@@ -211,7 +211,7 @@
             // Pass the operatorID to the bookeasy script in the details page?
             console.log("push value to locationFilter");
             //link to the details page
-            $('.location-choice__item').html("<a href='http://www.environment.sa.gov.au/dev/bookeasy/test/region-gadget.html#/" + loc + " ' target='blank'><button class='button'> Go to region >></button></a>");
+            $('.location-choice__item').html("<a href='http://www.environment.sa.gov.au/dev/bookeasy/test/region-choice.html#/" + loc + " ' target='blank'><button class='button'> Go to region >></button></a>");
         });
 
     }
@@ -269,7 +269,7 @@
               enableRegionSearch:false,
               forceAccomType:'',
               ignoreSearchCookie:true,
-               // limitLocations:locationFilter,
+               limitLocations:locationFilter,
               period:1,
               adults:1,
               showAllAccom:true,
