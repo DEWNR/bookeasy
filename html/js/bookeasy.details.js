@@ -32,8 +32,9 @@ detailsGadgetOptions = {
   defaultDate: bookingDate,
   descriptionHover:false,
   period: 1,
+  showHoverInline: true,
   showQuantity: false,
-  thumbsInGrid:false,
+  thumbsInGrid:true,
   type: bookeasyType
 };
 
