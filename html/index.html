@@ -322,10 +322,6 @@ Sys.WebForms.PageRequestManager._initialize('ctl03$seamless_script_manager', 'ma
 
 
 
-        <!-- <script src="jquery.min.js"></script> -->
-        <!-- <script type="text/javascript" src="parksdata.json"></script> -->
-
-
 
 
 
@@ -350,37 +346,37 @@ Sys.WebForms.PageRequestManager._initialize('ctl03$seamless_script_manager', 'ma
     </div>
 
 
+
 <script type="text/javascript">
 
-// Global Variables
-//var loc = "";
-var optionValues = [];
-var locationFilter = [];
-// get the url hash (removes '#/')
-                var urlHash = location.hash.replace(/^#\//, '');
-                console.log("urlHash: " +urlHash);
-var parksdata = {                   //TODO: data will come from a Seamless DLV
-        "locations" :{
-            "1" : "Beachport Conservation Park",
-            "2" : "Bool Lagoon Game Reserve",
-            "3" : "Canunda National Park",
-            "4" : "Coorong National Park",
-            "5" : "Deep Creek Conservation Park",
-            "6" : "Dutchmans Stern Conservation Park",
-            "7" : "Flinders Chase National Park",
-            "8" : "Innes National Park",
-            "9" : "Little Dip Conservation Park",
-            "10" : "Mount Remarkable National Park",
-            "11" : "Tallaringa Conservation Park",
-            "12" : "Vulkathunha-Gammon ranges National Park"
-        }
-    };          //  "0" : "ALL",
+    // Global Variables
+    var optionValues = [];
+    //var locationFilter = [];
+        // get the url hash (removes '#/')
+        var urlHash = location.hash.replace(/^#\//, '');
+        console.log("urlHash: " +urlHash);
+
+    var parksdata = {                   //TODO: data will come from a Seamless DLV
+            "locations" :{
+                "1" : "Beachport Conservation Park",
+                "2" : "Bool Lagoon Game Reserve",
+                "3" : "Canunda National Park",
+                "4" : "Coorong National Park",
+                "5" : "Deep Creek Conservation Park",
+                "6" : "Dutchmans Stern Conservation Park",
+                "7" : "Flinders Chase National Park",
+                "8" : "Innes National Park",
+                "9" : "Little Dip Conservation Park",
+                "10" : "Mount Remarkable National Park",
+                "11" : "Tallaringa Conservation Park",
+                "12" : "Vulkathunha-Gammon ranges National Park"
+            }
+        };          //  "0" : "ALL",
 
 
 
 // Run functions
 getLocations(parksdata);
-//drawLocations();
 
 buttonWatchAct();
 
@@ -388,63 +384,29 @@ buttonWatchAct();
 
 function getLocations(parksdata) {
 
-            console.log(parksdata);
-            var locations = [];
+    console.log(parksdata);
+    var locations = [];
 
-            $.each( parksdata.locations, function(key, val) {
+    $.each( parksdata.locations, function(key, val) {
 
-                //locations.push( "<option id='"+key+"' class='locoption' data-key='" +key+ "'value='" +val+ "'>" +val+ "</option>" );
-                $('.park-selector select').append($('<option></option').attr('value', val).attr('selected', urlHash == val ? true : false).text(val));
-                optionValues.push(val);         //1. populate array of the option values
-            });
+        $('.park-selector select').append($('<option></option').attr('value', val).attr('selected', urlHash == val ? true : false).text(val));
+        optionValues.push(val);         // populate array of the option values
+    });
 
-            $( "#dropDownLocation" ).append( locations.join("") );
-
-}
-
-
-// Legacy code
-function drawLocations() {      //Code to change location-dropdown
-
-        //get choice from dropdown and take user to associated region page
-        $('#dropDownLocation').change(function () {
-            loc = $(this).val();
-            // var loc_hash;
-            // console.log("loc: "+loc);
-            // if (loc == "ALL") {
-            //     loc_hash = "";
-            // } else {
-            //     loc_hash = "#/"+loc;  //add the # for most links
-            // }
-            // Pass the location to the bookeasy script in the details page?
-            //console.log("push value to locationFilter");
-            //link to the details                 //  '" +loc+ "'
-            // var txt = "<a onclick=\'gotopage(); return false;\'"
-            //     + " href='http://www.environment.sa.gov.au/dev/booking/index.html" +loc_hash+ "'>"
-            //     + " <span class='button'> Go to region</span></a>";
-            // console.log(txt);
-
-            // $('.location-choice__item .testbutton').html(txt);
-        });
+    $( "#dropDownLocation" ).append( locations.join("") );
 
 }
 
-
-// function gotopage() {
-//         window.location.hash = '/'+loc;
-//         location.reload();
-//         console.log("goto loc: "+loc);
-// }
 
 
 function buttonWatchAct() {
-    // reload page to show correct bookeasy gadget
+    // button reloads page/gadget to show correct bookeasy results
     $('.park-selector__buton').on('click', function(event) {
-            // windows.location
             var url = window.location.pathname;
-            var currentOption = ( $('.park-selector select').val() ).trim();
-            if (currentOption != 'ALL') {
-                optionValues = currentOption;
+            var currentOption = [];
+            currentOption.push(  ( $('.park-selector select').val() ).trim()  );
+            if (currentOption != 'ALL') {       //TODO: ALL option is currently entering 'ALL' instead of values
+                optionValues = currentOption;  //ARRAYs ARRAYs ARRAYs ARRAYs
             }
             url += ("#/" + currentOption);
             console.log( url + currentOption );
@@ -455,37 +417,6 @@ function buttonWatchAct() {
     });
 }
 
-
-//This function is legacy
-function urlhashtoselect() {    //check where urlHash exists in array so that it can be set as SELECTED
-        //optionValues.push(" ");  //add an empty on the end (for compatibility with Tims/Seamless legacy code)
-
-        locationFilter = optionValues;  //a wasteful copy of array
-
-        var iOf = window.location.href.indexOf('#');  //get URL and position of #
-
-        if (iOf != -1) {                    //if a URL query exists
-            var urlHash = window.location.href.slice(window.location.href.indexOf('#') + 2).split('&');                            //gets the word from the URL
-            urlHash = $.trim(urlHash);
-            console.log("urlHash: " +urlHash);
-
-            var found = "";
-
-            //2. search inArray for the option position which matches the urlHash
-            console.log(urlHash);
-            console.log(optionValues);
-            found = $.inArray(urlHash, optionValues);   //store found position
-            console.log("found: "+found);
-
-            var op = found+1;       //add 1 because Array's start at 0 but our JSON starts at 1
-            console.log(op);
-
-            //3. hi-light currently selected location in drop down
-            $("select#dropDownLocation").find( "option#" +op ).attr("selected", true);
-
-            locationFilter = [urlHash,""];
-        }
-}
 
 </script>
 
@@ -508,9 +439,11 @@ function urlhashtoselect() {    //check where urlHash exists in array so that it
     $w(function () {
 
         console.log("in BE script --");
-        console.log("locationFilter: " +optionValues);
+        console.log("locationFilter-optionValues: " +optionValues);
 
-        //locationFilter.pop(); // Remove the last item from the array as it is empty
+        //optionValues.push(" "); //add an empty to the array? does BE still need this?
+
+        //optionValues.pop(); // Remove the last item from the array as it is empty
 
         var bookingDate = new Date();
         bookingDate.setDate(bookingDate.getDate() + 1);
