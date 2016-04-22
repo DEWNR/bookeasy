@@ -351,10 +351,10 @@ Sys.WebForms.PageRequestManager._initialize('ctl03$seamless_script_manager', 'ma
 
     // Global Variables
     var optionValues = [];
-    //var locationFilter = [];
-        // get the url hash (removes '#/')
-        var urlHash = location.hash.replace(/^#\//, '');
-        console.log("urlHash: " +urlHash);
+    var locationFilter = [];
+    // get the url hash (removes '#/')
+    var urlHash = location.hash.replace(/^#\//, '');
+    console.log("urlHash: " +urlHash);
 
     var parksdata = {                   //TODO: data will come from a Seamless DLV
             "locations" :{
@@ -402,18 +402,68 @@ function getLocations(parksdata) {
 function buttonWatchAct() {
     // button reloads page/gadget to show correct bookeasy results
     $('.park-selector__buton').on('click', function(event) {
-            var url = window.location.pathname;
+            var url = window.location.pathname;     //eg. /dev/booking/index.html
             var currentOption = [];
             currentOption.push(  ( $('.park-selector select').val() ).trim()  );
-            if (currentOption != 'ALL') {       //TODO: ALL option is currently entering 'ALL' instead of values
-                optionValues = currentOption;  //ARRAYs ARRAYs ARRAYs ARRAYs
+            if (currentOption != 'ALL') {
+                locationFilter = currentOption;  //ARRAY to ARRAY
+            } else {
+                locationFilter = optionValues;
             }
             url += ("#/" + currentOption);
             console.log( url + currentOption );
             window.open( url, '_self' );
-            bookeasy(optionValues);     //re-init the bookeasy gadget
+            bookeasy(locationFilter);     //re-init the bookeasy gadget
             //location.reload();       //Refresh the page
             event.preventDefault();  //because we are using a href
+    });
+}
+
+
+
+function removeMaps() {
+    console.log('TODO: remove google maps.');
+    $('.gm-style .gm-style-mtc label,.gm-style .gm-style-mtc div').remove();
+    $('.gm-style-pbc').remove();
+    $("LINK[href*='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700']").remove();
+    //$("script[src='//maps.google.com/maps/api/js']").remove();  // ^ is start wildcard ?
+    // $("script[type*=javascript]").each(function() {
+    //     //console.log(this);
+    //     //console.log(this.src);
+    //     console.log( "Found script "+this.src );
+    // });
+    $("script[type*=javascript]").filter(function() {
+        var sSource = this.src;
+        console.log('sSource: ' +sSource);
+        //sTest = sSource.match(/(maps.google.com)/);
+        //sTest = sSource.indexOf('maps.google.com');
+        if ( sSource.indexOf('maps.google.com/maps-api-v3/api') > -1) {
+            $('script[src="' +sSource+ '"]').remove();
+        }
+        sTest = sSource.indexOf('maps.google.com/maps/api/js');
+        if (sTest > -1) {
+            console.log('found something');
+            sSource.replace('http:','')         // remove http: for the maps.google group
+            $('script[src="' +sSource+ '"]').remove();
+        }
+        //remove google.maps object
+        if (window.google !== undefined && google.maps !== undefined) {
+            delete google.maps;
+            $('script').each(function () {
+                if (this.src.indexOf('googleapis.com/maps') >= 0
+                    || this.src.indexOf('maps.gstatic.com') >= 0
+                    || this.src.indexOf('earthbuilder.googleapis.com') >= 0) {
+                    // console.log('removed', this.src);
+                    $(this).remove();
+                }
+            });
+        }
+
+        //console.log('sTest: ' +sTest);
+        // var match = this.src.match(/maps\\.google\\.com\/maps\/api\/js/) !== null;
+        //var match = this.src.match(/((\/\/maps.google.com\/maps\/api\/js)[-a-zA-Z0-9@:%_\+.~#?&//=]+)/) !== null;
+        //console.log('match: ' +match);
+        //return(this.src.match(/maps\\.google\\.com\/maps\/api\/js/) !== null);
     });
 }
 
@@ -436,47 +486,49 @@ function buttonWatchAct() {
 
     function bookeasy(){
 
-    $w(function () {
+        removeMaps();
 
-        console.log("in BE script --");
-        console.log("locationFilter-optionValues: " +optionValues);
+        $w(function () {
 
-        //optionValues.push(" "); //add an empty to the array? does BE still need this?
+            console.log("in BE script --");
+            console.log("locationFilter: " +locationFilter);
 
-        //optionValues.pop(); // Remove the last item from the array as it is empty
+            //locationFilter.push(" "); //add an empty to the array? does BE still need this?
 
-        var bookingDate = new Date();
-        bookingDate.setDate(bookingDate.getDate() + 1);
+            //locationFilter.pop(); // Remove the last item from the array as it is empty
 
-        BE.gadget.region("#regionGadget",{
-            vcID:188,
-            accomOnlyMode:true,
-            collapseRefineTools:true,
-            customMapIcons: {
-            'accom':{
-              icon:'//www.environment.sa.gov.au/files/templates/00000000-0000-0000-0000-000000000000/c16a6c2a-2cdc-4f08-96b9-f1c11eb6f349/npsa-marker-general.png',
-              pinpoint: [13,45],
-              size: [26,45]
-            }
-            },
-            defaultDate: bookingDate,
-            defaultSort:'name',
-            enableRegionSearch:false,
-            forceAccomType:'',
-            ignoreSearchCookie:true,
-            limitLocations:optionValues,
-            itemDetailPageURL:'/dev/booking/detail.html',
-            period:1,
-            adults:1,
-            showAllAccom:true,
-            showList:false,
-            showLocationFilter:false,
-            collapseRefineTools:false,
-            defaultRegionState: 'South Australia'
+            var bookingDate = new Date();
+            bookingDate.setDate(bookingDate.getDate() + 1);
+
+            BE.gadget.region("#regionGadget",{
+                vcID:188,
+                accomOnlyMode:true,
+                collapseRefineTools:true,
+                customMapIcons: {
+                'accom':{
+                  icon:'//www.environment.sa.gov.au/files/templates/00000000-0000-0000-0000-000000000000/c16a6c2a-2cdc-4f08-96b9-f1c11eb6f349/npsa-marker-general.png',
+                  pinpoint: [13,45],
+                  size: [26,45]
+                }
+                },
+                defaultDate: bookingDate,
+                defaultSort:'name',
+                enableRegionSearch:false,
+                forceAccomType:'',
+                ignoreSearchCookie:true,
+                limitLocations:locationFilter,
+                itemDetailPageURL:'/dev/booking/detail.html',
+                period:1,
+                adults:1,
+                showAllAccom:true,
+                showList:false,
+                showLocationFilter:false,
+                collapseRefineTools:false,
+                defaultRegionState: 'South Australia'
+            });
         });
-    });
+    }
 
-}
 </script>
 
 
