@@ -352,6 +352,7 @@ Sys.WebForms.PageRequestManager._initialize('ctl03$seamless_script_manager', 'ma
     // Global Variables
     var optionValues = [];
     var locationFilter = [];
+    var bFilterOnChange = true;  //Change to false to display a button for accepting park change.
     // get the url hash (removes '#/')
     var urlHash = location.hash.replace(/^#\//, '');
     console.log("urlHash: " +urlHash);
@@ -376,11 +377,22 @@ Sys.WebForms.PageRequestManager._initialize('ctl03$seamless_script_manager', 'ma
 
 
 // Run functions
+hideButton(bFilterOnChange);
+
 getLocations(parksdata);
 
 buttonWatchAct();
 
-
+function hideButton(bFilterOnChange) {
+    if (bFilterOnChange === true) {
+        $('.park-selector__buton.button').attr('display', 'none !important');
+        $('.park-selector__buton.button').remove();
+        //$('div').remove( '.location-choice__item' );
+        //$('a').detach( '.park-selector__buton.button' );
+        console.log('hide');
+    }
+    return;
+}
 
 function getLocations(parksdata) {
 
@@ -417,12 +429,31 @@ function buttonWatchAct() {
             //location.reload();       //Refresh the page
             event.preventDefault();  //because we are using a href
     });
+
+    $('.park-selector select').on('change', function() {
+        if (bFilterOnChange === true) {
+            var url = window.location.pathname;     //eg. /dev/booking/index.html
+            var currentOption = [];
+            currentOption.push(  ( $('.park-selector select').val() ).trim()  );
+            if (currentOption != 'ALL') {
+                locationFilter = currentOption;  //ARRAY to ARRAY
+            } else {
+                locationFilter = optionValues;
+            }
+            url += ("#/" + currentOption);
+            //console.log( url + currentOption );
+            window.open( url, '_self' );
+            bookeasy(locationFilter);     //re-init the bookeasy gadget
+            //location.reload();       //Refresh the page
+            //event.preventDefault();  //because we are using a href
+        }
+    });
 }
 
 
 
 function removeMaps() {
-    console.log('TODO: remove google maps.');
+    console.log('remove google maps.');
     $('.gm-style .gm-style-mtc label,.gm-style .gm-style-mtc div').remove();
     $('.gm-style-pbc').remove();
     $("LINK[href*='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700']").remove();
@@ -434,7 +465,7 @@ function removeMaps() {
     // });
     $("script[type*=javascript]").filter(function() {
         var sSource = this.src;
-        console.log('sSource: ' +sSource);
+        //console.log('sSource: ' +sSource);
         //sTest = sSource.match(/(maps.google.com)/);
         //sTest = sSource.indexOf('maps.google.com');
         if ( sSource.indexOf('maps.google.com/maps-api-v3/api') > -1) {
