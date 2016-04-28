@@ -2,3 +2,5 @@
 *.log
 node_modules/
 temp/
+public/
+_old/
