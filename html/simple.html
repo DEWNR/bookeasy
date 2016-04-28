@@ -68,7 +68,7 @@
                 "11" : "Tallaringa Conservation Park",
                 "12" : "Vulkathunha-Gammon ranges National Park"
             }
-        };          //  "0" : "ALL",
+        };   //  "0" : "ALL",
 
 
     // Run functions
@@ -89,16 +89,8 @@
                 //set matching dropdown option as SELECTED
                 $('.park-selector select[value^="' +urlHash+ '"]').attr('selected', true);
 
-                //a loop do give each option a unique ID  //un-needed code
-                // $.each($('.park-selector option'), function(i){
-                //     console.log(i);
-                //     var op = 'select>option:eq(' +i+ ')';
-                //     $(op).attr('id', i);
-                // });
-
                 console.log('currentOption: ' +currentOption[0] );
                 if(currentOption[0] == 'ALL') {
-                    //$('.park-selector select').val('ALL');
                     locationFilter = optionValues;
                 } else {
                     locationFilter.push(urlHash.trim());
@@ -108,7 +100,6 @@
 
     function hideButton(bFilterOnChange) {
         if (bFilterOnChange === true) {
-            //$('.park-selector__buton.button').attr('display', 'none !important');
             $('.park-selector__buton.button').remove();
         }
         return;
