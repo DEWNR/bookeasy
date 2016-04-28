@@ -27,12 +27,11 @@
     <script>
 
         // Global Variables
-        var urlHash = ( location.hash.replace(/^#\//, '') ).trim();
+        var urlHash = ( location.hash.replace(/^#\//, '') ).trim();  // get the url hash (removes '#/')
         console.log("urlHash: " +urlHash);
         var optionValues = [];
         var locationFilter = [];
         var bFilterOnChange = true;  //Change to false to display a button for accepting park change.
-        // get the url hash (removes '#/')
         var parksdata = {                   //TODO: data will come from a Seamless DLV
                 "locations" :{
                     "1" : "Beachport Conservation Park",
@@ -64,45 +63,22 @@
 
         function watchUrlChange() {
             // Run once per page load (Not per gadget load). On run check page url & copy to locationFilter
-                    $('.park-selector select :selected').attr('selected', true);
-
-                    $.each($('.park-selector option'), function(i){
-                        console.log(i);
-                        var op = 'select>option:eq(' +i+ ')';
-                        $(op).attr('id', i);
-                    });
-
-                    //$('select>option:eq(3)').attr('selected', true);
-
                     var currentOption = [];
-                    currentOption.push( $('.park-selector select :selected').val() );
-                    // if (currentOption != 'ALL') {
-                    //     locationFilter = currentOption;  //ARRAY to ARRAY
-                    // } else {
-                    //     locationFilter = optionValues;
-                    // }
-                    console.log('currentOption c: ' +currentOption[0].trim() );
-                    // locationFilter.push(urlHash);
-                    if(currentOption[0] == 'ALL') {
-                        $('.park-selector select').val('ALL');
-                        locationFilter = optionValues;
-                    } else if(currentOption[0] != urlHash) {
-                        locationFilter.push(urlHash);
-                    } else {
-                        locationFilter.push(urlHash);
-                    }
+                    currentOption.push(urlHash.trim()); // put urlHash into an array
+                    //set matching dropdown option as SELECTED
+                    $('.park-selector select[value^="' +urlHash+ '"]').attr('selected', true);
 
-                    //url += ("#/" + currentOption);
-                    console.log( 'currentOption: ' +currentOption );
-                    //window.open( url, '_self' );
-                    //bookeasy(locationFilter);     //re-init the bookeasy gadget
-                    //event.preventDefault();  //because we are using a href
+                    console.log('currentOption: ' +currentOption[0] );
+                    if(currentOption[0] == 'ALL') {
+                        locationFilter = optionValues;
+                    } else {
+                        locationFilter.push(urlHash.trim());
+                    }
         }
 
 
         function hideButton(bFilterOnChange) {
             if (bFilterOnChange === true) {
-                //$('.park-selector__buton.button').attr('display', 'none !important');
                 $('.park-selector__buton.button').remove();
             }
             return;
