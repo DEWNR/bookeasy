@@ -6,7 +6,7 @@
 
 {% block content %}
 
-    {% include "shared/quickselect.html" %}
+    {% include "shared/location-selector.html" %}
 
     <div id="regionGadget"></div>
 
@@ -34,6 +34,7 @@
         var bFilterOnChange = true;  //Change to false to display a button for accepting park change.
         var parksdata = {                   //TODO: data will come from a Seamless DLV
                 "locations" :{
+                     "0" : "ALL",
                     "1" : "Beachport Conservation Park",
                     "2" : "Bool Lagoon Game Reserve",
                     "3" : "Canunda National Park",
@@ -47,7 +48,7 @@
                     "11" : "Tallaringa Conservation Park",
                     "12" : "Vulkathunha-Gammon ranges National Park"
                 }
-            };          //  "0" : "ALL",
+            };
 
 
         // Run functions
@@ -66,7 +67,7 @@
                     var currentOption = [];
                     currentOption.push(urlHash.trim()); // put urlHash into an array
                     //set matching dropdown option as SELECTED
-                    $('.park-selector select[value^="' +urlHash+ '"]').attr('selected', true);
+                    $('.location-selector select[value^="' +urlHash+ '"]').attr('selected', true);
 
                     console.log('currentOption: ' +currentOption[0] );
                     if(currentOption[0] == 'ALL') {
@@ -79,7 +80,7 @@
 
         function hideButton(bFilterOnChange) {
             if (bFilterOnChange === true) {
-                $('.park-selector__buton.button').remove();
+                $('.location-selector__button').remove();
             }
             return;
         }
@@ -91,7 +92,7 @@
 
             $.each( parksdata.locations, function(key, val) {
 
-                $('.park-selector select').append($('<option></option').attr('value', val).attr('selected', urlHash == val ? true : false).text(val));
+                $('.location-selector select').append($('<option></option').attr('value', val).attr('selected', urlHash == val ? true : false).text(val));
                 optionValues.push(val);         // populate array of the option values
             });
 
@@ -101,10 +102,10 @@
 
         function buttonWatchAct() {
             // button reloads page/gadget to show correct bookeasy results
-            $('.park-selector__buton').on('click', function(event) {
+            $('.location-selector__button').on('click', function(event) {
                     var url = window.location.pathname;     //eg. /dev/booking/index.html
                     var currentOption = [];
-                    currentOption.push(  ( $('.park-selector select').val() ).trim()  );
+                    currentOption.push(  ( $('.location-selector select').val() ).trim()  );
                     if (currentOption != 'ALL') {
                         locationFilter = currentOption;  //ARRAY to ARRAY
                     } else {
@@ -119,11 +120,11 @@
             });
 
             // select dropdown reloads gadget to show correct BE results
-            $('.park-selector select').on('change', function() {
+            $('.location-selector select').on('change', function() {
                 if (bFilterOnChange === true) {
                     var url = window.location.pathname;     //eg. /dev/booking/index.html
                     var currentOption = [];
-                    currentOption.push(  ( $('.park-selector select').val() ).trim()  );
+                    currentOption.push(  ( $('.location-selector select').val() ).trim()  );
                     if (currentOption != 'ALL') {
                         locationFilter = currentOption;  //ARRAY to ARRAY
                     } else {

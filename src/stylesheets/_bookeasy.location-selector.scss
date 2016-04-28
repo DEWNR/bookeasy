@@ -1,0 +1,60 @@
+/*------------------------------------*\
+    #BOOKEASY LOCATION-SELECTOR
+\*------------------------------------*/
+
+.location-selector {
+    background-color: #fff;
+    display: inline-block;
+    position: relative;
+    width: 78%;
+    margin-bottom: 20px;
+
+    &::before {
+        content: '';
+        width: 0;
+        height: 0;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        border-top: 10px solid #000;
+        float: right;
+        margin: 14px 14px 0 0;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 1;
+    }
+}
+
+    .location-selector__select {
+        padding: 8px;
+        font-size: 14px;
+        height: 40px;
+        border: 1px solid #ddd;
+        outline: none;
+        transition: all 0.30s ease-in-out;
+        width: 100%;
+        -webkit-appearance: none;
+        display: inline-block;
+
+        &:focus {
+            border: 1px solid rgba(8, 113, 62, 1);
+            box-shadow: 0 0 0 2px rgba(8, 113, 62, 1);
+        }
+    }
+
+
+    .location-selector__button {
+        padding: 12px 9px;
+        background-color: #08713e;
+        border: none;
+        border-radius: 6px;
+        font-weight: bold;
+
+        &:hover {
+            background-color: #01522b;
+        }
+
+        &:active {
+            background-color: #ffd600;
+        }
+    }
