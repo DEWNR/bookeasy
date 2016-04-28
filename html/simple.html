@@ -47,12 +47,11 @@
 
 
     // Global Variables
-    var urlHash = ( location.hash.replace(/^#\//, '') ).trim();
+    var urlHash = ( location.hash.replace(/^#\//, '') ).trim();  // get the url hash (removes '#/')
     console.log("urlHash: " +urlHash);
     var optionValues = [];
     var locationFilter = [];
     var bFilterOnChange = true;  //Change to false to display a button for accepting park change.
-    // get the url hash (removes '#/')
     var parksdata = {                   //TODO: data will come from a Seamless DLV
             "locations" :{
                 "1" : "Beachport Conservation Park",
@@ -166,7 +165,7 @@
         $("LINK[href*='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700']").remove();
         $("script[type*=javascript]").filter(function() {
             var sSource = this.src;
-            //console.log('sSource: ' +sSource);
+            // console.log('sSource: ' +sSource);
             // if ( sSource.indexOf('maps.google.com/maps-api-v3/api') > -1) {
             //     $('script[src="' +sSource+ '"]').remove();
             // }
