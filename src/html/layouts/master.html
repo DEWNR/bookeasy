@@ -6,12 +6,15 @@
         <meta charset="utf-8">
         <title></title>
 
+        <link rel="stylesheet" href="css/bookeasy.css" media="screen" />
         <link rel="stylesheet" href="css/quickselect.css" media="screen" />
     </head>
     <body>
 
-        {% block content %}
-        {% endblock %}
+        <div id="content">
+            {% block content %}
+            {% endblock %}
+        </div>
 
 
         {% block global_javascript %}
