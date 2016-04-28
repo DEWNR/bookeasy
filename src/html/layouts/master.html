@@ -1,3 +1,5 @@
+{% set bookeasy_key = 'd5192d41822d0c987a0610af120d29bf' %}
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,6 +10,26 @@
 
         {% block content %}
         {% endblock %}
+
+
+        {% block global_javascript %}
+
+            <!-- jQuery -->
+
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+            <!-- Local fallback -->
+
+            <script>window.jQuery || document.write('<script src="/files/templates/00000000-0000-0000-0000-000000000000/f88a7f3c-df7e-430a-825c-24cfa8dec9a8/jquery1111min.js">\x3C/script>')</script>
+
+            <!-- End local fallback -->
+
+            <!-- End jQuery -->
+
+        {% endblock %}
+
+
+        {% block local_javascript %}{% endblock %}
 
     </body>
 </html>

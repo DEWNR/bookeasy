@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script src="jquery.min.js"></script>
+        <!-- <script type="text/javascript" src="parksdata.json"></script> -->
+        <style>
+        .quickselect {
+            display:block;
+            background: #eee;
+            min-height: 90px;
+            padding: 8px 2.5% 0 2.5%;
+            margin-bottom: 10px;
+            /* clear: both; */
+            /* height: 80px; */
+            clear: both;
+        }
+
+        .park-choice,
+        .location-choice {
+            display: inline-block;
+            float: left;
+            /* margin: 20px 0;
+            padding-bottom: 20px; */
+            width: 50%;
+        }
+
+        .styled-select {
+            width: 80%;
+            /* height: 54px;
+            overflow: hidden; */
+            /* background: url(new_arrow.png) no-repeat right #ddd; */
+            /* border: 1px solid #000; */
+            /* border-left: 0; */
+            background-color: #fff;
+            position: relative;
+            display: inline-block;
+        }
+
+        /* .location-choice select,
+        .park-choice select, */
+        .quickselect select {
+            width: 100%;
+            -webkit-appearance: none;
+            padding: 8px;
+            font-size: 16px;
+            height: 54px;
+            border: 1px solid #444; /* 0 force webkit to respect font size. See if it makes an improvement */
+            /* border-right:0; */
+            /* float: left; */
+            z-index: 10;
+        }
+
+        .arrow {
+            /* content: ""; */
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 10px solid #000;
+            float: right;
+            margin: 10px 10px 0 0;
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 1;
+        }
+
+        .park-choice__item,
+        .location-choice__item {
+            background-color: bisque;
+        }
+
+        .button {
+            padding: 18px 9px;
+            background-color: #eee;
+            border: solid 1px #888;
+            border-radius: 4px;
+        }
+        .button:hover {
+            background-color: #6AB13B;  /* bbb */
+        }
+        .message {
+            clear: both;
+        }
+        </style>
+
+    </head>
+    <body>
+
+    <!-- <div class="quickselect">
+
+        <div class="park-choice  quickselect__item">
+            <div class="styled-select">
+                <div class="arrow">
+                </div>
+                <select id="dropDownParks">
+                </select>
+            </div>
+            <span class="park-choice__item">
+            </span>
+            <span class="message"></span>
+        </div>
+
+        <div class="location-choice  quickselect__item">
+            <div class="styled-select">
+                <div class="arrow">
+                </div>
+                <select id="dropDownLocation">
+                </select>
+            </div>
+            <span class="location-choice__item">
+            </span>
+            <span class="message"></span>
+        </div>
+
+    </div> -->
+
+
+<script>    // Script for grabbing JSON data and populating select list
+    $( document ).ready(test());
+    var data = [];
+
+
+    function test() {
+
+        console.log( "ready!" );
+
+        $.getJSON( "parksdata.json", function( data ) {
+            var parks = [];
+            console.log("start itemsById");
+
+            $.each( data.parks, function(i) {
+                // console.log("here");
+                var parkName = this.parkName;
+                var operatorID = this.operatorID;
+                var isTour = "accom";
+                //console.log(this.type);
+                if (this.type == "tours") {
+                    isTour = "tours";
+                }
+                console.log(i+", "+parkName+operatorID+isTour);
+                parks.push( "<option id='"+i+"' class='option' data-istour='" + isTour + "'value='" + operatorID + "'>" + parkName + "</option>" );
+            });
+
+            $( "#dropDownParks" ).html( parks.join("") );
+
+
+            console.log("end itemsById");
+        });
+
+        console.log("end");
+
+    }
+
+
+    $('#dropDownParks').change(function () {
+        var opID = $(this).val();
+        //console.log($(this));
+        var optionNum = $("#dropDownParks").prop('selectedIndex');
+        console.log(optionNum);
+        var isTour = $("#"+optionNum).data("istour");
+        console.log("isTour: " + isTour);
+        console.log("opID: " + opID);
+        //Code for getting choice from dropdown and taking user to associated detail page
+        // Pass the operatorID to the bookeasy script in the details page?
+        console.log("push value to operatorID");
+        //link to the details page
+        $('.park-choice__item').html("<a href='http://www.environment.sa.gov.au/dev/bookeasy/test/details-gadget.html#/" + isTour + "/" + opID + " ' target='blank'><button class='button'>Launch >></button></a>");
+        //use the opID
+        $('.park-choice .message').html("<p>operatorID: " + opID + " </p>");
+    });
+
+
+
+    getLocations();
+
+
+    function getLocations() {
+
+        console.log( "locs!" );
+
+        $.getJSON( "locations.json", function( data ) {
+            var locations = [];
+            console.log("start getLocs");
+
+            $.each( data.locations, function(key, val) {
+                //var parkName = this.parkName;
+                //var operatorID = this.operatorID;
+                //var isTour = "accom";
+                //console.log(this.type);
+                // if (this.type == "tours") {
+                //     isTour = "tours";
+                // }
+                console.log( "key" +key+ " : " +val );
+                locations.push( "<option id='"+key+"' class='locoption' data-key='" +key+ "'value='" +val+ "'>" +val+ "</option>" );
+            });
+
+            $( "#dropDownLocation" ).html( locations.join("") );
+
+            console.log("end getLocs");
+        });
+
+        console.log("end locs");
+
+        //Code to change location-dropdown
+        //get choice from dropdown and taking user to associated region page
+        $('#dropDownLocation').change(function () {
+            var loc = $(this).val();
+            // Pass the operatorID to the bookeasy script in the details page?
+            console.log("push value to locationFilter");
+            //link to the details page
+            $('.location-choice__item').html("<a href='http://www.environment.sa.gov.au/dev/bookeasy/test/region-gadget.html#/" + loc + " ' target='blank'><button class='button'> Go to region >></button></a>");
+        });
+
+    }
+
+</script>
+
+
+
+        <div id="regionGadget"></div>
+
+
+        <script type="text/javascript" src="//gadgets.impartmedia.com/gadgets.jsz?key=7e5893292834eb2b34cd1d9b11437df9"></script>
+
+
+        <script type="text/javascript">
+          $w(function() {
+            var locationFilter = ["Deep Creek Conservation Park","Tallaringa Conservation Park",""];
+            console.log("in BE script");
+            var iOf = window.location.href.indexOf('#');
+            console.log(iOf);
+            if (iOf != -1) {
+                var urlHash = window.location.href.slice(window.location.href.indexOf('#') + 2).split('&');
+                console.log(urlHash);
+
+                locationFilter = [urlHash,""];
+
+                // BE.gadget.region("#regionGadget",{
+                //     limitLocations:locationFilter
+                // });
+                // console.log(BE.gadget.region);  //SPAM it all
+            }
+            $('.location-choice .message').html("<p>"+locationFilter+"</p>");
+
+
+            //var locationFilter = [$('#dropDownLocation').val(),""];  //grab location from new location dropdown-list
+
+            locationFilter.pop(); // Remove the last item from the array as it is empty
+
+            var bookingDate = new Date();
+            bookingDate.setDate(bookingDate.getDate() + 1);
+
+            BE.gadget.region("#regionGadget",{
+              vcID:188,
+              accomOnlyMode:true,
+              collapseRefineTools:true,
+              customMapIcons: {
+                'accom':{
+                  icon:'//www.environment.sa.gov.au/files/templates/00000000-0000-0000-0000-000000000000/c16a6c2a-2cdc-4f08-96b9-f1c11eb6f349/npsa-marker-general.png',
+                  pinpoint: [13,45],
+                  size: [26,45]
+                }
+              },
+              defaultDate: bookingDate,
+              defaultSort:'name',
+              enableRegionSearch:false,
+              forceAccomType:'',
+              ignoreSearchCookie:true,
+               // limitLocations:locationFilter,
+              period:1,
+              adults:1,
+              showAllAccom:true,
+              showList:false,
+              showLocationFilter:false,
+              collapseRefineTools:false
+            });
+          });
+        </script>
+
+    </body>
+</html>
