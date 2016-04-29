@@ -8,7 +8,7 @@
 
     {% include "shared/location-selector.html" %}
 
-    <div id="regionGadget"></div>
+    <div class="bookeasy__region-gadget"></div>
 
 {% endblock %}
 
@@ -26,194 +26,59 @@
 
     <script>
 
-        // Global Variables
-        var urlHash = ( location.hash.replace(/^#\//, '') ).trim();  // get the url hash (removes '#/')
-        console.log("urlHash: " +urlHash);
-        var optionValues = [];
-        var locationFilter = [];
-        var bFilterOnChange = true;  //Change to false to display a button for accepting park change.
-        var parksdata = {                   //TODO: data will come from a Seamless DLV
-                "locations" :{
-                     "0" : "ALL",
-                    "1" : "Beachport Conservation Park",
-                    "2" : "Bool Lagoon Game Reserve",
-                    "3" : "Canunda National Park",
-                    "4" : "Coorong National Park",
-                    "5" : "Deep Creek Conservation Park",
-                    "6" : "Dutchmans Stern Conservation Park",
-                    "7" : "Flinders Chase National Park",
-                    "8" : "Innes National Park",
-                    "9" : "Little Dip Conservation Park",
-                    "10" : "Mount Remarkable National Park",
-                    "11" : "Tallaringa Conservation Park",
-                    "12" : "Vulkathunha-Gammon ranges National Park"
-                }
-            };
-
-
-        // Run functions
-
-        hideButton(bFilterOnChange);
-
-        getLocations(parksdata);
-
-        watchUrlChange();  //must be run AFTER drop down options have been populated.
-
-        buttonWatchAct();
-
-
-        function watchUrlChange() {
-            // Run once per page load (Not per gadget load). On run check page url & copy to locationFilter
-                    var currentOption = [];
-                    currentOption.push(urlHash.trim()); // put urlHash into an array
-                    //set matching dropdown option as SELECTED
-                    $('.location-selector select[value^="' +urlHash+ '"]').attr('selected', true);
-
-                    console.log('currentOption: ' +currentOption[0] );
-                    if(currentOption[0] == 'ALL') {
-                        locationFilter = optionValues;
-                    } else {
-                        locationFilter.push(urlHash.trim());
-                    }
-        }
-
-
-        function hideButton(bFilterOnChange) {
-            if (bFilterOnChange === true) {
-                $('.location-selector__button').remove();
+        // TODO: parks data will be imported via DLV in json format
+        var parksData = {
+            "locations" :{
+                "0": "All",
+                "1": "Beachport Conservation Park",
+                "2": "Bool Lagoon Game Reserve",
+                "3": "Canunda National Park",
+                "4": "Coorong National Park",
+                "5": "Deep Creek Conservation Park",
+                "6": "Dutchmans Stern Conservation Park",
+                "7": "Flinders Chase National Park",
+                "8": "Innes National Park",
+                "9": "Little Dip Conservation Park",
+                "10": "Mount Remarkable National Park",
+                "11": "Tallaringa Conservation Park",
+                "12": "Vulkathunha-Gammon ranges National Park"
             }
-            return;
+        };
+
+        var aAllLocations = $.map(parksData.locations, function(val, i) { return val; }); // sets default locations from json data
+        var aFilteredLocations = []; // contains an array of locations to show in region gadget
+        var urlHash = location.hash.replace(/^#\//, '').trim();
+
+        $(window).bind('hashchange', function() {
+
+            aFilteredLocations = getFilteredLocations();
+
+        });
+
+
+        function getFilteredLocations() {
+
+            // check if the hash has been set
+            var aReturn = [];
+
+            if (urlHash && (urlHash !== 'All')) {
+                // set aFilteredLocations
+                aReturn = [urlHash];
+            } else {
+                aReturn = aAllLocations;
+            }
+
+            return aReturn;
         }
 
-
-        function getLocations(parksdata) {
-            console.log(parksdata);
-            var locations = [];
-
-            $.each( parksdata.locations, function(key, val) {
-
-                $('.location-selector select').append($('<option></option').attr('value', val).attr('selected', urlHash == val ? true : false).text(val));
-                optionValues.push(val);         // populate array of the option values
-            });
-
-            $( "#dropDownLocation" ).append( locations.join("") );
-        }
-
-
-        function buttonWatchAct() {
-            // button reloads page/gadget to show correct bookeasy results
-            $('.location-selector__button').on('click', function(event) {
-                    var url = window.location.pathname;     //eg. /dev/booking/index.html
-                    var currentOption = [];
-                    currentOption.push(  ( $('.location-selector select').val() ).trim()  );
-                    if (currentOption != 'ALL') {
-                        locationFilter = currentOption;  //ARRAY to ARRAY
-                    } else {
-                        locationFilter = optionValues;
-                    }
-                    url += ("#/" + currentOption);
-                    console.log( url + currentOption );
-                    window.open( url, '_self' );
-                    bookeasy(locationFilter);     //re-init the bookeasy gadget
-                    //location.reload();       //Refresh the page
-                    event.preventDefault();  //because we are using a href
-            });
-
-            // select dropdown reloads gadget to show correct BE results
-            $('.location-selector select').on('change', function() {
-                if (bFilterOnChange === true) {
-                    var url = window.location.pathname;     //eg. /dev/booking/index.html
-                    var currentOption = [];
-                    currentOption.push(  ( $('.location-selector select').val() ).trim()  );
-                    if (currentOption != 'ALL') {
-                        locationFilter = currentOption;  //ARRAY to ARRAY
-                    } else {
-                        locationFilter = optionValues;
-                    }
-                    url += ("#/" + currentOption);
-                    //console.log( url + currentOption );
-                    window.open( url, '_self' );
-                    bookeasy(locationFilter);     //re-init the bookeasy gadget
-                }
+        function createLocationSelector () {
+            $.each( aAllLocations, function(key, val) {
+                console.log('here 2');
+                $('.location-selector__select').append($('<option></option').attr('value', val).attr('selected', urlHash == val ? true : false).text(val));
             });
         }
 
-
-        function removeMaps() {
-            console.log('remove google maps.');
-            $('.gm-style .gm-style-mtc label,.gm-style .gm-style-mtc div').remove();
-            $('.gm-style-pbc').remove();
-            $("LINK[href*='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700']").remove();
-            $("script[type*=javascript]").filter(function() {
-                var sSource = this.src;
-                //console.log('sSource: ' +sSource);
-                // if ( sSource.indexOf('maps.google.com/maps-api-v3/api') > -1) {
-                //     $('script[src="' +sSource+ '"]').remove();
-                // }
-                // sTest = sSource.indexOf('maps.google.com/maps/api/js');
-                // if (sTest > -1) {
-                //     console.log('found something');
-                //     sSource.replace('http:','')         // remove http: for the maps.google group
-                //     $('script[src="' +sSource+ '"]').remove();
-                // }
-                //remove google.maps object
-                if (window.google !== undefined && google.maps !== undefined) {
-                    delete google.maps;
-                    $('script').each(function () {
-                        if (this.src.indexOf('googleapis.com/maps') >= 0
-                            || this.src.indexOf('maps.gstatic.com') >= 0
-                            || this.src.indexOf('earthbuilder.googleapis.com') >= 0) {
-                            // console.log('removed', this.src);
-                            $(this).remove();
-                        }
-                    });
-                }
-            });
-        }
-
-
-        bookeasy();
-
-        function bookeasy(){
-
-            removeMaps();
-
-            $w(function () {
-
-                console.log("in BE script --");
-                console.log("locationFilter: " +locationFilter);
-
-                var bookingDate = new Date();
-                bookingDate.setDate(bookingDate.getDate() + 1);
-
-                BE.gadget.region("#regionGadget",{
-                    vcID:188,
-                    accomOnlyMode:true,
-                    collapseRefineTools:true,
-                    customMapIcons: {
-                    'accom':{
-                      icon:'//www.environment.sa.gov.au/files/templates/00000000-0000-0000-0000-000000000000/c16a6c2a-2cdc-4f08-96b9-f1c11eb6f349/npsa-marker-general.png',
-                      pinpoint: [13,45],
-                      size: [26,45]
-                    }
-                    },
-                    defaultDate: bookingDate,
-                    defaultSort:'name',
-                    enableRegionSearch:false,
-                    forceAccomType:'',
-                    ignoreSearchCookie:true,
-                    limitLocations:locationFilter,
-                    itemDetailPageURL:'./detail.html',
-                    period:1,
-                    adults:1,
-                    showAllAccom:true,
-                    showList:false,
-                    showLocationFilter:false,
-                    collapseRefineTools:false,
-                    defaultRegionState: 'South Australia'
-                });
-            });
-        }
+        createLocationSelector();
 
     </script>
 
