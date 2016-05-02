@@ -47,38 +47,96 @@
 
         var aAllLocations = $.map(parksData.locations, function(val, i) { return val; }); // sets default locations from json data
         var aFilteredLocations = []; // contains an array of locations to show in region gadget
-        var urlHash = location.hash.replace(/^#\//, '').trim();
+        var urlHash = location.hash.replace(/^#/, '').trim();
 
-        $(window).bind('hashchange', function() {
 
-            aFilteredLocations = getFilteredLocations();
+        $(function() {
+
+            initRegionGadget(); // initialise region gadget
+
+
+            // change location to display
+            $('.location-selector__select').on('change', function() {
+                // set location hash to selected location
+                window.location.hash = urlHash = $(this).val();
+            });
 
         });
 
 
+        $(window).bind('hashchange', function() {
+
+            aFilteredLocations = getFilteredLocations(); // get currently selected location
+            bookeasy(); // re-load bookeasy gadget
+
+        });
+
+
+        function initRegionGadget() {
+
+            aFilteredLocations = getFilteredLocations(); // get currently selected location
+            createLocationSelector(); // create location selector
+            bookeasy(); // load bookeasy gadget
+
+        }
+
+
         function getFilteredLocations() {
 
-            // check if the hash has been set
-            var aReturn = [];
+            var aReturn = aAllLocations; // defaults to show all locations
 
+            // check if the hash has been set
             if (urlHash && (urlHash !== 'All')) {
-                // set aFilteredLocations
-                aReturn = [urlHash];
-            } else {
-                aReturn = aAllLocations;
+                aReturn = [urlHash]; // set aFilteredLocations
             }
 
             return aReturn;
         }
 
+
         function createLocationSelector () {
+
             $.each( aAllLocations, function(key, val) {
-                console.log('here 2');
                 $('.location-selector__select').append($('<option></option').attr('value', val).attr('selected', urlHash == val ? true : false).text(val));
             });
+
         }
 
-        createLocationSelector();
+
+        function bookeasy() {
+
+            var bookingDate = new Date();
+
+            bookingDate.setDate(bookingDate.getDate() + 1);
+
+            BE.gadget.region('.bookeasy__region-gadget', {
+                accomOnlyMode: true,
+                adults: 1,
+                customMapIcons: {
+                    'accom': {
+                        icon:'//www.environment.sa.gov.au/files/templates/00000000-0000-0000-0000-000000000000/c16a6c2a-2cdc-4f08-96b9-f1c11eb6f349/npsa-marker-general.png',
+                        pinpoint: [13,45],
+                        size: [26,45]
+                    }
+                },
+                collapseRefineTools: false,
+                collapseRefineTools: true,
+                defaultDate: bookingDate,
+                defaultRegionState: 'South Australia',
+                defaultSort: 'name',
+                enableRegionSearch: false,
+                forceAccomType: '',
+                ignoreSearchCookie: true,
+                itemDetailPageURL: './detail.html',
+                limitLocations: aFilteredLocations,
+                period: 1,
+                showAllAccom: true,
+                showList: false,
+                showLocationFilter: false,
+                vcID: 188
+            });
+
+        }
 
     </script>
 
