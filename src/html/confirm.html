@@ -6,7 +6,7 @@
 
 {% block content %}
 
-    <div class="bookeasy__confirmation-gadget"></div>
+    <div id="bookeasy__confirmation-gadget"></div>
 
 {% endblock %}
 
@@ -25,7 +25,7 @@
     <script>
 
         $w(function() {
-            BE.gadget.confirm('.bookeasy__confirmation-gadget', {
+            BE.gadget.confirm('#bookeasy__confirmation-gadget', {
                 thankYouText: 'Thank you for your booking. You can download your itinerary with the link below.',
                 pdfLinkText: 'Download your itinerary PDF now.'
             });

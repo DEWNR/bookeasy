@@ -6,7 +6,7 @@
 
 {% block content %}
 
-    <div class="bookeasy__booking-gadget"></div>
+    <div id="bookeasy__booking-gadget"></div>
 
 {% endblock %}
 
@@ -25,7 +25,7 @@
     <script>
 
         $w(function() {
-            BE.gadget.book('.bookeasy__booking-gadget', {
+            BE.gadget.book('#bookeasy__booking-gadget', {
                 confirmationURL: './checkout.html',
                 demoMode: true,
                 vcID: 188
