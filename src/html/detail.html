@@ -6,14 +6,9 @@
 
 {% block content %}
 
-    <div id="toolbar-cart"></div>
+    <div id="bookeasy__cart-gadget"></div>
 
-    <div class="campground id73149"></div>
-
-    <div id="operatorDetails"></div>
-
-    <div id="operatorDirections"></div>
-    <div id="operatorConditions"></div>
+    <div id="bookeasy__details-gadget"></div>
 
 {% endblock %}
 
@@ -30,50 +25,45 @@
     <script src="//gadgets.impartmedia.com/gadgets.jsz?key={{ bookeasy_key }}"></script>
 
     <script>
-        var operatorIDs = [73149];
-        var operatorPageType = 'camping';
 
-        var acceptBookings = true;
-    </script>
+        var bAllowBookings = true; // #todo seamless variable
+        var bookeasyType = 'accom'; // defaults to accomodation
+        var bookingDate = new Date(); // Get today's date
+        var operatorIDs = productID = [73176]; // set operatorIDs to display
+        var operatorPageType = 'camping'; // type of operator
 
-    <script type="text/javascript">
-        var operatorPageType;
+        if (operatorPageType == 'tours') {
+            bookeasyType = 'tours';
+        }
 
-        // Set the the bookeasy operator type based on the operator page type
-        var bookeasyType;
-        switch (operatorPageType) {
-            case 'tours': bookeasyType = 'tours'; break;
-            default: bookeasyType = 'accom';
-        };
+        $(function() {
 
-        // Get today's date
-        bookingDate = new Date();
-
-        // Set the gadget options
-        detailsGadgetOptions = {
-            vcID:188,
-            defaultDate: bookingDate,
-            descriptionHover:false,
-            period: 1,
-            showHoverInline: true,
-            showQuantity: false,
-            thumbsInGrid:true,
-            showHoverInlineToggleButtonContent: "MORE...",
-            type: bookeasyType
-        };
-    </script>
-
-    <script src="js/bookeasy-details.js"></script>
-
-    <script type="text/javascript">
-        $w(function() {
-            BE.gadget.cart("#toolbar-cart", {
-                vcID:188,
-                bookingURL:"http://www.environment.sa.gov.au/dev/bookeasy/test/checkout.html",
-                autoCollapse:true
+            // load details gadget
+            BE.gadget.details('#bookeasy__details-gadget', {
+                defaultDate: bookingDate,
+                descriptionHover: true,
+                period: 1,
+                productID: productID,
+                showHoverInline: true,
+                showHoverInlineToggleButtonContent: 'More...',
+                showQuantity: false,
+                thumbsInGrid: true,
+                type: bookeasyType,
+                vcID: 188
             });
+
+            // load card gadget
+            BE.gadget.cart('#bookeasy__cart-gadget', {
+                autoCollapse: true,
+                bookingURL: './checkout.html',
+                vcID: 188
+            });
+
         });
+
     </script>
+
+    <!-- <script src="js/bookeasy-details.js"></script> -->
 
 
 {% endblock %}
