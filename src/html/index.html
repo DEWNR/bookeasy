@@ -138,6 +138,29 @@
 
         }
 
+        function cleanGoogleMaps(callback) {
+
+            $('.gm-style .gm-style-mtc label,.gm-style .gm-style-mtc div').remove();
+            $('.gm-style-pbc').remove();
+            $("LINK[href*='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700']").remove();
+
+            $("script[type*=javascript]").filter(function() {
+                if (window.google !== undefined && google.maps !== undefined) {
+                    delete google.maps;
+                    $('script').each(function () {
+                        if (this.src.indexOf('googleapis.com/maps') >= 0
+                            || this.src.indexOf('maps.gstatic.com') >= 0
+                            || this.src.indexOf('earthbuilder.googleapis.com') >= 0) {
+
+                            $(this).remove();
+                        }
+                    });
+                }
+            });
+
+            callback();
+        }
+
     </script>
 
 
