@@ -1,0 +1,190 @@
+/*------------------------------------*\
+    #BOOKEASY CART
+\*------------------------------------*/
+
+// scss-lint:disable all
+
+
+div#wdOverlayContent.overlayMode {
+    color: #333;
+    font-family: "Frutiger LT Com", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 200;
+
+    div.BE.shopping-cart {
+        div.item {
+            div.name {  }
+            div.price {  }
+            div.remove {  }
+            div.operator {  }
+            div.date-nights {  }
+        }
+
+        div.checkout {
+            a {
+
+            }
+        }
+
+        div.total {  }
+    }
+
+    div.add-to-cart-form div.name span.operator-name,
+    div.item-details div.name span.operator-name {
+        color: #fff;
+        background: #054124;
+        padding: .3em 36px .3em 30px;
+        margin-left: -0.8rem;
+        z-index: 2;
+    }
+
+    div.add-to-cart-form div.name span.item-name,
+    div.item-details div.name span.item-name {
+        background-color: #08713e;
+    }
+
+    div.add-to-cart-form {
+        label {
+            color: #333!important;
+        }
+
+        div.add-to-cart-information {
+            div.name {
+              overflow: hidden;
+              height: auto;
+            }
+
+            div.quantity {
+              display: none;
+            }
+        }
+
+        div.addButton {
+            a.next,
+            a.previous {
+                border: 0;
+                background-image: none;
+
+                span {
+                    background-color: #08713e;
+                    border: 0;
+                    border-radius: 6px;
+                }
+            }
+
+            a.checkOutNow,
+            a.addToCart {
+                background-color: #08713e;
+                background-image: none;
+                border: 0;
+            }
+            a.checkOutNow {
+                background-color: #08713e!important;
+            }
+        }
+
+        div.accordian {
+            div.accordian-header {
+                background: #08713e;
+            }
+
+            &.expanded div.accordian-header {
+
+                &:before {
+                    content: " - ";
+                    display: inline-block;
+                    background-color: #fff;
+                    color: #08713e;
+                    width: 1.6rem;
+                    text-align: center;
+                    margin-right: 8px;
+                    font-size: 1rem;
+                    font-weight: 900;
+                    font-family: arial, helvetica, tahoma, verdana, sans-serif;
+                }
+            }
+
+            &.collapsed div.accordian-header {
+                &:before {
+                    content: " + ";
+                    display: inline-block;
+                    background-color: #fff;
+                    color: #08713e;
+                    width: 1.6rem;
+                    text-align: center;
+                    margin-right: 8px;
+                    font-size: 1rem;
+                    font-weight: 900;
+                    font-family: arial, helvetica, tahoma, verdana, sans-serif;
+                }
+            }
+
+            div.accordian-content {
+                background: #d3e4d5;
+            }
+        }
+    }
+
+    b#wdOverlayClose {
+        display: block;
+        cursor: pointer;
+        width: 29px;
+        height: 26px;
+        position: absolute;
+        right: -1px;
+        top: -1px;
+        background: none;
+        background-color: #333;
+
+        &:hover {
+            background-color: #b00;
+        }
+
+        &:before {
+            content: "x";
+            color: #fff;
+            font-size: 2rem;
+            font-weight: 100;
+            font-family: tahoma, verdana, arial, sans-serif;
+            display: block;
+            padding-left: 7px;
+            padding-top: 0px;
+            line-height: 1.2rem;
+        }
+    }
+
+    div.add-to-cart-form div.period {
+        display: none;
+    }
+
+    div.add-to-cart-form div.AdditionalData div.BookingQuestionsData div.booking-questions div.bookingQuestion div.bookingQuestionSets div.bookingQuestionSet div.bookingQuestionFields div.bookingQuestion-container div.bookingQuestion-answers label.bookingQuestion-answer,
+    div.item-details div.AdditionalData div.BookingQuestionsData div.booking-questions div.bookingQuestion div.bookingQuestionSets div.bookingQuestionSet div.bookingQuestionFields div.bookingQuestion-container div.bookingQuestion-answers label.bookingQuestion-answer {
+        padding: 15px;
+
+        input,
+        select {
+            color: #333;
+            font-family: "Frutiger LT Com", Helvetica, Arial, sans-serif;
+            font-size: 16px;
+            border: 1px solid #fff;
+            padding: .5em .5em;
+            margin-top: -.5em;
+
+            &:focus {
+                outline: 0;
+                border-color: #08713e;
+            }
+        }
+    }
+
+    div.add-to-cart-form div.AdditionalData div.BookingQuestionsData div.booking-questions div.bookingQuestion div.bookingQuestionSets div.bookingQuestionSet div.bookingQuestionFields div.bookingQuestion-container div.bookingQuestion-answers div.bookingQuestion-answer-message,
+    div.item-details div.AdditionalData div.BookingQuestionsData div.booking-questions div.bookingQuestion div.bookingQuestionSets div.bookingQuestionSet div.bookingQuestionFields div.bookingQuestion-container div.bookingQuestion-answers div.bookingQuestion-answer-message {
+
+        color: #08713e;
+    }
+}
+
+#wdOverlayBlockout {
+    opacity: 0.85!important;
+    background: #000!important;
+}

@@ -1,0 +1,266 @@
+/*------------------------------------*\
+    #BOOKEASY REGION GADGET
+\*------------------------------------*/
+
+// scss-lint:disable all
+
+
+.bookeasy__region-gadget {
+
+    div.BE.region-gadget {
+        color: $sagovau-color-text-base;
+        font-family: "Frutiger LT Com", Helvetica, Arial, sans-serif;
+        font-size: 16px;
+        font-weight: 200;
+
+        // The view tabs
+        div.tabs-group {
+            height: auto;
+            line-height: normal;
+
+            span.label {
+                display: none;
+            }
+
+            div.view-choice a {
+                background: #fff;
+                background: rgba(255, 255, 255, 0.90);
+                border: 0;
+                border-radius: 0;
+                color: $sagovau-color-text-base;
+                margin: 0;
+                padding: 0.8em 1.4em;
+
+                &:nth-child(2) {
+                     border-top-left-radius: 3px    ;
+                }
+
+                &:last-child {
+                     border-top-right-radius: 3px;
+                }
+
+                &.current {
+                    background: $sagovau-color-brand;
+                    background: rgba($sagovau-color-brand, 0.95);
+                    color: #fff;
+                }
+            }
+        }
+
+
+        // Embedded search gadget
+        div.embedded-search {
+
+            div.refineTools {
+                display: none !important;
+                padding: 0.5em 0 1.2em 0;
+
+                div.locationFilter {  }
+                div.accommTypes {
+                    display: none;
+                }
+                div.facilities {
+                    display: none;
+                }
+
+                div.maxPrice {
+                    input {
+                        width: 5em;
+                    }
+                }
+
+                div.nameFilter {
+                    input {
+                        width: 15em;
+                    }
+                }
+
+                div.sortBy {
+                    .byWhich {
+                        margin-right: 0;
+                    }
+                }
+            }
+
+            div.showHideRefineTools {
+              display: none;
+            }
+        }
+
+
+        // Price view container
+        div.prices-grid {
+            border: 0;
+
+            table {
+                thead {
+                    td {
+                        background: #065931;
+                        background: rgba(6, 89, 49, 0.95);
+
+                        &.label {  }
+                        &.total {  }
+                        &.date  {  }
+                    }
+                }
+
+
+                tbody {
+                    tr {
+                        border-bottom: 1px solid rgba(0, 0, 0, .03);
+
+                        &.odd {
+                            background: rgba(255, 255, 255, 0.85);
+                        }
+
+                        &.even {
+                            background: rgba(255, 255, 255, 0.9);
+                        }
+
+                        &.instant-confirmation {  }
+                        &.has-specials {  }
+                        &.has-last-minute {  }
+                    }
+
+                    td {
+                        background: none;
+
+                        &.property {
+                            background: linear-gradient(to right,  rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 59%, rgba(255, 255, 255, 0) 61%);
+
+                            .name {
+                                color: $sagovau-color-text-base;
+                                font-size: 26px;
+                                padding: 0.85em 0 0;
+                            }
+
+                            .address {
+                                color: $sagovau-color-text-base;
+                                font-size: 16px;
+                            }
+
+                            div.thumb {
+                                border: 0;
+                                height: 96px;
+                                overflow: hidden;
+                                padding: 0;
+                                width: 150px;
+
+                                img {
+                                    height: 150px;
+                                    position: relative;
+                                    top: -25px;
+                                    width: 150px;
+                                }
+                            }
+                        }
+
+                        &.total {
+                            width: 10%;
+
+                            .im-pricebutton-label {
+                                font-size: 16px;
+                                font-weight: 400;
+                            }
+
+                            span.price {
+                                border: 0;
+                                background-image: none;
+                                font-size: 26px;
+
+                                .number {
+                                    margin-top: -0.2em;
+                                    display: block;
+                                }
+                            }
+
+                            &:hover {
+                                span.price {
+                                    background-color: $sagovau-color-brand;
+                                }
+                            }
+
+                            .sold-out {
+                                span.price {
+                                    font-size: 16px;
+                                    padding: 0.8em 0.2em;
+                                }
+                            }
+                        }
+
+                        &.price {
+                            font-size: 20px;
+                        }
+                    }
+                }
+
+            }
+
+        }
+
+
+        div.map-container {
+            border: 0;
+            height: 623px;
+
+            div.product-list {
+                height: 624px;
+
+                div.map-sidebar-item {
+                    border-bottom: 1px solid rgba(0, 0, 0, .03);
+                    padding-left: 10px;
+
+                    div.name {
+                        font-size: 20px;
+                        color: $sagovau-color-text-base;
+                    }
+                    div.location {
+                        color: $sagovau-color-text-base;
+                    }
+                    div.from-price {
+                        top: 20px;
+                    }
+                    div.rating {  }
+
+                    &.odd {
+                        background: rgba(255, 255, 255, 0.85);
+                    }
+
+                    &.even {
+                        background: rgba(255, 255, 255, 0.9);
+                    }
+
+                    &.instant-confirmation {  }
+                    &.has-specials {  }
+                    &.has-last-minute {  }
+                }
+
+                div.highlighted {
+                    div.name {
+                        color: $sagovau-color-brand;
+                        font-weight: 400;
+                    }
+                }
+            }
+
+            div.map-window {
+                height: 623px;
+            }
+
+
+            div.mapInfoWindow {
+                h3.name {  }
+                div.address {  }
+                div.thumb {  }
+                div.details {  }
+                div.button {
+                    a {
+                        background: $sagovau-color-brand;
+                        border: 0;
+                    }
+                }
+            }
+        }
+
+    }
+}

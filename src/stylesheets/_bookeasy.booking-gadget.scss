@@ -1,0 +1,284 @@
+/*------------------------------------*\
+    #BOOKEASY REGION GADGET
+\*------------------------------------*/
+
+// scss-lint:disable all
+
+
+.checkout-cart,
+.checkout-complete {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.bookeasy__booking-gadget {
+
+    .booking-gadget.BE {
+
+        label,
+        span {
+            padding-bottom: 10px;
+        }
+
+        .acceptCancellationPolicy span {
+            padding-bottom: 0px;
+        }
+
+        div.personalDetails select,
+        div.ccDetails select,
+        div.personalDetails input,
+        div.ccDetails input,
+        div.personalDetails textarea,
+        div.ccDetails textarea {
+            font-size: 15px;
+            padding: 10px;
+        }
+
+        div.personalDetails label {
+            width: 39.4%;
+        }
+        div.personalDetails select,
+        div.ccDetails select:not(.paym),
+        div.personalDetails input,
+        div.ccDetails input,
+        div.personalDetails textarea,
+        div.ccDetails textarea {
+            width: 55%;
+        }
+
+        div.personalDetails select {
+            width: 58.6%;
+        }
+
+
+        select,
+        textarea,
+        input,
+        div.personalDetails input,
+        div.personalDetails div.salutation select,
+        div.personalDetails div.salutation textarea,
+        div.personalDetails div.salutation input {
+            margin-top: 6px;
+            margin-bottom: 6px;
+            /* font-size: 15px;
+            padding: 10px; */
+         }
+
+          option {
+             line-height: 200%;
+             line-height: 50px;
+             /* height: 50px; */
+             /* width: 100px; */
+         }
+
+         div.personalDetails div.acceptCancellationPolicy input[type=checkbox],
+         div.personalDetails div.receiveENewsletter input[type=checkbox] {
+             width: 24px;
+             height: 24px;
+             top: 2px;
+             margin-left: 8px;
+         }
+
+         .receiveENewsletter label,
+         .acceptCancellationPolicy label {
+          padding-top: 10px;
+          padding-bottom: 10px;
+         }
+
+         span.ccLabel {
+             padding: 0;
+         }
+
+         div.personalDetails div.required label,
+         div.ccDetails div.required label {
+             /* font-weight: normal; */
+         }
+
+         div.personalDetails div.required label::after,
+         div.ccDetails div.required label::after {
+             content: ' *';
+             color: red;
+         }
+
+         h3 {
+             font-size: 17px;
+         }
+
+         div.button a {
+             padding: 15px;
+             color: #fffbee;
+             border: none;
+             border-radius: 6px;
+             background: #026937;
+             text-decoration: none;
+         }
+         div.button a span {
+             padding:0;
+             line-height: 1.2em;
+         }
+         div.button a:hover {
+             background-color: #454;
+         }
+         div.button a:active {
+             background-color: #ffed00;
+             outline: none;
+         }
+         div.button a:active span {
+             color: #292929;
+         }
+
+         div.cartItems,
+         div.ccDetails,
+         div.personalDetails,
+         div.shopping-cart {
+             font-size: 15px;
+         }
+
+         div.personalDetails label,
+         div.ccDetails label {
+             font-size: 15px;
+         }
+
+
+         input[type=text]:focus,
+         textarea:focus,
+         select:focus {
+             border: 1px solid rgba(8, 113, 62, 1);
+             box-shadow: 0 0 0 2px rgba(8, 113, 62, 1);
+             /* outline: 1px solid red; */
+         }
+
+         input[type=text],
+         textarea {
+             -webkit-transition: all .30s ease-in-out;
+             -moz-transition: all .30s ease-in-out;
+             -ms-transition: all .30s ease-in-out;
+             -o-transition: all .30s ease-in-out;
+             border: 1px solid #ddd;
+             outline: none;
+         }
+
+
+         div.button a {
+             height: 1.2em;
+         }
+
+         div.personalDetails div.acceptCancellationPolicy input,
+         div.personalDetails div.receiveENewsletter input {
+             left: initial;
+             left: auto; /* IE */
+             right: initial;
+             right: auto; /* IE */
+         }
+
+         div.personalDetails .salutation,
+         div.personalDetails .address,
+         div.personalDetails .city,
+         div.personalDetails .state,
+         div.personalDetails .country,
+         div.personalDetails .WhereDidYouHearId,
+         div.personalDetails .comment {
+             display: none;
+         }
+
+
+         div.ccDetails div.BE_error span.validationError {
+             padding-bottom: 10px;
+         }
+
+         div.personalDetails div.BE_error span.validationError {
+             padding-left: 41%;
+         }
+
+         div.personalDetails, div.ccDetails,div.shopping-cart {
+             width: auto;
+             float: none;
+             border: 0;
+             border-radius: 0;
+             padding: 20px 20px 0;
+             background: rgba(255, 255, 255, .95);
+             min-height: 0;
+             margin: 0;
+         }
+
+         div.shopping-cart {
+             padding-right: 40px;
+         }
+
+         div.shopping-cart.BE div.cartItems, div.cartInOverlay div.cartItems {
+             border: 0;
+             border-radius: 0;
+             min-height: 0;
+         }
+    }
+
+    div.shopping-cart.BE div.cartItems div.item div.bookingQuestions {
+        line-height: 1.6em;
+    }
+
+    div.shopping-cart.BE div.cartItems div.item div.price label {
+        width: 10em;
+    }
+
+    div.shopping-cart.BE div.cartItems div.item div.operator, div.cartInOverlay div.cartItems div.item div.operator, div.shopping-cart.BE div.cartItems div.item div.date-nights, div.cartInOverlay div.cartItems div.item div.date-nights, div.shopping-cart.BE div.cartItems div.item div.dropoff, div.cartInOverlay div.cartItems div.item div.dropoff, div.shopping-cart.BE div.cartItems div.item div.pickup, div.cartInOverlay div.cartItems div.item div.pickup, div.shopping-cart.BE div.cartItems div.item div.bookingQuestions, div.cartInOverlay div.cartItems div.item div.bookingQuestions {
+        color: #333;
+    }
+
+    div.booking-gadget.BE div.button {
+        text-align: right;
+        padding: 0 25px 20px 0;
+    }
+
+    div.shopping-cart.BE div.cartItems div.total, div.cartInOverlay div.cartItems div.total {
+        right: 10px;
+        padding-right: 30px;
+    }
+
+}
+
+.checkout-complete {
+    div.bookingComplete,
+    div.booking-complete {
+        width: auto;
+        float: none;
+        border: 0;
+        border-radius: 0;
+        padding: 20px 20px 0;
+        background: rgba(255, 255, 255, .95);
+        min-height: 0;
+        margin: 0;
+        font-family: Helvetica,Arial,sans-serif;
+        color: #333;
+    }
+
+    div.bookingComplete a {
+        display: none;
+    }
+
+    div.booking-complete {
+        text-align: center;
+        padding-bottom: 40px;
+    }
+
+    div.booking-complete a {
+        display: block;
+        color: #333;
+    }
+
+    #confirm {
+        display: none;
+    }
+
+}
+
+
+.acceptCancellationPolicy .validationError {
+    width: 56%;
+    padding-left: 0%;
+}
+
+.acceptCancellationPolicy .validationError span {
+    margin-left: 40px;
+    display: block;
+    padding-top: 0;
+}

@@ -1,0 +1,202 @@
+/*------------------------------------*\
+    #BOOKEASY DETAILS GADGET
+\*------------------------------------*/
+
+// scss-lint:disable all
+
+
+.bookeasy__details-gadget {
+
+    div.BE.details-gadget {
+        color: $sagovau-color-text-base;
+        font-family: "Frutiger LT Com", Helvetica, Arial, sans-serif;
+        font-size: 16px;
+        font-weight: 200;
+
+        div.embedded-search {  }
+
+        div.priceGrid {
+            border: 0;
+
+            table {
+                thead {
+                    td {
+                        background: #065931;
+                        background: rgba(6, 89, 49, 0.95);
+
+                        &.title {  }
+                        &.quantity {  }
+                        &.total {
+                            a {
+
+                            }
+                        }
+                        &.date {  }
+                    }
+                }
+
+
+                tbody {
+                    tr {
+                        border-bottom: 1px solid rgba(0, 0, 0, .03);
+
+                        &.odd {
+                            background: rgba(255, 255, 255, 0.85);
+                        }
+
+                        &.even {
+                            background: rgba(255, 255, 255, 0.9);
+                        }
+
+                        &.instant-confirmation {  }
+                        &.has-specials {  }
+                        &.has-last-minute {  }
+
+                        td {
+                            background: none;
+
+                            &.name {
+                                padding: 10px 10px 8px 15px;
+                                width: 800px;
+                                text-align: left;
+
+                                div.thumb {
+                                    border: 0;
+                                    height: 128px;
+                                    overflow: hidden;
+                                    padding: 0;
+                                    width: 150px;
+
+                                    img {
+                                        height: 150px;
+                                        width: 150px;
+                                    }
+                                }
+
+                                a {
+                                    color: $sagovau-color-text-base;
+                                    font-size: 26px;
+                                    text-align: left;
+
+                                    &.more {
+                                        display: none;
+                                    }
+                                }
+                            }
+
+                            &.quantity {  }
+
+                            &.tour-date {
+                                label {
+                                    color: $sagovau-color-text-base;
+                                    font-weight: 400;
+                                }
+                            }
+
+                            &.total {
+
+                                a {
+                                    background-image: none;
+                                    border: 0;
+                                    max-width: 240px;
+
+                                    &:hover {
+                                        background-color: $sagovau-color-brand;
+                                    }
+                                }
+
+                                span.im-pricebutton-label {
+                                    font-size: 16px;
+                                    font-weight: 400;
+                                }
+
+                                span.im-pricebutton-amount {
+                                    font-size: 26px;
+
+                                    .number {
+                                        margin-top: -0.2em;
+                                        display: block;
+                                    }
+                                }
+
+                                .sold-out {
+                                    span.price {
+                                        font-size: 16px;
+                                        padding: 0.8em 0.2em;
+                                    }
+                                }
+                            }
+
+                            &.price {
+                                font-size: 20px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        div.priceGrid table tbody tr div.OperatorInfo {
+            padding: 0;
+            font-size: 16px;
+            display: block!important;
+            float: left;
+            clear: none;
+            width: 70%;
+
+            span.OperatorItemHeading {
+                color: #333;
+                margin-bottom: .5em;
+            }
+
+            div.OperatorItemContent {
+                color: #333;
+                padding: 0;
+                margin-bottom: 1em;
+
+                p {
+                    margin-top: 0;
+                }
+            }
+
+            .RoomConfig {
+                display: inline-block;
+
+                span.OperatorItemHeading {
+                    display: none;
+                }
+            }
+
+            .MaxGuests {
+                display: inline-block;
+
+                span.OperatorItemHeading {
+                    display: none;
+                }
+
+                div.OperatorItemContent {
+                    display: inline;
+
+                    &:before {
+                        content: ', '
+                    }
+
+                    &:after {
+                        content: ' guest maximum'
+                    }
+                }
+            }
+
+            .Description {
+                span.OperatorItemHeading {
+                    display: none;
+                }
+            }
+        }
+
+    }
+
+    .main--tours #content div.BE.details-gadget div.priceGrid table tbody tr div.OperatorInfo {
+        display: none!important;
+    }
+}
