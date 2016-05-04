@@ -1,0 +1,150 @@
+// Highly specific styling to override BookEasy's built-in styles
+
+html.npsa.breakpoint-small {
+  #content {
+    div.BE.search-gadget {
+      div.date {
+        position: relative;
+        right: auto;
+        top: auto;
+        width: 100%;
+        margin-bottom: 0.5em;
+        span.input, span.pseudo {
+          width: 11em;
+        }
+      }
+      div.refineTools {
+        display: none !important;
+      }
+      div.showHideRefineTools {
+        display: none;
+      }
+      span.input {
+        select {
+          width: auto;
+        }
+      }
+    }
+    div.BE.region-gadget {
+      div.tabs-group {
+        display: none;
+      }
+      div.prices-grid {
+        table {
+          thead td.date {
+            display: none;
+          }
+          tbody {
+            td {
+              &.price {
+                display: none;
+              }
+              div.thumb {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }
+    div.BE.details-gadget {
+      div.priceGrid {
+        table {
+          thead td.date, tbody td.price {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+  div#wdOverlayContent {
+    position: relative !important;
+    margin: 0 !important;
+    width: 100% !important;
+    top: 0 !important;
+    bottom: auto !important;
+    left: auto !important;
+    right: auto !important;
+    box-shadow: none !important;
+      -webkit-box-shadow: none !important;
+        -moz-box-shadow: none !important;
+    border: none !important;
+    div.add-to-cart-form {
+      padding: 0.5em !important;
+      div.add-to-cart-information {
+        position: relative;
+        top: 0;
+        margin: 1em 0;
+        div.name {
+          font-weight: bold;
+          text-align: left;
+          span {
+            font-size: 120%;
+            background: none;
+            color: inherit;
+            display: inline;
+            float: none;
+            padding: 0;
+            margin: 0;
+          }
+          span.operator-name:after {
+            content: ' > ';
+          }
+        }
+        div.price, div.date, div.dateEnd, div.adults, div.children, div.infants, div.concessions, div.students, div.observers, div.startdate, div.period, div.quotedprice, div.family, div.AdditionalData {
+          clear: both;
+          margin: 0 0 0.5em 0;
+          padding: 0;
+          width: 100%;
+          height: auto;
+          text-align: left;
+          label, span {
+            font-size: inherit;
+            float: left;
+            width: 45%;
+            margin: 0 5% 0 0;
+          }
+          label {
+            font-weight: bold;
+          }
+        }
+        div.price span {
+          font-weight: bold;
+        }
+        div.AdditionalData {
+          .bookingQuestionSet>label {
+            padding: 0 !important;
+          }
+          div.bookingQuestion {
+            overflow: hidden;
+            label.bookingQuestion-title {
+              width: 100% !important;
+              max-width: 100% !important;
+            }
+            div.bookingQuestion-answers {
+              width: 100%;
+            }
+          }
+        }
+      }
+      div.addButton {
+        position: relative;
+        overflow: hidden;
+        margin: 1em 0;
+      }
+    }
+    b#wdOverlayClose {
+      top: 0.5em;
+      right: 0.5em;
+      z-index: 1000;
+    }
+  }
+  div#wdOverlayBlockout {
+    background-color: white !important;
+    opacity: 1 !important;
+  }
+}
+
+.personalDetails .comment {
+    display: none;
+}
