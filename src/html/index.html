@@ -48,6 +48,7 @@
         var aAllLocations = $.map(parksData.locations, function(val, i) { return val; }); // sets default locations from json data
         var aFilteredLocations = []; // contains an array of locations to show in region gadget
         var urlHash = location.hash.replace(/^#/, '').trim();
+        var hideProductTypes = ['tours','carhire','packages'];
 
 
         $(function() {
@@ -76,6 +77,7 @@
 
             aFilteredLocations = getFilteredLocations(); // get currently selected location
             createLocationSelector(); // create location selector
+            createTypeButtons();
             bookeasy(); // load bookeasy gadget
 
         }
@@ -94,12 +96,45 @@
         }
 
 
-        function createLocationSelector () {
+        function createLocationSelector() {
 
             $.each( aAllLocations, function(key, val) {
                 $('.location-selector__select').append($('<option></option').attr('value', val).attr('selected', urlHash == val ? true : false).text(val));
             });
 
+        }
+
+
+        function createTypeButtons() {  //TODO: create buttons in page for 'vehicle entry', 'tennis courts' etc.
+
+            $('.location-selector').after($('<div>Vehicle Entry Fees</div>').addClass('type-button vehicle-entry').attr('data', 'vehicle-entry'));
+            $('.vehicle-entry').click(  function(){ typeShow('tours') }  );
+
+            $('.location-selector').after($('<div>Diving</div>').addClass('type-button diving').attr('data', 'diving'));
+            $('.diving').click(  function(){ typeShow('carhire') }  );
+
+            $('.location-selector').after($('<div>Snorkeling</div>').addClass('type-button snorkeling').attr('data', 'snorkeling'));
+            $('.snorkeling').click(  function(){ typeShow('packages') }  );
+
+            // $.each( aAllLocations, function(key, val) {
+            //     $('.location-selector__select').append($('<option></option').attr('value', val).attr('selected', urlHash == val ? true : false).text(val));
+            // });
+
+        }
+
+        function typeShow(productType) {
+            console.log('productType: ' +productType);
+            hideProductTypes = ['accom','tours','carhire','packages'];
+            //console.log('hideProductTypes: ' +hideProductTypes);
+            var posInArray = $.inArray(productType, hideProductTypes);
+            console.log('posInArray: ' +posInArray);
+            if ( posInArray > -1 ) {
+                //console.log('hideProductTypes: ' +hideProductTypes);
+                var splice = hideProductTypes.splice( 1, posInArray );  //remove 1 item, from positionInArray
+                //console.log('splice: ' +splice);
+                console.log('hideProductTypes: ' +hideProductTypes);
+            }
+            bookeasy();
         }
 
 
@@ -126,6 +161,7 @@
                 defaultSort: 'name',
                 enableRegionSearch: false,
                 forceAccomType: '',
+                disabledTypes: hideProductTypes,
                 ignoreSearchCookie: true,
                 itemDetailPageURL: './detail.html',
                 limitLocations: aFilteredLocations,

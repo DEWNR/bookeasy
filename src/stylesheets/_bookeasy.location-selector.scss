@@ -6,7 +6,7 @@
     background-color: #fff;
     display: inline-block;
     position: relative;
-    width: 78%;
+    width: 76%;
     margin-bottom: 20px;
 
     &::before {
@@ -57,4 +57,31 @@
         &:active {
             background-color: #ffd600;
         }
+    }
+
+    .type-button {
+        display: inline-block;
+        padding: 12px 9px;
+        font-size: 14px;
+        font-family: 'dewnrger', helvetica, verdana, arial, sans-serif;
+        color: #fff;
+        background-color: #08713e;
+        border: 0;
+        border-radius: 6px;
+        margin-right: 2px;
+        min-width: 88px;
+        height: 16px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #01522b;
+        }
+    }
+
+    .location-selector+.type-button {
+        margin-left: 4px;
+    }
+
+    #bookeasy__region-gadget {
+        margin-top: 8px;
     }
