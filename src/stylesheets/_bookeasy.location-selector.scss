@@ -68,13 +68,16 @@
         background-color: #08713e;
         border: 0;
         border-radius: 6px;
+        margin-left: 2px;
         margin-right: 2px;
         min-width: 88px;
         height: 16px;
         cursor: pointer;
+        text-decoration: none;
 
         &:hover {
             background-color: #01522b;
+            text-decoration: underline;
         }
     }
 

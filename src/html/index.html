@@ -45,6 +45,140 @@
             }
         };
 
+        var productsData = {
+            "All" :{
+                "index": "1",
+                "accom": true,
+                "camping": true,
+                "vehicle entry fee": true,
+                "diving": true,
+                "snorkeling": true,
+                "tennis courts": true,
+                "school bookings": true
+            },
+            "Beachport Conservation Park" :{
+                "index": "2",
+                "accom": false,
+                "camping": true,
+                "vehicle entry fee": false,
+                "diving": false,
+                "snorkeling": false,
+                "tennis courts": false,
+                "school bookings": false
+            },
+            "Bool Lagoon Game Reserve" :{
+                "index": "3",
+                "accom": false,
+                "camping": true,
+                "vehicle entry fee": true,
+                "diving": false,
+                "snorkeling": false,
+                "tennis courts": false,
+                "school bookings": false
+            },
+            "Canunda National Park" :{
+                "index": "4",
+                "accom": false,
+                "camping": true,
+                "vehicle entry fee": false,
+                "diving": false,
+                "snorkeling": false,
+                "tennis courts": false,
+                "school bookings": false
+            },
+            "Coorong National Park" :{
+                "index": "5",
+                "accom": false,
+                "camping": true,
+                "vehicle entry fee": false,
+                "diving": false,
+                "snorkeling": false,
+                "tennis courts": false,
+                "school bookings": false
+            },
+            "Deep Creek Conservation Park" :{
+                "index": "6",
+                "accom": false,
+                "camping": true,
+                "vehicle entry fee": false,
+                "diving": false,
+                "snorkeling": false,
+                "tennis courts": false,
+                "school bookings": false
+            },
+            "Dutchmans Stern Conservation Park" :{
+                "index": "7",
+                "accom": false,
+                "camping": true,
+                "vehicle entry fee": false,
+                "diving": false,
+                "snorkeling": false,
+                "tennis courts": false,
+                "school bookings": false
+            },
+            "Flinders Chase National Park" :{
+                "index": "8",
+                "accom": false,
+                "camping": true,
+                "vehicle entry fee": false,
+                "diving": false,
+                "snorkeling": false,
+                "tennis courts": false,
+                "school bookings": false
+            },
+            "Innes National Park" :{
+                "index": "9",
+                "accom": false,
+                "camping": true,
+                "vehicle entry fee": false,
+                "diving": false,
+                "snorkeling": false,
+                "tennis courts": false,
+                "school bookings": false
+            },
+            "Little Dip Conservation Park" :{
+                "index": "10",
+                "accom": false,
+                "camping": true,
+                "vehicle entry fee": false,
+                "diving": false,
+                "snorkeling": false,
+                "tennis courts": false,
+                "school bookings": false
+            },
+            "Mount Remarkable National Park" :{
+                "index": "11",
+                "accom": false,
+                "camping": true,
+                "vehicle entry fee": false,
+                "diving": false,
+                "snorkeling": false,
+                "tennis courts": false,
+                "school bookings": false
+            },
+            "Tallaringa Conservation Park" :{
+                "index": "12",
+                "accom": false,
+                "camping": true,
+                "vehicle entry fee": false,
+                "diving": false,
+                "snorkeling": false,
+                "tennis courts": false,
+                "school bookings": false
+            },
+            "Vulkathunha-Gammon ranges National Park" :{
+                "index": "13",
+                "accom": false,
+                "camping": true,
+                "vehicle entry fee": false,
+                "diving": false,
+                "snorkeling": false,
+                "tennis courts": false,
+                "school bookings": false
+            }
+        };
+
+
         var aAllLocations = $.map(parksData.locations, function(val, i) { return val; }); // sets default locations from json data
         var aFilteredLocations = []; // contains an array of locations to show in region gadget
         var urlHash = location.hash.replace(/^#/, '').trim();
@@ -104,14 +238,38 @@
 
         }
 
+        displayProductsData();
+        function displayProductsData() {
+
+            console.log("" +urlHash);
+            console.log( $.type(urlHash) );
+
+
+            //use eval to turn string into object name
+            $.each( eval('productsData.'+urlHash), function(key, val) {
+                console.log(key + " : " + val);
+            });
+            console.log('<<<_divider_>>>');
+            $.each( productsData, function(key, val) {
+                console.log(key + ", ");  //logs location
+                $.each( this, function(key, val) {
+                    console.log(key + " : " + val);  //logs values in each location
+                });
+                // $('.location-selector__select').append($('<option></option').attr('value', val).attr('selected', urlHash == val ? true : false).text(val));
+            });
+
+        }
+
 
         function createTypeButtons() {  //TODO: create buttons in page for 'vehicle entry', 'tennis courts' etc.
 
-            $('.location-selector').after($('<div>Vehicle Entry Fees</div>').addClass('type-button vehicle-entry').attr('data', 'vehicle-entry'));
+            $('.location-selector').after($('<a href="/vehicle-entry-fee.html"><div>Vehicle Entry Fees</div></a>').addClass('type-button vehicle-entry').attr('data', 'vehicle-entry'));
             $('.vehicle-entry').click(  function(){ typeShow('tours') }  );
 
             $('.location-selector').after($('<div>Diving</div>').addClass('type-button diving').attr('data', 'diving'));
-            $('.diving').click(  function(){ typeShow('carhire') }  );
+            //$('.diving').click(  function(){ typeShow('carhire') }  );
+            $('.diving').click(  displayProductsData  );
+
 
             $('.location-selector').after($('<div>Snorkeling</div>').addClass('type-button snorkeling').attr('data', 'snorkeling'));
             $('.snorkeling').click(  function(){ typeShow('packages') }  );
