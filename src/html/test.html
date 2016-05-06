@@ -59,9 +59,9 @@
             $w(function() {
 
                 BE.gadget.details("#itemGadget", {
-                    vcID: 216,
+                    vcID: 188,
                     type: "accom",
-                    productID: 35300,
+                    productID: 73176,
                     period: 2,
                     adults: 2,
                     showAllEvents: true,
@@ -96,8 +96,19 @@
                         console.log('open lightbox');
                     });
 
+                    $('.Description').each(function() {
+                        console.log(text2HTML($(this).find('.OperatorItemContent p').html()));
+                    })
+
                 });
             });
+
+            function text2HTML(input) {
+                input = input.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\"/g, '&quot;').replace(/\//g, '/');
+                input = input.replace(/\r/g, '').replace(/\n( )*?(\n)*?( )*?$/, '').replace(/\n( )*?\n/g, '</p><p>').replace(/\n/g, '<br />');
+                input = '<p>'+input+'</p>';
+                return input;
+            }
 
           </script>
         
