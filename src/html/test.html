@@ -17,12 +17,24 @@
                 IMUtility.init = function() { if (typeof(wisDOM) != 'undefined') { $(document).trigger('gadget.script.loaded'); } else { setTimeout('IMUtility.init();', 100); } };
                 $(document).ready(function() { IMUtility.init(); });
             }
+
+            var tempCount = 0;
+            // wait for the booking gadget to have loaded, then publish an event
+            IMUtility.pushDetailsGadgetLoadedEvent = function() {
+                tempCount = tempCount + 1;
+                if (jQuery('.details-gadget td.name').size() > 0) {
+                    $w.event.publish('details.gadget.ready');
+                } else {
+                    setTimeout('IMUtility.pushDetailsGadgetLoadedEvent();', 100);
+                }
+                console.log(tempCount);
+            };
         </script>
 
         <script src="//gadgets.impartmedia.com/gadgets.jsz?key=d5192d41822d0c987a0610af120d29bf"></script>
 
         <script>
-            var debug = 1;
+            var debug = 0;
 
             if (debug) console.log("debugging on");
             
@@ -75,8 +87,16 @@
                 $("link[href=\'" + BE.urls.touch.mobile_480() + "\']").remove();
             });
 
-            $(document).on('gadget.script.loaded', function() {
-                console.log('gadget loaded');
+            jQuery(document).on('gadget.script.loaded', function() {
+                IMUtility.pushDetailsGadgetLoadedEvent();
+                $w.event.subscribe('details.gadget.ready', function() {
+                    console.log('gadget loaded - click a thumb image');
+
+                    $('.thumb').on('click', function() {
+                        console.log('open lightbox');
+                    });
+
+                });
             });
 
           </script>
