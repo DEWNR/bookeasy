@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+
+    <body>
+
+        <div id="itemGadget"></div>
+
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+        <script>
+            // this script can be used standalone, or in combination with other scripts
+            if (typeof(IMUtility) == 'undefined') {
+                IMUtility = {};
+                IMUtility.init = function() { if (typeof(wisDOM) != 'undefined') { $(document).trigger('gadget.script.loaded'); } else { setTimeout('IMUtility.init();', 100); } };
+                $(document).ready(function() { IMUtility.init(); });
+            }
+        </script>
+
+        <script src="//gadgets.impartmedia.com/gadgets.jsz?key=d5192d41822d0c987a0610af120d29bf"></script>
+
+        <script>
+            var debug = 1;
+
+            if (debug) console.log("debugging on");
+            
+            if (debug) console.log("check cookie adjustments");
+            var currentCookieObject = $w.json.parse($w.cookie(BE.util.cookieName()));
+            
+            // set up new cookie
+            if (  currentCookieObject == null || (0) || (0) ) {
+                var tmpUserState = { product:"accom",period:2, adults:2, children:0, infants:0,date:"Fri 06/05/2016"}
+                $w.cookie(BE.util.cookieName(),$w.json.stringify(tmpUserState));
+                if (debug) console.log("set PAX when no prior cookie exists");
+
+            // adjust existing cookie when browsing from a different bookable type
+            } else if ( ( currentCookieObject != null ) && ( currentCookieObject.product != "accom"  ||  0) ) {
+                var tmpUserState = { product:"accom",period:2, adults:2,  children:0,  infants:0,date:currentCookieObject.date}
+                $w.cookie(BE.util.cookieName(),$w.json.stringify(tmpUserState));
+                if (debug) console.log("set PAX when product type is different");
+            }
+            
+
+            // site specific item gadget overrides before the gadget declaration
+            $w(function() {
+
+                BE.gadget.details("#itemGadget", {
+                    vcID: 216,
+                    type: "accom",
+                    productID: 35300,
+                    period: 2,
+                    adults: 2,
+                    showAllEvents: true,
+                    showAllAccom: true,
+                    showAllTours: true,
+                    collapseToursMode: true,
+                    showHoverInline: true
+                    
+                });
+                
+            });
+
+            // site specific item gadget overrides after the gadget declaration
+            setTimeout(function(){
+                // insert clearing div into the gadget embed search
+                $("#itemGadget .embedded-search .search-gadget").append("<div class=\"clear\"></div>");
+                $("#itemGadget .embedded-search").append("<div class=\"clear\"></div>");
+            },1000);
+
+
+            // this is important for iPhone devices, on region gadget page, do not remove it!
+            $w(function() {
+                $("link[href=\'" + BE.urls.touch.mobile_480() + "\']").remove();
+            });
+
+            $(document).on('gadget.script.loaded', function() {
+                console.log('gadget loaded');
+            });
+
+          </script>
+        
+    </body>
+</html>
