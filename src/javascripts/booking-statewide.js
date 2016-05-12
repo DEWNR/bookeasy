@@ -69,8 +69,6 @@ if (typeof productsData !== 'undefined') {
 
             function displayProductsData() {
 
-                console.log('ToDo: make productsData accurate based on whats ACTUALLY available on Parks website');
-
                 if (!urlHash) {
                     urlHash = 'All';
                     console.log(!urlHash);
@@ -84,18 +82,44 @@ if (typeof productsData !== 'undefined') {
 
 
                 //productsData[urlHash] is better than using eval to turn string into object name
-                $.each(productsData[urlHash], function(key, val) {
-                    //console.log(key + " : " + val);
+                $.each(productsData[urlHash]["things to book"], function(key, val) {
+                    console.log(key + " : " + val);
+                    //console.log(productsData[urlHash].url);
+
+                    var buttonLabel = key;
+
+                    switch (key) {
+                        case 'camping-accomm':
+                            buttonLabel = 'Camping / Accommodation';
+                            break;
+                        case 'vehicle-entry':
+                            buttonLabel = 'Vehicle Entry Fee';
+                            break;
+                        case 'diving':
+                            buttonLabel = 'Diving';
+                            break;
+                        case 'snorkelling':
+                        case 'snorkeling':
+                            buttonLabel = 'Snorkelling';
+                            break;
+                        case 'tennis-courts':
+                            buttonLabel = 'Tennis Courts';
+                            break;
+                        case 'facilities':
+                            buttonLabel = 'Facilities';
+                            break;
+                        case 'school-bookings':
+                            buttonLabel = 'School Bookings';
+                            break;
+                    }
 
                     //we don't need to display camping button if we are already looking at camping
-                    if ( (key != 'index') && (val) ) {
-
-                        //console.log('use true data to create buttons & urls');
-
-                        //Fix urls by converting spaces in key to "-"
-                        $('.button-list').append($('<a href="/'+ key.replace(/ /g, "-") +'.html"><div>'+key+'</div></a>').addClass('type-button '+key).attr('data', key));
+                    if (key !== 'camping-accom' && val === true) {
+                        //Check urls
+                        $('.button-list').append($('<a href="'+ productsData[urlHash].url +key+ '"><span>'+buttonLabel+'</span></a>').addClass('type-button '+key).attr('data', key));
                         $('.'+key).click(  function(){ typeShow('tours'); }  );
                     }
+
                 });
 
             }
