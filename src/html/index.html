@@ -109,7 +109,7 @@
                 "url": "http://www.environment.sa.gov.au/parks/development/Booking/"
             },
             "Deep Creek Conservation Park" :{
-                "things to book": {
+                "things to bookAAA": {
                     "camping-accom": true,
                     "vehicle-entry": true,
                     "diving": false,
@@ -328,13 +328,13 @@
                         //we don't need to display camping button if we are already looking at camping
                         if (key !== 'camping-accom' && val === true) {
                             //Check urls
-                            $('.button-list').append($('<a href="'+ productsData[urlHash].url +key+ '"><span>'+buttonLabel+'</span></a>').addClass('type-button '+key).attr('data', key));
+                            $('.button-list').append($('<a href="'+ productsData[urlHash].url +key+ '"><span>'+buttonLabel+'</span></a>').addClass('button-list__button '+key).attr('data', key));
                             $('.'+key).click(  function(){ typeShow('tours'); }  );
                         }
 
                     });
                 } catch(error) {
-                    console.log('ERROR: Problem reading json data. '+error);
+                    console.error('ERROR: Problem reading json data. '+error);
                     return false;
                 }
 

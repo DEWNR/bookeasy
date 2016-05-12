@@ -2,6 +2,17 @@
     #BOOKEASY
 \*------------------------------------*/
 
+#bookeasy-fullwidth {
+    padding: 40px 20px 0;
+}
+
+.content #bookeasy-fullwidth a {
+    text-decoration: none;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
 
 @import "_variables.scss";       // Import the regional variables
 @import "_bookeasy1280.scss";        // Import the styles for screens 1280px or larger

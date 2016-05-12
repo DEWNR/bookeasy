@@ -6,7 +6,7 @@
     background-color: #fff;
     display: inline-block;
     position: relative;
-    width: 76%;
+    min-width: 35%;
     margin-bottom: 20px;
 
     &::before {
@@ -31,15 +31,15 @@
         height: 40px;
         border: 1px solid #ddd;
         outline: none;
-        transition: all 0.30s ease-in-out;
+        // transition: all 0.30s ease-in-out;
         width: 100%;
         -webkit-appearance: none;
         display: inline-block;
 
-        &:focus {
-            border: 1px solid rgba(8, 113, 62, 1);
-            box-shadow: 0 0 0 2px rgba(8, 113, 62, 1);
-        }
+        // &:focus {
+        //     border: 1px solid rgba(8, 113, 62, 1);
+        //     box-shadow: 0 0 0 2px rgba(8, 113, 62, 1);
+        // }
     }
 
 
@@ -59,7 +59,12 @@
         }
     }
 
-    .type-button {
+
+    .button-list {
+        padding-bottom: 12px;
+    }
+
+    .button-list__button {
         display: inline-block;
         padding: 12px 9px;
         font-size: 14px;
@@ -77,13 +82,15 @@
 
         &:hover {
             background-color: #01522b;
-            text-decoration: underline;
+            text-decoration: unset;
         }
     }
 
-    .location-selector+.type-button {
+    .location-selector+.button-list__button {
         margin-left: 4px;
     }
+
+
 
     #bookeasy__region-gadget {
         margin-top: 8px;

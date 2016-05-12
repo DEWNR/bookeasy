@@ -117,7 +117,7 @@ if (typeof productsData !== 'undefined') {
                         //we don't need to display camping button if we are already looking at camping
                         if (key !== 'camping-accom' && val === true) {
                             //Check urls
-                            $('.button-list').append($('<a href="'+ productsData[urlHash].url +key+ '"><span>'+buttonLabel+'</span></a>').addClass('type-button '+key).attr('data', key));
+                            $('.button-list').append($('<a href="'+ productsData[urlHash].url +key+ '"><span>'+buttonLabel+'</span></a>').addClass('button-list__button '+key).attr('data', key));
                             $('.'+key).click(  function(){ typeShow('tours'); }  );
                         }
 
