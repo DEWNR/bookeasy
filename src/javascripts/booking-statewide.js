@@ -82,45 +82,50 @@ if (typeof productsData !== 'undefined') {
 
 
                 //productsData[urlHash] is better than using eval to turn string into object name
-                $.each(productsData[urlHash]["things to book"], function(key, val) {
-                    console.log(key + " : " + val);
-                    //console.log(productsData[urlHash].url);
+                try {
+                    $.each(productsData[urlHash]["things to book"], function(key, val) {
+                        console.log(key + " : " + val);
+                        //console.log(productsData[urlHash].url);
 
-                    var buttonLabel = key;
+                        var buttonLabel = key;
 
-                    switch (key) {
-                        case 'camping-accomm':
-                            buttonLabel = 'Camping / Accommodation';
-                            break;
-                        case 'vehicle-entry':
-                            buttonLabel = 'Vehicle Entry Fee';
-                            break;
-                        case 'diving':
-                            buttonLabel = 'Diving';
-                            break;
-                        case 'snorkelling':
-                        case 'snorkeling':
-                            buttonLabel = 'Snorkelling';
-                            break;
-                        case 'tennis-courts':
-                            buttonLabel = 'Tennis Courts';
-                            break;
-                        case 'facilities':
-                            buttonLabel = 'Facilities';
-                            break;
-                        case 'school-bookings':
-                            buttonLabel = 'School Bookings';
-                            break;
-                    }
+                        switch (key) {
+                            case 'camping-accomm':
+                                buttonLabel = 'Camping / Accommodation';
+                                break;
+                            case 'vehicle-entry':
+                                buttonLabel = 'Vehicle Entry Fee';
+                                break;
+                            case 'diving':
+                                buttonLabel = 'Diving';
+                                break;
+                            case 'snorkelling':
+                            case 'snorkeling':
+                                buttonLabel = 'Snorkelling';
+                                break;
+                            case 'tennis-courts':
+                                buttonLabel = 'Tennis Courts';
+                                break;
+                            case 'facilities':
+                                buttonLabel = 'Facilities';
+                                break;
+                            case 'school-bookings':
+                                buttonLabel = 'School Bookings';
+                                break;
+                        }
 
-                    //we don't need to display camping button if we are already looking at camping
-                    if (key !== 'camping-accom' && val === true) {
-                        //Check urls
-                        $('.button-list').append($('<a href="'+ productsData[urlHash].url +key+ '"><span>'+buttonLabel+'</span></a>').addClass('type-button '+key).attr('data', key));
-                        $('.'+key).click(  function(){ typeShow('tours'); }  );
-                    }
+                        //we don't need to display camping button if we are already looking at camping
+                        if (key !== 'camping-accom' && val === true) {
+                            //Check urls
+                            $('.button-list').append($('<a href="'+ productsData[urlHash].url +key+ '"><span>'+buttonLabel+'</span></a>').addClass('type-button '+key).attr('data', key));
+                            $('.'+key).click(  function(){ typeShow('tours'); }  );
+                        }
 
-                });
+                    });
+                } catch(error) {
+                    console.log('ERROR: Problem with json data. '+error);
+                    return false;
+                }
 
             }
 
