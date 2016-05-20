@@ -385,6 +385,8 @@
 body div#wdOverlayContent {
   font-size: 120%;
   font-family: inherit;
+  height: 86vh;
+  padding-bottom: 16px;
   div.add-to-cart-form {
     div.add-to-cart-information {
       div.name {
@@ -409,5 +411,8 @@ body div#wdOverlayContent {
         }
       }
     }
+  }
+  div.cartInOverlay {
+    padding-bottom: 0px !important;
   }
 }
