@@ -87,10 +87,12 @@ if (typeof productsData !== 'undefined') {
                         console.log(key + " : " + val);
                         //console.log(productsData[urlHash].url);
 
+
+
                         //we don't need to display camping button if we are already looking at camping
                         if (key !== 'Camping / Accommodation' && val === true) {
                             //Check urls
-                            $('.button-list').append($('<a href="'+ productsData[urlHash].url +key+ '"><span>'+key+'</span></a>').addClass('button-list__button '+key).attr('data', key));
+                            $('.button-list').append($('<a href="'+ productsData[urlHash].url + '/' +(key.replace(/ /g , '-')).toLowerCase()+ '"><span>' +key+ '</span></a>').addClass('button-list__button '+key).attr('data', key));
                             $('.'+key).click(  function(){ typeShow('tours'); }  );
                             }
                     });
