@@ -6,7 +6,7 @@
 
 {% block content %}
 
-    <div id="bookeasy__booking-gadget"></div>
+    <div id="bookeasy__region-gadget"></div>
 
 {% endblock %}
 
@@ -25,10 +25,9 @@
     <script>
 
         $w(function() {
-            BE.gadget.book('#bookeasy__booking-gadget', {
-                confirmationURL: './confirm.html',
-                demoMode: true,
-                vcID: 188
+            BE.gadget.region('#bookeasy__region-gadget', {
+                vcID: 188,
+                itemDetailPageURL: './details-gadget.html'
             });
         });
 
