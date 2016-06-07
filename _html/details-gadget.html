@@ -3,6 +3,19 @@
     <head>
         <meta charset="utf-8">
         <title></title>
+
+        <style>
+            a.more.OperatorInfoMore, a.more.OperatorInfoLess {
+                display: none;
+            }
+            body div.details-gadget.BE div.priceGrid table tbody tr td.name div.thumb {
+                width:150px;
+                height:150px;
+            }
+            body div.details-gadget.BE div.priceGrid table tbody tr td.name div.thumb img {
+                width: 150px;
+            }
+        </style>
     </head>
     <body>
 
@@ -24,19 +37,36 @@
             var operatorPageType = 'camping';
 
             var acceptBookings = true;
-            </script>
 
-      <script type="text/javascript" src="js/bookeasy.details.js"></script>
+            // $('.OperatorInfoHidden').toggleClass('OperatorInfoHidden OperatorInfoVisible');
 
-      <script type="text/javascript">
-        $w(function() {
-            BE.gadget.cart("#toolbar-cart", {
-                vcID:"188",
-                bookingURL:"http://www.environment.sa.gov.au/dev/bookeasy/test/checkout.html",
-                autoCollapse:true
+
+            jQuery(window).load(function(){
+                $alterPageTimer = setInterval(function() {
+                    // expand hidden OperatorInfo in the details-gadget
+                    if (jQuery(".details-gadget.BE").length > 0) {
+                        console.log('here clearTimer');
+                        jQuery('.details-gadget.BE .OperatorInfoHidden').toggleClass('OperatorInfoVisible');
+                        jQuery('.details-gadget.BE .OperatorInfoHidden').toggleClass('OperatorInfoHidden');
+                        // jQuery(".details-gadget.BE .search-gadget").append("<div class='clear'></div>");
+                        clearInterval($alterPageTimer);
+                    }
+                }, 100);
             });
-        });
-    </script>
+
+        </script>
+
+        <script type="text/javascript" src="js/bookeasy.details.js"></script>
+
+        <script type="text/javascript">
+            $w(function() {
+                BE.gadget.cart("#toolbar-cart", {
+                    vcID:"188",
+                    bookingURL:"http://www.environment.sa.gov.au/dev/bookeasy/test/checkout.html",
+                    autoCollapse:true
+                });
+            });
+        </script>
 
     </body>
 </html>

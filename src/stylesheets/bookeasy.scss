@@ -19,3 +19,183 @@
 @import "_bookeasy640.scss";         // Import additional styles for screens 640px or less
 
 @import "bookeasy.location-selector";
+
+/* Form styles */
+.se-form-container {
+    table {
+        min-width: 16%;
+    }
+
+    input[type=text] {
+        height: 2em;
+        padding: 0.5em 0.3em;
+    }
+
+    input[type=checkbox], input[type=radio] {
+        float: left;
+        margin-right: 1em;
+        margin-top: 0.3em;
+        display: inline-block;
+        // width: 1.3em;
+        // height: 1.3em;
+    }
+
+    input:not([type=checkbox]):not([type=radio]):not([type=submit]) {
+        width: 100%;
+    }
+
+    .ui-form__item {
+        padding-top: 10px;
+    }
+
+    table#ctl02_rpControls_ctl08_fiControl_se_form {
+        min-width:21em;
+    }
+
+    table#ctl02_rpControls_ctl09_fiControl_se_form {
+        min-width: 21em;
+    }
+
+    table#ctl02_rpControls_ctl11_fiControl_se_form {
+        min-width: 21em;
+    }
+
+    table#ctl02_rpControls_ctl12_fiControl_se_form {
+        min-width: 21em;
+    }
+    // :nth-last-child(2) {
+    //     float:left;
+    // }
+
+    table#ctl02_rpControls_ctl06_fiControl_se_form {
+        input {
+            width: 100%;
+        }
+        label {
+            padding-left: 0.9em;
+        }
+        margin-right: 1em;
+        tr {
+            float:left;
+        }
+        tr:not(:last-of-type) td {
+            border-right: 0;
+        }
+        // tr:last-of-type td {
+        //     border: 1px solid #e6eaee;
+        // }
+    }
+    table#ctl02_rpControls_ctl06_fiControl_se_form tr:last-of-type td {
+        border: 1px solid #e6eaee;
+    }
+
+
+    table#ctl02_rpControls_ctl07_fiControl_se_form {
+        tr {
+            float:left;
+        }
+        tr td {
+            width: 4.1em;
+            input[type=radio] {
+                width: 100%;
+            }
+        }
+        tr:not(:last-of-type) td {
+            border-right: 0;
+        }
+    }
+    table#ctl02_rpControls_ctl07_fiControl_se_form tr:last-of-type td {
+        border: 1px solid #e6eaee;
+    }
+
+    table#ctl02_rpControls_ctl13_fiControl_se_form {
+        tr {
+            display: inline-block;
+        }
+        tr:not(:last-of-type) td {
+            border-right: 0;
+        }
+        input {
+            width: 100%;
+        }
+        label {
+            padding-left: 0.9em;
+        }
+    }
+
+    #ctl02_rpControls_ctl06_fiControl_se_form_0 {
+        display: block;
+    }
+
+    input#ctl02_rpControls_ctl02_fiControl_se_form {
+        width: 13em;
+    }
+
+    input#ctl02_rpControls_ctl03_fiControl_se_form {
+        padding: 0.5em 0;
+    }
+
+    .generic-form-label {
+        display: block;
+    }
+
+    > .ui-form__item:nth-child(3) {
+        float: left;
+        display: inline-block;
+    }
+
+    > .ui-form__item:nth-child(4) {
+        display: inline-block;
+        clear: right;
+    }
+
+    > .ui-form__item:nth-child(5) {
+        display: block;
+        clear: both;
+    }
+
+    #ctl02_rpControls_ctl14_fiControl_se_form td input[type=checkbox] {
+        margin-right: 0;
+    }
+
+    .ui-form__item:last-of-type {
+        padding-bottom: 1em;
+        input[type=submit], input[type=button], input[type=reset] {
+            padding: 0.7em 2.8em;
+            font-weight: bold;
+            border: 0;
+            background: green;
+            color: white;
+            &:hover {
+                background: darkgreen;
+            }
+        }
+    }
+
+    .ui-form__item:nth-last-of-type(2) {
+        .ui-form__input {
+            width: 6em;
+        }
+    }
+}
+
+/* Mobile Portrait and Landscape */
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    .se-form-container table#ctl02_rpControls_ctl06_fiControl_se_form label {
+        padding-left: 0;
+    }
+    .se-form-container table#ctl02_rpControls_ctl08_fiControl_se_form,
+    .se-form-container table#ctl02_rpControls_ctl09_fiControl_se_form,
+    .se-form-container table#ctl02_rpControls_ctl11_fiControl_se_form,
+    .se-form-container table#ctl02_rpControls_ctl12_fiControl_se_form {
+        min-width: 100%;
+    }
+    .se-form-container #ctl02_rpControls_ctl06_fiControl_se_form td {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+/* End Form styles */
