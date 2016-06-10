@@ -21,6 +21,15 @@
       "dest": "js",
       "files": [
           {
+            "source": ["src/javascripts/bookeasy-cart-gadget.js"],
+            "filename": "bookeasy-cart-gadget.js"
+          },{
+              "source": ["src/javascripts/bookeasy-details-gadget.js"],
+              "filename": "bookeasy-details-gadget.js"
+          },{
+              "source": ["src/javascripts/bookeasy-booking-gadget.js"],
+              "filename": "bookeasy-booking-gadget.js"
+          },{
             "source": ["src/javascripts/bookeasy-details.js"],
             "filename": "bookeasy-details.js"
           }
