@@ -27,6 +27,9 @@
               "source": ["src/javascripts/bookeasy-details.js"],
               "filename": "bookeasy-details.js"
           },{
+              "source": ["src/javascripts/bookeasy-region.js"],
+              "filename": "bookeasy-region.js"
+          },{
               "source": ["src/javascripts/bookeasy-booking.js"],
               "filename": "bookeasy-booking.js"
           },{
