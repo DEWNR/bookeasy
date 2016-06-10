@@ -1,4 +1,4 @@
-{% extends 'layouts/master.html' %}
+{% extends 'layouts/nostyles.html' %}
 
 
 
@@ -6,7 +6,9 @@
 
 {% block content %}
 
-    <div id="bookeasy__region-gadget"></div>
+    <div id="bookeasy__cart-gadget"></div>
+
+    <div id="bookeasy__region-gadget">Loading...</div>
 
 {% endblock %}
 
@@ -22,15 +24,7 @@
 {% block local_javascript %}
     <script src="//gadgets.impartmedia.com/gadgets.jsz?key={{ bookeasy_key }}"></script>
 
-    <script>
+    <script src="js/bookeasy-region.js" inline></script>
 
-        $w(function() {
-            BE.gadget.region('#bookeasy__region-gadget', {
-                vcID: 188,
-                itemDetailPageURL: './details-gadget.html'
-            });
-        });
-
-    </script>
-
+    <script src="js/bookeasy-cart.js" inline></script>
 {% endblock %}

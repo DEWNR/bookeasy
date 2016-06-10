@@ -16,6 +16,9 @@
     "gulp": "gulp",
     "development": "gulp"
   },
+  "dependencies": {
+    "dewnr-bedrock": "0.2.4"
+  },
   "devDependencies": {
     "browser-sync": "^2.9.11",
     "compression": "^1.5.1",

@@ -1,4 +1,4 @@
-{% extends 'layouts/master.html' %}
+{% extends 'layouts/nostyles.html' %}
 
 
 
@@ -22,16 +22,5 @@
 {% block local_javascript %}
     <script src="//gadgets.impartmedia.com/gadgets.jsz?key={{ bookeasy_key }}"></script>
 
-    <script>
-
-        $w(function() {
-            BE.gadget.book('#bookeasy__booking-gadget', {
-                confirmationURL: './confirm.html',
-                demoMode: true,
-                vcID: 188
-            });
-        });
-
-    </script>
-
+    <script src="js/bookeasy-booking.js" inline></script>
 {% endblock %}

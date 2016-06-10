@@ -6,12 +6,17 @@
 
 
 #bookeasy__details-gadget {
+    margin-bottom: 100px;
 
     div.BE.details-gadget {
         color: $sagovau-color-text-base;
         font-family: "Frutiger LT Com", Helvetica, Arial, sans-serif;
         font-size: 16px;
         font-weight: 200;
+
+        * {
+            border: 0;
+        }
 
         div.embedded-search {  }
 
@@ -20,9 +25,12 @@
 
             table {
                 thead {
+                    display: none;
+
                     td {
                         background: #065931;
                         background: rgba(6, 89, 49, 0.95);
+                        border: 0;
 
                         &.title {  }
                         &.quantity {  }
@@ -38,7 +46,7 @@
 
                 tbody {
                     tr {
-                        border-bottom: 1px solid rgba(0, 0, 0, .03);
+                        // border-bottom: 1px solid rgba(0, 0, 0, .03);
 
                         &.odd {
                             background: rgba(255, 255, 255, 0.85);
@@ -54,10 +62,10 @@
 
                         td {
                             background: none;
+                            padding: 10px 0 10px 10px;
 
                             &.name {
                                 padding: 10px 10px 8px 0;
-                                width: 800px;
                                 text-align: left;
 
                                 div.thumb {
@@ -75,8 +83,12 @@
 
                                 a {
                                     color: $sagovau-color-text-base;
-                                    font-size: 26px;
+                                    font-size: 20px;
                                     text-align: left;
+
+                                    @include media-query(large-and-up) {
+                                        font-size: 26px;
+                                    }
 
                                     &.more {
                                         display: none;
@@ -87,6 +99,8 @@
                             &.quantity {  }
 
                             &.tour-date {
+                                display: none;
+
                                 label {
                                     color: $sagovau-color-text-base;
                                     font-weight: 400;
@@ -96,18 +110,26 @@
                             &.total {
 
                                 a {
-                                    background-image: none;
+                                    background: #f2991d;
                                     border: 0;
                                     max-width: 240px;
+                                    float: right;
+                                    padding: 0 3em;
+                                    transition: background 0.3s ease-in-out;
+                                    outline: 0;
 
-                                    &:hover {
-                                        background-color: $sagovau-color-brand;
+                                    &:hover,
+                                    &:focus {
+                                        background: darken(#f2991d, 10%);
                                     }
                                 }
 
                                 span.im-pricebutton-label {
                                     font-size: 16px;
                                     font-weight: 400;
+                                    margin-bottom: 0;
+                                    line-height: 1;
+                                    padding-top: 0.6em;
                                 }
 
                                 span.im-pricebutton-amount {
@@ -139,18 +161,17 @@
         div.priceGrid table tbody tr div.OperatorInfo {
             padding: 0;
             font-size: 16px;
-            display: block!important;
             float: left;
             clear: none;
             width: 70%;
 
             span.OperatorItemHeading {
-                color: #333;
+                color: #4e4e4e;
                 margin-bottom: .5em;
             }
 
             div.OperatorItemContent {
-                color: #333;
+                color: #4e4e4e;
                 padding: 0;
                 margin-bottom: 1em;
 

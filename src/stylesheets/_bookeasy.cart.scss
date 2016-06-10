@@ -4,9 +4,66 @@
 
 // scss-lint:disable all
 
+body div#wdOverlayContent.extraContent {
+    max-height: 1200px !important;
+}
+
+#bookeasy__cart-gadget {
+
+    div.shopping-cart.BE {
+        div.cartItems {
+           margin-bottom: 40px;
+           background: none;
+           border: 0;
+           padding: 0;
+       }
+
+       &.auto-collapse div.cartItems {
+
+           div.totalDisplay {
+               background: none;
+               border: 0;
+               width: auto;
+               text-align: center;
+
+               a {
+                   background-size: cover;
+                   background: none;
+                   width: 100%;
+                   height: auto;
+                   font-family: 'Dewnrger', Helvetica, Arial, sans-serif;
+                   font-size: 20px;
+                   padding: 1em 0.5em;
+                   background: #e8e8e8;
+                   border-radius: 4px;
+                   transition: background 0.3s ease-in-out;
+                   line-height: 1.2;
+
+                   &:hover {
+                       background: darken(#e8e8e8, 10%);
+                   }
+
+                   span {
+                       color: #4e4e4e;
+                       font-weight: normal;
+                       position: static;
+                       width: auto;
+
+                       &::after {
+                           content: ' bookings in cart - continue to checkout > ';
+                           display: inline;
+                       }
+                   }
+               }
+           }
+
+       }
+    }
+}
+
 
 div#wdOverlayContent.overlayMode {
-    color: #333;
+    color: #4e4e4e;
     font-family: "Frutiger LT Com", Helvetica, Arial, sans-serif;
     font-size: 16px;
     font-weight: 200;
@@ -29,6 +86,7 @@ div#wdOverlayContent.overlayMode {
         div.total {  }
     }
 
+
     div.add-to-cart-form div.name span.operator-name,
     div.item-details div.name span.operator-name {
         color: #fff;
@@ -36,6 +94,50 @@ div#wdOverlayContent.overlayMode {
         padding: .3em 36px .3em 30px;
         margin-left: -0.8rem;
         z-index: 2;
+        display: none;
+
+        @include media-query(large-and-up) {
+            display: inline;
+        }
+    }
+
+    div.add-to-cart-form div.name,
+    div.item-details div.name,
+    div.add-to-cart-form div.price,
+    div.item-details div.price,
+    div.add-to-cart-form div.quantity,
+    div.item-details div.quantity,
+    div.add-to-cart-form div.date,
+    div.item-details div.date,
+    div.add-to-cart-form div.dateEnd,
+    div.item-details div.dateEnd,
+    div.add-to-cart-form div.adults,
+    div.item-details div.adults,
+    div.add-to-cart-form div.children,
+    div.item-details div.children,
+    div.add-to-cart-form div.infants,
+    div.item-details div.infants,
+    div.add-to-cart-form div.concessions,
+    div.item-details div.concessions,
+    div.add-to-cart-form div.students,
+    div.item-details div.students,
+    div.add-to-cart-form div.observers,
+    div.item-details div.observers,
+    div.add-to-cart-form div.startdate,
+    div.item-details div.startdate,
+    div.add-to-cart-form div.period,
+    div.item-details div.period,
+    div.add-to-cart-form div.quotedprice,
+    div.item-details div.quotedprice,
+    div.add-to-cart-form div.family,
+    div.item-details div.family {
+        width: 100%;
+        float: left;
+
+        @include media-query(large-and-up) {
+            width: 22%;
+            float: left;
+        }
     }
 
     div.add-to-cart-form div.name span.item-name,
@@ -45,13 +147,20 @@ div#wdOverlayContent.overlayMode {
 
     div.add-to-cart-form {
         label {
-            color: #333!important;
+            color: #4e4e4e!important;
+
+            &.bookingQuestionSet-title {
+                font-family: 'dewnrger', helvetica, verdana, arial, sans-serif;
+                font-size: 20px;
+                text-decoration: none !important;
+            }
         }
 
         div.add-to-cart-information {
             div.name {
               overflow: hidden;
               height: auto;
+              width: 100%;
             }
 
             div.quantity {
@@ -77,6 +186,9 @@ div#wdOverlayContent.overlayMode {
                 background-color: #08713e;
                 background-image: none;
                 border: 0;
+            }
+            a.addToCart {
+                display: none !important;
             }
             a.checkOutNow {
                 background-color: #08713e!important;
@@ -134,7 +246,7 @@ div#wdOverlayContent.overlayMode {
         right: -1px;
         top: -1px;
         background: none;
-        background-color: #333;
+        background-color: #4e4e4e;
 
         &:hover {
             background-color: #b00;
@@ -157,24 +269,72 @@ div#wdOverlayContent.overlayMode {
         display: none;
     }
 
+    div.add-to-cart-form div.AdditionalData div.BookingQuestionsData div.booking-questions div.bookingQuestion div.bookingQuestionSets div.bookingQuestionSet div.bookingQuestionFields div.bookingQuestion-container div.bookingQuestion-answers {
+        margin-right: 0;
+        width: 100%;
+
+        @include media-query(large-and-up) {
+            width: auto;
+            margin-right: 5px;
+        }
+    }
+
     div.add-to-cart-form div.AdditionalData div.BookingQuestionsData div.booking-questions div.bookingQuestion div.bookingQuestionSets div.bookingQuestionSet div.bookingQuestionFields div.bookingQuestion-container div.bookingQuestion-answers label.bookingQuestion-answer,
     div.item-details div.AdditionalData div.BookingQuestionsData div.booking-questions div.bookingQuestion div.bookingQuestionSets div.bookingQuestionSet div.bookingQuestionFields div.bookingQuestion-container div.bookingQuestion-answers label.bookingQuestion-answer {
         padding: 15px;
 
         input,
         select {
-            color: #333;
+            color: #4e4e4e;
             font-family: "Frutiger LT Com", Helvetica, Arial, sans-serif;
             font-size: 16px;
             border: 1px solid #fff;
             padding: .5em .5em;
             margin-top: -.5em;
+            width: 100%;
+
+            @include media-query(large-and-up) {
+                width: auto;
+            }
 
             &:focus {
                 outline: 0;
                 border-color: #08713e;
             }
         }
+
+        input[type='radio'] {
+            margin-right: 5px;
+            width: auto;
+        }
+    }
+
+    div.add-to-cart-form div.AdditionalData div.BookingQuestionsData div.booking-questions div.bookingQuestion div.bookingQuestionSets div.bookingQuestionSet div.bookingQuestionFields div.bookingQuestion-container {
+        margin: 0 10px 5px 0;
+        width: 100%;
+
+        @include media-query(large-and-up) {
+            width: auto;
+        }
+    }
+
+    div.add-to-cart-form div.AdditionalData div.BookingQuestionsData div.booking-questions div.bookingQuestion div.bookingQuestionSets div.bookingQuestionSet div.bookingQuestionFields div.bookingQuestion-container div.bookingQuestion-answers label.bookingQuestion-answer {
+        padding: 8px 5px 0 0;
+        width: 100%;
+
+        @include media-query(large-and-up) {
+            width: auto;
+        }
+    }
+    div.add-to-cart-form div.AdditionalData div.BookingQuestionsData div.booking-questions div.bookingQuestion div.bookingQuestionSets div.bookingQuestionSet {
+        padding-top: 10px;
+    }
+    div.add-to-cart-form div.AdditionalData div.BookingQuestionsData div.booking-questions div.bookingQuestion div.bookingQuestionSets div.bookingQuestionSet div.bookingQuestionFields {
+        // width: 33%;
+    }
+
+    div.add-to-cart-form div.AdditionalData div.BookingQuestionsData div.booking-questions div.bookingQuestion div.bookingQuestionSets div.bookingQuestionSet div.bookingQuestionFields div.bookingQuestion-container label.bookingQuestion-title {
+        display: block;
     }
 
     div.add-to-cart-form div.AdditionalData div.BookingQuestionsData div.booking-questions div.bookingQuestion div.bookingQuestionSets div.bookingQuestionSet div.bookingQuestionFields div.bookingQuestion-container div.bookingQuestion-answers div.bookingQuestion-answer-message,
