@@ -22,7 +22,7 @@
       "files": [
           {
             "source": ["src/javascripts/bookeasy-cart.js"],
-            "filename": "bookeasy-cart-gadget.js"
+            "filename": "bookeasy-cart.js"
           },{
               "source": ["src/javascripts/bookeasy-details.js"],
               "filename": "bookeasy-details.js"
