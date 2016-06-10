@@ -17,6 +17,7 @@
         div.tabs-group {
             height: auto;
             line-height: normal;
+            margin-bottom: -5px;
 
             span.label {
                 display: none;
@@ -41,7 +42,6 @@
 
                 &.current {
                     background: $sagovau-color-brand;
-                    background: rgba($sagovau-color-brand, 0.95);
                     color: #fff;
                 }
             }
