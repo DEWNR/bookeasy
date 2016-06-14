@@ -45,14 +45,14 @@
 
                 tbody {
                     tr {
-                        // border-bottom: 1px solid rgba(0, 0, 0, .03);
+                        border-bottom: 1px solid rgba(0, 0, 0, .03);
 
                         &.odd {
-                            background: rgba(255, 255, 255, 0.85);
+                            background: #fff;
                         }
 
                         &.even {
-                            background: rgba(255, 255, 255, 0.9);
+                            background: rgb(243, 243, 243);
                         }
 
                         &.instant-confirmation {  }
@@ -61,24 +61,22 @@
 
                         td {
                             background: none;
-                            padding: 10px 0 10px 10px;
+                            padding: 10px;
 
                             &.name {
-                                padding: 10px 10px 8px 0;
+                                padding: 10px 10px 8px 10px;
                                 text-align: left;
 
                                 div.thumb {
                                     border: 0;
-                                    height: 96px;
+                                    height: 150px;
                                     overflow: hidden;
                                     padding: 0;
                                     width: 150px;
 
-
                                     img {
                                         height: 150px;
                                         position: relative;
-                                        top: -25px;
                                         width: 150px;
                                     }
                                 }
@@ -93,7 +91,7 @@
                                     }
 
                                     &.more {
-                                        // display: none;
+                                        display: none;
                                     }
                                 }
                             }
@@ -175,6 +173,7 @@
             float: left;
             clear: none;
             width: 70%;
+            display: block !important;
 
             span.OperatorItemHeading {
                 color: #4e4e4e;

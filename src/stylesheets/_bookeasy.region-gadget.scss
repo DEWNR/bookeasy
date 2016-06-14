@@ -109,11 +109,11 @@
                         border-bottom: 1px solid rgba(0, 0, 0, .03);
 
                         &.odd {
-                            background: rgba(255, 255, 255, 0.85);
+                            background: #fff;
                         }
 
                         &.even {
-                            background: rgba(255, 255, 255, 0.9);
+                            background: rgb(243, 243, 243);
                         }
 
                         &.instant-confirmation {  }
@@ -212,7 +212,8 @@
                     padding-left: 10px;
 
                     div.name {
-                        font-size: 20px;
+                        font-size: 16px;
+                        font-weight: 400;
                         color: $sagovau-color-text-base;
                     }
                     div.location {
