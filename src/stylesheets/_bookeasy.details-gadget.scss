@@ -69,13 +69,16 @@
 
                                 div.thumb {
                                     border: 0;
-                                    height: 128px;
+                                    height: 96px;
                                     overflow: hidden;
                                     padding: 0;
                                     width: 150px;
 
+
                                     img {
                                         height: 150px;
+                                        position: relative;
+                                        top: -25px;
                                         width: 150px;
                                     }
                                 }
@@ -86,7 +89,7 @@
                                     text-align: left;
 
                                     @include media-query(large-and-up) {
-                                        font-size: 26px;
+                                        font-size: 20px;
                                     }
 
                                     &.more {
@@ -109,17 +112,26 @@
                             &.total {
 
                                 a {
-                                    background: #f2991d;
+                                    background: #dca502;
                                     border: 0;
                                     max-width: 240px;
                                     float: right;
-                                    padding: 0 3em;
+                                    padding: 0.4em 3em 0.5em;
                                     transition: background 0.3s ease-in-out;
                                     outline: 0;
 
+                                    &.sold-out {
+                                        padding: 0.8em 3em 1em;
+
+                                        &:hover,
+                                        &:focus {
+                                            background: darken(#808080, 15%)!important;
+                                        }
+                                    }
+
                                     &:hover,
                                     &:focus {
-                                        background: darken(#f2991d, 10%);
+                                        background: #08713e;
                                     }
                                 }
 
@@ -132,7 +144,7 @@
                                 }
 
                                 span.im-pricebutton-amount {
-                                    font-size: 26px;
+                                    font-size: 20px;
 
                                     .number {
                                         margin-top: -0.2em;
@@ -159,7 +171,7 @@
 
         div.priceGrid table tbody tr div.OperatorInfo {
             padding: 0;
-            font-size: 16px;
+            font-size: 14px;
             float: left;
             clear: none;
             width: 70%;
