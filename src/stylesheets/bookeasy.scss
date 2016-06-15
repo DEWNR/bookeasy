@@ -38,16 +38,3 @@
 @import 'bookeasy.location-selector';
 
 @import 'bookeasy.mobile';
-
-
-.content #bookeasy-fullwidth {
-    padding: 40px 20px 0;
-
-    a {
-        text-decoration: none;
-
-        &:hover {
-            text-decoration: underline;
-        }
-    }
-}
