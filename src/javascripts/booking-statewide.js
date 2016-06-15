@@ -149,7 +149,7 @@ if (typeof productsData !== 'undefined') {
                     forceAccomType: '',
                     disabledTypes: hideProductTypes,
                     ignoreSearchCookie: true,
-                    itemDetailPageURL: './detail.html',
+                    itemDetailPageURL: 'booking/details',
                     limitLocations: aFilteredLocations,
                     period: 1,
                     showAllAccom: true,
@@ -185,4 +185,3 @@ if (typeof productsData !== 'undefined') {
         } else {
             console.log('Missing data!');
         }
-

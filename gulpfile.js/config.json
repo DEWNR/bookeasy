@@ -35,6 +35,9 @@
           },{
             "source": ["src/javascripts/bookeasy-details-old.js"],
             "filename": "bookeasy-details-old.js"
+          },{
+            "source": ["src/javascripts/booking-statewide.js"],
+            "filename": "booking-statewide.js"
           }
       ],
       "extensions": ["js"]
