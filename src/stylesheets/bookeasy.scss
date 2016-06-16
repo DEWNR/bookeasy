@@ -24,8 +24,14 @@
 @import 'dewnr-bedrock/sass/tools.mixins';
 
 
-
-
+/* = override over specific main css = */
+#main.content {
+    .content__fullwidth {
+        a {
+            text-decoration: none;
+        }
+    }
+}
 
 /* = Bookeasy = */
 @import 'bookeasy.settings';

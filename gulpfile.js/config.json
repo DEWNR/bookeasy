@@ -21,6 +21,9 @@
       "dest": "js",
       "files": [
           {
+            "source": ["src/javascripts/bookeasy-utility.js"],
+            "filename": "bookeasy-utility.js"
+          },{
             "source": ["src/javascripts/bookeasy-cart.js"],
             "filename": "bookeasy-cart.js"
           },{
@@ -38,6 +41,20 @@
           },{
             "source": ["src/javascripts/booking-statewide.js"],
             "filename": "booking-statewide.js"
+          },{
+            "source": [
+                "src/javascripts/IM/imutility.js",
+                "src/javascripts/IM/gadgets-book-bootstrapped.js",
+                "src/javascripts/IM/gadgets-details-bootstrapped.js",
+                "src/javascripts/IM/gadgets-details-buttons-underneath.js",
+                "src/javascripts/IM/gadgets-minimal-styling.js",
+                "src/javascripts/IM/gadgets-region-bootstrapped.js",
+                "src/javascripts/IM/gadgets-region-buttons-underneath.js",
+                "src/javascripts/IM/gadgets-search-bootstrapped.js",
+                "src/javascripts/IM/img-cartbar.js",
+                "src/javascripts/IM/responsive.js"
+                ],
+            "filename": "IM.js"
           }
       ],
       "extensions": ["js"]

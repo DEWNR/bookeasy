@@ -4,7 +4,7 @@ var bookeasyType = 'accom'; // defaults to accomodation
 var bookingDate = new Date(); // get today's date
 var operatorIDs = productID = [73176]; // set operatorIDs to display
 var operatorIDString = operatorIDs.join(); // create a string for the JSONP request
-var operatorPageType = 'tours'; // type of operator
+var operatorPageType = 'accomodation'; // type of operator
 
 if (operatorPageType == 'tours') {
     bookeasyType = 'tours';
