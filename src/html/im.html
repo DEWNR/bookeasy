@@ -1,0 +1,31 @@
+{% extends 'layouts/master.html' %}
+
+
+
+
+
+{% block content %}
+
+    <div id="bookeasy__cart-gadget"></div>
+
+    <div id="bookeasy__region-gadget">Loading...</div>
+
+{% endblock %}
+
+
+
+
+
+{% block global_javascript %}
+    {{ super() }}
+{% endblock %}
+
+
+{% block local_javascript %}
+    <script src="//gadgets.impartmedia.com/gadgets.jsz?key={{ bookeasy_key }}"></script>
+
+    <script src="js/IM.js" inline></script>
+
+    <script src="js/bookeasy-region.js" inline></script>
+
+{% endblock %}

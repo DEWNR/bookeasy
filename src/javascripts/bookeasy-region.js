@@ -18,6 +18,7 @@ $(function() {
         },
         defaultDate: bookingDate,
         defaultSort: 'name',
+        disabledTypes: ['tours','events','carhire','packages'],
         enableRegionSearch: false,
         forceAccomType: '',
         ignoreSearchCookie: true,
@@ -29,25 +30,4 @@ $(function() {
         showLocationFilter: false,
         vcID: 188
     });
-});
-
-
-jQuery(document).on('gadget.script.loaded', function() {
-
-    IMUtility.pushRegionGadgetLoadedEvent();
-    IMUtility.pushRegionGadgetChangedEvent();
-
-    $w.event.subscribe('region.refinetools.built', function() {
-
-        jQuery('.tabs-group').addClass('gadget__region-tabs').removeClass('tabs-group');
-
-    });
-
-
-    $w.event.subscribe('region.gadget.built', function() {
-
-        jQuery('.prices-grid td.date').addClass('region-gadget--built');
-
-    });
-
 });

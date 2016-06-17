@@ -14,6 +14,10 @@
         font-weight: 200;
 
         // The view tabs
+        .tabs-group {
+            display: none;
+        }
+
         div.gadget__region-tabs {
             font-size: 16px;
             overflow: visible;

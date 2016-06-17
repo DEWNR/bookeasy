@@ -21,23 +21,20 @@
       "dest": "js",
       "files": [
           {
-            "source": ["src/javascripts/bookeasy-utility.js"],
-            "filename": "bookeasy-utility.js"
-          },{
             "source": ["src/javascripts/bookeasy-cart.js"],
             "filename": "bookeasy-cart.js"
           },{
-              "source": ["src/javascripts/bookeasy-details.js"],
-              "filename": "bookeasy-details.js"
+            "source": ["src/javascripts/bookeasy-details.js"],
+            "filename": "bookeasy-details.js"
           },{
-              "source": ["src/javascripts/bookeasy-region.js"],
-              "filename": "bookeasy-region.js"
+             "source": ["src/javascripts/bookeasy-region.js"],
+            "filename": "bookeasy-region.js"
           },{
-              "source": ["src/javascripts/bookeasy-booking.js"],
-              "filename": "bookeasy-booking.js"
+            "source": ["src/javascripts/bookeasy-booking.js"],
+            "filename": "bookeasy-booking.js"
           },{
-            "source": ["src/javascripts/bookeasy-details-old.js"],
-            "filename": "bookeasy-details-old.js"
+            "source": ["src/javascripts/bookeasy-utility.js", "src/javascripts/bookeasy-mods.js"],
+            "filename": "bookeasy-mods.js"
           },{
             "source": ["src/javascripts/booking-statewide.js"],
             "filename": "booking-statewide.js"
