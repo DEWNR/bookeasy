@@ -14,16 +14,20 @@
         font-weight: 200;
 
         // The view tabs
-        div.tabs-group {
+        div.gadget__region-tabs {
+            font-size: 16px;
+            overflow: visible;
             height: auto;
             line-height: normal;
             margin-bottom: -5px;
+            position: relative;
 
-            span.label {
-                display: none;
-            }
-
-            div.view-choice a {
+            a {
+                display: inline-block;
+                height: 16px;
+                cursor: pointer;
+                color: #888;
+                text-decoration: none;
                 background: #ddd;
                 border: 0;
                 border-radius: 0;
@@ -31,17 +35,43 @@
                 margin: 0;
                 padding: 0.8em 1.4em;
 
-                &:nth-child(2) {
-                     border-top-left-radius: 3px    ;
-                }
-
-                &:last-child {
-                     border-top-right-radius: 3px;
-                }
-
                 &.current {
-                    background: $sagovau-color-brand;
-                    color: #fff;
+                    background-color: #fff;
+                    font-weight: bold;
+                    color: #444;
+                    position: relative;
+                    z-index: 2;
+                }
+            }
+
+            span.label {
+                display: none;
+            }
+
+            div.view-choice {
+                display: inline-block;
+                margin-right: 1.5em;
+
+                a {
+                    background: #ddd;
+                    border: 0;
+                    border-radius: 0;
+                    color: $sagovau-color-text-base;
+                    margin: 0;
+                    padding: 0.8em 1.4em;
+
+                    &:nth-child(2) {
+                         border-top-left-radius: 3px    ;
+                    }
+
+                    &:last-child {
+                         border-top-right-radius: 3px;
+                    }
+
+                    &.current {
+                        background: $sagovau-color-brand;
+                        color: #fff;
+                    }
                 }
             }
         }
