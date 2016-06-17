@@ -37,6 +37,12 @@ jQuery(document).on('gadget.script.loaded', function() {
                 jQuery(this).find('td.property').append('<a href="' + campgroundData[sOberatorID] + '" target="_blank">View campground map</a>');
             }
 
+            // setup fancybox
+            thumbImage = jQuery(this).find('.thumb img');
+            imagePath = thumbImage.attr('rel').replace('thumbs/461', 'images');
+
+            thumbImage.wrap('<a class="be-fancybox" href="' + imagePath + '" rel="gallery"></a>')
+
         });
 
 

@@ -70,3 +70,7 @@ IMUtility.pushDetailsGadgetLoadedEvent = function() {
 IMUtility.redirect = function(url_file) {
     document.location.href = url_file;
 };
+
+$(document).ready(function() {
+    $('.be-fancybox').fancybox();
+});
