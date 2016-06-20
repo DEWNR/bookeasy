@@ -24,6 +24,9 @@
             "source": ["src/javascripts/bookeasy-cart.js"],
             "filename": "bookeasy-cart.js"
           },{
+            "source": ["src/javascripts/parks-data.js"],
+            "filename": "parks-data.js"
+          },{
             "source": ["src/javascripts/bookeasy-details.js"],
             "filename": "bookeasy-details.js"
           },{
