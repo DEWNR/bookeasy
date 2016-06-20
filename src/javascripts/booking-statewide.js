@@ -10,11 +10,20 @@ if (typeof productsData !== 'undefined') {
             var aFilteredLocations = []; // contains an array of locations to show in region gadget
             var urlHash = location.hash.replace(/^#/, '').trim();
             var hideProductTypes = ['tours','carhire','packages'];
-
+            var bShowRegionGadget = 1;
 
             $(function() {
 
-                initRegionGadget(); // initialise region gadget
+                // redirect to booking page if no hash and details in url
+                if (window.location.href.indexOf('details') > -1 && urlHash == '') {
+                    IMUtility.redirect('http://www.environment.sa.gov.au/parks/development/Booking/')
+                } else if (window.location.href.indexOf('details') > -1 ) {
+                    bShowRegionGadget = 0;
+                }
+
+                if (bShowRegionGadget) {
+                    initRegionGadget(); // initialise region gadget
+                }
 
 
                 // change location to display
@@ -149,7 +158,7 @@ if (typeof productsData !== 'undefined') {
                     forceAccomType: '',
                     disabledTypes: hideProductTypes,
                     ignoreSearchCookie: true,
-                    itemDetailPageURL: 'booking/details',
+                    itemDetailPageURL: '/parks/development/booking/details',
                     limitLocations: aFilteredLocations,
                     period: 1,
                     showAllAccom: true,

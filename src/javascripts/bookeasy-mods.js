@@ -19,15 +19,9 @@ jQuery(document).on('gadget.script.loaded', function() {
 
         jQuery('.prices-grid td.date').addClass('region-gadget--built');
 
-    });
-
-});
-
-// show pdf map link for appropriate campsite
-jQuery(document).on('gadget.script.loaded', function() {
-    $w.event.subscribe('region.gadget.built', function() {
-
+        // show pdf map link for appropriate campsite
         jQuery('.im-grid tr.odd, .im-grid tr.even').each(function() {
+
             jQuery(this).find('td.property').append('<div class="clear"></div>');
 
             sOberatorID = jQuery(this).attr('id').replace('Operator', '');
@@ -45,7 +39,20 @@ jQuery(document).on('gadget.script.loaded', function() {
 
         });
 
-
     });
 
+});
+
+
+jQuery(document).on('gadget.script.loaded', function() {
+
+    // IMUtility.pushDetailsGadgetLoadedEvent();
+    //
+    // $w.event.subscribe('details.gadget.ready', function() {
+    //
+    //     $('.thumb').on('click', function() {
+    //         console.log('open lightbox');
+    //     });
+    //
+    // });
 });
