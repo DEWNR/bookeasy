@@ -77,7 +77,7 @@ if (typeof productsData !== 'undefined') {
 
     function displayProductsData() {
 
-        var hasAccomodation = true;
+        var hasAccomodation = false;
 
         if (!urlHash) {
             urlHash = 'All';
@@ -98,8 +98,8 @@ if (typeof productsData !== 'undefined') {
                     $('.'+key).click(  function(){ typeShow('tours'); }  );
                 }
 
-                if (key == 'Camping / Accommodation' && val === false){
-                    hasAccomodation = false;
+                if (key == 'Camping / Accommodation' && val === true) {
+                    hasAccomodation = true;
                 }
             });
 
@@ -157,7 +157,7 @@ if (typeof productsData !== 'undefined') {
                 forceAccomType: '',
                 disabledTypes: hideProductTypes,
                 ignoreSearchCookie: true,
-                itemDetailPageURL: '/parks/development/booking/details',
+                itemDetailPageURL: 'booking/details',
                 limitLocations: aFilteredLocations,
                 period: 1,
                 showAllAccom: true,
@@ -167,7 +167,7 @@ if (typeof productsData !== 'undefined') {
             });
         } else {
             // empty container
-            $('#bookeasy__region-gadget').html('<p>This park has no accommodation available.</p>');
+            $('#bookeasy__region-gadget').html('<p>Camping and accommodation is not available in this park.</p>');
         }
 
     }
