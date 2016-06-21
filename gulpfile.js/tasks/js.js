@@ -20,6 +20,7 @@ var jsTask = function () {
         return gulp.src(bundle.source)
           .pipe(concat(bundle.filename))
           .pipe(gulp.dest(paths.dest))
+          .pipe(browserSync.stream())
     });
 }
 
