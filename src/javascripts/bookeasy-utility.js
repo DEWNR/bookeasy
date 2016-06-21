@@ -54,17 +54,18 @@ IMUtility.pushBookGadgetChangedEvent = function() {
     setTimeout('IMUtility.pushBookGadgetChangedEvent();', 100);
 };
 
-var tempCount = 0;
+
 // wait for the booking gadget to have loaded, then publish an event
 IMUtility.pushDetailsGadgetLoadedEvent = function() {
-    tempCount = tempCount + 1;
+
     if (jQuery('.details-gadget td.name').size() > 0) {
         $w.event.publish('details.gadget.ready');
     } else {
         setTimeout('IMUtility.pushDetailsGadgetLoadedEvent();', 100);
     }
-    console.log(tempCount);
+
 };
+
 
 // utility function
 IMUtility.redirect = function(url_file) {

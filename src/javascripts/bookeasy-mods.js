@@ -28,7 +28,7 @@ jQuery(document).on('gadget.script.loaded', function() {
 
             // read campgroundData and find a match for current operator
             if (campgroundData[sOberatorID].length) {
-                jQuery(this).find('td.property').append('<a href="' + campgroundData[sOberatorID] + '" target="_blank">View campground map</a>');
+                jQuery(this).find('td.property').append('<a class="map-link" href="' + campgroundData[sOberatorID] + '" target="_blank">View campground map</a>');
             }
 
             // setup fancybox
@@ -46,13 +46,18 @@ jQuery(document).on('gadget.script.loaded', function() {
 
 jQuery(document).on('gadget.script.loaded', function() {
 
-    // IMUtility.pushDetailsGadgetLoadedEvent();
-    //
-    // $w.event.subscribe('details.gadget.ready', function() {
-    //
-    //     $('.thumb').on('click', function() {
-    //         console.log('open lightbox');
-    //     });
-    //
-    // });
+    IMUtility.pushDetailsGadgetLoadedEvent();
+
+    $w.event.subscribe('details.gadget.ready', function() {
+
+        jQuery('.im-grid tr.odd, .im-grid tr.even').each(function() {
+            // setup fancybox
+            thumbImage = jQuery(this).find('.thumb img');
+            imagePath = thumbImage.attr('rel');
+
+            thumbImage.wrap('<a class="be-fancybox" href="' + imagePath + '" rel="gallery"></a>')
+        });
+
+    });
+
 });

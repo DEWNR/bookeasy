@@ -13,6 +13,10 @@
         font-size: 16px;
         font-weight: 200;
 
+        a.map-link {
+            color: $sagovau-color-brand;
+        }
+
         // The view tabs
         .tabs-group {
             display: none;
