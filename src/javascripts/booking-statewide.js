@@ -77,6 +77,8 @@ if (typeof productsData !== 'undefined') {
 
     function displayProductsData() {
 
+        var hasAccomodation = true;
+
         if (!urlHash) {
             urlHash = 'All';
         }
@@ -94,13 +96,19 @@ if (typeof productsData !== 'undefined') {
                     //Check urls
                     $('.button-list').append($('<a href="'+ productsData[urlHash].url + '/' +(key.replace(/ /g , '-')).toLowerCase()+ '"><span>' +key+ '</span></a>').addClass('button-list__button '+key).attr('data', key));
                     $('.'+key).click(  function(){ typeShow('tours'); }  );
-                    }
+                }
+
+                if (key == 'Camping / Accommodation' && val === false){
+                    hasAccomodation = false;
+                }
             });
 
         } catch(error) {
             console.error('ERROR: Problem reading json data. '+error);
             return false;
         }
+
+        return hasAccomodation;
 
     }
 
@@ -122,39 +130,45 @@ if (typeof productsData !== 'undefined') {
 
     function bookeasy() {
 
-        displayProductsData();
+        hasAccomodation = displayProductsData();
 
         var bookingDate = new Date();
 
         bookingDate.setDate(bookingDate.getDate() + 1);
 
-        BE.gadget.region('#bookeasy__region-gadget', {
-            accomOnlyMode: true,
-            adults: 1,
-            customMapIcons: {
-                'accom': {
-                    icon:'//www.environment.sa.gov.au/files/templates/00000000-0000-0000-0000-000000000000/c16a6c2a-2cdc-4f08-96b9-f1c11eb6f349/npsa-marker-general.png',
-                    pinpoint: [13,45],
-                    size: [26,45]
-                }
-            },
-            collapseRefineTools: false,
-            collapseRefineTools: true,
-            defaultDate: bookingDate,
-            defaultRegionState: 'South Australia',
-            defaultSort: 'name',
-            enableRegionSearch: false,
-            forceAccomType: '',
-            disabledTypes: hideProductTypes,
-            ignoreSearchCookie: true,
-            itemDetailPageURL: '/parks/development/booking/details',
-            limitLocations: aFilteredLocations,
-            period: 1,
-            showAllAccom: true,
-            showList: false,
-            showLocationFilter: false,
-            vcID: 188
-        });
+        // only load gadget for those with camping / accomodation
+        if (hasAccomodation) {
+            BE.gadget.region('#bookeasy__region-gadget', {
+                accomOnlyMode: true,
+                adults: 1,
+                customMapIcons: {
+                    'accom': {
+                        icon:'//www.environment.sa.gov.au/files/templates/00000000-0000-0000-0000-000000000000/c16a6c2a-2cdc-4f08-96b9-f1c11eb6f349/npsa-marker-general.png',
+                        pinpoint: [13,45],
+                        size: [26,45]
+                    }
+                },
+                collapseRefineTools: false,
+                collapseRefineTools: true,
+                defaultDate: bookingDate,
+                defaultRegionState: 'South Australia',
+                defaultSort: 'name',
+                enableRegionSearch: false,
+                forceAccomType: '',
+                disabledTypes: hideProductTypes,
+                ignoreSearchCookie: true,
+                itemDetailPageURL: '/parks/development/booking/details',
+                limitLocations: aFilteredLocations,
+                period: 1,
+                showAllAccom: true,
+                showList: false,
+                showLocationFilter: false,
+                vcID: 188
+            });
+        } else {
+            // empty container
+            $('#bookeasy__region-gadget').html('<p>This park has no accommodation available.</p>');
+        }
 
     }
 

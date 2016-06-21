@@ -1,7 +1,7 @@
 var productsData = {
     "All" :{
         "Things to book": {
-            "Camping / Accommodation": false,
+            "Camping / Accommodation": true,
             "Vehicle Entry Fee": false,
             "Diving": false,
             "Snorkelling": false,
