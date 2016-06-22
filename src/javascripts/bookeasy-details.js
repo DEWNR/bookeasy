@@ -5,10 +5,20 @@ var bookingDate = new Date(); // get today's date
 var operatorIDs = productID = [67320]; // set operatorIDs to display
 var operatorIDString = operatorIDs.join(); // create a string for the JSONP request
 var operatorPageType = 'accomodation'; // type of operator
+var aUrlHash = location.hash.replace(/^#/, '').trim().split('/');
+var aRoomData = [];
+
+
+if(aUrlHash.length == 3) {
+    operatorIDs = productID = [Number(aUrlHash[2])];
+    operatorIDString = operatorIDs.join();
+    bookeasyType = aUrlHash[1];
+}
 
 if (operatorPageType == 'tours') {
     bookeasyType = 'tours';
 }
+
 
 $(function() {
 

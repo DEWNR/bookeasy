@@ -64,20 +64,22 @@ jQuery(document).on('gadget.script.loaded', function() {
 
     $w.event.subscribe('details.content.ready', function() {
 
-        // console.log(aRoomData);
-
         // format OperatorInfo
         jQuery('.im-grid tr.odd, .im-grid tr.even').each(function() {
             operatorInfo = jQuery(this).find('.OperatorInfo');
 
             // remove unwanted elements
-            operatorInfo.find('.RoomConfig, .MaxGuests, .OperatorItemHeading').remove();
+            jQuery(this).find('.RoomConfig, .MaxGuests, .OperatorItemHeading, .OperatorInfoMore').remove();
+
+            jQuery(this).find('a:not([class])').wrap('<h3>');
+
+            operatorInfo.prepend(jQuery(this).find('h3'));
 
             // find in array
-            currentName = jQuery(this).find('a:not([class])').text();
+            currentName = operatorInfo.find('a:not([class])').text();
 
             // check if it can find the currentName
-            if(typeof aRoomData[currentName] !== 'undefined') {
+            if(typeof aRoomData !== 'undefined' && typeof aRoomData[currentName] !== 'undefined') {
 
                 // replace description
                 jQuery(this).find('.Description').html('<p>' + aRoomData[currentName].replace(/\n/g, '<br />') + '</p>');
