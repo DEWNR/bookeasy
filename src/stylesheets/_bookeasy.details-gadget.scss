@@ -22,6 +22,11 @@
 
         div.priceGrid {
             border: 0;
+            display: none;
+
+            &.loaded {
+                display: block;
+            }
 
             table {
                 thead {

@@ -55,13 +55,25 @@ IMUtility.pushBookGadgetChangedEvent = function() {
 };
 
 
-// wait for the booking gadget to have loaded, then publish an event
+// wait for the details gadget to have loaded, then publish an event
 IMUtility.pushDetailsGadgetLoadedEvent = function() {
 
     if (jQuery('.details-gadget td.name').size() > 0) {
         $w.event.publish('details.gadget.ready');
     } else {
         setTimeout('IMUtility.pushDetailsGadgetLoadedEvent();', 100);
+    }
+
+};
+
+
+// wait for the details content to have loaded, then publish an event
+IMUtility.pushDetailsContentLoadedEvent = function() {
+
+    if (jQuery('.OperatorInfo').size() > 0) {
+        $w.event.publish('details.content.ready');
+    } else {
+        setTimeout('IMUtility.pushDetailsContentLoadedEvent();', 100);
     }
 
 };

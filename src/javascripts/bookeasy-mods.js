@@ -47,6 +47,7 @@ jQuery(document).on('gadget.script.loaded', function() {
 jQuery(document).on('gadget.script.loaded', function() {
 
     IMUtility.pushDetailsGadgetLoadedEvent();
+    IMUtility.pushDetailsContentLoadedEvent();
 
     $w.event.subscribe('details.gadget.ready', function() {
 
@@ -57,6 +58,37 @@ jQuery(document).on('gadget.script.loaded', function() {
 
             thumbImage.wrap('<a class="be-fancybox" href="' + imagePath + '" rel="gallery"></a>')
         });
+
+    });
+
+
+    $w.event.subscribe('details.content.ready', function() {
+
+        // console.log(aRoomData);
+
+        // format OperatorInfo
+        jQuery('.im-grid tr.odd, .im-grid tr.even').each(function() {
+            operatorInfo = jQuery(this).find('.OperatorInfo');
+
+            // remove unwanted elements
+            operatorInfo.find('.RoomConfig, .MaxGuests, .OperatorItemHeading').remove();
+
+            // find in array
+            currentName = jQuery(this).find('a:not([class])').text();
+
+            // check if it can find the currentName
+            if(typeof aRoomData[currentName] !== 'undefined') {
+
+                // replace description
+                jQuery(this).find('.Description').html('<p>' + aRoomData[currentName].replace(/\n/g, '<br />') + '</p>');
+
+            }
+
+
+        });
+
+        jQuery('.priceGrid').addClass('loaded');
+
 
     });
 

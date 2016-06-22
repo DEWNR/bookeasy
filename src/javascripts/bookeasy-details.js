@@ -2,7 +2,7 @@ var bAllowBookings = true;
 var bookeasyData = {};
 var bookeasyType = 'accom'; // defaults to accomodation
 var bookingDate = new Date(); // get today's date
-var operatorIDs = productID = [73176]; // set operatorIDs to display
+var operatorIDs = productID = [67320]; // set operatorIDs to display
 var operatorIDString = operatorIDs.join(); // create a string for the JSONP request
 var operatorPageType = 'accomodation'; // type of operator
 
@@ -12,6 +12,7 @@ if (operatorPageType == 'tours') {
 
 $(function() {
 
+    aRoomData = getRoomData();
     getOperatorData();
 
     // load details gadget
@@ -49,6 +50,38 @@ function getOperatorData() {
         }
 
     })
+
+}
+
+
+function getRoomData() {
+
+    aTemp = [];
+
+    $.ajax({
+        url: '//sjp.impartmedia.com/be/getAccomRoomsDetails?q=188&operators=' + operatorIDString,
+        cache: true,
+        dataType: 'jsonp',
+        jsonpCallback: 'jQueryRoomInformation'
+    })
+    .done(function(data) {
+
+        if (data.length) {
+
+            // loop over data, replace
+            aRooms = data[0].Rooms;
+
+            for (i = 0; i < aRooms.length; i++) {
+
+                aTemp[aRooms[i].Name.trim()] = aRooms[i].Description;
+
+            }
+
+        }
+
+    })
+
+    return aTemp;
 
 }
 
