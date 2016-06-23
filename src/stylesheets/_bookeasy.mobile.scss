@@ -21,7 +21,7 @@ html.npsa.breakpoint-small {
       }
       span.input {
         select {
-          width: auto;
+          width: 100%;
         }
       }
     }
@@ -29,13 +29,36 @@ html.npsa.breakpoint-small {
       div.tabs-group {
         display: none;
       }
+      div.map-container div.product-list {
+          display: none;
+      }
+      div.map-container div.map-window {
+          width: 100%;
+      }
       div.prices-grid {
         table {
+        thead {
+            display: none;
+        }
           thead td.date {
             display: none;
           }
           tbody {
+
+
             td {
+                &.property {
+                    .name {
+                        font-size: 18px;
+                        padding-top: 0.5em;
+                        padding-right: 5px;
+                    }
+
+                    .address {
+                        margin: 0 0 0.4em;
+                        display: block;
+                    }
+                }
               &.price {
                 display: none;
               }
@@ -50,27 +73,51 @@ html.npsa.breakpoint-small {
     div.BE.details-gadget {
       div.priceGrid {
         table {
+            tbody tr td.name div.thumb {
+                margin-left: auto;
+                margin-right: auto;
+                float: none;
+            }
+            tbody tr td {
+                display: block;
+                text-align: center;
+            }
+            tbody tr td.total a {
+                float: none;
+                clear: both;
+            }
           thead td.date, tbody td.price {
             display: none;
+          }
+          tbody tr div.OperatorInfo {
+              width: 100%;
           }
         }
       }
     }
   }
+
+
   div#wdOverlayContent {
-    position: relative !important;
+    position: fixed !important;
     margin: 0 !important;
     width: 100% !important;
     top: 0 !important;
-    bottom: auto !important;
-    left: auto !important;
-    right: auto !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
     box-shadow: none !important;
-      -webkit-box-shadow: none !important;
-        -moz-box-shadow: none !important;
     border: none !important;
+
+    div.add-to-cart-form div.AdditionalData div.BookingQuestionsData div.booking-questions div.bookingQuestion div.bookingQuestionSets div.bookingQuestionSet div.bookingQuestionFields div.bookingQuestion-container {
+        margin: 0 0 15px;
+    }
+
     div.add-to-cart-form {
       padding: 0.5em !important;
+      font-size: 14px !important;
+
+
       div.add-to-cart-information {
         position: relative;
         top: 0;
@@ -79,21 +126,25 @@ html.npsa.breakpoint-small {
           font-weight: bold;
           text-align: left;
           span {
-            font-size: 120%;
+            font-size: 12px;
             background: none;
             color: inherit;
-            display: inline;
+            display: block;
             float: none;
             padding: 0;
             margin: 0;
+
+            &.item-name {
+                font-size: 20px;
+                font-weight: 200;
+            }
           }
           span.operator-name:after {
-            content: ' > ';
           }
         }
         div.price, div.date, div.dateEnd, div.adults, div.children, div.infants, div.concessions, div.students, div.observers, div.startdate, div.period, div.quotedprice, div.family, div.AdditionalData {
           clear: both;
-          margin: 0 0 0.5em 0;
+          margin: 0;
           padding: 0;
           width: 100%;
           height: auto;
@@ -101,17 +152,26 @@ html.npsa.breakpoint-small {
           label, span {
             font-size: inherit;
             float: left;
-            width: 45%;
-            margin: 0 5% 0 0;
+            width: 70%;
+            margin: 0;
+            font-size: 14px;
           }
           label {
+              width: 25%;
             font-weight: bold;
+            margin: 0 5% 0 0;
+
+            &.indicator {
+                width: auto;
+                margin: 0 5px 0 0;
+            }
           }
         }
         div.price span {
           font-weight: bold;
         }
         div.AdditionalData {
+            padding-top: 15px;
           .bookingQuestionSet>label {
             padding: 0 !important;
           }
@@ -131,6 +191,7 @@ html.npsa.breakpoint-small {
         position: relative;
         overflow: hidden;
         margin: 1em 0;
+        padding: 0;
       }
     }
     b#wdOverlayClose {

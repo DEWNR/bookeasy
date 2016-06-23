@@ -133,9 +133,8 @@
                 thead {
                     td {
                         background: #065931;
-                        background: rgba(6, 89, 49, 0.95);
 
-                        &.label {  }
+                        &.label { color: #065931; }
                         &.total {  }
                         &.date  {  }
                     }

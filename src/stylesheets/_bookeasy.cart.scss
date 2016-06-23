@@ -196,6 +196,11 @@ div#wdOverlayContent.overlayMode {
             }
             a.checkOutNow {
                 background-color: #08713e!important;
+
+                span {
+                    background: none;
+                    padding: 0.5em 2em;
+                }
             }
         }
 
@@ -296,6 +301,8 @@ div#wdOverlayContent.overlayMode {
             padding: .5em .5em;
             margin-top: -.5em;
             width: 100%;
+            box-sizing: border-box;
+            border-radius: 5px;
 
             @include media-query(large-and-up) {
                 width: auto;
@@ -314,7 +321,7 @@ div#wdOverlayContent.overlayMode {
     }
 
     div.add-to-cart-form div.AdditionalData div.BookingQuestionsData div.booking-questions div.bookingQuestion div.bookingQuestionSets div.bookingQuestionSet div.bookingQuestionFields div.bookingQuestion-container {
-        margin: 0 10px 5px 0;
+        margin: 0 50px 40px 0;
         width: 100%;
 
         @include media-query(large-and-up) {
@@ -323,8 +330,9 @@ div#wdOverlayContent.overlayMode {
     }
 
     div.add-to-cart-form div.AdditionalData div.BookingQuestionsData div.booking-questions div.bookingQuestion div.bookingQuestionSets div.bookingQuestionSet div.bookingQuestionFields div.bookingQuestion-container div.bookingQuestion-answers label.bookingQuestion-answer {
-        padding: 8px 5px 0 0;
+        padding: 8px 0 0 0;
         width: 100%;
+        box-sizing: border-box;
 
         @include media-query(large-and-up) {
             width: auto;
