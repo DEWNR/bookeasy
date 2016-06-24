@@ -35,7 +35,7 @@ jQuery(document).on('gadget.script.loaded', function() {
             thumbImage = jQuery(this).find('.thumb img');
             imagePath = thumbImage.attr('rel').replace('thumbs/461', 'images');
 
-            thumbImage.wrap('<a class="be-fancybox" href="' + imagePath + '" rel="gallery"></a>')
+            thumbImage.wrap('<a class="be-fancybox" href="' + imagePath + '" rel="gallery" title="' + jQuery(this).find('.name').text() + '"></a>')
 
         });
 
@@ -58,7 +58,9 @@ jQuery(document).on('gadget.script.loaded', function() {
 
             thumbImage.attr('src', imagePath);
 
-            thumbImage.wrap('<a class="be-fancybox" href="' + imagePath + '" rel="gallery"></a>')
+
+
+            thumbImage.wrap('<a class="be-fancybox" href="' + imagePath + '" rel="gallery" title="' + jQuery(this).find('a:not([class])').text() + '"></a>')
         });
 
     });
