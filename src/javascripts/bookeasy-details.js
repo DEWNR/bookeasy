@@ -56,6 +56,18 @@ function getOperatorData() {
             // insert t&c information
             var cancellationPolicy = data[0].CancellationPolicy;
 
+            if(aUrlHash.length == 3) {
+                $('#content h1').append(' - ' + data[0].Location);
+            }
+
+            $('#content h1').after('<div class="button-list"><a class="button-list__button button-list__button--back" href="#">Back</a>')
+
+            $('.button-list__button--back').on('click', function(event){
+                window.history.back();
+
+                event.preventDefault();
+            });
+
             $('#bookeasy__conditions').html('<h3>Terms and conditions</h3>' + text2HTML(cancellationPolicy));
         }
 

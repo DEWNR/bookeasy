@@ -10,7 +10,7 @@
 
     div.BE.details-gadget {
         color: $sagovau-color-text-base;
-        font-family: "Frutiger LT Com", Helvetica, Arial, sans-serif;
+        font-family: 'Frutiger W01', Helvetica, Arial, sans-serif;
         font-size: 16px;
         font-weight: 200;
 
@@ -80,15 +80,16 @@
 
                                 div.thumb {
                                     border: 0;
-                                    height: 150px;
+                                    height: auto;
                                     overflow: hidden;
                                     padding: 0;
-                                    width: 150px;
+                                    width: 24%;
+                                    margin: 0 2% 0 0;
 
                                     img {
-                                        height: 150px;
+                                        height: auto;
                                         position: relative;
-                                        width: 150px;
+                                        width: 100%;
                                     }
                                 }
 

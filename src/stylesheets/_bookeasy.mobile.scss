@@ -77,6 +77,13 @@ html.npsa.breakpoint-small {
                 margin-left: auto;
                 margin-right: auto;
                 float: none;
+                max-width: 336px;
+                width: auto;
+            }
+            tbody tr div.OperatorInfo div.OperatorItemContent {
+                max-width: 336px;
+                width: auto;
+                margin: 0 auto;
             }
             tbody tr td {
                 display: block;

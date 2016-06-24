@@ -56,6 +56,8 @@ jQuery(document).on('gadget.script.loaded', function() {
             thumbImage = jQuery(this).find('.thumb img');
             imagePath = thumbImage.attr('rel');
 
+            thumbImage.attr('src', imagePath);
+
             thumbImage.wrap('<a class="be-fancybox" href="' + imagePath + '" rel="gallery"></a>')
         });
 
