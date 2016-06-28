@@ -16,7 +16,7 @@ if (typeof productsData !== 'undefined') {
 
         // redirect to booking page if no hash and details in url
         if (window.location.href.indexOf('details') > -1 && urlHash == '') {
-            IMUtility.redirect('http://www.environment.sa.gov.au/parks/development/Booking/')
+            IMUtility.redirect('http://www.environment.sa.gov.au/parks/booking/')
         } else if (window.location.href.indexOf('details') > -1 ) {
             bShowRegionGadget = 0;
         }
@@ -157,7 +157,7 @@ if (typeof productsData !== 'undefined') {
                 forceAccomType: '',
                 disabledTypes: hideProductTypes,
                 ignoreSearchCookie: true,
-                itemDetailPageURL: 'booking/details',
+                itemDetailPageURL: '//www.environment.sa.gov.au/parks/booking/details',
                 limitLocations: aFilteredLocations,
                 period: 1,
                 showAllAccom: true,

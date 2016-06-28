@@ -149,6 +149,14 @@
                             background: #fff;
                         }
 
+                        &.inline-header {
+                            background: #065931;
+
+                            td.label {
+                                color: #065931;
+                            }
+                        }
+
                         &.even {
                             background: rgb(243, 243, 243);
                         }
@@ -167,7 +175,7 @@
                             .name {
                                 color: $sagovau-color-text-base;
                                 font-size: 20px;
-                                padding: 1.3em 0 0;
+                                padding: 1em 0 0;
 
                                 &:hover {
                                     text-decoration: underline !important;

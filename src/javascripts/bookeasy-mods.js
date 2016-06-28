@@ -27,8 +27,8 @@ jQuery(document).on('gadget.script.loaded', function() {
             sOberatorID = jQuery(this).attr('id').replace('Operator', '');
 
             // read campgroundData and find a match for current operator
-            if (campgroundData[sOberatorID].length) {
-                jQuery(this).find('td.property').append('<a class="map-link" href="' + campgroundData[sOberatorID] + '" target="_blank">View campground map</a>');
+            if (typeof campgroundData[sOberatorID] !== 'undefined' && campgroundData[sOberatorID].length) {
+                jQuery(this).find('td.property').append('<a class="map-link" href="http://environment.sa.gov.au' + campgroundData[sOberatorID] + '" download="filename">View map <span>(pdf)</span></a>');
             }
 
             // setup fancybox
@@ -68,6 +68,8 @@ jQuery(document).on('gadget.script.loaded', function() {
 
     $w.event.subscribe('details.content.ready', function() {
 
+        jQuery('.priceGrid').addClass('is-loading');
+
         // format OperatorInfo
         jQuery('.im-grid tr.odd, .im-grid tr.even').each(function() {
             operatorInfo = jQuery(this).find('.OperatorInfo');
@@ -93,7 +95,7 @@ jQuery(document).on('gadget.script.loaded', function() {
 
         });
 
-        jQuery('.priceGrid').addClass('loaded');
+        jQuery('.priceGrid').removeClass('is-loading');
 
 
     });
