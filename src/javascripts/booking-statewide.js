@@ -69,7 +69,7 @@ if (typeof productsData !== 'undefined') {
     function createLocationSelector() {
 
         $.each( aAllLocations, function(key, val) {
-            $('.location-selector__select').append($('<option></option').attr('value', val).attr('selected', urlHash == val ? true : false).text(val));
+            $('.location-selector__select').append($('<option></option>').attr('value', val).attr('selected', urlHash == val ? true : false).text(val));
         });
 
     }
@@ -90,6 +90,9 @@ if (typeof productsData !== 'undefined') {
         //productsData[urlHash] is better than using eval to turn string into object name
         try {
             $.each(productsData[urlHash]["Things to book"], function(key, val) {
+                if (key == 'Vehicle Entry Fee') {
+                    key = 'Vehicle Entry Fees'
+                }
 
                 //we don't need to display camping button if we are already looking at camping
                 if (key !== 'Camping / Accommodation' && val === true) {
