@@ -12,6 +12,8 @@ if (typeof productsData !== 'undefined') {
     var hideProductTypes = ['tours','carhire','packages'];
     var bShowRegionGadget = 1;
 
+    urlHash = urlHash.replace(/%20/g, ' ');
+
     $(function() {
 
         // redirect to booking page if no hash and details in url
