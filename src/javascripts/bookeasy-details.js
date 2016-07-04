@@ -2,9 +2,9 @@ var bAllowBookings = true;
 var bookeasyData = {};
 var bookeasyType = 'accom'; // defaults to accomodation
 var bookingDate = new Date(); // get today's date
-var operatorIDs = productID = [67320]; // set operatorIDs to display
+var operatorIDs = productID = [65726]; // set operatorIDs to display
 var operatorIDString = operatorIDs.join(); // create a string for the JSONP request
-var operatorPageType = 'accomodation'; // type of operator
+var operatorPageType = 'tours'; // type of operator
 var aUrlHash = location.hash.replace(/^#/, '').trim().split('/');
 var aRoomData = [];
 
@@ -17,8 +17,8 @@ if(aUrlHash.length == 3) {
 
 if (operatorPageType == 'tours') {
     bookeasyType = 'tours';
+    productID = '65726';
 }
-
 
 $(function() {
 
@@ -117,3 +117,12 @@ function text2HTML(input) {
     return input;
 
 }
+
+
+$w(function() {
+  BE.gadget.cart("#toolbar-cart", {
+    vcID:"188",
+    bookingURL:"https://www.environment.sa.gov.au/parks/checkout",
+    autoCollapse:true
+  });
+});
