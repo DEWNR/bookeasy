@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en" xml:lang="en" class="no-js" prefix="og: http://ogp.me/ns#">
+
+<head>
+
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}Department of Environment, Water and Natural Resources (DEWNR){% endblock %}</title>
+
+    <script type="text/javascript" src="//fast.fonts.net/jsapi/e0cc203f-7221-4daf-a2d5-815483dba107.js" async></script>
+
+    <link href="css/checkout.css" rel="stylesheet">
+
+    <noscript>
+
+        <link type="text/css" rel="stylesheet" href="//fast.fonts.net/cssapi/e0cc203f-7221-4daf-a2d5-815483dba107.css">
+
+    </noscript>
+
+    {% block head %}{% endblock %}
+
+</head>
+
+<body>
+
+    <div class="site-wrap">
+
+        {% include "shared/global-header.html" %}
+
+        <div class="content">
+
+            <main role="main">
+                {% block content %}
+                {% endblock %}
+            </main>
+
+            {% include "shared/site-footer.html" %}
+
+        </div><!-- /.content -->
+
+    </div><!-- /.site-wrap -->
+
+
+    {% block global_javascript %}
+
+        <!-- jQuery -->
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+        <!-- Local fallback -->
+
+        <script>window.jQuery || document.write('<script src="/files/templates/00000000-0000-0000-0000-000000000000/f88a7f3c-df7e-430a-825c-24cfa8dec9a8/jquery1111min.js">\x3C/script>')</script>
+
+        <!-- End local fallback -->
+
+        <!-- End jQuery -->
+
+    {% endblock %}
+
+
+    {% block local_javascript %}{% endblock %}
+
+
+</body>
+
+</html>
