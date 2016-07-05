@@ -1,8 +1,7 @@
 $(function() {
 
     // load booking gadget
-    BE.gadget.cart('#bookeasy__bookinggadget', {
-        demoMode: true,
+    BE.gadget.book('#bookeasy__booking-gadget', {
         confirmationURL: null,
         vcID: 188
     });

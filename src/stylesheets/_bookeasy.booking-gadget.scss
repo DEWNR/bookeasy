@@ -150,10 +150,7 @@
 
          input[type=text],
          textarea {
-             -webkit-transition: all .30s ease-in-out;
-             -moz-transition: all .30s ease-in-out;
-             -ms-transition: all .30s ease-in-out;
-             -o-transition: all .30s ease-in-out;
+             transition: all .30s ease-in-out;
              border: 1px solid #ddd;
              outline: none;
          }

@@ -2,7 +2,11 @@
     #NPSA BOOKEASY CHECKOUT
 \*------------------------------------*/
 
+// scss-lint:disable all
+
+
 $sagovau-color-background-base: #4e4e4e;
+$sagovau-color-brand: #006936;
 $sagovau-color-text-base: #4e4e4e;
 $sagovau-namespace: '';
 $sagovau-transition-time: 0.3s;
@@ -10,6 +14,8 @@ $sagovau-font-size-base: 14px;
 $sagovau-line-height-base: 20px;
 $sagovau-spacing-unit-base: $sagovau-line-height-base;
 $sagovau-font-family-base: 'Frutiger W01', Helvetica, Arial, sans-serif;
+
+@import 'bookeasy.booking-gadget';
 
 
 
@@ -22,6 +28,11 @@ html {
     font-family: $sagovau-font-family-base;
     font-size: $sagovau-font-size-base;
     line-height: 1.8;
+    color: $sagovau-color-text-base;
+}
+
+main {
+    background: #fff;
 }
 
 img {
@@ -69,6 +80,80 @@ img {
 
 
 
+/*div*/.#{$sagovau-namespace}page-intro {
+    padding: 2em 1em 1em;
+    max-width: 660px;
+    margin: 0 auto;
+}
+
+    /*h1*/.#{$sagovau-namespace}page-intro__title {
+        color: $sagovau-color-brand;
+    }
+
+    /*div*/.#{$sagovau-namespace}page-intro__content {
+        p {
+            margin: 0;
+        }
+    }
+
+
+
+
+
+
+
+#bookeasy__booking-gadget {
+    max-width: 660px;
+    margin: 0 auto 200px;;
+
+    * {
+        font-family: $sagovau-font-family-base;
+        font-size: $sagovau-font-size-base;
+        color: $sagovau-color-text-base;
+    }
+
+    div.booking-gadget.BE {
+
+        h3 {
+            color: $sagovau-color-brand;
+            margin: 0;
+            padding-top: 1em;
+        }
+
+        a {
+            color: $sagovau-color-brand;
+        }
+
+        div.shopping-cart {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            float: none;
+
+            div.cartItems {
+                border: 0;
+                border-radius: 0;
+                min-height: 0;
+                padding: 0;
+            }
+        }
+
+        div.personalDetails,
+        div.ccDetails {
+            float: none;
+            width: 100%;
+            border: 0;
+            padding: 0;
+            border-radius: 0;
+            min-height: 0;
+        }
+
+    }
+}
+
+
+
+
 /*footer*/.#{$sagovau-namespace}site-footer {
     background: $sagovau-color-background-base;
     text-align: center;
@@ -80,6 +165,8 @@ img {
         display: flex;
         flex-flow: row wrap;
         justify-content: space-around;
+        max-width: 870px;
+        margin: 0 auto;
     }
 
         /*a*/.#{$sagovau-namespace}site-footer__logo {
