@@ -7,8 +7,9 @@
 
 #bookeasy__booking-gadget {
     max-width: 660px;
-    margin: 0 auto 200px;
+    margin: 0 auto 80px;
     padding: 1em;
+    min-height: 400px;
 
     @media only screen and (max-width: 481px) {
         margin: 0 auto;
@@ -92,7 +93,7 @@
 
         div.button {
             text-align: right;
-            padding: 0 25px 20px 0;
+            padding: 0 0 20px;
 
             a {
                padding: 1em 1em 0.8em;
@@ -127,7 +128,7 @@
 
         div.shopping-cart {
             width: 100%;
-            margin: 0;
+            margin: 0 0 50px;
             padding: 0;
             float: none;
 
@@ -145,6 +146,49 @@
                     position: static;
                     text-align: right;
                     padding-right: 30px;
+
+                    label {
+                        font-size: 18px;
+                    }
+
+                    span {
+                        font-size: 20px;
+                    }
+                }
+
+                div.item {
+
+                    div.remove {
+                        a {
+                            display: block;
+                            cursor: pointer;
+                            width: 22px;
+                            height: 22px;
+                            position: absolute;
+                            right: 0px;
+                            top: 2px;
+                            background: none;
+                            background-color: rgb(169, 169, 169);
+                            text-decoration: none;
+
+                            &:hover {
+                                background-color: #b00;
+                            }
+
+                            &::before {
+                                content: "x";
+                                color: #fff;
+                                font-size: 1rem;
+                                font-weight: 100;
+                                font-family: tahoma, verdana, arial, sans-serif;
+                                display: block;
+                                padding-left: 8px;
+                                padding-top: 1px;
+                                line-height: 1.2rem;
+                            }
+                        }
+                    }
+
                 }
             }
         }
@@ -162,6 +206,7 @@
                 float: left;
                 clear: left;
                 width: 100%;
+                box-sizing: border-box;
             }
 
             label {
