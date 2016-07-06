@@ -88,6 +88,10 @@ img {
 
     /*h1*/.#{$sagovau-namespace}page-intro__title {
         color: $sagovau-color-brand;
+
+        @media only screen and (max-width: 481px) {
+            margin: 0;
+        }
     }
 
     /*div*/.#{$sagovau-namespace}page-intro__content {

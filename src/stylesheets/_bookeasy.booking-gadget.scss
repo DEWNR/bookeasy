@@ -4,12 +4,6 @@
 
 // scss-lint:disable all
 
-h1 {
-    @media only screen and (max-width: 481px) {
-        margin-bottom: 0;
-    }
-}
-
 
 #bookeasy__booking-gadget {
     max-width: 660px;
@@ -17,6 +11,7 @@ h1 {
     padding: 1em;
 
     @media only screen and (max-width: 481px) {
+        margin: 0 auto;
         padding-top: 0;
     }
 
@@ -219,7 +214,7 @@ h1 {
 
             div.required label::after {
                 content: ' *';
-                color: red;
+                color: #f00;
             }
         }
 
