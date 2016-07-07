@@ -162,8 +162,8 @@
                         a {
                             display: block;
                             cursor: pointer;
-                            width: 22px;
-                            height: 22px;
+                            width: 23px;
+                            height: 20px;
                             position: absolute;
                             right: 0px;
                             top: 2px;
@@ -175,16 +175,16 @@
                                 background-color: #b00;
                             }
 
-                            &::before {
+                            &:before {
                                 content: "x";
                                 color: #fff;
                                 font-size: 1rem;
                                 font-weight: 100;
                                 font-family: tahoma, verdana, arial, sans-serif;
-                                display: block;
                                 padding-left: 8px;
+                                line-height: 1.2em; //IE can't use REM
+                                position: absolute;
                                 padding-top: 1px;
-                                line-height: 1.2rem;
                             }
                         }
                     }
