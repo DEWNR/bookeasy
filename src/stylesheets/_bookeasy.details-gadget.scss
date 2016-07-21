@@ -73,9 +73,16 @@
                             background: none;
                             padding: 10px;
 
+                            &.total.total {
+                                a {
+                                    padding: 0.4em 1em 0.5em;
+                                }
+                            }
+
                             &.name {
                                 padding: 10px 10px 8px 10px;
                                 text-align: left;
+                                position: relative;
 
                                 div.thumb {
                                     border: 0;
@@ -89,6 +96,17 @@
                                         height: auto;
                                         position: relative;
                                         width: 100%;
+                                    }
+                                }
+
+                                div.specials {
+                                    position: absolute;
+                                    top: 50%;
+                                    transform: translateY(-50%);
+                                    right: 0;
+
+                                    .name {
+                                        height: initial;
                                     }
                                 }
 
@@ -171,6 +189,10 @@
 
                             &.price {
                                 font-size: 20px;
+
+                                &.special span {
+                                    text-decoration: none;
+                                }
                             }
                         }
                     }

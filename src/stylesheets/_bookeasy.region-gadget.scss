@@ -171,6 +171,7 @@
 
                         &.property {
                             width: 70%;
+                            position: relative;
 
                             .name {
                                 color: $sagovau-color-text-base;
@@ -199,6 +200,19 @@
                                     position: relative;
                                     top: -25px;
                                     width: 150px;
+                                }
+                            }
+
+                            div.specials {
+                                position: absolute;
+                                top: 50%;
+                                transform: translateY(-50%);
+                                right: 0;
+
+                                div.special.active {
+                                    background-color: #D62027;
+                                    border-radius: 5px;
+                                    border-width: 0;
                                 }
                             }
                         }
