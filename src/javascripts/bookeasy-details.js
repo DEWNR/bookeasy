@@ -2,8 +2,8 @@ var bAllowBookings = true;
 var bookeasyData = {};
 var bookeasyType = 'accom'; // defaults to accomodation
 var bookingDate = new Date(); // get today's date
-var operatorIDs = productID = [65726]; // set operatorIDs to display
-var operatorIDString = operatorIDs.join(); // create a string for the JSONP request
+var operatorIDs = [65726]; // set operatorIDs to display
+var operatorIDString = productID = operatorIDs.join(); // create a string for the JSONP request
 var operatorPageType = 'tours'; // type of operator
 var aUrlHash = location.hash.replace(/^#/, '').trim().split('/');
 var aRoomData = [];
