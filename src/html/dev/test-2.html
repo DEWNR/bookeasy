@@ -14,18 +14,22 @@
 
         <script type="text/javascript">
 
-            $w(function() {
-                BE.gadget.region('#bookeasy__regions-gadget', {
-                    disabledTypes: ['tours','events','carhire','packages'],
-                    collapseRefineTools: false,
-                    itemDetailPageURL: './details.html',
-                    showAllAccom: true,
-                    showLocationFilter: true,
-                    showRoomDetails:true,
-                    vcID: 188,
-                    enableRegionSearch: true
-                });
-            });
+        $w(function() {
+             BE.gadget.region('#bookeasy__regions-gadget', {
+                 disabledTypes: ['tours','events','carhire','packages'],
+                 collapseRefineTools: false,
+                 enableRegionSearch: true,
+                 itemDetailPageURL: './details.html',
+                 showAllAccom: true,
+                 showLocationFilter: true,
+                 vcID: 188,
+                 enableRegionSearch: true,
+                 forceRegionState: 'SA',
+                 forceRegionRegion: 'Kangaroo Island',
+                 forceRegionLoc: 'Cape Gantheaume Conservation Park and Wilderness P'
+             });
+         });
+
         </script>
     </body>
 </html>

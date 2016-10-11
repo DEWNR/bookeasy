@@ -75,7 +75,7 @@ jQuery(document).on('gadget.script.loaded', function() {
             operatorInfo = jQuery(this).find('.OperatorInfo');
 
             // remove unwanted elements
-            jQuery(this).find('.RoomConfig, .MaxGuests, .OperatorItemHeading, .OperatorInfoMore').remove();
+            jQuery(this).find('.OperatorItemHeading, .OperatorInfoMore').remove();
 
             jQuery(this).find('a:not([class])').wrap('<h3>');
 
