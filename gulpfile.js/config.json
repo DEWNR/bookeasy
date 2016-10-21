@@ -29,6 +29,9 @@
           },{
               "source": ["src/javascripts/inline/details-gadget.js"],
               "filename": "inline/details-gadget.js"
+          },{
+              "source": ["src/javascripts/inline/region-gadget.js"],
+              "filename": "inline/region-gadget.js"
           }
       ],
       "extensions": ["js"]
