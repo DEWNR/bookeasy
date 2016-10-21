@@ -1,9 +1,9 @@
 var config = require('../config')
-var compact = require('lodash/array/compact')
+var compact = require('lodash.compact')
 
 // Grouped by what can run in parallel
 var assetTasks = ['fonts', 'images', 'svgSprite']
-var codeTasks = ['html', 'css', 'js']
+var codeTasks = ['htmlData', 'html', 'css', 'js']
 
 module.exports = function(env) {
 
@@ -13,8 +13,12 @@ module.exports = function(env) {
     }
   }
 
+  function exists(value) {
+    return !!value
+  }
+
   return {
-    assetTasks: compact(assetTasks.map(matchFilter)),
-    codeTasks: compact(codeTasks.map(matchFilter))
+    assetTasks: compact(assetTasks.map(matchFilter).filter(exists)),
+    codeTasks: compact(codeTasks.map(matchFilter).filter(exists))
   }
 }

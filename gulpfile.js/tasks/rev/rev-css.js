@@ -14,6 +14,7 @@ gulp.task('rev-css', function(){
     .pipe(rev())
     .pipe(cssnano({discardComments: {removeAll: true}}))
     .pipe(replace('../images/', ''))
+    .pipe(replace('../fonts/', ''))
     .pipe(gulp.dest(config.root.dest))
     .pipe(revNapkin({verbose: false}))
     .pipe(rev.manifest(path.join(config.root.dest, 'rev-manifest.json'), {merge: true}))

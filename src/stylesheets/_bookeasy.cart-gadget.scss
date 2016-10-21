@@ -1,0 +1,233 @@
+/*------------------------------------*\
+    #CART GADGET
+\*------------------------------------*/
+
+// scss-lint:disable all
+
+#toolbar-cart {
+    .item,
+    .total,
+    .totalDisplay {
+        display: none;
+    }
+}
+
+.add-to-cart-form {
+    color: $sagovau-color-text-base;
+    font-family: 'Frutiger LT Com', Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 200;
+
+    .addButton {
+        padding: 0 20px 20px;
+        float: left;
+        width: 100%;
+        box-sizing: border-box;
+
+        a {
+            font-family: 'Dewnrger', 'Frutiger LT Com', Helvetica, Arial, sans-serif;
+            padding: 0.8em 1em 0.6em;
+            font-weight: normal;
+            float: right;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-left: 10px;
+            color: #fff;
+
+            &.previous {
+                float: left;
+                margin-left: 0;
+
+                &::before {
+                    content: '< ';
+                    position: relative;
+                    top: -1px;
+                }
+            }
+
+
+            &.next {
+                &::after {
+                    content: ' >';
+                    position: relative;
+                    top: -1px;
+                }
+            }
+
+            &.previous,
+            &.next {
+                border: 0;
+                color: $sagovau-color-brand;
+
+                &:hover {
+                    color: $sagovau-color-text-base;
+                }
+            }
+
+            &.addToCart {
+                color: $sagovau-color-brand!important;
+                background: none!important;
+
+                &:hover {
+                    color: $sagovau-color-text-base!important;
+                    background: none!important
+                };
+            }
+
+            &.checkOutNow {
+                background: $sagovau-color-brand!important;
+
+                &:hover {
+                    background: lighten($sagovau-color-brand, 5%)!important;
+                };
+            }
+        }
+    }
+}
+
+
+.add-to-cart-information {
+    padding: 20px;
+
+    .name {
+        color: $sagovau-color-brand;
+        font-family: 'Dewnrger', 'Frutiger LT Com', Helvetica, Arial, sans-serif;
+        font-size: 22px;
+        font-weight: bold;
+        margin: 0 0 10px;
+    }
+
+    .price,
+    .quantity,
+    .date,
+    .adults {
+        padding: 5px 0;
+
+        label {
+            font-family: 'Dewnrger', 'Frutiger LT Com', Helvetica, Arial, sans-serif;
+            display: inline-block;
+            width: 100px;
+            font-weight: normal;
+        }
+    }
+
+    .AdditionalData {
+        padding-top: 10px;
+    }
+
+    .bookingQuestion {
+        border: 1px solid $sagovau-color-brand;
+    }
+
+    .accordian {
+        &.collapsed {
+            .accordian-content {
+                display: none;
+            }
+        }
+
+        &:last-of-type {
+
+            .accordian-header {
+                border: 0;
+            }
+        }
+    }
+
+    .accordian-header {
+        color: #fff;
+        font-family: 'Dewnrger', 'Frutiger LT Com', Helvetica, Arial, sans-serif;
+        font-size: 18px;
+        font-weight: normal;
+        background: $sagovau-color-brand;
+        padding: 8px 10px 5px;
+        border-bottom: 1px solid #fff;
+    }
+
+    .accordian-content {
+        padding: 0 20px 0;
+    }
+
+    .bookingQuestion-container {
+        padding: 20px 0 0;
+    }
+
+    .bookingQuestion-answer-actions {
+        .bookingQuestion-container {
+            padding-top: 0;
+        }
+    }
+
+    .bookingQuestion-title {
+        font-weight: normal;
+        margin-bottom: 0.3em;
+        display: block;
+    }
+
+    .bookingQuestion-answer-field[type='text'],
+    .bookingQuestion-answer-field[type='textbox'] {
+        width: 300px;
+        padding: 10px;
+        font-family: 'Frutiger LT Com', Helvetica, Arial, sans-serif;
+        font-size: 16px;
+        color: $sagovau-color-text-base;
+        outline: 0;
+        border: 1px solid #ccc;
+
+        &:focus,
+        &:hover {
+            border: 1px solid $sagovau-color-brand;
+        }
+
+    }
+
+    .bookingQuestion-answer-message {
+        padding: 10px;
+        font-style: italic;
+
+        &:empty {
+            // padding: 0;
+        }
+    }
+}
+
+
+#wdOverlayContent {
+    top: 20px!important;
+    margin-top: 0!important;
+}
+
+
+#wdOverlayClose {
+    display: block;
+    cursor: pointer;
+    width: 29px;
+    height: 26px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: none;
+    background-color: #4e4e4e;
+
+    i {
+        display: none;
+    }
+
+    &:focus,
+    &:hover {
+        background-color: #b00;
+    }
+
+    &::before {
+        content: 'x';
+        color: #fff;
+        font-size: 30px;
+        font-weight: 100;
+        font-family: tahoma, verdana, arial, sans-serif;
+        display: block;
+        padding-left: 8px;
+        padding-top: 0;
+        line-height: 1.2rem;
+    }
+}

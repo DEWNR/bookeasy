@@ -2,52 +2,8 @@
     #BOOKEASY
 \*------------------------------------*/
 
-/**
- * Combine all the SASS components required to compile the bookeasy-new.css file.
- **/
+@import 'settings.general';
 
-
-
-
-
-/* = Settings = */
-@import 'dewnr-bedrock/sass/functions.color';
-@import 'dewnr-bedrock/sass/settings.general';
-@import 'dewnr-bedrock/sass/settings.variants';
-@import 'inuit-defaults/settings.defaults';
-@import 'dewnr-bedrock/sass/settings.inuitcss';
-@import 'dewnr-bedrock/sass/settings.specific';
-@import 'inuit-functions/tools.functions';
-@import 'inuit-mixins/tools.mixins';
-@import 'inuit-responsive-tools/tools.responsive';
-@import 'inuit-tools-widths/tools.widths';
-@import 'dewnr-bedrock/sass/tools.mixins';
-
-
-/* = override over specific main css = */
-#main.content {
-    .content__fullwidth {
-        a {
-            text-decoration: none;
-        }
-
-        table,
-        td,
-        th {
-            border: 0;
-        }
-    }
-}
-
-/* = Bookeasy = */
-@import 'bookeasy.settings';
-@import 'bookeasy.search-gadget';
-@import 'bookeasy.region-gadget';
+@import 'bookeasy.cart-gadget';
 @import 'bookeasy.details-gadget';
-@import 'bookeasy.cart';
-@import 'bookeasy.conditions';
-@import 'bookeasy.booking-gadget';
-@import 'bookeasy.location-selector';
-
-@import 'bookeasy.mobile';
-@import 'bookeasy.inline';
+@import 'bookeasy.search-gadget';

@@ -1,0 +1,87 @@
+/*------------------------------------*\
+    #GENERAL SETTINGS
+\*------------------------------------*/
+
+
+/* = Namespace = */
+
+/**
+ * A prefix that can be used to prevent class name collisions. Use "null" to
+ * ignore.
+ **/
+
+$sagovau-namespace: null;
+
+
+
+
+
+/* = Colours = */
+
+/**
+ * All colours for in settings files; only tints/shades or combinations of these
+ * colours may be used elsewhere.
+ **/
+
+/* == Tint and shade percentage == */
+
+/**
+ * Set the default tint/shade percentage for creating lighter/darker version
+ * of a colour.
+ **/
+
+$sagovau-tint-base: 90%;
+$sagovau-shade-base: $sagovau-tint-base;
+
+
+/* == High-level colours == */
+
+$sagovau-color-brand: #08713e;
+
+$sagovau-color-brand-secondary: null;
+
+
+$sagovau-color-text-base: #333;
+$sagovau-color-text-reverse: #fff;
+$sagovau-color-background-base: #fff;
+
+
+
+
+
+/* == Utility colours == */
+
+$sagovau-color-success: shade(#008000, 20%);
+
+$sagovau-color-warning: shade(#ffa500, 20%);
+
+$sagovau-color-danger: shade(#f00, 20%);
+
+
+
+
+
+/* = Fonts =*/
+
+$sagovau-font-family-base: "Frutiger LT Com", Helvetica, Arial, sans-serif;
+$sagovau-font-family-highlight: $sagovau-font-family-base;
+
+
+$sagovau-font-size-base: 16px;
+$sagovau-line-height-base: 24px;
+
+
+
+
+
+/* = Layout = */
+
+$sagovau-spacing-unit-base: $sagovau-line-height-base;
+
+
+
+
+
+/* = Animation = */
+
+$sagovau-transition-time: 0.3s;

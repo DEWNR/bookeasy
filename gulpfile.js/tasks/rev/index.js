@@ -1,4 +1,8 @@
+var config = require('../../config')
+if(!config.tasks.production.rev) return
+
 var gulp         = require('gulp')
+var gutil        = require('gulp-util')
 var gulpSequence = require('gulp-sequence')
 
 // If you are familiar with Rails, this task the equivalent of `rake assets:precompile`
@@ -14,8 +18,6 @@ var revTask = function(cb) {
     'rev-js',
     // 5) Update asset references in HTML
     'update-html',
-    // 6) Report filesizes
-    'size-report',
   cb)
 }
 
