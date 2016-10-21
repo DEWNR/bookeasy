@@ -1,0 +1,141 @@
+/*------------------------------------*\
+    #NPSA BOOKEASY CHECKOUT
+\*------------------------------------*/
+
+// scss-lint:disable all
+
+
+$sagovau-color-background-base: #4e4e4e;
+$sagovau-color-brand: #006936;
+$sagovau-color-text-base: #4e4e4e;
+$sagovau-namespace: '';
+$sagovau-transition-time: 0.3s;
+$sagovau-font-size-base: 14px;
+$sagovau-line-height-base: 20px;
+$sagovau-spacing-unit-base: $sagovau-line-height-base;
+$sagovau-font-family-base: 'Frutiger W01', Helvetica, Arial, sans-serif;
+
+@import 'bookeasy.booking-gadget';
+
+
+
+
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: $sagovau-font-family-base;
+    font-size: $sagovau-font-size-base;
+    line-height: 1.8;
+    color: $sagovau-color-text-base;
+}
+
+main {
+    background: #fff;
+}
+
+img {
+    max-width: 100%;
+    font-style: italic;
+    vertical-align: middle;
+    border: 0;
+}
+
+.wrapper {
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+
+
+
+/*header*/.#{$sagovau-namespace}global-header {
+    background: $sagovau-color-background-base;
+    box-shadow: 0 -2px 35px rgba(0, 0, 0, 0.8);
+    padding: 9px 0;
+    position: relative;
+    z-index: 150;
+    font-family: $sagovau-font-family-base;
+
+    .wrapper {
+        align-items: center;
+        display: flex;
+    }
+}
+
+
+    /*a*/.#{$sagovau-namespace}global-header__logotype {
+        margin: 0 auto;
+        width: 266px;
+        height: 32px;
+
+        img {
+            display: block;
+            margin-top: -5px;
+        }
+    }
+
+
+
+
+
+/*div*/.#{$sagovau-namespace}page-intro {
+    padding: 2em 1em 1em;
+    max-width: 660px;
+    margin: 0 auto;
+}
+
+    /*h1*/.#{$sagovau-namespace}page-intro__title {
+        color: $sagovau-color-brand;
+        margin: 0;
+        padding-top: 30px;
+
+        @media only screen and (max-width: 481px) {
+            margin: 0;
+            padding-top: 0;
+        }
+    }
+
+    /*div*/.#{$sagovau-namespace}page-intro__content {
+        p {
+            margin: 0;
+        }
+    }
+
+
+
+
+
+/*footer*/.#{$sagovau-namespace}site-footer {
+    background: $sagovau-color-background-base;
+    text-align: center;
+    padding: 20px 0;
+}
+
+    /*div*/.#{$sagovau-namespace}site-footer__logos {
+        padding: $sagovau-spacing-unit-base $sagovau-spacing-unit-base 0;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
+        max-width: 870px;
+        margin: 0 auto;
+    }
+
+        /*a*/.#{$sagovau-namespace}site-footer__logo {
+            margin: 0 0 $sagovau-spacing-unit-base;
+            display: block;
+            width: 152px;
+        }
+
+
+    /*p*/.#{$sagovau-namespace}site-footer__copyright {
+        color: #9f9e9d;
+        margin: 0;
+        padding: $sagovau-spacing-unit-base;
+
+        a {
+            color: #9f9e9d;
+            text-decoration: none;
+        }
+    }

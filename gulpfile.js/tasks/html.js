@@ -40,10 +40,11 @@ var htmlTask = function(cb) {
         .pipe(data(getData))
         .on('error', handleErrors)
         .pipe(render({
-          path: config.tasks.html.templatePaths,
-          envOptions: {
+        path: config.tasks.html.templatePaths,
+        ext: '.html',
+        envOptions: {
             watch: false
-          }
+        }
         }))
         .on('error', handleErrors)
         .pipe(gulpif(global.production, htmlmin(config.tasks.html.htmlmin)))

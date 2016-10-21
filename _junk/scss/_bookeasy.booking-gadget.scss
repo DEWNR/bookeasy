@@ -1,0 +1,401 @@
+/*------------------------------------*\
+    #BOOKEASY BOOKING GADGET
+\*------------------------------------*/
+
+// scss-lint:disable all
+
+
+#bookeasy__booking-gadget {
+    max-width: 660px;
+    margin: 0 auto 80px;
+    padding: 1em;
+    min-height: 400px;
+
+    @media only screen and (max-width: 481px) {
+        margin: 0 auto;
+        padding-top: 0;
+    }
+
+    * {
+        font-family: $sagovau-font-family-base;
+        font-size: $sagovau-font-size-base;
+        color: $sagovau-color-text-base;
+    }
+
+
+    .checkout-cart,
+    .checkout-complete {
+        width: 1000px;
+        margin: 0 auto;
+    }
+
+
+    div.booking-gadget.BE {
+
+        h3 {
+            color: $sagovau-color-brand;
+            margin: 0;
+            padding-top: 1em;
+            font-size: 18px;
+        }
+
+        a {
+            color: $sagovau-color-brand;
+
+            span {
+                color: $sagovau-color-brand;
+            }
+        }
+
+        label,
+        span {
+            padding-bottom: 10px;
+        }
+
+        input[type=text]:focus,
+        textarea:focus,
+        select:focus {
+            border: 1px solid $sagovau-color-brand;
+            box-shadow: 0 0 0 2px $sagovau-color-brand;
+        }
+
+        select {
+            box-shadow: 0 0 0 2px #fff;
+            margin-right: 1em;
+        }
+
+        input[type=text],
+        textarea {
+            transition: all .30s ease-in-out;
+            border: 1px solid #ddd;
+            outline: none;
+        }
+
+        .acceptCancellationPolicy span {
+            padding-bottom: 0px;
+        }
+
+        select,
+        textarea,
+        input {
+            margin-top: 6px;
+            margin-bottom: 6px;
+        }
+
+        option {
+            line-height: 200%;
+            line-height: 50px;
+        }
+
+        span.ccLabel {
+            padding: 0;
+        }
+
+        div.button {
+            text-align: right;
+            padding: 0 0 20px;
+
+            a {
+               padding: 1em 1em 0.8em;
+               color: #fff;
+               border: none;
+               border-radius: 6px;
+               background: $sagovau-color-brand;
+               text-decoration: none;
+
+
+               span {
+                   padding:0;
+                   line-height: 1.2em;
+                   color: #fff;
+               }
+
+               &:hover {
+                   background-color: #454;
+               }
+
+               &:active {
+                   background-color: darken($sagovau-color-brand, 80%);
+                   outline: none;
+
+                   span {
+                       color: #fff;
+                   }
+               }
+           }
+        }
+
+
+        div.shopping-cart {
+            width: 100%;
+            margin: 0 0 50px;
+            padding: 0;
+            float: none;
+
+            div.cartItems {
+                border: 0;
+                border-radius: 0;
+                min-height: 0;
+                padding: 0;
+
+                div.operator {
+                    margin-bottom: 0.5em;
+                }
+
+                div.total {
+                    position: static;
+                    text-align: right;
+                    padding-right: 30px;
+
+                    label {
+                        font-size: 18px;
+                    }
+
+                    span {
+                        font-size: 20px;
+                    }
+                }
+
+                div.item {
+
+                    div.remove {
+                        a {
+                            display: block;
+                            cursor: pointer;
+                            width: 23px;
+                            height: 20px;
+                            position: absolute;
+                            right: 0px;
+                            top: 2px;
+                            background: none;
+                            background-color: rgb(169, 169, 169);
+                            text-decoration: none;
+
+                            &:hover {
+                                background-color: #b00;
+                            }
+
+                            &:before {
+                                content: "x";
+                                color: #fff;
+                                font-size: 1rem;
+                                font-weight: 100;
+                                font-family: tahoma, verdana, arial, sans-serif;
+                                padding-left: 8px;
+                                line-height: 1.2em; //IE can't use REM
+                                position: absolute;
+                                padding-top: 1px;
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+
+
+        div.personalDetails,
+        div.ccDetails {
+            width: 100%;
+            border: 0;
+            padding: 0;
+            border-radius: 0;
+            min-height: 0;
+
+            > div {
+                float: left;
+                clear: left;
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            label {
+                width: 40%;
+                float: left;
+                margin: 6px 0 0;
+                padding-top: 10px;
+
+                @media only screen and (max-width: 481px) {
+                    width: 100%;
+                    padding-bottom: 0;
+                }
+
+            }
+
+            .cardTypes label {
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+
+            .cardExpiry label {
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+
+            input,
+            select {
+                font-size: $sagovau-font-size-base;
+                padding: 10px;
+                width: 60%;
+                box-sizing: border-box;
+                float: left;
+
+                @media only screen and (max-width: 481px) {
+                    width: 100%;
+                }
+            }
+
+            select.paym {
+                width: 6em;
+            }
+
+            select:focus {
+                outline: 0;
+            }
+
+            textarea {
+                width: 55%;
+            }
+
+            div.required label::after {
+                content: ' *';
+                color: #f00;
+            }
+        }
+
+        div.personalDetails {
+            margin-bottom: 50px;
+
+            @media only screen and (max-width: 481px) {
+                margin-bottom: 20px;
+            }
+
+            input {
+                margin-top: 6px;
+                margin-bottom: 0;
+            }
+
+            .salutation,
+            .address,
+            .city,
+            .state,
+            .country,
+            .WhereDidYouHearId,
+            .comment {
+                display: none;
+            }
+
+            select {
+                width: 58.6%;
+            }
+
+            div.acceptCancellationPolicy,
+            div.receiveENewsletter {
+
+                label {
+                    padding-top: 0;
+                    padding-bottom: 10px;
+
+                    @media only screen and (max-width: 481px) {
+                        width: 80%;
+                    }
+                }
+
+                input {
+                    left: initial;
+                    left: auto; /* IE */
+                    right: initial;
+                    right: auto; /* IE */
+                }
+
+                input[type=checkbox] {
+                    width: 24px;
+                    height: 24px;
+                    top: 2px;
+                    margin-left: 8px;
+                }
+
+            }
+
+        }
+
+        div.ccDetails div.BE_error span.validationError {
+            padding-bottom: 10px;
+        }
+
+        div.personalDetails div.BE_error span.validationError {
+            padding-left: 41%;
+        }
+
+        div.cartItems {
+
+            div.item div.bookingQuestions {
+                line-height: 1.6em;
+            }
+
+            div.item div.price label {
+                width: 10em;
+            }
+
+            div.cartItems div.total,
+            div.cartInOverlay div.cartItems div.total {
+                right: 10px;
+                padding-right: 30px;
+            }
+        }
+
+    }
+}
+
+
+.checkout-complete {
+
+    div.bookingComplete,
+    div.booking-complete {
+        width: auto;
+        float: none;
+        border: 0;
+        border-radius: 0;
+        padding: 20px 20px 0;
+        background: rgba(255, 255, 255, .95);
+        min-height: 0;
+        margin: 0;
+        font-family: Helvetica,Arial,sans-serif;
+        color: #4e4e4e;
+
+        div.bookingComplete a {
+            display: none;
+        }
+    }
+
+    div.booking-complete {
+        text-align: center;
+        padding-bottom: 40px;
+
+        a {
+            display: block;
+            color: #4e4e4e;
+        }
+    }
+
+    #confirm {
+        display: none;
+    }
+
+}
+
+
+.acceptCancellationPolicy {
+
+    .validationError {
+        width: 56%;
+        padding-left: 0%;
+
+        span {
+            margin-left: 40px;
+            display: block;
+            padding-top: 0;
+        }
+    }
+
+}

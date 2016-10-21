@@ -14,8 +14,8 @@
 
 .add-to-cart-form {
     color: $sagovau-color-text-base;
-    font-family: 'Frutiger LT Com', Helvetica, Arial, sans-serif;
-    font-size: 16px;
+    font-family: $sagovau-font-family-base;
+    font-size: $sagovau-font-size-base;
     font-weight: 200;
 
     .addButton {
@@ -25,7 +25,7 @@
         box-sizing: border-box;
 
         a {
-            font-family: 'Dewnrger', 'Frutiger LT Com', Helvetica, Arial, sans-serif;
+            font-family: $sagovau-font-family-highlight;
             padding: 0.8em 1em 0.6em;
             font-weight: normal;
             float: right;
@@ -92,7 +92,7 @@
 
     .name {
         color: $sagovau-color-brand;
-        font-family: 'Dewnrger', 'Frutiger LT Com', Helvetica, Arial, sans-serif;
+        font-family: $sagovau-font-family-highlight;
         font-size: 22px;
         font-weight: bold;
         margin: 0 0 10px;
@@ -105,7 +105,7 @@
         padding: 5px 0;
 
         label {
-            font-family: 'Dewnrger', 'Frutiger LT Com', Helvetica, Arial, sans-serif;
+            font-family: $sagovau-font-family-highlight;
             display: inline-block;
             width: 100px;
             font-weight: normal;
@@ -137,7 +137,7 @@
 
     .accordian-header {
         color: #fff;
-        font-family: 'Dewnrger', 'Frutiger LT Com', Helvetica, Arial, sans-serif;
+        font-family: $sagovau-font-family-highlight;
         font-size: 18px;
         font-weight: normal;
         background: $sagovau-color-brand;
@@ -169,8 +169,8 @@
     .bookingQuestion-answer-field[type='textbox'] {
         width: 300px;
         padding: 10px;
-        font-family: 'Frutiger LT Com', Helvetica, Arial, sans-serif;
-        font-size: 16px;
+        font-family: $sagovau-font-family-base;
+        font-size: $sagovau-font-size-base;
         color: $sagovau-color-text-base;
         outline: 0;
         border: 1px solid #ccc;

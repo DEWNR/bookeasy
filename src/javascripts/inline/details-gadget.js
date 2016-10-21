@@ -5,11 +5,11 @@ $w(function() {
         defaultDate: new Date(),
         descriptionHover: true,
         period: 1,
-        productID: '65726',
+        productID: '73176',
         showHoverInline: true,
         showQuantity: false,
         thumbsInGrid: true,
-        type: 'tours',
+        type: 'accom',
         vcID: 188
     });
 

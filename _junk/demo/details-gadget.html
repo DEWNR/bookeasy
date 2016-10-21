@@ -1,0 +1,32 @@
+{% extends 'layouts/nostyles.html' %}
+
+
+
+
+
+{% block content %}
+
+    <div id="bookeasy__cart-gadget"></div>
+
+    <div id="bookeasy__details-gadget"></div>
+
+    <div id="bookeasy__conditions"></div>
+
+{% endblock %}
+
+
+
+
+
+{% block global_javascript %}
+    {{ super() }}
+{% endblock %}
+
+
+{% block local_javascript %}
+    <script src="//gadgets.impartmedia.com/gadgets.jsz?key={{ bookeasy_key }}"></script>
+
+    <script src="/js/bookeasy-details.js" inline></script>
+
+    <script src="/js/bookeasy-cart.js" inline></script>
+{% endblock %}

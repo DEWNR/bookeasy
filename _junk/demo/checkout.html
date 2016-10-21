@@ -1,0 +1,26 @@
+{% extends 'layouts/nostyles.html' %}
+
+
+
+
+
+{% block content %}
+
+    <div id="bookeasy__booking-gadget"></div>
+
+{% endblock %}
+
+
+
+
+
+{% block global_javascript %}
+    {{ super() }}
+{% endblock %}
+
+
+{% block local_javascript %}
+    <script src="//gadgets.impartmedia.com/gadgets.jsz?key={{ bookeasy_key }}"></script>
+
+    <script src="/js/bookeasy-booking.js" inline></script>
+{% endblock %}

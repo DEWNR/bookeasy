@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+
+        <style>
+            a.more.OperatorInfoMore, a.more.OperatorInfoLess {
+                display: none;
+            }
+            body div.details-gadget.BE div.priceGrid table tbody tr td.name div.thumb {
+                width:150px;
+                height:150px;
+            }
+            body div.details-gadget.BE div.priceGrid table tbody tr td.name div.thumb img {
+                width: 150px;
+            }
+        </style>
+    </head>
+    <body>
+
+
+        <div id="toolbar-cart"></div>
+
+        <div class="campground id73176"></div>
+
+        <div id="operatorDetails"></div>
+
+        <div id="operatorDirections"></div>
+        <div id="operatorConditions"></div>
+
+        <script src="https://code.jquery.com/jquery-1.9.1.min.js" integrity="sha256-wS9gmOZBqsqWxgIVgA8Y9WcQOa7PgSIX+rPA0VL2rbQ=" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="//gadgets.impartmedia.com/gadgets.jsz?key=7e5893292834eb2b34cd1d9b11437df9"></script>
+
+        <script>
+            var operatorIDs = [73149];
+            var operatorPageType = 'camping';
+
+            var acceptBookings = true;
+
+            // $('.OperatorInfoHidden').toggleClass('OperatorInfoHidden OperatorInfoVisible');
+
+
+            jQuery(window).load(function(){
+                $alterPageTimer = setInterval(function() {
+                    // expand hidden OperatorInfo in the details-gadget
+                    if (jQuery(".details-gadget.BE").length > 0) {
+                        console.log('here clearTimer');
+                        jQuery('.details-gadget.BE .OperatorInfoHidden').toggleClass('OperatorInfoVisible');
+                        jQuery('.details-gadget.BE .OperatorInfoHidden').toggleClass('OperatorInfoHidden');
+                        // jQuery(".details-gadget.BE .search-gadget").append("<div class='clear'></div>");
+                        clearInterval($alterPageTimer);
+                    }
+                }, 100);
+            });
+
+        </script>
+
+        <script type="text/javascript" src="js/bookeasy.details.js"></script>
+
+        <script type="text/javascript">
+            $w(function() {
+                BE.gadget.cart("#toolbar-cart", {
+                    vcID:"188",
+                    bookingURL:"http://www.environment.sa.gov.au/dev/bookeasy/test/checkout.html",
+                    autoCollapse:true
+                });
+            });
+        </script>
+
+    </body>
+</html>
