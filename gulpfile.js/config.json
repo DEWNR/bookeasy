@@ -32,6 +32,12 @@
           },{
               "source": ["src/javascripts/inline/region-gadget.js"],
               "filename": "inline/region-gadget.js"
+          },{
+              "source": ["src/javascripts/inline/parks-data.js"],
+              "filename": "inline/parks-data.js"
+          },{
+              "source": ["src/javascripts/booking-statewide.js"],
+              "filename": "booking-statewide.js"
           }
       ],
       "extensions": ["js"]

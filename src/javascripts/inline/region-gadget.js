@@ -11,10 +11,10 @@ $w(function() {
                 size: [26,45]
             }
         },
-        defaultSort: 'name', // or location
-        period: 1, // number of days to display
         defaultDaysFromToday: 1, // tomorrows date
+        defaultSort: 'name', // or location
         itemDetailPageURL: './details-gadget.html',
+        period: 1, // number of days to display
         showAllAccom: true, // show all, even if unavailable for time period
         showList: false, // hide details tab
         // disabledTypes: ['carhire','events','tours','packages'],

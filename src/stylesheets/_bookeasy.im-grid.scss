@@ -29,6 +29,8 @@
             }
 
             &.date {
+                border-left: 1px solid $sagovau-color-brand;
+
                 a {
                     display: block;
                     font-size: 12px;
@@ -130,6 +132,7 @@
                 }
 
                 .date {
+                    border-color: $sagovau-color-brand;
 
                     a {
                         display: block;

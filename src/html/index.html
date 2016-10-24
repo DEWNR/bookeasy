@@ -1,4 +1,4 @@
-{% extends 'layouts/home.html' %}
+{% extends 'layouts/master.html' %}
 
 
 
@@ -6,20 +6,38 @@
 
 {% block content %}
 
-    <h1>Bookeasy</h1>
+    <div id="bookeasy__cart-gadget"></div>
 
-    <h2>Styled examples</h2>
-    <ul>
-        <li><a href="/region-gadget.html">Region gadget</a></li>
-        <li><a href="/details-gadget.html">Details Gadget</a></li>
-        <li><a href="/statewide-map.html">Statewide map</a></li>
-    </ul>
+    <div class="location-selector  input-group">
+        <select class="location-selector__select  select-custom"></select>
+    </div>
 
-    <h2>Demo</h2>
-    <ul>
-        <li><a href="/demo/region-gadget.html">Region gadget</a></li>
-        <li><a href="/demo/details-gadget.html">Details Gadget</a></li>
-        <li><a href="/demo/statewide-map.html">Statewide map</a></li>
-    </ul>
+
+    <div id="bookeasy__region-gadget">Loading...</div>
+
+{% endblock %}
+
+
+
+
+
+{% block global_javascript %}
+    {{ super() }}
+{% endblock %}
+
+
+{% block local_javascript %}
+
+    <script src="//gadgets.impartmedia.com/gadgets.jsz?key={{ bookeasy_key }}"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+
+    <script src="js/bookeasy-mods.js"></script>
+
+    <script src="js/inline/parks-data.js" inline></script>
+
+    <script src="js/booking-statewide.js"></script>
+
+    <script src="js/inline/cart-gadget.js" inline></script>
 
 {% endblock %}

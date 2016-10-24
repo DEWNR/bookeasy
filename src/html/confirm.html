@@ -20,11 +20,12 @@
 
 
 {% block local_javascript %}
+
     <script src="//gadgets.impartmedia.com/gadgets.jsz?key={{ bookeasy_key }}"></script>
 
     <script>
 
-        $w(function() {
+        $(function() {
             BE.gadget.confirm('#bookeasy__confirmation-gadget', {
                 thankYouText: 'Thank you for your booking. You can download your itinerary with the link below.',
                 pdfLinkText: 'Download your itinerary PDF now.'

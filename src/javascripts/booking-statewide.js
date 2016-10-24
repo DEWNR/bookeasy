@@ -9,7 +9,7 @@ if (typeof productsData !== 'undefined') {
     var aAllLocations = Object.keys(productsData);
     var aFilteredLocations = []; // contains an array of locations to show in region gadget
     var urlHash = location.hash.replace(/^#/, '').trim();
-    var hideProductTypes = ['tours','carhire','packages'];
+    var hideProductTypes = ['tours','carhire','events','packages'];
     var bShowRegionGadget = 1;
 
     urlHash = urlHash.replace(/%20/g, ' ');
@@ -121,7 +121,7 @@ if (typeof productsData !== 'undefined') {
 
     function typeShow(productType) {
 
-        hideProductTypes = ['accom','tours','carhire','packages'];
+        hideProductTypes = ['accom','tours','carhire','events','packages'];
 
         var posInArray = $.inArray(productType, hideProductTypes);
 
@@ -137,37 +137,30 @@ if (typeof productsData !== 'undefined') {
 
         hasAccomodation = displayProductsData();
 
-        var bookingDate = new Date();
-
-        bookingDate.setDate(bookingDate.getDate() + 1);
-
         // only load gadget for those with camping / accomodation
         if (hasAccomodation) {
             BE.gadget.region('#bookeasy__region-gadget', {
-                accomOnlyMode: true,
+                accomOnlyMode: true, // only display accommodation
                 adults: 1,
+                collapseRefineTools: true,
                 customMapIcons: {
                     'accom': {
-                        icon:'//www.environment.sa.gov.au/files/templates/00000000-0000-0000-0000-000000000000/c16a6c2a-2cdc-4f08-96b9-f1c11eb6f349/npsa-marker-general.png',
+                        icon: '//www.environment.sa.gov.au/assets/images/svg/npsa-marker-general.svg',
                         pinpoint: [13,45],
                         size: [26,45]
                     }
                 },
-                collapseRefineTools: false,
-                collapseRefineTools: true,
-                defaultDate: bookingDate,
-                defaultRegionState: 'South Australia',
-                defaultSort: 'name',
-                enableRegionSearch: false,
-                forceAccomType: '',
-                disabledTypes: hideProductTypes,
+                defaultDaysFromToday: 1, // tomorrows date
+                defaultSort: 'name', // or location
                 ignoreSearchCookie: true,
-                itemDetailPageURL: '//www.environment.sa.gov.au/parks/booking/details',
+                itemDetailPageURL: './details-gadget.html',
                 limitLocations: aFilteredLocations,
-                period: 1,
-                showAllAccom: true,
-                showList: false,
+                period: 1, // number of days to display
+                showAllAccom: true, // show all, even if unavailable for time period
+                showList: false, // hide details tab
+                disabledTypes: hideProductTypes,
                 showLocationFilter: false,
+                showRefineTools: false,
                 vcID: 188
             });
         } else {
