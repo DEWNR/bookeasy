@@ -99,6 +99,8 @@
     .price,
     .quantity,
     .date,
+    .dateEnd,
+    .period,
     .adults {
         padding: 5px 0;
 
@@ -147,7 +149,7 @@
         padding: 0 20px 0;
     }
 
-    .bookingQuestion-container {
+    .bookingQuestionSets {
         padding: 20px 0 0;
     }
 
@@ -161,6 +163,11 @@
         font-weight: normal;
         margin-bottom: 0.3em;
         display: block;
+    }
+
+    [type='radio'] {
+        margin-left: 10px;
+        margin-right: 5px;
     }
 
     .bookingQuestion-answer-field[type='text'],
