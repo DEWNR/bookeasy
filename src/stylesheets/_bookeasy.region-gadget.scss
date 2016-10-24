@@ -5,11 +5,21 @@
 // scss-lint:disable all
 
 
+#bookeasy__region-gadget {
+    font-family: $sagovau-font-family-base;
+    font-size: $sagovau-font-size-base;
+}
+
 .region-gadget {
     color: $sagovau-color-text-base;
     font-family: $sagovau-font-family-base;
     font-size: $sagovau-font-size-base;
     font-weight: 200;
+
+    .embedded-search {
+        position: relative;
+        z-index: 100;
+    }
 
     .thumb {
         margin-right: 20px;

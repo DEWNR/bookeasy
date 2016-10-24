@@ -84,7 +84,6 @@
 
                 &.price {
                     font-weight: normal;
-                    font-size: 20px;
                 }
 
                 &.sold {
@@ -114,6 +113,37 @@
 
             &.even {
                 background: #fff;
+            }
+
+            &.inline-header {
+                font-family: $sagovau-font-family-highlight;
+                background: darken($sagovau-color-brand, 5%);
+                text-align: center;
+                color: #fff;
+                font-size: $sagovau-font-size-base;
+                font-weight: normal;
+
+                .title,
+                .label {
+                    text-align: left;
+                    padding: 5px 10px;
+                }
+
+                .date {
+
+                    a {
+                        display: block;
+                        font-size: 12px;
+                        line-height: 1.1;
+                        font-weight: normal;
+
+                        &.date {
+                            color: #dca502;
+                            font-weight: bold;
+                            font-size: $sagovau-font-size-base;
+                        }
+                    }
+                }
             }
         }
 
@@ -171,6 +201,10 @@
         font-size: 22px;
     }
 
+
+    .type-group {
+        display: none;
+    }
 }
 
 
@@ -190,6 +224,12 @@
     .number {
         display: block;
         font-size: 20px;
+    }
+
+    a {
+        text-decoration: none;
+        color: #fff;
+        display: block;
     }
 
     &:focus,

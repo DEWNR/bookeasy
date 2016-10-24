@@ -4,12 +4,10 @@
 
 // scss-lint:disable all
 
-#toolbar-cart {
-    .item,
-    .total,
-    .totalDisplay {
-        display: none;
-    }
+
+#bookeasy__cart-gadget {
+    font-family: $sagovau-font-family-base;
+    font-size: $sagovau-font-size-base;
 }
 
 .add-to-cart-form {
@@ -230,4 +228,9 @@
         padding-top: 0;
         line-height: 1.2rem;
     }
+}
+
+.noItems {
+    font-family: $sagovau-font-family-highlight;
+    padding: 20px 0;
 }

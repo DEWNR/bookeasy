@@ -28,12 +28,16 @@
 
     div.concessions,
     div.students,
-    div.observers {
+    div.observers,
+    div.maxPrice,
+    div.facilities,
+    div.accommTypes {
         display: none;
     }
 
     select,
-    .pseudo {
+    .pseudo,
+    .input input {
         font-family: $sagovau-font-family-base;
         font-size: $sagovau-font-size-base;
         padding: .5em;
@@ -46,6 +50,7 @@
         outline: 0;
         line-height: 1;
         font-weight: 200;
+        box-sizing: border-box;
 
         &:focus {
             border-color: #fff;
@@ -76,6 +81,20 @@
 
     div.button   {
         display: none;
+    }
+
+    .refineTools {
+        > div,
+        .byWhich {
+            margin: 0 0 10px;
+        }
+
+        .byWhich,
+        .byOrder {
+            width: 100px;
+            display: inline-block;
+            margin-right: 10px;
+        }
     }
 
 }
