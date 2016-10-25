@@ -57,6 +57,10 @@
             td {
                 background: none;
 
+                &.name {
+                    position: relative;
+                }
+
                 &.thumb {
                     width: 15%;
                     vertical-align: top;
@@ -170,6 +174,7 @@
         float: left;
         padding-bottom: 10px;
         padding-left: 20px;
+        position: relative;
         box-sizing: border-box;
     }
 
@@ -222,6 +227,7 @@
         top: 50%;
         transform: translateY(-50%);
         right: 0;
+        z-index: 1000;
 
         .special {
             clear: both;
@@ -233,11 +239,16 @@
             display: block;
             overflow: hidden;
             text-align: center;
+            background-image: url('//gadgets.impartmedia.com/img/special.png');
 
             &.inactive {
                 background-image: url('//gadgets.impartmedia.com/img/special.png');
                 opacity: 1;
                 cursor: pointer;
+            }
+
+            &.SPY {
+                background-image: url('//gadgets.impartmedia.com/img/special-spy.png');
             }
         }
     }

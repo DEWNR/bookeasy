@@ -28,7 +28,8 @@
             padding-top: 20px;
             padding-left: 20px;
 
-            &.OperatorInfoMore {
+            &.OperatorInfoMore,
+            &.OperatorInfoLess {
                 display: none;
             }
         }
