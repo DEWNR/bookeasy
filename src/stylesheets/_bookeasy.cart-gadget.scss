@@ -8,6 +8,41 @@
 #bookeasy__cart-gadget {
     font-family: $sagovau-font-family-base;
     font-size: $sagovau-font-size-base;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+
+    .item,
+    .total,
+    .checkout {
+        display: none;
+    }
+
+    .totalDisplay {
+        a {
+            background-image: url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjY0cHgiIGhlaWdodD0iNjRweCIgdmlld0JveD0iMCAwIDQ3NS4wODQgNDc1LjA4NSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNDc1LjA4NCA0NzUuMDg1OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnPgoJPGc+CgkJPHBhdGggZD0iTTM2NS40NDYsNDAxLjk5OGMwLDEwLjA5MiwzLjU3OSwxOC43MDIsMTAuNzExLDI1LjgzNGM3LjEzMiw3LjEzOSwxNS43NDksMTAuNzExLDI1Ljg0NSwxMC43MTEgICAgYzEwLjA4MSwwLDE4LjY5OC0zLjU3MiwyNS44My0xMC43MTFjNy4xMzktNy4xMzIsMTAuNzExLTE1Ljc0MiwxMC43MTEtMjUuODM0cy0zLjU2OC0xOC43MDItMTAuNzExLTI1Ljg0MSAgICBjLTcuMTMyLTcuMTMyLTE1Ljc0OS0xMC43MDQtMjUuODMtMTAuNzA0Yy0xMC4wOTYsMC0xOC43MTMsMy41NzItMjUuODQ1LDEwLjcwNEMzNjkuMDI1LDM4My4yOTYsMzY1LjQ0NiwzOTEuOTA2LDM2NS40NDYsNDAxLjk5OCAgICB6IiBmaWxsPSIjMDAwMDAwIi8+CgkJPHBhdGggZD0iTTQ2OS42NTgsNzguNTFjLTMuNjE4LTMuNjE3LTcuODk4LTUuNDI2LTEyLjg0OC01LjQyNkgxMTMuOTE4Yy0wLjE5My0xLjMzMS0wLjYyMS0zLjc1Ni0xLjI4Ny03LjI3NyAgICBjLTAuNjY2LTMuNTIzLTEuMTg4LTYuMzI5LTEuNTY5LTguNDI1Yy0wLjM4My0yLjA4Ny0xLjA5My00LjYxMS0yLjE0Mi03LjU2MWMtMS4wNDctMi45NTItMi4yODQtNS4yODYtMy43MTEtNi45OTUgICAgYy0xLjQyNS0xLjcxOC0zLjMyOC0zLjE4OS01LjcwOC00LjQzYy0yLjM3OC0xLjIzMy01LjA5Mi0xLjg1My04LjEzNi0xLjg1M0gxOC4yNzZjLTQuOTUyLDAtOS4yMzQsMS44MTItMTIuODUsNS40MjQgICAgQzEuODA5LDQ1LjU4MywwLDQ5Ljg2OCwwLDU0LjgxNnMxLjgwOSw5LjIzMSw1LjQyNiwxMi44NDdjMy42MTksMy42MTcsNy45MDIsNS40MjQsMTIuODUsNS40MjRoNTguMjM3bDUwLjUzMiwyMzQuOTc2ICAgIGMtMC4zNzgsMC43Ni0yLjMyOSw0LjM3My01Ljg1MiwxMC44NDhjLTMuNTIxLDYuNDc1LTYuMzI4LDEyLjEzNS04LjQyLDE2Ljk4OGMtMi4wOTMsNC44NTktMy4xNCw4LjYxNi0zLjE0LDExLjI3OSAgICBjMCw0Ljk0OCwxLjgwOSw5LjIzMiw1LjQyNCwxMi44NTRjMy42MjEsMy42MDYsNy45MDIsNS40MjEsMTIuODUxLDUuNDIxaDE4LjI3MmgyNTUuODE1aDE4LjI2MWM0Ljk0OCwwLDkuMjMyLTEuODE0LDEyLjg0Ny01LjQyMSAgICBjMy42Mi0zLjYyMSw1LjQyNy03LjkwNSw1LjQyNy0xMi44NTRjMC00Ljk0OS0xLjgwNy05LjIzMy01LjQyNy0xMi44NDdjLTMuNjE0LTMuNjE0LTcuODk4LTUuNDI4LTEyLjg0Ny01LjQyOGgtMjYyLjY2ICAgIGM0LjU3LTkuMTM4LDYuODU0LTE1LjIyMiw2Ljg1NC0xOC4yNjhjMC0xLjkwOS0wLjIzOC00LjAwNC0wLjcxNS02LjI4M3MtMS4wNDctNC44MDUtMS43MTMtNy41NjkgICAgYy0wLjY2Ny0yLjc1Mi0xLjA5My00Ljc5OS0xLjI4My02LjEzM2wyOTguMDc3LTM0LjgzMWM0Ljc1My0wLjU3NSw4LjY1OC0yLjYxNCwxMS43MDMtNi4xNGMzLjA0Ni0zLjUxOCw0LjU2NS03LjU2Miw0LjU2NS0xMi4xMzMgICAgVjkxLjM2M0M0NzUuMDgyLDg2LjQxNSw0NzMuMjc4LDgyLjEzMiw0NjkuNjU4LDc4LjUxeiIgZmlsbD0iIzAwMDAwMCIvPgoJCTxwYXRoIGQ9Ik0xMDkuNjMyLDQwMS45OThjMCwxMC4wOTIsMy41NjcsMTguNzAyLDEwLjcwNiwyNS44MzRjNy4xNDEsNy4xMzksMTUuNzUsMTAuNzExLDI1Ljg0MSwxMC43MTEgICAgYzEwLjA4NSwwLDE4LjY5OS0zLjU3MiwyNS44MzUtMTAuNzExYzcuMTM5LTcuMTMyLDEwLjcxLTE1Ljc0MiwxMC43MS0yNS44MzRzLTMuNTY4LTE4LjcwMi0xMC43MS0yNS44NDEgICAgYy03LjEzNy03LjEzMi0xNS43NS0xMC43MDQtMjUuODM1LTEwLjcwNGMtMTAuMDksMC0xOC43MDQsMy41NzItMjUuODQxLDEwLjcwNEMxMTMuMjAzLDM4My4yOTYsMTA5LjYzMiwzOTEuOTA2LDEwOS42MzIsNDAxLjk5OHogICAgIiBmaWxsPSIjMDAwMDAwIi8+Cgk8L2c+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==);
+            display: block;
+            width: 34px;
+            height: 34px;
+            background-size: cover;
+            cursor: pointer;
+
+            span {
+                color: #fff;
+                font-size: 12px;
+                font-weight: bold;
+                display: block;
+                padding: 6px 0 0 18px;
+            }
+        }
+    }
+
+    .noItems {
+        font-family: $sagovau-font-family-highlight;
+        padding: 20px 0;
+        display: none;
+    }
+
 }
 
 .add-to-cart-form {
@@ -235,9 +270,4 @@
         padding-top: 0;
         line-height: 1.2rem;
     }
-}
-
-.noItems {
-    font-family: $sagovau-font-family-highlight;
-    padding: 20px 0;
 }
