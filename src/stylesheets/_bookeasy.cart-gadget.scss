@@ -131,6 +131,16 @@
         margin: 0 0 10px;
     }
 
+    .item-name {
+        font-weight: normal;
+        color: $sagovau-color-text-base;
+        font-size: 18px;
+
+        &::before {
+            content: ' - '
+        }
+    }
+
     .price,
     .quantity,
     .date,

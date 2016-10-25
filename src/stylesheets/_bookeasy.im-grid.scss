@@ -250,6 +250,12 @@
             &.SPY {
                 background-image: url('//gadgets.impartmedia.com/img/special-spy.png');
             }
+
+            &.inactive.SPY {
+                background-image: url('//gadgets.impartmedia.com/img/special-spy-inactive.png');
+                opacity: 0.5;
+                cursor: pointer;
+            }
         }
     }
 }

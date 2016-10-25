@@ -34,6 +34,9 @@ if (typeof productsData !== 'undefined') {
             window.location.hash = urlHash = $(this).val();
         });
 
+
+        $('.be-fancybox').fancybox();
+
     });
 
 

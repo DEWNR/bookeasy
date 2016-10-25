@@ -59,6 +59,8 @@ IMUtility.redirect = function(url_file) {
 
 
 
+
+
 function text2HTML(input) {
     input = input.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\"/g, '&quot;').replace(/\//g, '/');
     input = input.replace(/\r/g, '').replace(/\n( )*?(\n)*?( )*?$/, '').replace(/\n( )*?\n/g, '</p><p>').replace(/\n/g, '<br />');
@@ -66,6 +68,8 @@ function text2HTML(input) {
 
     return input;
 }
+
+
 
 
 

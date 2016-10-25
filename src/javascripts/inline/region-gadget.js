@@ -26,4 +26,7 @@ $(function() {
         showRefineTools: false,
         vcID: 188
     });
+
+    $('.be-fancybox').fancybox();
+
 });
