@@ -174,9 +174,9 @@ if (typeof productsData !== 'undefined') {
 
         $('.gm-style .gm-style-mtc label,.gm-style .gm-style-mtc div').remove();
         $('.gm-style-pbc').remove();
-        $("LINK[href*='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700']").remove();
+        $('LINK[href*="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700"]').remove();
 
-        $("script[type*=javascript]").filter(function() {
+        $('script[type*=javascript]').filter(function() {
             if (window.google !== undefined && google.maps !== undefined) {
                 delete google.maps;
                 $('script').each(function () {
