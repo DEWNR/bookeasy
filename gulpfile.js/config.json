@@ -33,6 +33,12 @@
               "source": ["src/javascripts/inline/region-gadget.js"],
               "filename": "inline/region-gadget.js"
           },{
+              "source": ["src/javascripts/inline/booking-gadget.js"],
+              "filename": "inline/booking-gadget.js"
+          },{
+              "source": ["src/javascripts/inline/confirmation-gadget.js"],
+              "filename": "inline/confirmation-gadget.js"
+          },{
               "source": ["src/javascripts/inline/parks-data.js"],
               "filename": "inline/parks-data.js"
           },{

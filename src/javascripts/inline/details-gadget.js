@@ -1,7 +1,12 @@
-$(function() {
+if (bookeasyType == null) {
+    var bookeasyType = 'accom'
+}
 
-    var bookeasyType = 'accom';
+if (operatorID == null) {
     var operatorID = '73176'
+}
+
+$(function() {
 
     getOperatorData(operatorID);
 
@@ -37,9 +42,8 @@ function getOperatorData(id) {
         if (data.length) {
 
             // insert t&c information
-            var cancellationPolicy = data[0].CancellationPolicy;
+            $('#bookeasy__conditions').html('<h3>Terms and conditions</h3>' + text2HTML(data[0].CancellationPolicy));
 
-            $('#bookeasy__conditions').html('<h3>Terms and conditions</h3>' + text2HTML(cancellationPolicy));
         }
 
     })

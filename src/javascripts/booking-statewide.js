@@ -99,7 +99,13 @@ if (typeof productsData !== 'undefined') {
                 //we don't need to display camping button if we are already looking at camping
                 if (key !== 'Camping / Accommodation' && val === true) {
                     //Check urls
-                    $('.button-list').append($('<a href="'+ productsData[urlHash].url + '/' +(key.replace(/ /g , '-')).toLowerCase()+ '"><span>' +key+ '</span></a>').addClass('button-list__button '+key).attr('data', key));
+                    bookingURL = productsData[urlHash].url + '/' + (key.replace(/ /g , '-')).toLowerCase();
+
+                    if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+                        bookingURL += '.html';
+                    }
+
+                    $('.button-list').append($('<a href="'+ bookingURL + '"><span>' +key+ '</span></a>').addClass('button-list__button '+key).attr('data', key));
                     $('.'+key).click(  function(){ typeShow('tours'); }  );
                 }
 
@@ -135,7 +141,10 @@ if (typeof productsData !== 'undefined') {
 
     function bookeasy() {
 
+        var bookingDate = new Date();
         hasAccomodation = displayProductsData();
+
+        bookingDate.setDate(bookingDate.getDate() + 1);
 
         // only load gadget for those with camping / accomodation
         if (hasAccomodation) {
@@ -150,7 +159,7 @@ if (typeof productsData !== 'undefined') {
                         size: [26,45]
                     }
                 },
-                defaultDaysFromToday: 1, // tomorrows date
+                defaultDate: bookingDate,
                 defaultSort: 'name', // or location
                 ignoreSearchCookie: true,
                 itemDetailPageURL: './details-gadget.html',

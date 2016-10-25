@@ -1,5 +1,7 @@
 {% extends 'layouts/master.html' %}
 
+{% set pagetitle = 'Thank you' %}
+
 
 
 
@@ -23,15 +25,6 @@
 
     <script src="//gadgets.impartmedia.com/gadgets.jsz?key={{ bookeasy_key }}"></script>
 
-    <script>
-
-        $(function() {
-            BE.gadget.confirm('#bookeasy__confirmation-gadget', {
-                thankYouText: 'Thank you for your booking. You can download your itinerary with the link below.',
-                pdfLinkText: 'Download your itinerary PDF now.'
-            });
-        });
-
-    </script>
+    <script src="/js/inline/bookeasy-booking.js" inline></script>
 
 {% endblock %}

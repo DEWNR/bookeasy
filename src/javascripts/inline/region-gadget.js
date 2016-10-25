@@ -1,4 +1,8 @@
-$w(function() {
+$(function() {
+
+    var bookingDate = new Date();
+
+    bookingDate.setDate(bookingDate.getDate() + 1);
 
     BE.gadget.region('#bookeasy__region-gadget', {
         accomOnlyMode: true, // only display accommodation
@@ -11,7 +15,7 @@ $w(function() {
                 size: [26,45]
             }
         },
-        defaultDaysFromToday: 1, // tomorrows date
+        defaultDate: bookingDate,
         defaultSort: 'name', // or location
         itemDetailPageURL: './details-gadget.html',
         period: 1, // number of days to display
