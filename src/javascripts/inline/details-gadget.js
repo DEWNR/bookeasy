@@ -1,29 +1,49 @@
-if (bookeasyType == null) {
-    var bookeasyType = 'accom'
+var bShowGadget = 1;
+
+
+if(window.location.hash) {
+    var aHash = window.location.hash.slice(1).split('/');
+    var sType = aHash[1];
+    var aValidTypes = ['accom','tours','carhire','packages'];
+    var operatorIDregex = /^\d{5}$/;
+
+    // check if operatorID is 5 digits and a valid type
+    if (operatorIDregex.test(aHash[2]) && $.inArray( sType, aValidTypes) !== -1) {
+
+        bookeasyType = aValidTypes;
+        operatorID = aHash[2];
+
+    }
 }
 
-if (operatorID == null) {
-    var operatorID = '73176'
+
+if(typeof bookeasyType == 'undefined' || typeof operatorID == 'undefined') {
+    bShowGadget = 0;
 }
+
 
 $(function() {
 
-    getOperatorData(operatorID);
+    if(bShowGadget) {
 
-    // load details gadget
-    BE.gadget.details('#bookeasy__details-gadget', {
-        defaultDate: new Date(),
-        descriptionHover: true,
-        period: 1,
-        productID: operatorID,
-        showHoverInline: true,
-        showQuantity: false,
-        thumbsInGrid: true,
-        type: bookeasyType,
-        vcID: 188
-    });
+        getOperatorData(operatorID);
 
-    $('.be-fancybox').fancybox();
+        // load details gadget
+        BE.gadget.details('#bookeasy__details-gadget', {
+            defaultDate: new Date(),
+            descriptionHover: true,
+            period: 1,
+            productID: operatorID,
+            showHoverInline: true,
+            showQuantity: false,
+            thumbsInGrid: true,
+            type: bookeasyType,
+            vcID: 188
+        });
+
+        $('.be-fancybox').fancybox();
+
+    }
 
 });
 
@@ -44,8 +64,6 @@ function getOperatorData(id) {
         var backURL = '#';
 
         if (data.length) {
-
-            console.log(data[0]);
 
             backURL = '/#' + data[0].Location;
 
