@@ -15,6 +15,9 @@
             tbody tr:hover td {
                 background: #ffcc78!important;
             }
+            tr.selected {
+                background: #ffcc38!important;
+            }
         </style>
     </head>
     <body>
@@ -67,15 +70,30 @@
                     <span ng-show="sortType == 'location' && sortReverse" class="fa fa-caret-up"></span>
                   </a>
                 </td>
+                </td>
+                <td>
+                  <a href="#" ng-click="sortType = 'type1'; sortReverse = !sortReverse">
+                  Type1
+                    <span ng-show="sortType == 'type1' && !sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'type1' && sortReverse" class="fa fa-caret-up"></span>
+                </td>
+                <td>
+                  isMothership
+                </td>
+                <td>
+                  details
               </tr>
             </thead>
 
             <tbody>
-              <tr ng-repeat="operator in operators | orderBy:sortType:sortReverse | filter:searchOperators">
+              <tr ng-repeat="operator in operators | orderBy:sortType:sortReverse | filter:searchOperators" ng-class="{'selected':$index == selectedRow}" ng-click="setClickedRow($index);">
                 <td>{{ operator.operatorID }}</td>
                 <td>{{ operator.tradingName }}</td>
                 <td>{{ operator.vcLocations }}</td>
                 <td>{{ operator.location }}</td>
+                <td>{{ operator.type1 }}</td>
+                <td>{{ operator.isMothership }}</td>
+                <td><a href="../details-gadget.html#/{{ operator.type1 | limitTo: 5 | lowercase }}/{{ operator.operatorID }}" target="_blank">visit</a></td>
               </tr>
             </tbody>
 
@@ -96,6 +114,14 @@
                 $scope.searchOperators   = '';        // set the default search/filter term
                 $scope.operators = [];
 
+
+                $scope.selectedRow = null;
+
+                $scope.setClickedRow = function(index){   // allows us to hi-light a row
+                  $scope.selectedRow = index;             // uses 'ng-class', 'ng-click' and a css style
+                }
+
+
                 $http.jsonp('http://sjp.impartmedia.com/be/getOperatorsInformation?callback=JSON_CALLBACK&q=188').
                   then( function ( response ) {
 
@@ -114,7 +140,9 @@
                             operatorID: operators[key]['OperatorID'],
                             tradingName: operators[key]['TradingName'],
                             vcLocations: sLocations,
-                            location: operators[key]['Location']
+                            location: operators[key]['Location'],
+                            type1: operators[key]['Type1'],
+                            isMothership: operators[key]['IsMothership']
                         });
                     }
 
