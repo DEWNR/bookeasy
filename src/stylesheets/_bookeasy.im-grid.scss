@@ -195,7 +195,7 @@
 
     .OperatorItemHeading {
         font-family: $sagovau-font-family-highlight;
-        font-weight: bolder;
+        font-weight: 500;
     }
 
 
@@ -320,7 +320,8 @@
 div#wdHoverContainer {
     z-index: 10000001;
 
-    div.product-info-hover {
+    div.product-info-hover,
+    div.restriction-info-hover {
         font-size: 10pt;
         font-family: Helvetica,Arial,sans-serif;
         line-height: 13pt;
@@ -355,6 +356,11 @@ div#wdHoverContainer {
                 margin-bottom: 10px;
             }
         }
+    }
+
+    div.restriction-info-hover {
+        width: auto;
+        max-width: 400px;
     }
 
     h3 {
