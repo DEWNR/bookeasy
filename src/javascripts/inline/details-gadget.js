@@ -4,13 +4,13 @@ var bShowGadget = 1;
 if(window.location.hash) {
     var aHash = window.location.hash.slice(1).split('/');
     var sType = aHash[1];
-    var aValidTypes = ['accom','tours','carhire','packages'];
+    var aValidTypes = ['accom','tours','events','carhire','packages'];
     var operatorIDregex = /^\d{5}$/;
 
     // check if operatorID is 5 digits and a valid type
     if (operatorIDregex.test(aHash[2]) && $.inArray( sType, aValidTypes) !== -1) {
 
-        bookeasyType = aValidTypes;
+        bookeasyType = sType;
         operatorID = aHash[2];
 
     }
