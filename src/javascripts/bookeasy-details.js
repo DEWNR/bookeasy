@@ -20,6 +20,11 @@ if (operatorPageType == 'tours') {
     productID = '65726';
 }
 
+if (operatorPageType == 'events') {
+    bookeasyType = 'events';
+    productID = '65726';
+}
+
 $(function() {
 
     aRoomData = getRoomData();
