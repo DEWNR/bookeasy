@@ -84,9 +84,17 @@
 
     .im-pricebutton {
         width: 60px;
+
     }
 
     .im-grid .OperatorInfo {
         display: none;
     }
+    .im-grid .thumb {
+        width: 72px;
+    }
+    .im-grid .specials {
+        top: 74%;
+    }
+    transform: translateY(-50%);
 }
