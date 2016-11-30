@@ -70,3 +70,31 @@
         margin: 0;
     }
 }
+
+
+
+@media (max-width: 768px) {
+
+    .im-grid tbody tr td.quantity,
+    .im-grid tbody tr td.total,
+    .im-grid tbody tr td.date,
+    .im-grid tbody tr td.price {
+      padding: 4px;
+    }
+
+    .im-pricebutton {
+        width: 60px;
+
+    }
+
+    .im-grid .OperatorInfo {
+        display: none;
+    }
+    .im-grid .thumb {
+        width: 72px;
+    }
+    .im-grid .specials {
+        top: 74%;
+    }
+    transform: translateY(-50%);
+}

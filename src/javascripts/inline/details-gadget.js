@@ -32,15 +32,20 @@ $(function() {
         BE.gadget.details('#bookeasy__details-gadget', {
             defaultDate: new Date(),
             descriptionHover: true,
-            period: 1,
+            period: 7,
             productID: operatorID,
             showHoverInline: true,
             showQuantity: false,
             thumbsInGrid: true,
             type: bookeasyType,
+            showPeriod: true,
+            showAllTours: true,
+            showAllEvents: true,
+
             vcID: 188
         });
-
+         //period was 1
+         //for showPeriod the default is true
         $('.be-fancybox').fancybox();
 
     }
