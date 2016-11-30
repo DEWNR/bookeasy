@@ -65,6 +65,8 @@ function getOperatorData(id) {
 
         if (data.length) {
 
+            console.log(data);
+
             backURL = '/#' + data[0].Location;
 
             if(data[0].IsTourManager == true) {

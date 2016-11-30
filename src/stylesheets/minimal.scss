@@ -68,12 +68,8 @@ img {
     /*a*/.#{$sagovau-namespace}global-header__logotype {
         margin: 0 auto;
         width: 266px;
-        height: 32px;
-
-        img {
-            display: block;
-            margin-top: -5px;
-        }
+        height: 37px;
+        display: block;
     }
 
 
@@ -114,7 +110,7 @@ img {
 }
 
     /*div*/.#{$sagovau-namespace}site-footer__logos {
-        padding: $sagovau-spacing-unit-base $sagovau-spacing-unit-base 0;
+        padding: 0 $sagovau-spacing-unit-base;
         display: flex;
         flex-flow: row wrap;
         justify-content: space-around;
@@ -123,7 +119,7 @@ img {
     }
 
         /*a*/.#{$sagovau-namespace}site-footer__logo {
-            margin: 0 0 $sagovau-spacing-unit-base;
+            margin: 0;
             display: block;
             width: 152px;
         }

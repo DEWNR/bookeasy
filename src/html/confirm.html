@@ -21,7 +21,12 @@
         </div>
     </div> -->
 
-    <div id="bookeasy__confirmation-gadget"></div>
+    <div id="bookeasy__confirmation-gadget">
+
+        <label>Thank you for your booking. You can download your itinerary with the link below.</label>
+        <a href="//sjp.impartmedia.com/V1.1/be/getItineraryPdf?key=8536F8016134E2E6EF0C16459E703F33&amp;itineraryNo=5699372">Download your itinerary PDF now.</a>
+
+    </div>
 
 {% endblock %}
 
@@ -38,6 +43,6 @@
 
     <script src="//gadgets.impartmedia.com/gadgets.jsz?key={{ bookeasy_key }}"></script>
 
-    <script src="/js/inline/booking-gadget.js" inline></script>
+    <script src="/js/inline/confirmation-gadget.js" inline></script>
 
 {% endblock %}
