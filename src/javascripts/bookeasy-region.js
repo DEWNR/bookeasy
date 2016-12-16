@@ -1,5 +1,5 @@
 $(function() {
-    var locationFilter = ['Deep Creek Conservation Park', ''];
+    var locationFilter = ['Coorong National Park', ''];
     var bookingDate = new Date();
 
     locationFilter.pop(); // Remove the last item from the array as it is empty

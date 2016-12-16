@@ -15,9 +15,30 @@ jQuery(document).on('gadget.script.loaded', function() {
     });
 
 
+
     $w.event.subscribe('region.gadget.built', function() {
 
         jQuery('.prices-grid td.date').addClass('region-gadget--built');
+
+
+        // read campgroundData and organise into oMaps
+        var oMaps = [];
+        $.each(campgroundData, function(key, value) {
+
+            if ( key.indexOf(',') != -1 ){
+                
+                var aIDs = key.split(',');
+
+                $.each(aIDs, function(i) {
+                    oMaps[aIDs[i]] = value;
+                });
+
+            }
+            else {
+                oMaps[key] = value;
+            }
+        });
+
 
         // show pdf map link for appropriate campsite
         jQuery('.im-grid tr.odd, .im-grid tr.even').each(function() {
@@ -26,8 +47,8 @@ jQuery(document).on('gadget.script.loaded', function() {
 
             sOberatorID = jQuery(this).attr('id').replace('Operator', '');
 
-            // read campgroundData and find a match for current operator
-            if (typeof campgroundData[sOberatorID] !== 'undefined' && campgroundData[sOberatorID].length) {
+            // read oMaps and find a match for current operator
+            if (typeof oMaps[sOberatorID] !== 'undefined' && oMaps[sOberatorID].length) {
                 jQuery(this).find('td.property').append('<a class="map-link" href="http://environment.sa.gov.au' + campgroundData[sOberatorID] + '" download="filename">View map <span>(pdf)</span></a>');
             }
 
