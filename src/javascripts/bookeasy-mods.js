@@ -49,7 +49,7 @@ jQuery(document).on('gadget.script.loaded', function() {
 
             // read oMaps and find a match for current operator
             if (typeof oMaps[sOberatorID] !== 'undefined' && oMaps[sOberatorID].length) {
-                jQuery(this).find('td.property').append('<a class="map-link" href="http://environment.sa.gov.au' + campgroundData[sOberatorID] + '" download="filename">View map <span>(pdf)</span></a>');
+                jQuery(this).find('td.property').append('<a class="map-link" href="http://environment.sa.gov.au' + oMaps[sOberatorID] + '" download="filename">View map <span>(pdf)</span></a>');
             }
 
             // setup fancybox
