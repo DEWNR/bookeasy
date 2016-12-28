@@ -71,9 +71,18 @@
     }
 }
 
+.region-gadget {
+    td.property {
+        padding-bottom: 6px;
+    }
+}
 
 
 @media (max-width: 768px) {
+
+    .region-gadget a.name {
+        padding-top: 4px;
+    }
 
     .im-grid tbody tr td.quantity,
     .im-grid tbody tr td.total,
@@ -83,18 +92,165 @@
     }
 
     .im-pricebutton {
-        width: 60px;
-
+        width: 100px;
     }
 
-    .im-grid .OperatorInfo {
-        display: none;
-    }
     .im-grid .thumb {
-        width: 72px;
+        width: 100%;
+        padding: 10px 0 0;
     }
     .im-grid .specials {
-        top: 74%;
+        float: none;
+        position: static;
+        top: 0;
+        transform: translateY(0);
+        margin-left: auto;
+        margin-right: auto;
+        width: 110px;
     }
-    transform: translateY(-50%);
+
+    .im-grid tbody tr {
+        border-bottom: 0px;
+    }
+
+    .im-grid tbody>tr {
+        border-bottom: 1px solid #eee;
+    }
+
+    .im-grid table.product {
+        margin-bottom: 16px;
+        border-bottom: 1px solid #eee;
+    }
+
+    .product .product__row {
+        border-top: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+        
+    }
+
+    .product__row td.price {
+        border-right: 1px solid #eee;
+    }
+
+    .property {
+        a.map-link {
+            padding-top: 2px;
+            padding-bottom: 10px;
+            display: block;
+        }
+    }
+
+    a.button-list__button {
+        font-size: 15px;
+        margin-left: 0;
+    }
+
+    .button-list__button:not(:last-child) {
+        margin-bottom: 10px;
+        margin-right: 8px;
+    }
+    
+    .search-gadget.BE div.product,
+    .search-gadget.BE div.period,
+    .search-gadget.BE div.adults,
+    .search-gadget.BE div.children,
+    .search-gadget.BE div.infants {
+        width: 52px;
+    }
+
+    .im-pricebutton.sold-out,
+    .sold-out .im-pricebutton,
+    .min-nights .im-pricebutton {
+        padding: 13px 10px 14px;
+    }
+
+
+
+
+    .wrap {
+        width: 100%;
+    }
+    tr.odd {  //.instant-confirmation.min-nights.min-nights
+        height: 70px;
+    }
+}
+
+
+@media (min-width: 768px) and (max-width: 1230px) {
+
+    .region-gadget div.thumb {
+        width: 100%;
+        vertical-align: middle;
+        margin-right: 0;
+        padding: 20px 8px 16px 0;
+    }
+
+    .im-grid .thumb img {
+        vertical-align: middle;
+    }
+
+    .im-pricebutton {
+        width: 100px;
+    }
+
+    .im-grid .specials {
+        left: 100%;
+        top: 30px;
+    }
+
+    .im-grid .specials .special {
+        width: 60px;
+    }
+
+    .im-grid .property {
+        width: 21.5%;
+    }
+
+    .im-grid tbody tr td.total {
+        width: 14.5%;
+    }
+
+    a.map-link {
+        padding-top: 2px;
+        display: inline-block;
+        width: 160px;
+    }
+    .im-grid tbody tr td.price {
+        width: 0;
+        padding: 2px;
+    }
+
+}
+
+@media (min-width: 1231px) {
+
+    .im-grid .thumb {
+        width: 100%;
+        padding: 20px 0 16px 0;
+    }
+
+    .im-pricebutton {
+        width: 98px;
+    }
+
+    .region-gadget {
+        .im-grid tbody tr td.price {
+            width: 0;
+            padding: 2px;
+        }
+    }
+
+    .im-grid .property {
+        width: 21.5%;
+    }
+
+    .im-grid tbody tr td.total {
+        width: 14.5%;
+    }
+
+    .im-grid .specials {
+        left: 100%;
+        top: 30px;
+    }
+
 }

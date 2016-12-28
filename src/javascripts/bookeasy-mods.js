@@ -34,6 +34,73 @@ $(document).on('gadget.script.loaded', function() {
         $('.prices-grid td.date').addClass('hidden-xs');
 
         insertImages('region');
+
+
+
+        // read campgroundData and organise into oMaps
+        var oMaps = [];
+
+        $.each(campgroundData, function(key, value) {
+
+            if ( key.indexOf(',') != -1 ){
+                
+                var aIDs = key.split(',');
+
+                $.each(aIDs, function(i) {
+                    oMaps[aIDs[i]] = value;
+                    // console.log( 'aID: '+aIDs[i] );
+                });
+
+            }
+            else {
+                oMaps[key] = value;
+            }
+        });
+
+
+
+        // show pdf map link for appropriate campsite
+        jQuery('.im-grid tr.odd, .im-grid tr.even').each(function() {
+
+            jQuery(this).find('td.property').append('<div class="clear"></div>');
+
+            sOberatorID = jQuery(this).attr('id').replace('Operator', '');
+
+
+            // read oMaps and find a match for current operator
+            if (typeof oMaps[sOberatorID] !== 'undefined' && oMaps[sOberatorID].length) {
+                jQuery(this).find('td.property').append('<a class="map-link" href="http://environment.sa.gov.au' + oMaps[sOberatorID] + '" download="filename">View map <span>(pdf)</span></a>');
+            }
+
+
+            // setup fancybox
+            thumbImage = jQuery(this).find('.thumb img');
+            imagePath = thumbImage.attr('rel').replace('thumbs/461', 'images');
+
+            thumbImage.wrap('<a class="be-fancybox" href="' + imagePath + '" rel="gallery" title="' + jQuery(this).find('.name').text() + '"></a>')
+
+        });
+
+        // detect mobile view classes
+        //  breakpoint-maximum breakpoint-large breakpoint-medium
+        if ( $( window ).width() < 767 ) {
+            $('html').addClass('mobile');
+            createPricetable();
+        } else {
+            $('html').removeClass('mobile');
+        }
+        // if ( $('thead>tr>td.date').length > 8 ) {
+        //     if ( !$('html').hasClass('manyCols') )
+        //     $('html').addClass('manyCols');
+        // }
+
+        // if ($('html').hasClass('breakpoint-medium') !== false
+        //     ||  $('html').hasClass('breakpoint-large') !== false
+        //     ||  $('html').hasClass('breakpoint-maximum') !== false ) {
+        //     createPricetable();
+        // }
+
+
     });
 
 });
@@ -80,4 +147,77 @@ function insertImages(gadget) {
 
         $('.im-grid thead tr td.thumb').remove();
     }
+}
+
+
+
+
+function createPricetable() {
+
+    //set variables
+    var sTable = '#bookeasy__region-gadget .region-gadget .im-grid table>tbody>tr';
+    var listLength = $('tbody>tr').length;
+    var sSrc = '';
+    var sDest = '';
+
+
+    $(sTable + ' td.property').wrap('<td class="td__table"></td>').wrap('<table class="product"></table>');
+    // $(sTable + ' tbody tr table.item__table').wrap('<td class="item__cell"></td>');
+    $(sTable + ' td.property').attr('colspan', '2').wrap('<tr class="item__row"></tr>');
+    
+
+    $.each($(sTable), function(index) {
+        // console.log( $(this).find('.product div.thumb') );
+        //thumb
+        sSrc = $(this).find('.product div.thumb');
+        sDest = $(this).find('.product>.item__row');
+        $(sSrc).insertBefore( $(sDest) ).wrap('<tr class="thumb__row"></tr>').wrap('<td class="thumb__cell" colspan=2></td>');
+
+        //total
+        sSrc = $(this).find('td.total');
+        sDest = $(this).find('table.product');
+        $(sSrc).appendTo( $(sDest) ).wrap('<tr class="total__row"></tr>');
+
+        //prices
+        sSrc = $(this).find('td.price');
+        sDest = $(this).find('table.product');
+        $(sSrc).appendTo( $(sDest) );        
+
+        //specials
+        sSrc = $(this).find('div.specials');
+        sDest = $(this).find('table.product>tr.total__row');
+        $(sSrc).prependTo( $(sDest) ).wrap('<td class="specials__cell"></td>');
+    });
+
+
+    //for each campground/product
+    // for (i = 1; i < (listLength+1); i++) {
+    //     //total
+    //     sSrc = '#bookeasy__region-gadget .im-grid table tbody>tr:nth-of-type(' +i+ ') td.total';
+    //     sDest = '.im-grid>div>table>tbody>tr:nth-of-type(' +i+ ') table.product';
+    //     $(sSrc).appendTo( $(sDest) ).wrap('<tr class="total__row"></tr>');
+
+    //     //prices
+    //     sSrc = '#bookeasy__region-gadget .im-grid table tbody>tr:nth-of-type(' +i+ ') td.price';
+    //     sDest = sTable + ' tbody>tr:nth-of-type(' +i+ ') table.product';
+    //     $(sSrc).appendTo( $(sDest) );        
+
+    //     //specials
+    //     sSrc = '#bookeasy__region-gadget .im-grid table tbody>tr:nth-of-type(' +i+ ')>table div.specials';
+    //     sDest = '.im-grid>div>table>tbody>tr:nth-of-type(' +i+ ') table.product>tr.total__row';
+    //     $(sSrc).prependTo( $(sDest) ).wrap('<td class="specials__cell"></td>');
+    // };
+
+    //create product__row
+    $(sTable + ' table.product>td').wrap('<tr class="product__row"></tr>');
+
+
+    //for each date
+    $.each($('thead>tr>td.date'), function(index) {    
+        //copy each date before price row
+        $( 'thead>tr>td.date:nth-of-type(' +(index+3)+ ')' ).clone().addClass('dt').insertBefore('tr.product__row:nth-of-type(' +(index + 4)+ ')>td.price' );
+    });
+    $('.im-grid thead>tr').remove();
+    $('.im-grid tbody>tr.inline-header.no-image').remove();
+
 }
