@@ -19,6 +19,7 @@
     .embedded-search {
         position: relative;
         z-index: 100;
+        z-index: 1;
     }
 
     .thumb {
@@ -43,5 +44,10 @@
 
     .address {
         display: block;
+    }
+
+    thead a.day,
+    thead a.month {
+        color: #ffffff;
     }
 }
