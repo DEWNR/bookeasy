@@ -10,6 +10,10 @@
     font-size: $sagovau-font-size-base;
 }
 
+.region-gadget .im-grid .thumb {
+    width: 210px;
+}
+
 .region-gadget {
     color: $sagovau-color-text-base;
     font-family: $sagovau-font-family-base;
@@ -24,6 +28,7 @@
 
     .thumb {
         margin-right: 20px;
+        min-height: 102px;
     }
 
     .name {
@@ -33,7 +38,7 @@
         font-weight: normal;
         margin-bottom: 10px;
         display: block;
-        padding-top: 20px;
+        padding-top: 10px;
         text-decoration: none;
 
         &:focus,
@@ -51,3 +56,237 @@
         color: #ffffff;
     }
 }
+
+
+
+@media (max-width: 768px) {
+
+    .region-gadget a.name {
+        padding-top: 4px;
+    }
+
+    .im-grid tbody tr td.quantity,
+    .im-grid tbody tr td.total,
+    .im-grid tbody tr td.date,
+    .im-grid tbody tr td.price {
+      padding: 4px;
+      padding-bottom: 10px;
+    }
+
+    .im-pricebutton {
+        // width: 100px;
+        width: 100%;
+        // margin-right: 0;
+        padding: 10px 0px 8px;
+    }
+
+    .im-grid .thumb {
+        width: 100%;
+        padding: 10px 0 0;
+        // max-height: 220px;
+        // overflow-y: hidden;
+    }
+    .region-gadget .im-grid .thumb {
+        width: 100%;
+    }
+
+    .im-grid .specials {
+        float: none;
+        position: static;
+        top: 0;
+        transform: translateY(0);
+        margin-left: auto;
+        margin-right: auto;
+        width: 110px;
+    }
+
+    .im-grid tbody tr {
+        border-bottom: 0px;
+    }
+
+    .im-grid tbody>tr {
+        border-bottom: 1px solid #eee;
+    }
+
+    .im-grid table.product {
+        margin-bottom: 16px;
+        border-bottom: 1px solid #eee;
+    }
+
+    .product .product__row {
+        border-top: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+        
+    }
+
+    .product__row td.price {
+        border-right: 1px solid #eee;
+    }
+
+    .property {
+        a.map-link {
+            padding-top: 2px;
+            padding-bottom: 10px;
+            display: block;
+        }
+    }
+
+    a.button-list__button {
+        font-size: 15px;
+        margin-left: 0;
+    }
+
+    .button-list__button:not(:last-child) {
+        margin-bottom: 10px;
+        margin-right: 8px;
+    }
+    
+    .search-gadget.BE div.product,
+    .search-gadget.BE div.period,
+    .search-gadget.BE div.adults,
+    .search-gadget.BE div.children,
+    .search-gadget.BE div.infants {
+        width: 52px;
+    }
+
+    .im-pricebutton.sold-out,
+    .sold-out .im-pricebutton,
+    .min-nights .im-pricebutton {
+        // padding: 13px 10px 14px;
+        padding: 10px 0px 8px;
+    }
+
+
+
+
+    .wrap {
+        width: 100%;
+    }
+    tr.odd {  //.instant-confirmation.min-nights.min-nights
+        height: 70px;
+    }
+
+}
+
+
+
+
+
+@media (min-width: 768px) and (max-width: 1230px) {
+
+    //.manyCols class exists when more than 5 nights selected
+    .manyCols {  
+        .region-gadget div.thumb {
+            max-width: 100%;
+        }
+    }
+
+    .region-gadget div.thumb {
+        width: 100%;
+        vertical-align: middle;
+        // padding: 20px 8px 16px 0;
+        padding: 0;
+        margin: 10px 10px 4px 0;
+        max-width: 150px;
+    }
+
+    .im-grid .thumb img {
+        vertical-align: middle;
+    }
+
+    .region-gadget .name {
+        // padding-left: 10px;
+    }
+
+    .im-pricebutton {
+        width: 100px;
+    }
+
+    .im-grid .specials {
+        left: 100%;
+        top: 30px;
+    }
+
+    .im-grid .specials .special {
+        width: 60px;
+    }
+
+    .region-gadget {
+        .im-grid .property {
+            min-width: 21.5%;
+        }
+        .im-grid tbody tr td.total {
+            width: 1%;
+        }
+    }
+
+    .im-grid .property {
+        min-width: 21.5%;
+    }
+
+    .im-grid tbody tr td.total {
+        width: 14.5%;
+    }
+
+    a.map-link {
+        padding-top: 2px;
+        display: inline-block;
+        width: 160px;
+    }
+    .im-grid tbody tr td.price {
+        width: 0;
+        padding: 2px;
+    }
+    
+
+}
+
+@media (min-width: 1231px) {
+
+    .manyCols {
+        .region-gadget div.thumb {
+            max-width: 100%;
+        }
+    }
+    .region-gadget {
+        .im-grid .thumb {
+            // width: 100%;
+            padding: 0;
+            margin: 10px 10px 16px 0;
+            max-width: 150px;
+        }
+    }
+
+    .region-gadget .name {
+        // padding-left: 0;
+    }
+    .region-gadget .address {
+        // padding-left: 0;
+    }
+
+    .im-pricebutton {
+        width: 98px;
+    }
+    .region-gadget {
+        .im-grid tbody tr td.price {
+            width: 0;
+            padding: 2px;
+        }
+    }
+    .im-grid .property {
+        // width: 21.5%;
+    }
+    .im-grid tbody tr td.total {
+        width: 14.5%;
+    }
+    .im-grid .specials {
+        left: 100%;
+        top: 30px;
+    }
+    .im-grid .specials .special {
+        width: 60px;
+    }
+
+}
+
+

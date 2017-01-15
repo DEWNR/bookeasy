@@ -25,8 +25,9 @@
             font-weight: normal;
             margin-bottom: 10px;
             display: inline-block;
-            padding-top: 20px;
-            padding-left: 20px;
+            padding-top: 10px;
+            // padding-left: 10px;
+            width: 100%;
 
             &.OperatorInfoMore,
             &.OperatorInfoLess {
@@ -77,180 +78,145 @@
     }
 }
 
+#bookeasy__region-gadget div.BE.region-gadget div.gadget__region-tabs div.view-choice a {
+    padding: 0.6em 1.4em 0.8em;
+}
+
+
+#bookeasy__region-gadget div.BE.region-gadget div.gadget__region-tabs div.view-choice a:not(.current):hover {
+    background: #b3cbbf;
+} 
+
+.im-grid tbody tr td.sold span {
+        transform: rotate(-16deg);
+}
+
+#bookeasy__details-gadget {
+    .im-grid .OperatorItem {
+        padding-right: 0;
+    }
+    .im-grid .OperatorInfo {
+        padding-left: 0;
+        width: calc( 100% - 0px );
+    }
+}
+
+
+.details-gadget {
+    thead a.day,
+    thead a.month {
+        color: #ffffff;
+    }
+    td,
+    th {
+        border: 0px;
+    }
+}
+
+
+
+// .details-gadget .im-grid .thumb {
+//     width: 210px;
+// }
+
 
 @media (max-width: 768px) {
+    .is-tours {
 
-    .region-gadget a.name {
-        padding-top: 4px;
-    }
-
-    .im-grid tbody tr td.quantity,
-    .im-grid tbody tr td.total,
-    .im-grid tbody tr td.date,
-    .im-grid tbody tr td.price {
-      padding: 4px;
-    }
-
-    .im-pricebutton {
-        width: 100px;
-    }
-
-    .im-grid .thumb {
-        width: 100%;
-        padding: 10px 0 0;
-    }
-    .im-grid .specials {
-        float: none;
-        position: static;
-        top: 0;
-        transform: translateY(0);
-        margin-left: auto;
-        margin-right: auto;
-        width: 110px;
-    }
-
-    .im-grid tbody tr {
-        border-bottom: 0px;
-    }
-
-    .im-grid tbody>tr {
-        border-bottom: 1px solid #eee;
-    }
-
-    .im-grid table.product {
-        margin-bottom: 16px;
-        border-bottom: 1px solid #eee;
-    }
-
-    .product .product__row {
-        border-top: 1px solid #eee;
-        border-bottom: 1px solid #eee;
-        
-    }
-
-    .product__row td.price {
-        border-right: 1px solid #eee;
-    }
-
-    .property {
-        a.map-link {
-            padding-top: 2px;
-            padding-bottom: 10px;
-            display: block;
+        .details-gadget .total {
+            width: 22%;
         }
+
+        .title {
+            height: 0;
+            opacity: 0;
+            padding: 0;
+            float: left;
+            display: block;
+            width: 94%;
+        }
+        .details-gadget thead .total {
+            height: 0;
+            opacity: 0;
+            padding: 0;
+            width: 0;
+            height: 43px;
+        }
+        .details-gadget .total {
+            float: left;
+            display: block;
+            width: 50%;
+            
+        }
+        .date.tours {
+            float: left;
+            display: block;
+            // width: 37.7%;
+            width: calc(100% - 21px);
+            // height: 43px;
+        }
+        .date.tours > a {
+            display: inline;
+        }
+        .name {
+            float: left;
+            display: block;
+            padding-top: 4px;
+        }
+        .price.tour-date {
+            float: left;
+            display: block;
+            width: 40%;
+        }
+        .price span {
+            height: 33px;
+            display: inline-block;
+            padding-top: 21px;
+        }
+        .im-grid .thumb {
+            padding: 0 0 0;
+        }
+        .OperatorInfo {
+            padding-top: 8px;
+        }
+
+        .search-gadget span.label {
+            padding-top: 6px;
+        }
+
     }
 
-    a.button-list__button {
-        font-size: 15px;
-        margin-left: 0;
-    }
-
-    .button-list__button:not(:last-child) {
-        margin-bottom: 10px;
-        margin-right: 8px;
-    }
-    
-    .search-gadget.BE div.product,
-    .search-gadget.BE div.period,
-    .search-gadget.BE div.adults,
-    .search-gadget.BE div.children,
-    .search-gadget.BE div.infants {
-        width: 52px;
-    }
-
-    .im-pricebutton.sold-out,
-    .sold-out .im-pricebutton,
-    .min-nights .im-pricebutton {
-        padding: 13px 10px 14px;
-    }
-
-
-
-
-    .wrap {
-        width: 100%;
-    }
-    tr.odd {  //.instant-confirmation.min-nights.min-nights
-        height: 70px;
-    }
 }
 
 
 @media (min-width: 768px) and (max-width: 1230px) {
-
-    .region-gadget div.thumb {
-        width: 100%;
-        vertical-align: middle;
-        margin-right: 0;
-        padding: 20px 8px 16px 0;
+    .details-gadget div.thumb {
+        width: 210px;
+        max-width: 150px;
+        padding: 10px 0px 4px 0;
+        margin-right: 10px;
     }
-
-    .im-grid .thumb img {
-        vertical-align: middle;
+    .im-grid .OperatorInfo {
+        width: calc( 100% - 160px );
     }
-
-    .im-pricebutton {
-        width: 100px;
-    }
-
-    .im-grid .specials {
-        left: 100%;
-        top: 30px;
-    }
-
     .im-grid .specials .special {
-        width: 60px;
+        margin: 44px 0 5px 10px;
     }
-
-    .im-grid .property {
-        width: 21.5%;
-    }
-
-    .im-grid tbody tr td.total {
-        width: 14.5%;
-    }
-
-    a.map-link {
-        padding-top: 2px;
-        display: inline-block;
-        width: 160px;
-    }
-    .im-grid tbody tr td.price {
-        width: 0;
-        padding: 2px;
-    }
-
 }
 
 @media (min-width: 1231px) {
-
-    .im-grid .thumb {
-        width: 100%;
-        padding: 20px 0 16px 0;
+    .details-gadget div.thumb {
+        // width: 100%;
+        // vertical-align: middle;
+        margin-right: 10px;
+        padding: 10px 0px 4px 0;
+        width: 210px;
+        max-width: 150px;
     }
-
-    .im-pricebutton {
-        width: 98px;
+    .im-grid .OperatorInfo {
+        width: calc( 100% - 160px );
     }
-
-    .region-gadget {
-        .im-grid tbody tr td.price {
-            width: 0;
-            padding: 2px;
-        }
+    .im-grid .specials .special {
+        margin: 44px 0 5px 10px;
     }
-
-    .im-grid .property {
-        width: 21.5%;
-    }
-
-    .im-grid tbody tr td.total {
-        width: 14.5%;
-    }
-
-    .im-grid .specials {
-        left: 100%;
-        top: 30px;
-    }
-
 }
