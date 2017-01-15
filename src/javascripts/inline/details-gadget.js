@@ -6,6 +6,7 @@ if(window.location.hash) {
     var sType = aHash[1];
     var aValidTypes = ['accom','tours','events','carhire','packages'];
     var operatorIDregex = /^\d{5}$/;
+    var xDays = 1;
 
     // check if operatorID is 5 digits and a valid type
     if (operatorIDregex.test(aHash[2]) && $.inArray( sType, aValidTypes) !== -1) {
@@ -13,6 +14,10 @@ if(window.location.hash) {
         bookeasyType = sType;
         operatorID = aHash[2];
 
+    }
+
+    if (bookeasyType == 'accom') {
+        xDays = 7;
     }
 }
 
@@ -32,13 +37,13 @@ $(function() {
         BE.gadget.details('#bookeasy__details-gadget', {
             defaultDate: new Date(),
             descriptionHover: true,
-            period: 7,
+            period: xDays,
             productID: operatorID,
             showHoverInline: true,
             showQuantity: false,
             thumbsInGrid: true,
             type: bookeasyType,
-            showPeriod: true,
+            // showPeriod: true,
             showAllTours: true,
             showAllEvents: true,
 
@@ -47,6 +52,13 @@ $(function() {
          //period was 1
          //for showPeriod the default is true
         $('.be-fancybox').fancybox();
+
+        //add type as a class so we can style accordingly
+        if ( $('html').hasClass('is-'+bookeasyType) ) {
+            $('html').removeClass('is-'+bookeasyType);
+        }
+        $('html').addClass('is-'+bookeasyType);
+        console.log('added class.');
 
     }
 

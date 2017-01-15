@@ -2,6 +2,9 @@ IMUtility.detailsGadgetGridRendered = false;
 
 $(document).on('gadget.script.loaded', function() {
 
+    // IMUtility.pushDetailsGadgetLoadedEvent();  //test
+    // IMUtility.pushDetailsGadgetChangedEvent();  //test
+
     $w.event.subscribe('grid.rendered', function() {
 
         // Do not run this event handler more than once
@@ -9,11 +12,29 @@ $(document).on('gadget.script.loaded', function() {
         IMUtility.detailsGadgetGridRendered = true;
 
 
-        $('.im-grid table tbody tr:first-child td.name a.more').IMElementExists(function() {
+        $('.im-grid table tbody>tr:first-child td.name').IMElementExists(function() {  // a.more
             // Wait for room details link insertion before moving the row data
             insertImages('details');
 
         });
+        console.log('details');
+        if ( $( window ).width() < 767 ) {
+            $('html').addClass('mobile');
+            if ( $('html').hasClass('is-accom') ) { //only run for accom.
+                createPricetable();
+            }
+            
+        } else {
+            $('html').removeClass('mobile');
+        }
+        
+        if ( $('thead>tr>td.date').length > 5 ) {
+            if ( !$('html').hasClass('manyCols') )
+            $('html').addClass('manyCols');
+        } else {
+            if ( $('html').hasClass('manyCols') )
+            $('html').removeClass('manyCols');
+        }
 
     });
 
@@ -89,9 +110,18 @@ $(document).on('gadget.script.loaded', function() {
         } else {
             $('html').removeClass('mobile');
         }
-        // if ( $('thead>tr>td.date').length > 8 ) {
-        //     if ( !$('html').hasClass('manyCols') )
-        //     $('html').addClass('manyCols');
+        
+        if ( $('thead>tr>td.date').length > 5 ) {
+            if ( !$('html').hasClass('manyCols') )
+            $('html').addClass('manyCols');
+        } else {
+            if ( $('html').hasClass('manyCols') )
+            $('html').removeClass('manyCols');
+        }
+
+        // if ( $('.button-list__button--back') ) {
+        //     //back button present
+        //     $('html').addClass('details');
         // }
 
         // if ($('html').hasClass('breakpoint-medium') !== false
@@ -155,15 +185,26 @@ function insertImages(gadget) {
 function createPricetable() {
 
     //set variables
-    var sTable = '#bookeasy__region-gadget .region-gadget .im-grid table>tbody>tr';
+    var sTable = '#null';
+    var sSpecific = '';
+    //if running on region gadget
+    if ( $('#bookeasy__region-gadget').length ) {
+        sTable = '#bookeasy__region-gadget .region-gadget .im-grid table>tbody>tr';
+        sSpecific = ' td.property';
+        console.log('region-gadget');
+    } else { //if running on details gadget
+        sTable = '#bookeasy__details-gadget .details-gadget .im-grid table>tbody>tr';
+        sSpecific = ' td.name';
+        console.log('details-gadget');
+    }
     var listLength = $('tbody>tr').length;
     var sSrc = '';
     var sDest = '';
 
 
-    $(sTable + ' td.property').wrap('<td class="td__table"></td>').wrap('<table class="product"></table>');
+    $(sTable + sSpecific).wrap('<td class="td__table"></td>').wrap('<table class="product"></table>');
     // $(sTable + ' tbody tr table.item__table').wrap('<td class="item__cell"></td>');
-    $(sTable + ' td.property').attr('colspan', '2').wrap('<tr class="item__row"></tr>');
+    $(sTable + sSpecific).attr('colspan', '2').wrap('<tr class="item__row"></tr>');
     
 
     $.each($(sTable), function(index) {
@@ -212,12 +253,24 @@ function createPricetable() {
     $(sTable + ' table.product>td').wrap('<tr class="product__row"></tr>');
 
 
-    //for each date
-    $.each($('thead>tr>td.date'), function(index) {    
-        //copy each date before price row
-        $( 'thead>tr>td.date:nth-of-type(' +(index+3)+ ')' ).clone().addClass('dt').insertBefore('tr.product__row:nth-of-type(' +(index + 4)+ ')>td.price' );
-    });
+    if ( $('#bookeasy__region-gadget').length ) {
+        console.log('aa region');
+        //for each date
+        $.each($('thead>tr>td.date'), function(index) {    
+            //copy each date before price row
+            $( 'thead>tr>td.date:nth-of-type(' +(index+3)+ ')' ).clone().addClass('dt').insertBefore('tr.product__row:nth-of-type(' +(index + 4)+ ')>td.price' );
+        });
+    } else {
+        console.log('bb details');
+        $.each($('thead>tr>td.date'), function(index) {    
+            //copy each date before price row
+            $( 'thead>tr>td.date:nth-of-type(' +(index+4)+ ')' ).clone().addClass('dt').insertBefore('tr.product__row:nth-of-type(' +(index + 4)+ ')>td.price' );
+        });
+    }
     $('.im-grid thead>tr').remove();
-    $('.im-grid tbody>tr.inline-header.no-image').remove();
+    if ( $('#bookeasy__region-gadget').length ) {
+        console.log('remove');
+        $('.im-grid tbody>tr.inline-header.no-image').remove();
+    }
 
 }
