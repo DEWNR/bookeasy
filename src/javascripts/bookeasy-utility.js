@@ -23,6 +23,17 @@ IMUtility.pushRegionGadgetLoadedEvent = function() {
     }
 };
 
+// wait for the details content to have loaded, then publish an event
+IMUtility.pushDetailsContentLoadedEvent = function() {
+
+    if ($('.OperatorInfo').size() > 0) {
+        $w.event.publish('details.content.ready');
+    } else {
+        setTimeout('IMUtility.pushDetailsContentLoadedEvent();', 100);
+    }
+
+};
+
 // sometimes the changes we do to the DOM are lost, e.g. after user changes the number of nights or number of adults... we need to re-publish the events when this happens
 IMUtility.pushRegionGadgetChangedEvent = function() {
     if ($('.tabs-group').size() > 0) {
