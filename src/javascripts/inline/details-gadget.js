@@ -44,6 +44,7 @@ $(function() {
             thumbsInGrid: true,
             type: bookeasyType,
             // showPeriod: true,
+            showAllAccom: true,
             showAllTours: true,
             showAllEvents: true,
 
