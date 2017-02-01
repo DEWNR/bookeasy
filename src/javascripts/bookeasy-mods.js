@@ -1,3 +1,11 @@
+console.log('MODS');
+    var detailsFirstRun = true;
+    var toolbar_date = '';
+    var toolbar_period = 0;
+    var toolbar_adults = 0;
+    var toolbar_children = 0;
+    var toolbar_infants = 0;
+
 IMUtility.detailsGadgetGridRendered = false;
 
 $(document).on('gadget.script.loaded', function() {
@@ -17,24 +25,15 @@ $(document).on('gadget.script.loaded', function() {
             insertImages('details');
 
         });
-        console.log('details');
-        if ( $( window ).width() < 767 ) {
-            $('html').addClass('mobile');
-            if ( $('html').hasClass('is-accom') ) { //only run for accom.
-                createPricetable();
-            }
-            
-        } else {
-            $('html').removeClass('mobile');
-        }
-        
-        if ( $('thead>tr>td.date').length > 5 ) {
-            if ( !$('html').hasClass('manyCols') )
-            $('html').addClass('manyCols');
-        } else {
-            if ( $('html').hasClass('manyCols') )
-            $('html').removeClass('manyCols');
-        }
+
+        console.log('gadget.script.loaded wwww');
+        detailsFirstRun = true;
+        toolbar_date = '';
+        toolbar_period = 0;
+        toolbar_adults = 0;
+        toolbar_children = 0;
+        toolbar_infants = 0;
+        firstRunCheck();  //run tests on page for mobile and columns setup
 
     });
 
@@ -103,7 +102,7 @@ $(document).on('gadget.script.loaded', function() {
         });
 
         // detect mobile view classes
-        //  breakpoint-maximum breakpoint-large breakpoint-medium
+          // breakpoint-maximum breakpoint-large breakpoint-medium
         if ( $( window ).width() < 767 ) {
             $('html').addClass('mobile');
             createPricetable();
@@ -119,23 +118,9 @@ $(document).on('gadget.script.loaded', function() {
             $('html').removeClass('manyCols');
         }
 
-        // if ( $('.button-list__button--back') ) {
-        //     //back button present
-        //     $('html').addClass('details');
-        // }
-
-        // if ($('html').hasClass('breakpoint-medium') !== false
-        //     ||  $('html').hasClass('breakpoint-large') !== false
-        //     ||  $('html').hasClass('breakpoint-maximum') !== false ) {
-        //     createPricetable();
-        // }
-
-
     });
 
 });
-
-
 
 
 
@@ -182,7 +167,153 @@ function insertImages(gadget) {
 
 
 
+// $(document).ready(function() {
+
+//     setTimeout(
+//         function() 
+//         {
+//             console.log('document ready (after 6 seconds).');
+//             myTimer(); 
+//         }, 6000);
+    
+// });
+
+
+
+// waits for im-grid to be mostly rendered
+function myTimer() {
+    console.log('myTimer');
+
+    setTimeout(
+        function() 
+        {
+            if ( !$('.im-grid table tbody .name') ) {
+                console.log('element NOT detected! waiting..');
+                setTimeout();
+            }
+            // console.log('load listeners');
+            // myListeners();
+            
+            return firstRunCheck();
+            
+        }, 250);
+
+}
+
+
+// function getInput(options, callback) {
+//     allUserData.push(options);
+
+//     // Make sure the callback is a function​
+//     if (typeof callback === "function") {
+//     // Call it, since we have confirmed it is callable​
+//         callback(options);
+//     }
+// }
+
+
+//wait for table to match "nights" select
+function nightsTimeout() {
+    console.log('nightsTimeout');
+
+    setTimeout(function() {
+        console.log('row length: '+ $('thead>tr>td.date').length);
+        console.log('period: ' +toolbar_period);
+        if ( $('thead>tr>td.date').length != toolbar_period ) {
+            //console.log('nights dont match, waiting..');
+            nightsTimeout();
+        }
+        else {
+            //console.log('continue');
+            return detailsPageTests();
+        }
+    }, 250);
+}
+
+
+function firstRunCheck() {
+    console.log('firstRunCheck');
+
+    if ( detailsFirstRun === false ) {
+        nightsTimeout();
+    } else {
+        console.log('is first run');
+        detailsFirstRun = false;
+        toolbar_period = $('.period .input select').value;
+        myListeners();
+    }
+    //console.log('herezz1');
+    detailsPageTests();
+}
+
+function detailsPageTests() {
+    console.log('detailsPageTests');
+
+    if ( $( window ).width() < 767 ) {  //test mobile
+        $('html').addClass('mobile');
+        if ( $('html').hasClass('is-accom') ) { //only run for accom.
+            createPricetable();
+        }    
+    } else {
+        $('html').removeClass('mobile');
+    }
+    
+    if ( $('thead>tr>td.date').length > 5 ) {  //test number of Columns
+        if ( !$('html').hasClass('manyCols') ) {
+            $('html').addClass('manyCols');
+        }
+    } else {
+        if ( $('html').hasClass('manyCols') ) {
+            $('html').removeClass('manyCols');
+        }
+    }
+    //console.log('herezz2');
+}
+
+
+function myListeners() {
+    console.log('myListeners');
+
+    //watch Date input
+    $('.date .input .pseudo').on('change', function() {
+        toolbar_date = this.text();
+        console.log( this.text() );
+        myTimer();
+    });
+
+    //watch Nights input
+    $('.period .input select').on('change', function() {
+        toolbar_period = this.value;
+        console.log( this.value );
+        myTimer();
+    });
+
+    //watch Adults input
+    $('.adults .input select').on('change', function() {
+        toolbar_adults = this.value;
+        console.log( this.value );
+        myTimer();
+    });
+
+    //watch Children input
+    $('.children .input select').on('change', function() {
+        toolbar_children = this.value;
+        console.log( this.value );
+        myTimer();
+    });
+
+    //watch Infants input
+    $('.infants .input select').on('change', function() {
+        toolbar_infants = this.value;
+        console.log( this.value );
+        myTimer();
+    });
+
+}
+
+
 function createPricetable() {
+    console.log('createPricetable');
 
     //set variables
     var sTable = '#null';
@@ -254,14 +385,14 @@ function createPricetable() {
 
 
     if ( $('#bookeasy__region-gadget').length ) {
-        console.log('aa region');
+        console.log('#bookeasy__region-gadget exists');
         //for each date
         $.each($('thead>tr>td.date'), function(index) {    
             //copy each date before price row
             $( 'thead>tr>td.date:nth-of-type(' +(index+3)+ ')' ).clone().addClass('dt').insertBefore('tr.product__row:nth-of-type(' +(index + 4)+ ')>td.price' );
         });
     } else {
-        console.log('bb details');
+        console.log('copy each date before price row');
         $.each($('thead>tr>td.date'), function(index) {    
             //copy each date before price row
             $( 'thead>tr>td.date:nth-of-type(' +(index+4)+ ')' ).clone().addClass('dt').insertBefore('tr.product__row:nth-of-type(' +(index + 4)+ ')>td.price' );

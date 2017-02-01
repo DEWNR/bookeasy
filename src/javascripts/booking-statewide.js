@@ -145,6 +145,12 @@ if (typeof productsData !== 'undefined') {
     function bookeasy() {
 
         var bookingDate = new Date();
+        var detailPageURL = './booking/details';
+        
+        if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+            detailPageURL = './details-gadget.html';
+        }
+
         hasAccomodation = displayProductsData();
 
         bookingDate.setDate(bookingDate.getDate() + 1);
@@ -165,7 +171,7 @@ if (typeof productsData !== 'undefined') {
                 defaultDate: bookingDate,
                 defaultSort: 'name', // or location
                 ignoreSearchCookie: true,
-                itemDetailPageURL: './details-gadget.html',
+                itemDetailPageURL: detailPageURL,
                 limitLocations: aFilteredLocations,
                 period: 1, // number of days to display
                 showAllAccom: true, // show all, even if unavailable for time period

@@ -22,6 +22,7 @@ if(window.location.hash) {
 }
 
 
+
 if(typeof bookeasyType == 'undefined' || typeof operatorID == 'undefined') {
     bShowGadget = 0;
 }
@@ -59,7 +60,7 @@ $(function() {
             $('html').removeClass('is-'+bookeasyType);
         }
         $('html').addClass('is-'+bookeasyType);
-        console.log('added class.');
+        console.log('added bookeasyType class.');
 
     }
 
@@ -83,7 +84,7 @@ function getOperatorData(id) {
 
         if (data.length) {
 
-            console.log(data);
+            // console.log(data);
 
             backURL = '/#' + data[0].Location;
 

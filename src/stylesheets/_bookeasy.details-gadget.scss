@@ -23,8 +23,7 @@
             font-family: $sagovau-font-family-highlight;
             font-size: 22px;
             font-weight: normal;
-            margin-bottom: 10px;
-            display: inline-block;
+            margin-bottom: 6px;
             padding-top: 10px;
             // padding-left: 10px;
             width: 100%;
@@ -36,7 +35,18 @@
         }
     }
 }
+.manyCols .details-gadget { //only when many Columns are displayed
+    .name {
+        > a {
+            display: block;  //inline-block
 
+            &.OperatorInfoMore,
+            &.OperatorInfoLess {
+                display: none;
+            }
+        }
+    }
+}
 
 .im-grid-roominfo__roomname {
     color: $sagovau-color-brand;
@@ -99,6 +109,10 @@
         padding-left: 0;
         width: calc( 100% - 0px );
     }
+}
+.im-grid .OperatorItemHeading {
+    float: left;
+    padding-right: 10px;
 }
 
 
@@ -188,16 +202,50 @@
 
 }
 
+@media (min-width: 768px) {  // when not mobile
+    .im-grid tbody tr td.name {
+        padding-top: 8px;
+    }
+    .manyCols {
+        .im-grid tbody tr td.name {
+            padding-top: 0;
+        }
+    }
+    .details-gadget .name > a {
+        width: calc( 100% - 240px );
+        padding-bottom: 10px;
+        display: inline-block;
+    }
+    .manyCols {
+        .details-gadget .name > a {
+            width: calc( 100% - 0px );
+            padding-bottom: 0;
+            display: block;
+        }
+    }
+        
+}
 
 @media (min-width: 768px) and (max-width: 1230px) {
     .details-gadget div.thumb {
         width: 210px;
+        max-width: 210px;
+        padding: 2px 0px 8px 0;
+        margin-right: 20px;
+    }
+    .manyCols .details-gadget div.thumb {  //when manyColumns are displayed
         max-width: 150px;
-        padding: 10px 0px 4px 0;
         margin-right: 10px;
     }
-    .im-grid .OperatorInfo {
-        width: calc( 100% - 160px );
+    #bookeasy__details-gadget .im-grid .OperatorInfo {
+        width: calc( 100% - 240px );
+        display: inline-block;
+    }
+    .manyCols #bookeasy__details-gadget {
+        .im-grid .OperatorInfo {
+            width: calc( 100% - 0px );
+            display: block;
+        }
     }
     .im-grid .specials .special {
         margin: 44px 0 5px 10px;
@@ -208,13 +256,24 @@
     .details-gadget div.thumb {
         // width: 100%;
         // vertical-align: middle;
-        margin-right: 10px;
-        padding: 10px 0px 4px 0;
+        margin-right: 20px;
+        padding: 2px 0px 8px 0;
         width: 210px;
-        max-width: 150px;
+        max-width: 210px;
     }
-    .im-grid .OperatorInfo {
-        width: calc( 100% - 160px );
+    .manyCols .details-gadget div.thumb {  //when manyColumns are displayed
+        max-width: 150px;
+        margin-right: 10px;
+    }
+    #bookeasy__details-gadget .im-grid .OperatorInfo {
+        width: calc( 100% - 240px );
+        display: inline-block;
+    }
+    .manyCols #bookeasy__details-gadget {
+        .im-grid .OperatorInfo {
+            width: calc( 100% - 0px );
+            display: block;
+        }
     }
     .im-grid .specials .special {
         margin: 44px 0 5px 10px;
