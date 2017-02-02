@@ -17,7 +17,7 @@ if(window.location.hash) {
     }
 
     if (bookeasyType == 'accom') {
-        xDays = 7;
+        xDays = 1;  //7
     }
 }
 
@@ -51,16 +51,17 @@ $(function() {
 
             vcID: 188
         });
-         //period was 1
-         //for showPeriod the default is true
+            // period was 1
+            // showPeriod default = true
+
         $('.be-fancybox').fancybox();
 
-        //add type as a class so we can style accordingly
+        //add type as a class so we can apply styles
         if ( $('html').hasClass('is-'+bookeasyType) ) {
             $('html').removeClass('is-'+bookeasyType);
         }
         $('html').addClass('is-'+bookeasyType);
-        console.log('added bookeasyType class.');
+        // console.log('added bookeasyType class.');
 
     }
 
