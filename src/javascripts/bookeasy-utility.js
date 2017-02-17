@@ -1,9 +1,26 @@
-// this script can be used standalone, or in combination with other scripts
+// define IMUtility and run when dom ready
 if (typeof(IMUtility) == 'undefined') {
+
     IMUtility = {};
-    IMUtility.init = function() { IMUtility.debug=0; if (typeof(wisDOM) != 'undefined') { $(document).trigger('gadget.script.loaded'); } else { setTimeout('IMUtility.init();', 100); } };
-    $(document).ready(function() { IMUtility.init(); });
+    IMUtility.init = function() {
+        IMUtility.debug = 0;
+
+        if (typeof(wisDOM) != 'undefined') {
+            $(document).trigger('gadget.script.loaded');
+        } else {
+            setTimeout('IMUtility.init();', 100);
+        }
+    };
+
+    $(document).ready(function() {
+        IMUtility.init();
+    });
+
 }
+
+
+
+
 
 // wait for the search gadget to have loaded, then publish an event
 IMUtility.pushSearchGadgetLoadedEvent = function() {
@@ -33,22 +50,6 @@ IMUtility.pushDetailsContentLoadedEvent = function() {
     }
 
 };
-
-// sometimes the changes we do to the DOM are lost, e.g. after user changes the number of nights or number of adults... we need to re-publish the events when this happens
-// IMUtility.pushDetailsGadgetChangedEvent = function() {
-//     if ($('.tabs-group').size() > 0) {
-//         $w.event.publish('details.refinetools.built');
-//     }
-//     if (($('.prices-grid td.date').size() > 0) && ($('.prices-grid td.date.hidden-xs').size() == 0)) {
-//         $w.event.publish('details.gadget.built');
-//     }
-//     $w.event.publish('gadget.details.resetDataStore');
-//     $w.event.publish('gadget.details.getDetailData');
-//     $w.event.publish('gadget.details.buildGridStandard');
-//     $w.event.publish('details.init.start');
-//     $w.event.publish('details.gadget.built');
-//     setTimeout('IMUtility.pushDetailsGadgetChangedEvent();', 100);
-// };
 
 
 // sometimes the changes we do to the DOM are lost, e.g. after user changes the number of nights or number of adults... we need to re-publish the events when this happens
