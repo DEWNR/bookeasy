@@ -58,7 +58,7 @@ $(document).on('gadget.script.loaded', function() {
             $('td.property').each(function(){
                 var $property = $(this);
                 var sOberatorID = $(this).parent().attr('id').replace('Operator', '');
-                console.log(oMaps[sOberatorID]);
+
                 // read oMaps and find a match for current operator
                 if (typeof oMaps[sOberatorID] !== 'undefined' && oMaps[sOberatorID].length) {
                     $property.append('<a class="map-link" href="http://environment.sa.gov.au' + oMaps[sOberatorID] + '" download="filename">View map <span>(pdf)</span></a>');
