@@ -6,6 +6,7 @@ var selectedDays = 1;
 
 $(document).on('gadget.script.loaded', function() {
 
+
     // initialise region gadget watchers
     IMUtility.pushRegionGadgetLoadedEvent();
     IMUtility.pushRegionGadgetChangedEvent();
@@ -42,6 +43,7 @@ $(document).on('gadget.script.loaded', function() {
 
         // detect when last row loaded
         $('.im-grid .accom tbody>tr:last-child .name').IMElementExists(function() {
+            var oMaps = getMapData();
 
             $('.prices-grid td.date').addClass('hidden-xs'); // used in bookeasy-utility to determin if loaded
 
@@ -49,10 +51,19 @@ $(document).on('gadget.script.loaded', function() {
             selectedDays = getDaysSelected();
 
             if(isMobile) {
-
                 updateProductRows('region');
-
             }
+
+            // add maps
+            $('td.property').each(function(){
+                var $property = $(this);
+                var sOberatorID = $(this).parent().attr('id').replace('Operator', '');
+                console.log(oMaps[sOberatorID]);
+                // read oMaps and find a match for current operator
+                if (typeof oMaps[sOberatorID] !== 'undefined' && oMaps[sOberatorID].length) {
+                    $property.append('<a class="map-link" href="http://environment.sa.gov.au' + oMaps[sOberatorID] + '" download="filename">View map <span>(pdf)</span></a>');
+                }
+            })
 
             // load hi-res images
             insertImages('region');
@@ -73,11 +84,10 @@ $(document).on('gadget.script.loaded', function() {
 
         // detect when last row loaded
         $('.im-grid tbody>tr:last-child .OperatorInfo').IMElementExists(function() {
+            var oMaps = getMapData;
 
             if(isMobile) {
-
                 updateProductRows('details');
-
             }
 
             // load hi-res images
@@ -85,10 +95,14 @@ $(document).on('gadget.script.loaded', function() {
 
         });
 
-
     });
 
+
 });
+
+
+
+
 
 function updateProductRows(gadget) {
     var $dateHeaders = $('.im-grid thead td.date').clone();
@@ -119,7 +133,6 @@ function updateProductRows(gadget) {
         // wrap each td in a row
         $product.find('td').wrap('<tr class="product__row" />');
 
-
         if(gadget === 'region') {
             $('.inline-header').remove();
         }
@@ -144,6 +157,7 @@ function updateProductRows(gadget) {
 
     // remove price columns
     $('td.price').remove();
+
 }
 
 
@@ -172,7 +186,7 @@ function getDaysSelected() {
 
 
 function getMapData() {
-    var oMaps = [];
+    var oReturn = [];
 
     $.each(campgroundData, function(key, value) {
 
@@ -181,16 +195,16 @@ function getMapData() {
             var aIDs = key.split(',');
 
             $.each(aIDs, function(i) {
-                oMaps[aIDs[i]] = value;
+                oReturn[aIDs[i]] = value;
             });
 
         } else {
-            oMaps[key] = value;
+            oReturn[key] = value;
         }
 
     });
 
-    return oMaps;
+    return oReturn;
 }
 
 
