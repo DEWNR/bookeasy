@@ -44,6 +44,9 @@
           },{
               "source": ["src/javascripts/booking-statewide.js"],
               "filename": "booking-statewide.js"
+          },{
+              "source": ["src/javascripts/gadgets.js"],
+              "filename": "gadgets.js"
           }
       ],
       "extensions": ["js"]
