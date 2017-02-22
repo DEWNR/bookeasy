@@ -169,6 +169,10 @@
 
         img {
             width: 100%;
+
+            &.unloaded {
+                visibility: hidden;
+            }
         }
     }
 
