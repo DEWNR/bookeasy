@@ -74,9 +74,8 @@
     }
 
     .im-pricebutton {
-        // width: 100px;
         width: 100%;
-        // margin-right: 0;
+        max-width: 200px;
         padding: 10px 0px 8px;
     }
 
@@ -116,7 +115,7 @@
     .product .product__row {
         border-top: 1px solid #eee;
         border-bottom: 1px solid #eee;
-        
+
     }
 
     .product__row td.price {
@@ -140,7 +139,7 @@
         margin-bottom: 10px;
         margin-right: 8px;
     }
-    
+
     .search-gadget.BE div.product,
     .search-gadget.BE div.period,
     .search-gadget.BE div.adults,
@@ -175,7 +174,7 @@
 @media (min-width: 768px) and (max-width: 1230px) {
 
     //.manyCols class exists when more than 5 nights selected
-    .manyCols {  
+    .manyCols {
         .region-gadget div.thumb {
             max-width: 100%;
         }
@@ -237,7 +236,7 @@
         width: 0;
         padding: 2px;
     }
-    
+
 
 }
 
@@ -288,5 +287,3 @@
     }
 
 }
-
-
