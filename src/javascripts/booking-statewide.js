@@ -6,13 +6,29 @@
 
 if (typeof productsData !== 'undefined') {
 
-    var aAllLocations = Object.keys(productsData);
+    if (typeof productsData['Nullarbor National Park, Wilderness Protection Area and Regional Reserve'] != 'undefined') {
+        //create new object
+        var newObject = ['Nullarbor National Park Wilderness Protection Area'];
+        //clone old object into new object
+        productsData[ newObject ] = productsData['Nullarbor National Park, Wilderness Protection Area and Regional Reserve'];
+        //delete old object
+        delete productsData['Nullarbor National Park, Wilderness Protection Area and Regional Reserve'];
+    }
+
+    var aAllLocations = Object.keys(productsData).sort();
     var aFilteredLocations = []; // contains an array of locations to show in region gadget
     var urlHash = location.hash.replace(/^#/, '').trim();
     var hideProductTypes = ['tours','carhire','packages'];
     var bShowRegionGadget = 1;
 
     urlHash = urlHash.replace(/%20/g, ' ');
+
+    // fix for Nullarbor
+    if(urlHash === 'Nullarbor National Park, Wilderness Protection Area and Regional Reserve') {
+        urlHash = 'Nullarbor National Park Wilderness Protection Area';
+    }
+    
+
 
     $(function() {
 
