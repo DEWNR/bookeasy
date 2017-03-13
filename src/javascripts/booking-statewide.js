@@ -146,7 +146,7 @@ if (typeof productsData !== 'undefined') {
 
         var bookingDate = new Date();
         var detailPageURL = './booking/details';
-        
+
         if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
             detailPageURL = './details-gadget.html';
         }
@@ -170,7 +170,7 @@ if (typeof productsData !== 'undefined') {
                 },
                 defaultDate: bookingDate,
                 defaultSort: 'name', // or location
-                ignoreSearchCookie: true,
+                ignoreSearchCookie: false,
                 itemDetailPageURL: detailPageURL,
                 limitLocations: aFilteredLocations,
                 period: 1, // number of days to display
