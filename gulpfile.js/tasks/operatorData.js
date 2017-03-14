@@ -18,10 +18,16 @@ var operatorDataTask = function(cb) {
         .pipe(streamify(jeditor(function (json) {
             return json['Operators'].map(function (operators) {
                 return {
-                    ResidentialAddress: operators.ResidentialAddress,
+                    OperatorID: operators.OperatorID,
+                    type: operators.Type1,
                     TradingName: operators.TradingName,
-                    Location: operators.Location
-                };
+                    ResidentialAddress: operators.ResidentialAddress,
+                    Locations: operators.Locations,
+                    Location: operators.Location,
+                    Description: operators.Description,
+                    Cancellation: operators.Cancellation,
+                    IsMothership: operators.IsMothership
+                 };
             });
         })))
         .pipe(gulp.dest('./src/data'));
