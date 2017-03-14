@@ -155,7 +155,7 @@ if (typeof productsData !== 'undefined') {
 
         var bookingDate = new Date();
 
-        bookingDate.setDate(bookingDate.getDate() + 1);
+        bookingDate.setDate( bookingDate.getDate() );
 
         // only load gadget for those with camping / accomodation
         if (hasAccomodation) {
@@ -177,7 +177,7 @@ if (typeof productsData !== 'undefined') {
                 enableRegionSearch: false,
                 forceAccomType: '',
                 disabledTypes: hideProductTypes,
-                ignoreSearchCookie: true,
+                ignoreSearchCookie: false,
                 itemDetailPageURL: '//www.environment.sa.gov.au/parks/booking/details',
                 limitLocations: aFilteredLocations,
                 period: 1,
