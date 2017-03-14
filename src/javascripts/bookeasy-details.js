@@ -40,6 +40,9 @@ $(function() {
         showQuantity: false,
         thumbsInGrid: true,
         type: bookeasyType,
+        showAllAccom: true,
+        showAllTours: true,
+        showAllEvents: true,
         vcID: 188
     });
 
