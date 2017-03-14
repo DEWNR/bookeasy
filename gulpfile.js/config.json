@@ -16,6 +16,11 @@
       "dest": "./"
     },
 
+    "data": {
+      "src": "data",
+      "dest": "data"
+    },
+
     "js": {
       "src": "javascripts",
       "dest": "js",
