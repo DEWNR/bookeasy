@@ -91,7 +91,7 @@
                 <td>{{ operator.location }}</td>
                 <td>{{ operator.type1 }}</td>
                 <td>{{ operator.isMothership }}</td>
-                <td><a href="details.html#/{{ operator.type1 | limitTo: 5 | lowercase }}/{{ operator.operatorID }}" target="_blank">visit</a></td>
+                <td><a href="../details-gadget.html#/{{ operator.type1 | limitTo: 5 | lowercase }}/{{ operator.operatorID }}" target="_blank">visit</a></td>
               </tr>
             </tbody>
 
@@ -144,7 +144,6 @@
 
                         }
 
-                        console.log(aTemp);
                         $scope.operators = aTemp;
 
                     })
