@@ -113,42 +113,44 @@
                 $scope.searchOperators   = '';        // set the default search/filter term
                 $scope.operators = [];
 
-                $http.jsonp('http://sjp.impartmedia.com/be/getOperatorsInformation?callback=JSON_CALLBACK&q=188').
-                  then( function successCallback( response ) {
-                    var operators = response.data.Operators;
+                $http.get('/data/operatorData.json')
+                    .success(function(data) {
 
-                    var aTemp = [];
+                        var operators = data;
 
-                    for (var key in operators) {
-                        var sLocations = '';
+                        var aTemp = [];
 
-                        if(typeof operators[key]['Locations'] !== 'undefined') {
+                        for (var key in operators) {
+                            var sLocations = '';
 
-                            if (Object.keys(operators[key]['Locations']).length) {
-                                sLocations = operators[key]['Locations'][0]['Description'];
+                            console.log(operators[key]);
+
+                            if(typeof operators[key]['Locations'] !== 'undefined') {
+
+                                if (Object.keys(operators[key]['Locations']).length) {
+                                    sLocations = operators[key]['Locations'][0]['Description'];
+                                }
+
                             }
+
+                            aTemp.push({
+                                operatorID: operators[key]['OperatorID'],
+                                tradingName: operators[key]['TradingName'],
+                                vcLocations: sLocations,
+                                location: operators[key]['Location'],
+                                type1: operators[key]['type'],
+                                isMothership: operators[key]['IsMothership']
+                            });
 
                         }
 
-                        aTemp.push({
-                            operatorID: operators[key]['OperatorID'],
-                            tradingName: operators[key]['TradingName'],
-                            vcLocations: sLocations,
-                            location: operators[key]['Location'],
-                            type1: operators[key]['Type1'],
-                            isMothership: operators[key]['IsMothership']
-                        });
+                        console.log(aTemp);
+                        $scope.operators = aTemp;
 
-                    }
-
-
-                    $scope.operators = aTemp;
-
-                }, function errorCallback(response) {
-                  console.log('There was an error retrieving the JSON data. ');
-                });
+                    })
+                    .error(function(error) {
+                    });
             });
-
         </script>
     </body>
 </html>
