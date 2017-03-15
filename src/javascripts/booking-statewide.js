@@ -76,7 +76,7 @@ if (typeof productsData !== 'undefined') {
         var aReturn = aAllLocations; // defaults to show all locations
 
         // check if the hash has been set
-        if (urlHash && (urlHash !== 'All')) {
+        if (urlHash && (urlHash !== '-All-')) {
             aReturn = [urlHash]; // set aFilteredLocations
         }
 
@@ -98,7 +98,7 @@ if (typeof productsData !== 'undefined') {
         var hasAccomodation = false;
 
         if (!urlHash) {
-            urlHash = 'All';
+            urlHash = '-All-';
         }
 
         $('.button-list').remove();
