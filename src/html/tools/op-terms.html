@@ -160,6 +160,9 @@
                 terms = terms.replace(/\Check in and Check out\b:/g, '<strong>Check in and Check out:</strong>');
                 terms = terms.replace(/\Length of a booking\b:/g, '<strong>Length of a booking:</strong>');
 
+                terms = terms.replace(/(\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*)/, "<a href=\"mailto:$1\">$1</a>");
+                terms = terms.replace('www.parks.sa.gov.au', '<a href=\"http://www.parks.sa.gov.au">www.parks.sa.gov.au</a>');
+
                 return terms;
             }
 
