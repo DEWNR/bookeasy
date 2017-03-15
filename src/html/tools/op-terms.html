@@ -145,17 +145,20 @@
                 terms = terms.replace(/\CONDITIONS\b/g, '<h3>Conditions</h3>');
 
                 // bold things
-                terms = terms.replace(/\Site booking\b/g, '<strong>Site booking</strong>');
+                terms = terms.replace(/\Site booking\b:/g, '<strong>Site booking:</strong>');
                 terms = terms.replace(/\Smoking\b:/g, '<strong>Smoking:</strong>');
-                terms = terms.replace(/\Changes and Cancellations\b/g, '<strong>Changes and Cancellations</strong>');
-                terms = terms.replace(/\Changes Cancellations and Refunds\b/g, '<strong>Changes Cancellations and Refunds</strong>');
-                terms = terms.replace(/\Park Closure due to Fire Danger\b/g, '<strong>Park Closure due to Fire Danger</strong>');
-                terms = terms.replace(/\Other Park Closures\b/g, '<strong>Other Park Closures</strong>');
-                terms = terms.replace(/\Disclaimer\b/g, '<strong>Disclaimer</strong>');
-                terms = terms.replace(/\Rates\b/g, '<strong>Rates</strong>');
-                terms = terms.replace(/\Online Bookings\b/g, '<strong>Online Bookings</strong>');
-                terms = terms.replace(/\Check in and Check out\b/g, '<strong>Check in and Check out</strong>');
-                terms = terms.replace(/\Length of a booking\b/g, '<strong>Length of a booking</strong>');
+                terms = terms.replace(/\Changes and Cancellations\b:/g, '<strong>Changes and Cancellations:</strong>');
+                terms = terms.replace(/\Changes Cancellations and Refunds\b:/g, '<strong>Changes Cancellations and Refunds:</strong>');
+                terms = terms.replace(/\Park Closure due to Fire Danger\b:/g, '<strong>Park Closure due to Fire Danger:</strong>');
+                terms = terms.replace(/\Other Park Closures\b:/g, '<strong>Other Park Closures:</strong>');
+                terms = terms.replace(/\Disclaimer\b:/g, '<strong>Disclaimer:</strong>');
+                terms = terms.replace(/\Rates\b:/g, '<strong>Rates:</strong>');
+                terms = terms.replace(/\Property\b:/g, '<strong>Property:</strong>');
+                terms = terms.replace(/\Guest numbers\b:/g, '<strong>Guest numbers:</strong>');
+                terms = terms.replace(/\Pets\b:/g, '<strong>Pets:</strong>');
+                terms = terms.replace(/\Online Bookings\b:/g, '<strong>Online Bookings:</strong>');
+                terms = terms.replace(/\Check in and Check out\b:/g, '<strong>Check in and Check out:</strong>');
+                terms = terms.replace(/\Length of a booking\b:/g, '<strong>Length of a booking:</strong>');
 
                 return terms;
             }
