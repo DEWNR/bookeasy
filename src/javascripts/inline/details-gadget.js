@@ -85,18 +85,22 @@ function getOperatorData(id) {
 
         if (data.length) {
 
-            // console.log(data);
-
             backURL = '/#' + data[0].Location;
 
             if(data[0].IsTourManager == true) {
 
                 // add location title
-                $('#content').prepend('<h1>' + data[0].Location + '</h1>');
+                $('#content').prepend('<div class="location-header"><h1>' + data[0].Location + '</h1></div>');
 
             } else {
                 // add location title
-                $('#content').prepend('<h1>' + data[0].Location + '</h1><p class="">' + data[0].TradingName + '</p>');
+                $('#content').prepend('<div class="location-header"><h1>' + data[0].Location + '</h1><h2 class="location-name">' + data[0].TradingName + '</h2></div>');
+            }
+
+
+            if(data[0].Description.length > 0) {
+                // insert description
+                $('.location-header').append('<div class="location-description"><p>' + data[0].Description + '</p></div>');
             }
 
             // add back button

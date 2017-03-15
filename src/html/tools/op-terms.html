@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+
+        <link rel='stylesheet prefetch' href='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
+        <link rel='stylesheet prefetch' href='//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css'>
+
+        <style>
+            body {
+                 padding: 40px;
+            }
+            tbody tr:hover,
+            tbody tr:hover td {
+                background: #ffcc78!important;
+            }
+            tr.selected {
+                background: #ffcc38!important;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="container">
+            <table class="table table-bordered table-striped op-descriptions">
+                <thead>
+                    <tr>
+                        <th width="150">Operator ID</th>
+                        <th width="250">Trading name</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script>
+
+            $.getJSON( "../data/operatorData.json", function( data ) {
+
+                    var operators = data;
+
+                    for (var key in operators) {
+
+                        var terms = '';
+
+                        if(typeof operators[key]['Cancellation'] !== "undefined") {
+                            terms = text2HTML(operators[key]['Cancellation']);
+                        }
+
+                        sTemp = '<tr><td>' + operators[key]['OperatorID'] + '</td><td>' + operators[key]['TradingName'] + '</td><td>' + terms + '</td></tr>';
+
+                        $('.op-descriptions tbody').append(sTemp);
+
+                    }
+
+                })
+
+            function text2HTML(input) {
+                input = input.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\"/g, '&quot;').replace(/\//g, '/');
+                input = input.replace(/\r/g, '').replace(/\n( )*?(\n)*?( )*?$/, '').replace(/\n( )*?\n/g, '</p><p>').replace(/\n/g, '<br />');
+                input = '<p>'+input+'</p>';
+
+                return input;
+            }
+        </script>
+    </body>
+</html>
