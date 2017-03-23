@@ -142,7 +142,8 @@ img {
     max-width: 660px;
     margin: 0 auto;
 
-    .bookingComplete {
+    .bookingComplete,
+    .bookingCancelled {
         border: 0;
         box-shadow: none;
         margin: 0;
@@ -153,6 +154,7 @@ img {
         text-align: left;
         font-weight: normal;
         font-size: 16px;
+        color: $sagovau-color-text-base;
     }
 
     a {
