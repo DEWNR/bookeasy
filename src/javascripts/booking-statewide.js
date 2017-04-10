@@ -199,6 +199,9 @@ if (typeof productsData !== 'undefined') {
         } else {
             // empty container
             $('#bookeasy__region-gadget').html('<p>Camping and accommodation is not available in this park.</p>');
+            if (urlHash && (urlHash.indexOf('Piccaninnie') !== -1)) {
+                $('#bookeasy__region-gadget').html('<p>Your will need to enter an indemnity form receipt number at the time of booking. Please fill out an <a class="link" style="text-decoration: underline;" href="//www.environment.sa.gov.au/parks/Find_a_Park/Browse_by_region/Limestone_Coast/piccaninnie-ponds-conservation-park/booking/snorkelling/snorkelling-indemnity-form" target="_blank">indemnity form</a> for each person diving/snorkelling prior to making the booking.</p><p>Camping and accommodation is not available in this park.</p>');
+            }
         }
 
     }
