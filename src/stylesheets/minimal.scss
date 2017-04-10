@@ -135,3 +135,43 @@ img {
             text-decoration: none;
         }
     }
+
+
+#bookeasy__confirmation-gadget {
+    padding: 0 1em 300px;
+    max-width: 660px;
+    margin: 0 auto;
+
+    .bookingComplete,
+    .bookingCancelled {
+        border: 0;
+        box-shadow: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    label {
+        text-align: left;
+        font-weight: normal;
+        font-size: 16px;
+        color: $sagovau-color-text-base;
+    }
+
+    a {
+        display: inline-block;
+        padding: 12px 9px;
+        font-family: $sagovau-font-family-base;
+        color: #fff;
+        background-color: $sagovau-color-brand;
+        border: 0;
+        border-radius: 4px;
+        margin-left: 2px;
+        margin-right: 2px;
+        min-width: 68px;
+        cursor: pointer;
+        text-decoration: none;
+        text-align: center;
+        font-size: 16px;
+    }
+
+}

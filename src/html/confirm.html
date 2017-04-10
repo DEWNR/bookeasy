@@ -1,6 +1,6 @@
 {% extends 'layouts/minimal.html' %}
 
-{% set pagetitle = 'Thank you' %}
+{% set pagetitle = 'Checkout' %}
 
 
 
@@ -23,8 +23,15 @@
 
     <div id="bookeasy__confirmation-gadget">
 
-        <label>Thank you for your booking. You can download your itinerary with the link below.</label>
-        <a href="//sjp.impartmedia.com/V1.1/be/getItineraryPdf?key=8536F8016134E2E6EF0C16459E703F33&amp;itineraryNo=5699372">Download your itinerary PDF now.</a>
+        <div class="bookingComplete">
+            <label>Thank you for your booking, a summary has been emailed to you. Please note that you do not need to display anything on your vehicle</label>
+            <a href="//sjp.impartmedia.com/V1.1/be/getItineraryPdf?key=F89317EFA68A7C60611D33AA82FDBDAF&amp;itineraryNo=5986971">Download your PDF now.</a>
+        </div>
+
+
+
+
+        <!--div class="bookingCancelled"><label>Your payment has been unsuccessful.</label></div-->>
 
     </div>
 

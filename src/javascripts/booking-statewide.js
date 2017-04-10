@@ -4,6 +4,9 @@
  * location-selector.
  **/
 
+// BE['gadget']['region']['text']['viewMap'] = 'Map';
+// BE['gadget']['search']['text']['adults']['label'] = 'Adults';
+
 if (typeof productsData !== 'undefined') {
 
     if (typeof productsData['Nullarbor National Park, Wilderness Protection Area and Regional Reserve'] != 'undefined') {
