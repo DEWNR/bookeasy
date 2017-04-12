@@ -277,9 +277,10 @@
 }
 
 
-// #bookeasy__details-gadget div.BE.details-gadget div.search-gadget div.students {
-//     display: none;
-// }
+// Hide students and observers on vehicle-entry details-gadgets (likely affects all of type tours)
+#bookeasy__details-gadget div.BE.details-gadget div.search-gadget div.students {
+    display: none;
+}
 #bookeasy__details-gadget div.BE.details-gadget div.search-gadget div.observers {
     display: none;
 }
