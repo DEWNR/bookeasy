@@ -43,6 +43,7 @@ $(function() {
         showAllAccom: true,
         showAllTours: true,
         showAllEvents: true,
+        noObservers: 0,
         vcID: 188
     });
 
