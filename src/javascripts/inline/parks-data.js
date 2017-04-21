@@ -84,6 +84,12 @@ var productsData = {
         },
         "url": "booking/flinders-chase-national-park"
     },
+    "Fowlers Bay Conservation Park " :{
+        "Things to book": {
+            "Camping / Accommodation": true,
+        },
+        "url": "//www.environment.sa.gov.au/parks/Find_a_Park/Browse_by_region/Eyre_Peninsula/fowlers-bay-conservation-park/booking"
+    },
     "Innes National Park": {
         "Things to book": {
             "Camping / Accommodation": true,
