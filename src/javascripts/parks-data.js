@@ -52,6 +52,11 @@ var productsData = {
 		"Camping / Accommodation": true,"School Bookings": true,
 	},
 	"url": "http://www.environment.sa.gov.au/parks/Find_a_Park/Browse_by_region/Limestone_Coast/Coorong_National_Park/booking"
+},"Fowlers Bay Conservation Park " :{
+    "Things to book": {
+        "Camping / Accommodation": true,
+    },
+    "url": "//www.environment.sa.gov.au/parks/Find_a_Park/Browse_by_region/Eyre_Peninsula/fowlers-bay-conservation-park/booking"
 },"Little Dip Conservation Park" :{
 	"Things to book": {
 		"Camping / Accommodation": true,
