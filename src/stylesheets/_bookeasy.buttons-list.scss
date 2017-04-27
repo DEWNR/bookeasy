@@ -6,6 +6,7 @@
 
 
 .button-list {
+    box-sizing: content-box;
     margin-bottom: 20px;
 
     &:empty {
