@@ -203,7 +203,7 @@
 
     .im-grid .specials {
         left: 100%;
-        top: 30px;
+        top: 20px;
     }
 
     .im-grid .specials .special {
@@ -279,8 +279,8 @@
         width: 14.5%;
     }
     .im-grid .specials {
-        left: 100%;
-        top: 30px;
+        left: calc( 100% + 18px);
+        top: 20px;
     }
     .im-grid .specials .special {
         width: 60px;
