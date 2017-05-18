@@ -55,9 +55,9 @@ $(document).on('gadget.script.loaded', function() {
             }
 
             // add maps
-            $('td.property').each(function(){
-                var $property = $(this);
-                var sOberatorID = $(this).parent().attr('id').replace('Operator', '');
+            $('.im-grid tr.odd, .im-grid tr.even').each(function(){
+                var $property = $(this).find('td.property');
+                var sOberatorID = $(this).attr('id').replace('Operator', '');
 
                 // read oMaps and find a match for current operator
                 if (typeof oMaps[sOberatorID] !== 'undefined' && oMaps[sOberatorID].length) {
@@ -227,7 +227,7 @@ function insertImages(gadget) {
         } else {
             imagePath = imagePath.replace('thumbs/461', 'images');
             productTitle = $thumbnail.parent().siblings('.name').text();
-            $thumbnail.wrap('<a class="be-fancybox" href="' + imagePath + '" rel="gallery" title="' + productTitle + '"></a>');
+            $thumbnail.attr('src', imagePath).attr('rel', imagePath).wrap('<a class="be-fancybox" href="' + imagePath + '" rel="gallery" title="' + productTitle + '"></a>');
         }
 
     });
