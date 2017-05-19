@@ -109,13 +109,13 @@
 
     .im-grid table.product {
         margin-bottom: 16px;
-        border-bottom: 1px solid #eee;
+        // border-bottom: 1px solid #eee;
     }
 
     .product .product__row {
-        border-top: 1px solid #eee;
-        border-bottom: 1px solid #eee;
-
+        // border-top: 1px solid #eee;
+        // border-bottom: 1px solid #eee;
+        border: 0;
     }
 
     .product__row td.price {
@@ -186,7 +186,11 @@
         // padding: 20px 8px 16px 0;
         padding: 0;
         margin: 10px 10px 4px 0;
-        max-width: 150px;
+        // max-width: 150px;
+    }
+
+    .region-gadget .specials div.special {
+        margin: 20px 0 5px 10px;
     }
 
     .im-grid .thumb img {
@@ -252,7 +256,7 @@
             // width: 100%;
             padding: 0;
             margin: 10px 10px 16px 0;
-            max-width: 150px;
+            max-width: 210px;  //150px;
         }
     }
 

@@ -7,9 +7,17 @@
 
 .im-grid {
 
+    .price_table {
+        border-collapse: separate;
+    }
+
     table {
         border-collapse: collapse;
         width: 100%;
+    }
+
+    th {
+        background-color: inherit;
     }
 
     thead {
