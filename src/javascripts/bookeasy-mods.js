@@ -3,8 +3,22 @@ var windowWidth = $(window).width();
 var isMobile = false;
 var isAccom = false;
 var selectedDays = 1;
+var campgroundData;
 
 $(document).on('gadget.script.loaded', function() {
+
+
+    // get campground-data from RSS
+    $.getScript('https://www.environment.sa.gov.au/feed.rss?listname=npsa-cl-campground-data', function(){
+
+        // if (campgroundData != null) {
+        //     console.log('campgroundData available!');
+        // }
+
+    });
+
+    // setTimeout();
+    // window.scrollTo(0, 1);  // potential fix for images still loading
 
 
     // initialise region gadget watchers
@@ -48,7 +62,9 @@ $(document).on('gadget.script.loaded', function() {
             $('.prices-grid td.date').addClass('hidden-xs'); // used in bookeasy-utility to determin if loaded
 
             // get days selected and add/remove class
-            selectedDays = getDaysSelected();
+            selectedDays = getDaysSelected('region');
+
+            // console.log(selectedDays);
 
             if(isMobile) {
                 updateProductRows('region');
@@ -63,7 +79,8 @@ $(document).on('gadget.script.loaded', function() {
                 if (typeof oMaps[sOberatorID] !== 'undefined' && oMaps[sOberatorID].length) {
                     $property.append('<a class="map-link" href="http://environment.sa.gov.au' + oMaps[sOberatorID] + '" download="filename">View map <span>(pdf)</span></a>');
                 }
-            })
+            });
+
 
             // load hi-res images
             insertImages('region');
@@ -80,7 +97,9 @@ $(document).on('gadget.script.loaded', function() {
     $w.event.subscribe('grid.rendered', function() {
 
         // get days selected and add/remove class
-        selectedDays = getDaysSelected();
+        selectedDays = getDaysSelected('details');
+
+        // console.log(selectedDays);
 
         // detect when last row loaded
         $('.im-grid tbody>tr:last-child .OperatorInfo').IMElementExists(function() {
@@ -164,12 +183,21 @@ function updateProductRows(gadget) {
 
 
 
-function getDaysSelected() {
+function getDaysSelected(gadgetType) {
     var sReturn = 1;
 
-    if (typeof variable === 'undefined') {
+    if (gadgetType == 'details') {
+        sReturn = $('thead>tr>td.date', '.priceGrid').length;
+    }
+    if (gadgetType == 'region') {
         sReturn = $('thead>tr>td.date', '.accom').length;
     }
+
+    // if (typeof variable == 'undefined') {
+    //     sReturn = $('thead>tr>td.date', '.accom').length;
+    // }
+
+    // console.log(gadgetType);
 
     // change things up if lots of days selected
     if(sReturn > 5) {
@@ -178,7 +206,7 @@ function getDaysSelected() {
         $('html').removeClass('manyCols');
     }
 
-    return sReturn
+    return sReturn;
 }
 
 
