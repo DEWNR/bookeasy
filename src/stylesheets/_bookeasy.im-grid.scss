@@ -11,6 +11,16 @@
         border-collapse: separate;
     }
 
+    table,
+    td,
+    tr,
+    th,
+    tbody,
+    thead {
+        box-sizing: content-box;
+        border: 0;
+    }
+
     table {
         border-collapse: collapse;
         width: 100%;
