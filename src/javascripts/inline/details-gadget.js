@@ -17,7 +17,7 @@ if(window.location.hash) {
     }
 
     if (bookeasyType == 'accom') {
-        xDays = 1;  //7
+        xDays = 3;
     }
 }
 
@@ -44,15 +44,12 @@ $(function() {
             showQuantity: false,
             thumbsInGrid: true,
             type: bookeasyType,
-            // showPeriod: true,
             showAllAccom: true,
             showAllTours: true,
             showAllEvents: true,
 
             vcID: 188
         });
-            // period was 1
-            // showPeriod default = true
 
         $('.be-fancybox').fancybox();
 
@@ -85,7 +82,18 @@ function getOperatorData(id) {
 
         if (data.length) {
 
-            backURL = '/#' + data[0].Location;
+            backLocation = data[0].Location;
+
+            if (backLocation === 'Bool Lagoon Game Reserve') {
+                backLocation = 'Bool Lagoon Game Reserve and Hacks Lagoon Conservation Park';
+            }
+
+            if (backLocation === 'Cape Gantheaume Conservation Park and Wilderness P') {
+                backLocation = 'Cape Gantheaume Conservation Park and Wilderness Protection Area';
+            }
+
+            backURL = '/parks/booking#' + backLocation;
+            // backURL = '/#' + backLocation;
 
             if(data[0].IsTourManager == true) {
 
@@ -98,10 +106,10 @@ function getOperatorData(id) {
             }
 
 
-            if(data[0].Description.length > 0) {
-                // insert description
-                $('.location-header').append('<div class="location-description"><p>' + data[0].Description + '</p></div>');
-            }
+            // if(data[0].Description.length > 0) {
+            //     // insert description
+            //     $('.location-header').append('<div class="location-description"><p>' + data[0].Description + '</p></div>');
+            // }
 
             // add back button
             $('#bookeasy__details-gadget').before('<div class="button-list"><a class="button-list__button button-list__button--back" href="' + backURL + '">Back</a></div>');
