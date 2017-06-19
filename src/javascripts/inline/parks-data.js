@@ -7,6 +7,7 @@ var productsData = {
             "Snorkelling": false,
             "Tennis Courts": false,
             "Facilities": false,
+            "Tours": false,
             "School Bookings": false
         },
         "index":"1",
@@ -139,6 +140,14 @@ var productsData = {
             "Vehicle Entry Fee": true
         },
         "url": "booking/tallaringa-conservation-park"
+    },
+    "Tantanoola Caves Conservation Park": {
+        "Things to book": {
+            "Camping / Accommodation": false,
+            "Vehicle Entry Fee": true,
+            "Tours": true
+        },
+        "url": "booking/tantanoola-caves-conservation-park"
     },
     "The Dutchmans Stern Conservation Park": {
         "Things to book": {
