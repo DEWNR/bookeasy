@@ -7,7 +7,7 @@
 // BE['gadget']['region']['text']['viewMap'] = 'Map';
 // BE['gadget']['search']['text']['adults']['label'] = 'Adults';
 
-if (typeof productsData !== 'undefined') {
+if (typeof productsData !== 'undefined' && $('#bookeasy__region-gadget').length > 0) {
 
     if (typeof productsData['Nullarbor National Park, Wilderness Protection Area and Regional Reserve'] != 'undefined') {
         //create new object
