@@ -98,11 +98,11 @@ function getOperatorData(id) {
             if(data[0].IsTourManager == true) {
 
                 // add location title
-                $('#content').prepend('<div class="location-header"><h1>' + data[0].Location + '</h1></div>');
+                $('#bookeasy__details-gadget').before('<div class="location-header"><h1>' + data[0].Location + '</h1></div>');
 
             } else {
                 // add location title
-                $('#content').prepend('<div class="location-header"><h1>' + data[0].Location + '</h1><h2 class="location-name">' + data[0].TradingName + '</h2></div>');
+                $('#bookeasy__details-gadget').before('<div class="location-header"><h1>' + data[0].Location + '</h1><h2 class="location-name">' + data[0].TradingName + '</h2></div>');
             }
 
 

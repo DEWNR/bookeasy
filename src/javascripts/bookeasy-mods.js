@@ -255,7 +255,7 @@ function insertImages(gadget) {
         } else {
             imagePath = imagePath.replace('thumbs/461', 'images');
             productTitle = $thumbnail.parent().siblings('.name').text();
-            $thumbnail.attr('src', imagePath).attr('rel', imagePath).wrap('<a class="be-fancybox" href="' + imagePath + '" rel="gallery" title="' + productTitle + '"></a>');
+            $thumbnail.wrap('<a class="be-fancybox" href="' + imagePath + '" rel="gallery" title="' + productTitle + '"></a>');
         }
 
     });

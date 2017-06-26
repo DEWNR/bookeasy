@@ -95,7 +95,7 @@
 
 #bookeasy__region-gadget div.BE.region-gadget div.gadget__region-tabs div.view-choice a:not(.current):hover {
     background: #b3cbbf;
-} 
+}
 
 .im-grid tbody tr td.sold span {
         transform: rotate(-16deg);
@@ -127,6 +127,12 @@
     }
 }
 
+
+.location-name {
+    font-weight: 800;
+    color: #222;
+    margin-bottom: 16px;
+}
 
 
 // .details-gadget .im-grid .thumb {
@@ -160,7 +166,7 @@
             float: left;
             display: block;
             width: 50%;
-            
+
         }
         .date.tours {
             float: left;
@@ -223,7 +229,7 @@
             display: block;
         }
     }
-        
+
 }
 
 @media (min-width: 768px) and (max-width: 1230px) {
