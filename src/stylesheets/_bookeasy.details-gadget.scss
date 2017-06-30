@@ -141,71 +141,74 @@
 
 
 @media (max-width: 768px) {
-    .is-tours {
+    #bookeasy__details-gadget {
 
-        .details-gadget .total {
-            width: 22%;
-        }
+        .is-tours {
 
-        .title {
-            height: 0;
-            opacity: 0;
-            padding: 0;
-            float: left;
-            display: block;
-            width: 94%;
-        }
-        .details-gadget thead .total {
-            height: 0;
-            opacity: 0;
-            padding: 0;
-            width: 0;
-            height: 43px;
-        }
-        .details-gadget .total {
-            float: left;
-            display: block;
-            width: 50%;
+            .details-gadget .total {
+                width: 22%;
+            }
 
-        }
-        .date.tours {
-            float: left;
-            display: block;
-            // width: 37.7%;
-            width: calc(100% - 21px);
-            // height: 43px;
-        }
-        .date.tours > a {
-            display: inline;
-        }
-        .name {
-            float: left;
-            display: block;
-            padding-top: 4px;
-        }
-        .price.tour-date {
-            float: left;
-            display: block;
-            width: 40%;
-        }
-        .price span {
-            height: 33px;
-            display: inline-block;
-            padding-top: 21px;
-        }
-        .im-grid .thumb {
-            padding: 0 0 0;
-        }
-        .OperatorInfo {
-            padding-top: 8px;
-        }
+            .title {
+                height: 0;
+                opacity: 0;
+                padding: 0;
+                float: left;
+                display: block;
+                width: 94%;
+            }
+            .details-gadget thead .total {
+                height: 0;
+                opacity: 0;
+                padding: 0;
+                width: 0;
+                height: 43px;
+            }
+            .details-gadget .total {
+                float: left;
+                display: block;
+                width: 50%;
 
-        .search-gadget span.label {
-            padding-top: 6px;
+            }
+            .date.tours {
+                float: left;
+                display: block;
+                // width: 37.7%;
+                width: calc(100% - 21px);
+                // height: 43px;
+            }
+            .date.tours > a {
+                display: inline;
+            }
+            .name {
+                float: left;
+                display: block;
+                padding-top: 4px;
+            }
+            .price.tour-date {
+                float: left;
+                display: block;
+                width: 40%;
+            }
+            .price span {
+                height: 33px;
+                display: inline-block;
+                padding-top: 21px;
+            }
+            .im-grid .thumb {
+                padding: 0 0 0;
+            }
+            .OperatorInfo {
+                padding-top: 8px;
+            }
+
+            .search-gadget span.label {
+                padding-top: 6px;
+            }
+
         }
 
     }
-
 }
 
 @media (min-width: 768px) {  // when not mobile
