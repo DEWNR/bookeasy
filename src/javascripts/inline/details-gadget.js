@@ -5,20 +5,26 @@ if(window.location.hash) {
     var aHash = window.location.hash.slice(1).split('/');
     var sType = aHash[1];
     var aValidTypes = ['accom','tours','events','carhire','packages'];
-    var operatorIDregex = /^\d{5}$/;
-    var xDays = 1;
 
-    // check if operatorID is 5 digits and a valid type
-    if (operatorIDregex.test(aHash[2]) && $.inArray( sType, aValidTypes) !== -1) {
+    if(aHash.length && $.inArray( sType, aValidTypes) !== -1) {
 
-        bookeasyType = sType;
-        operatorID = aHash[2];
+        var operatorIDregex = /^\d{5}$/;
+        var xDays = 1;
+
+        // check if operatorID is 5 digits
+        if (operatorIDregex.test(aHash[2])) {
+
+            bookeasyType = sType;
+            operatorID = aHash[2];
+
+        }
+
+        if (bookeasyType == 'accom') {
+            xDays = 3;
+        }
 
     }
 
-    if (bookeasyType == 'accom') {
-        xDays = 3;
-    }
 }
 
 
