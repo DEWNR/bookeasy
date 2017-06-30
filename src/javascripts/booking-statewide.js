@@ -196,7 +196,7 @@ if (typeof productsData !== 'undefined' && $('#bookeasy__region-gadget').length 
                 showList: false, // hide details tab
                 disabledTypes: hideProductTypes,
                 showLocationFilter: false,
-                showRefineTools: false,
+                // showRefineTools: false,  //defaultSort wont' work if false!
                 vcID: 188
             });
         } else {
