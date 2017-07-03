@@ -1,4 +1,6 @@
-{% extends 'layouts/master.html' %}
+{% extends 'layouts/minimal.html' %}
+
+{% set pagetitle = 'Checkout' %}
 
 
 
@@ -6,7 +8,32 @@
 
 {% block content %}
 
-    <div id="bookeasy__confirmation-gadget"></div>
+    <!-- <div class="checkout-complete">
+        <h1>Booking Successful</h1>
+        <div id="confirm"> </div>
+
+        <div class="booking-complete">
+            <h3>Thank you for your booking, a summary has been emailed to you.</h3>
+            <p>Please note that you do not need to display anything on your vehicle</p>
+            <br /><br /><br />
+            <p><a href="http://www.environment.sa.gov.au/parks/Find_a_Park/Browse_by_region/Yorke_Peninsula/innes-national-park/kiosk/">< Back to home</a></p>
+
+        </div>
+    </div> -->
+
+    <div id="bookeasy__confirmation-gadget">
+
+        <div class="bookingComplete">
+            <label>Thank you for your booking, a summary has been emailed to you. Please note that you do not need to display anything on your vehicle</label>
+            <a href="//sjp.impartmedia.com/V1.1/be/getItineraryPdf?key=F89317EFA68A7C60611D33AA82FDBDAF&amp;itineraryNo=5986971">Download your PDF now.</a>
+        </div>
+
+
+
+
+        <!--div class="bookingCancelled"><label>Your payment has been unsuccessful.</label></div-->>
+
+    </div>
 
 {% endblock %}
 
@@ -20,17 +47,9 @@
 
 
 {% block local_javascript %}
+
     <script src="//gadgets.impartmedia.com/gadgets.jsz?key={{ bookeasy_key }}"></script>
 
-    <script>
-
-        $w(function() {
-            BE.gadget.confirm('#bookeasy__confirmation-gadget', {
-                thankYouText: 'Thank you for your booking. You can download your itinerary with the link below.',
-                pdfLinkText: 'Download your itinerary PDF now.'
-            });
-        });
-
-    </script>
+    <script src="/js/inline/confirmation-gadget.js" inline></script>
 
 {% endblock %}

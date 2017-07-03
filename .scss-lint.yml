@@ -93,9 +93,9 @@ linters:
     convention: hyphenated_lowercase # or 'camel_case', or 'snake_case', or a regex pattern
 
   NestingDepth:
-    enabled: true
+    enabled: false
     max_depth: 3
-    ignore_parent_selectors: false
+    ignore_parent_selectors: true
 
   PlaceholderInExtend:
     enabled: true
@@ -162,7 +162,7 @@ linters:
 
   SpaceAfterPropertyColon:
     enabled: true
-    style: at_least_one_space # or 'no_space', or 'one_space', or 'aligned'
+    style: one_space # or 'no_space', or 'at_least_one_space', or 'aligned'
 
   SpaceAfterPropertyName:
     enabled: true

@@ -15,6 +15,8 @@ $sagovau-line-height-base: 20px;
 $sagovau-spacing-unit-base: $sagovau-line-height-base;
 $sagovau-font-family-base: 'Frutiger W01', Helvetica, Arial, sans-serif;
 
+@import 'bookeasy.booking-gadget';
+
 
 
 
@@ -66,12 +68,8 @@ img {
     /*a*/.#{$sagovau-namespace}global-header__logotype {
         margin: 0 auto;
         width: 266px;
-        height: 32px;
-
-        img {
-            display: block;
-            margin-top: -5px;
-        }
+        height: 37px;
+        display: block;
     }
 
 
@@ -112,7 +110,7 @@ img {
 }
 
     /*div*/.#{$sagovau-namespace}site-footer__logos {
-        padding: $sagovau-spacing-unit-base $sagovau-spacing-unit-base 0;
+        padding: 0 $sagovau-spacing-unit-base;
         display: flex;
         flex-flow: row wrap;
         justify-content: space-around;
@@ -121,7 +119,7 @@ img {
     }
 
         /*a*/.#{$sagovau-namespace}site-footer__logo {
-            margin: 0 0 $sagovau-spacing-unit-base;
+            margin: 0;
             display: block;
             width: 152px;
         }
@@ -137,3 +135,43 @@ img {
             text-decoration: none;
         }
     }
+
+
+#bookeasy__confirmation-gadget {
+    padding: 0 1em 300px;
+    max-width: 660px;
+    margin: 0 auto;
+
+    .bookingComplete,
+    .bookingCancelled {
+        border: 0;
+        box-shadow: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    label {
+        text-align: left;
+        font-weight: normal;
+        font-size: 16px;
+        color: $sagovau-color-text-base;
+    }
+
+    a {
+        display: inline-block;
+        padding: 12px 9px;
+        font-family: $sagovau-font-family-base;
+        color: #fff;
+        background-color: $sagovau-color-brand;
+        border: 0;
+        border-radius: 4px;
+        margin-left: 2px;
+        margin-right: 2px;
+        min-width: 68px;
+        cursor: pointer;
+        text-decoration: none;
+        text-align: center;
+        font-size: 16px;
+    }
+
+}

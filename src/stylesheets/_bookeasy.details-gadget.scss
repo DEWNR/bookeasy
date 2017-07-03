@@ -6,281 +6,285 @@
 
 
 #bookeasy__details-gadget {
-    margin-bottom: 100px;
+    font-family: $sagovau-font-family-base;
+    font-size: $sagovau-font-size-base;
+}
 
-    div.BE.details-gadget {
-        color: $sagovau-color-text-base;
-        font-family: 'Frutiger W01', Helvetica, Arial, sans-serif;
-        font-size: 16px;
-        font-weight: 200;
+.details-gadget {
+    color: $sagovau-color-text-base;
+    font-family: $sagovau-font-family-base;
+    font-size: $sagovau-font-size-base;
+    font-weight: 200;
 
-        * {
-            border: 0;
-        }
+    .name {
 
-        h3 {
-            margin: 0 0 0.4em;
-            padding-top: 0.8em;
-            font-weight: 200;
-        }
+        > a {
+            color: $sagovau-color-brand;
+            font-family: $sagovau-font-family-highlight;
+            font-size: 22px;
+            font-weight: normal;
+            margin-bottom: 6px;
+            padding-top: 10px;
+            // padding-left: 10px;
+            width: 100%;
 
-        div.embedded-search {  }
-
-        div.priceGrid {
-            border: 0;
-
-            &.is-loading {
+            &.OperatorInfoMore,
+            &.OperatorInfoLess {
                 display: none;
             }
+        }
+    }
+}
+.manyCols .details-gadget { //only when many Columns are displayed
+    .name {
+        > a {
+            display: block;  //inline-block
 
-            table {
-                thead {
-                    display: none;
-
-                    td {
-                        background: #065931;
-                        border: 0;
-
-                        &.title {  }
-                        &.quantity {  }
-                        &.total {
-                            a {
-
-                            }
-                        }
-                        &.date {  }
-                    }
-                }
-
-
-                tbody {
-                    tr {
-                        border-bottom: 1px solid rgba(0, 0, 0, .03);
-
-                        &.odd {
-                            background: #fff;
-                        }
-
-                        &.even {
-                            background: rgb(243, 243, 243);
-                        }
-
-                        &.instant-confirmation {  }
-                        &.has-specials {  }
-                        &.has-last-minute {  }
-
-                        td {
-                            background: none;
-                            padding: 10px;
-
-                            &.total.total {
-                                a {
-                                    padding: 0.4em 1em 0.5em;
-                                }
-                            }
-
-                            &.name {
-                                padding: 10px 10px 8px 10px;
-                                text-align: left;
-                                position: relative;
-
-                                div.thumb {
-                                    border: 0;
-                                    height: auto;
-                                    overflow: hidden;
-                                    padding: 0;
-                                    width: 24%;
-                                    margin: 0 2% 0 0;
-
-                                    img {
-                                        height: auto;
-                                        position: relative;
-                                        width: 100%;
-                                    }
-                                }
-
-                                div.specials {
-                                    position: absolute;
-                                    top: 50%;
-                                    transform: translateY(-50%);
-                                    right: 0;
-
-                                    .name {
-                                        height: initial;
-                                    }
-                                }
-
-                                a {
-                                    color: $sagovau-color-text-base;
-                                    font-size: 20px;
-                                    text-align: left;
-
-                                    @include media-query(large-and-up) {
-                                        font-size: 20px;
-                                    }
-
-                                    &.more {
-                                        display: none;
-                                    }
-                                }
-                            }
-
-                            &.quantity {  }
-
-                            &.tour-date {
-                                display: none;
-
-                                label {
-                                    color: $sagovau-color-text-base;
-                                    font-weight: 400;
-                                }
-                            }
-
-                            &.total {
-
-                                a {
-                                    background: #dca502;
-                                    border: 0;
-                                    max-width: 240px;
-                                    float: right;
-                                    padding: 0.4em 3em 0.5em;
-                                    transition: background 0.3s ease-in-out;
-                                    outline: 0;
-
-                                    &.sold-out {
-                                        padding: 0.8em 3em 1em;
-
-                                        &:hover,
-                                        &:focus {
-                                            background: darken(#808080, 15%)!important;
-                                        }
-                                    }
-
-                                    &:hover,
-                                    &:focus {
-                                        background: #08713e;
-                                    }
-                                }
-
-                                span.im-pricebutton-label {
-                                    font-size: 16px;
-                                    font-weight: 400;
-                                    margin-bottom: 0;
-                                    line-height: 1;
-                                    padding-top: 0.6em;
-                                }
-
-                                span.im-pricebutton-amount {
-                                    font-size: 20px;
-
-                                    .number {
-                                        margin-top: -0.2em;
-                                        display: block;
-                                    }
-                                }
-
-                                .sold-out {
-                                    span.price {
-                                        font-size: 16px;
-                                        padding: 0.8em 0.2em;
-                                    }
-                                }
-                            }
-
-                            &.price {
-                                font-size: 20px;
-
-                                &.special span {
-                                    text-decoration: none;
-                                }
-                            }
-                        }
-                    }
-                }
+            &.OperatorInfoMore,
+            &.OperatorInfoLess {
+                display: none;
             }
         }
+    }
+}
 
-        div.priceGrid table tbody tr div.OperatorInfo {
-            padding: 0;
-            font-size: 14px;
-            float: left;
-            clear: none;
-            width: 60%;
-            display: block !important;
+.im-grid-roominfo__roomname {
+    color: $sagovau-color-brand;
+    font-family: $sagovau-font-family-highlight;
+    font-size: 22px;
+}
 
-            .Description {
-                p {
-                    margin-top: 0;
-                }
+.im-grid__details {
+    vertical-align: top;
+}
+
+
+.im-grid-roominfo {
+    padding: 20px 10px 5px;
+}
+
+    .im-grid-roominfo__roomname {
+        font-weight: normal;
+        margin: 0;
+
+        a {
+            font-weight: normal;
+        }
+    }
+
+
+.im-grid-operatorinfo {
+    padding: 0 40px 10px 10px;
+    line-height: 1.4;
+
+    p {
+        margin: 0;
+    }
+}
+
+.region-gadget {
+    td.property {
+        padding-bottom: 6px;
+    }
+}
+
+#bookeasy__region-gadget div.BE.region-gadget div.gadget__region-tabs div.view-choice a {
+    padding: 0.6em 1.4em 0.8em;
+}
+
+
+#bookeasy__region-gadget div.BE.region-gadget div.gadget__region-tabs div.view-choice a:not(.current):hover {
+    background: #b3cbbf;
+}
+
+.im-grid tbody tr td.sold span {
+        transform: rotate(-16deg);
+}
+
+#bookeasy__details-gadget {
+    .im-grid .OperatorItem {
+        padding-right: 0;
+    }
+    .im-grid .OperatorInfo {
+        padding-left: 0;
+        width: calc( 100% - 0px );
+    }
+}
+.im-grid .OperatorItemHeading {
+    float: left;
+    padding-right: 10px;
+}
+
+
+.details-gadget {
+    thead a.day,
+    thead a.month {
+        color: #ffffff;
+    }
+    td,
+    th {
+        border: 0px;
+    }
+}
+
+
+.location-name {
+    font-weight: 800;
+    color: #222;
+    margin-bottom: 16px;
+}
+
+
+// .details-gadget .im-grid .thumb {
+//     width: 210px;
+// }
+
+
+@media (max-width: 768px) {
+    #bookeasy__details-gadget {
+
+        .is-tours {
+
+            .details-gadget .total {
+                width: 22%;
             }
 
-            span.OperatorItemHeading {
-                color: #4e4e4e;
-                margin-bottom: .5em;
-            }
-
-            div.OperatorItemContent {
-                color: #4e4e4e;
+            .title {
+                height: 0;
+                opacity: 0;
                 padding: 0;
-                margin-bottom: 1em;
-
-                p {
-                    margin-top: 0;
-                }
+                float: left;
+                display: block;
+                width: 94%;
             }
+            .details-gadget thead .total {
+                height: 0;
+                opacity: 0;
+                padding: 0;
+                width: 0;
+                height: 43px;
+            }
+            .details-gadget .total {
+                float: left;
+                display: block;
+                width: 50%;
 
-            .RoomConfig {
+            }
+            .date.tours {
+                float: left;
+                display: block;
+                // width: 37.7%;
+                width: calc(100% - 21px);
+                // height: 43px;
+            }
+            .date.tours > a {
+                display: inline;
+            }
+            .name {
+                float: left;
+                display: block;
+                padding-top: 4px;
+            }
+            .price.tour-date {
+                float: left;
+                display: block;
+                width: 40%;
+            }
+            .price span {
+                height: 33px;
                 display: inline-block;
-
-                span.OperatorItemHeading {
-                    display: none;
-                }
+                padding-top: 21px;
+            }
+            .im-grid .thumb {
+                padding: 0 0 0;
+            }
+            .OperatorInfo {
+                padding-top: 8px;
             }
 
-            .MaxGuests {
-                display: inline-block;
-
-                span.OperatorItemHeading {
-                    display: none;
-                }
-
-                div.OperatorItemContent {
-                    display: inline;
-
-                    &:before {
-                        content: ', '
-                    }
-
-                    &:after {
-                        content: ' guest maximum'
-                    }
-                }
+            .search-gadget span.label {
+                padding-top: 6px;
             }
 
-            .Description {
-                span.OperatorItemHeading {
-                    display: none;
-                }
-            }
         }
 
     }
+}
 
-    .main--tours #content div.BE.details-gadget div.priceGrid table tbody tr div.OperatorInfo {
-        display: none!important;
+@media (min-width: 768px) {  // when not mobile
+    .im-grid tbody tr td.name {
+        padding-top: 8px;
+    }
+    .manyCols {
+        .im-grid tbody tr td.name {
+            padding-top: 0;
+        }
+    }
+    .details-gadget .name > a {
+        width: calc( 100% - 240px );
+        padding-bottom: 10px;
+        display: inline-block;
+    }
+    .manyCols {
+        .details-gadget .name > a {
+            width: calc( 100% - 0px );
+            padding-bottom: 0;
+            display: block;
+        }
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 1230px) {
+    .details-gadget div.thumb {
+        width: 210px;
+        max-width: 210px;
+        padding: 2px 0px 8px 0;
+        margin-right: 20px;
+    }
+    .manyCols .details-gadget div.thumb {  //when manyColumns are displayed
+        max-width: 150px;
+        margin-right: 10px;
+    }
+    #bookeasy__details-gadget .im-grid .OperatorInfo {
+        width: calc( 100% - 240px );
+        display: inline-block;
+    }
+    .manyCols #bookeasy__details-gadget {
+        .im-grid .OperatorInfo {
+            width: calc( 100% - 0px );
+            display: block;
+        }
+    }
+    .im-grid .specials .special {
+        margin: 44px 0 5px 10px;
     }
 }
 
-.html.npsa.breakpoint-small #bookeasy__details-gadget div.BE.details-gadget div.search-gadget select,
-.html.npsa.breakpoint-small #bookeasy__region-gadget div.BE.region-gadget div.search-gadget select {
-    width: 100%;
-}
-
-
-// Hide students and observers on vehicle-entry details-gadgets (likely affects all of type tours)
-#bookeasy__details-gadget div.BE.details-gadget div.search-gadget div.students {
-    display: none;
-}
-#bookeasy__details-gadget div.BE.details-gadget div.search-gadget div.observers {
-    display: none;
+@media (min-width: 1231px) {
+    .details-gadget div.thumb {
+        // width: 100%;
+        // vertical-align: middle;
+        margin-right: 20px;
+        padding: 2px 0px 8px 0;
+        width: 210px;
+        max-width: 210px;
+    }
+    .manyCols .details-gadget div.thumb {  //when manyColumns are displayed
+        max-width: 150px;
+        margin-right: 10px;
+    }
+    #bookeasy__details-gadget .im-grid .OperatorInfo {
+        width: calc( 100% - 240px );
+        display: inline-block;
+    }
+    .manyCols #bookeasy__details-gadget {
+        .im-grid .OperatorInfo {
+            width: calc( 100% - 0px );
+            display: block;
+        }
+    }
+    .im-grid .specials .special {
+        margin: 44px 0 5px 10px;
+    }
 }

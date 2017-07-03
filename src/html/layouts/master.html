@@ -1,4 +1,8 @@
 {% set bookeasy_key = 'd5192d41822d0c987a0610af120d29bf' %}
+<!--  env: 7e5893292834eb2b34cd1d9b11437df9
+ WIP: 4a65c97fcf2b568333551e22627eb45d
+ local: d5192d41822d0c987a0610af120d29bf
+ kiwt: 4ae239f9decb3716790c285af3a63221 -->
 
 <!DOCTYPE html>
 
@@ -11,12 +15,13 @@
 
         <!-- Scripts -->
 
-        <script type="text/javascript" src="//fast.fonts.net/jsapi/e0cc203f-7221-4daf-a2d5-815483dba107.js" async></script>
+        <script src="//fast.fonts.net/jsapi/e0cc203f-7221-4daf-a2d5-815483dba107.js" async></script>
 
 
         <!-- Stylesheets -->
 
-        <link href="css/bookeasy.css" rel="stylesheet">
+        <link href="/css/bookeasy.css" rel="stylesheet">
+        <link href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
 
         <noscript>
 
@@ -28,16 +33,25 @@
 
         <style>
             body {
+                font-family: "Frutiger W01", Helvetica, Arial, sans-serif;
                 background: #666;
                 margin: 0;
                 /*padding: 40px;*/
             }
 
             #content {
-                max-width: 1186px;
-                margin: 0 auto;
-                padding: 20px;
                 background: #fff;
+                margin: 0 auto;
+                max-width: 1186px;
+                padding: 20px;
+                position: relative;
+            }
+
+            h1 {
+                color: #08713e;
+                font-size: 36px;
+                line-height: 1.11111;
+                font-weight: normal;
             }
         </style>
 
@@ -53,19 +67,15 @@
 
         {% block global_javascript %}
 
-            <!-- jQuery -->
+            <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
-            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
-            <!-- Local fallback -->
-
-            <script>window.jQuery || document.write('<script src="/files/templates/00000000-0000-0000-0000-000000000000/f88a7f3c-df7e-430a-825c-24cfa8dec9a8/jquery1111min.js">\x3C/script>')</script>
-
-            <!-- End local fallback -->
-
-            <!-- End jQuery -->
-
+            <script>
+                BEcssOverride = 'none';
+            </script>
         {% endblock %}
+
+
+        {% block details_javascript %}{% endblock %}
 
 
         {% block local_javascript %}{% endblock %}

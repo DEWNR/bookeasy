@@ -4,7 +4,10 @@
  * location-selector.
  **/
 
-if (typeof productsData !== 'undefined') {
+// BE['gadget']['region']['text']['viewMap'] = 'Map';
+// BE['gadget']['search']['text']['adults']['label'] = 'Adults';
+
+if (typeof productsData !== 'undefined' && $('#bookeasy__region-gadget').length > 0) {
 
     if (typeof productsData['Nullarbor National Park, Wilderness Protection Area and Regional Reserve'] != 'undefined') {
         //create new object
@@ -18,7 +21,7 @@ if (typeof productsData !== 'undefined') {
     var aAllLocations = Object.keys(productsData).sort();
     var aFilteredLocations = []; // contains an array of locations to show in region gadget
     var urlHash = location.hash.replace(/^#/, '').trim();
-    var hideProductTypes = ['tours','carhire','packages'];
+    var hideProductTypes = ['tours','carhire','events','packages'];
     var bShowRegionGadget = 1;
 
     urlHash = urlHash.replace(/%20/g, ' ');
@@ -27,7 +30,6 @@ if (typeof productsData !== 'undefined') {
     if(urlHash === 'Nullarbor National Park, Wilderness Protection Area and Regional Reserve') {
         urlHash = 'Nullarbor National Park Wilderness Protection Area';
     }
-    
 
 
     $(function() {
@@ -49,6 +51,9 @@ if (typeof productsData !== 'undefined') {
             // set location hash to selected location
             window.location.hash = urlHash = $(this).val();
         });
+
+
+        $('.be-fancybox').fancybox();
 
     });
 
@@ -115,7 +120,13 @@ if (typeof productsData !== 'undefined') {
                 //we don't need to display camping button if we are already looking at camping
                 if (key !== 'Camping / Accommodation' && val === true) {
                     //Check urls
-                    $('.button-list').append($('<a href="'+ productsData[urlHash].url + '/' +(key.replace(/ /g , '-')).toLowerCase()+ '"><span>' +key+ '</span></a>').addClass('button-list__button '+key).attr('data', key));
+                    bookingURL = productsData[urlHash].url + '/' + (key.replace(/ /g , '-')).toLowerCase();
+
+                    if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+                        bookingURL += '.html';
+                    }
+
+                    $('.button-list').append($('<a href="'+ bookingURL + '"><span>' +key+ '</span></a>').addClass('button-list__button '+key).attr('data', key));
                     $('.'+key).click(  function(){ typeShow('tours'); }  );
                 }
 
@@ -137,7 +148,7 @@ if (typeof productsData !== 'undefined') {
 
     function typeShow(productType) {
 
-        hideProductTypes = ['accom','tours','carhire','packages'];
+        hideProductTypes = ['accom','tours','carhire','events','packages'];
 
         var posInArray = $.inArray(productType, hideProductTypes);
 
@@ -151,39 +162,41 @@ if (typeof productsData !== 'undefined') {
 
     function bookeasy() {
 
-        hasAccomodation = displayProductsData();
-
         var bookingDate = new Date();
+        var detailPageURL = './booking/details';
+
+        if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+            detailPageURL = './details-gadget.html';
+        }
+
+        hasAccomodation = displayProductsData();
 
         bookingDate.setDate( bookingDate.getDate() );
 
         // only load gadget for those with camping / accomodation
         if (hasAccomodation) {
             BE.gadget.region('#bookeasy__region-gadget', {
-                accomOnlyMode: true,
+                accomOnlyMode: true, // only display accommodation
                 adults: 1,
+                collapseRefineTools: true,
                 customMapIcons: {
                     'accom': {
-                        icon:'//www.environment.sa.gov.au/files/templates/00000000-0000-0000-0000-000000000000/c16a6c2a-2cdc-4f08-96b9-f1c11eb6f349/npsa-marker-general.png',
+                        icon: '//www.environment.sa.gov.au/assets/images/svg/npsa-marker-general.svg',
                         pinpoint: [13,45],
                         size: [26,45]
                     }
                 },
-                collapseRefineTools: false,
-                collapseRefineTools: true,
                 defaultDate: bookingDate,
-                defaultRegionState: 'South Australia',
-                defaultSort: 'name',
-                enableRegionSearch: false,
-                forceAccomType: '',
-                disabledTypes: hideProductTypes,
+                defaultSort: 'name', // or location
                 ignoreSearchCookie: false,
-                itemDetailPageURL: '//www.environment.sa.gov.au/parks/booking/details',
+                itemDetailPageURL: detailPageURL,
                 limitLocations: aFilteredLocations,
-                period: 1,
-                showAllAccom: true,
-                showList: false,
+                period: 1, // number of days to display
+                showAllAccom: true, // show all, even if unavailable for time period
+                showList: false, // hide details tab
+                disabledTypes: hideProductTypes,
                 showLocationFilter: false,
+                // showRefineTools: false,  //defaultSort wont' work if false!
                 vcID: 188
             });
         } else {
@@ -200,9 +213,9 @@ if (typeof productsData !== 'undefined') {
 
         $('.gm-style .gm-style-mtc label,.gm-style .gm-style-mtc div').remove();
         $('.gm-style-pbc').remove();
-        $("LINK[href*='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700']").remove();
+        $('LINK[href*="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700"]').remove();
 
-        $("script[type*=javascript]").filter(function() {
+        $('script[type*=javascript]').filter(function() {
             if (window.google !== undefined && google.maps !== undefined) {
                 delete google.maps;
                 $('script').each(function () {

@@ -1,0 +1,42 @@
+/*------------------------------------*\
+    #BOOKEASY TABS GROUP
+\*------------------------------------*/
+
+// scss-lint:disable all
+
+
+.tabs-group,
+.gadget__region-tabs {
+    overflow: hidden;
+    margin-bottom: -5px;
+
+    .label {
+        display: none;
+    }
+
+    a {
+        display: block;
+        background: #eee;
+        font-family: $sagovau-font-family-highlight;
+        overflow: hidden;
+        float: left;
+        font-size: $sagovau-font-size-base;
+        font-weight: normal;
+        padding: 1em 10px;
+        cursor: pointer;
+
+        &.price {
+            border-top-left-radius: 5px;
+        }
+
+        &.map {
+            border-top-right-radius: 5px;
+        }
+
+        &.current {
+            background: $sagovau-color-brand;
+            color: #fff;
+        }
+
+    }
+}

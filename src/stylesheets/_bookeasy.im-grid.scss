@@ -1,0 +1,440 @@
+/*------------------------------------*\
+    #BOOKEASY PRICE GRID
+\*------------------------------------*/
+
+// scss-lint:disable all
+
+
+.im-grid {
+
+    .price_table {
+        border-collapse: separate;
+    }
+
+    table,
+    td,
+    tr,
+    th,
+    tbody,
+    thead {
+        box-sizing: content-box;
+        border: 0;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th {
+        background-color: inherit;
+    }
+
+    thead {
+
+        td {
+            font-family: $sagovau-font-family-highlight;
+            background: darken($sagovau-color-brand, 5%);
+            text-align: center;
+            padding: 5px 10px;
+            color: #fff;
+            font-size: $sagovau-font-size-base;
+            font-weight: normal;
+
+            &.title,
+            &.label {
+                text-align: left;
+            }
+
+            &.date {
+                border-left: 1px solid $sagovau-color-brand;
+
+                a {
+                    display: block;
+                    font-size: 12px;
+                    line-height: 1.1;
+                    font-weight: normal;
+
+                    &.date {
+                        color: #dca502;
+                        font-weight: bold;
+                        font-size: $sagovau-font-size-base;
+                    }
+                }
+            }
+        }
+
+    }
+
+    tbody {
+
+        tr {
+
+            border-bottom: 1px solid #eee;
+
+            td {
+                background: none;
+
+                &.name {
+                    position: relative;
+                }
+
+                &.thumb {
+                    width: 15%;
+                    vertical-align: top;
+
+                    .thumb {
+                        padding: 10px 0 6px 10px;
+                    }
+
+                    a {
+                        display: block;
+                    }
+
+                    img {
+                        width: 100%;
+                    }
+                }
+
+                &.quantity,
+                &.total,
+                &.date,
+                &.price {
+                    width: 8%;
+                    padding: 10px;
+                    text-align: center;
+                    border-left: 1px solid #eee;
+                }
+
+                &.price {
+                    font-weight: normal;
+                }
+
+                &.sold {
+                    font-size: $sagovau-font-size-base;
+
+                    span {
+                        display: block;
+                        font-family: $sagovau-font-family-highlight;
+                        font-weight: bold;
+                        transform: rotate(-25deg);
+                        opacity: 0.5;
+                    }
+                }
+
+                &.total {
+                    border-left: 0;
+
+                    a {
+                        text-decoration: none;
+                    }
+                }
+            }
+
+            &.odd {
+                background: #f9f9f9;
+            }
+
+            &.even {
+                background: #fff;
+            }
+
+            &.inline-header {
+                font-family: $sagovau-font-family-highlight;
+                background: darken($sagovau-color-brand, 5%);
+                text-align: center;
+                color: #fff;
+                font-size: $sagovau-font-size-base;
+                font-weight: normal;
+
+                .title,
+                .label {
+                    text-align: left;
+                    padding: 5px 10px;
+                }
+
+                .date {
+                    border-color: $sagovau-color-brand;
+
+                    a {
+                        display: block;
+                        font-size: 12px;
+                        line-height: 1.1;
+                        font-weight: normal;
+
+                        &.date {
+                            color: #dca502;
+                            font-weight: bold;
+                            font-size: $sagovau-font-size-base;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+
+    .thumb {
+        width: 20%;
+        float: left;
+        padding: 20px 0 16px 10px;
+        box-sizing: border-box;
+        min-height: 100px;
+        background: url('data:image/gif;base64,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');
+        background-position: 50%;
+        background-repeat: no-repeat;
+
+        img {
+            width: 100%;
+
+            &.unloaded {
+                visibility: hidden;
+            }
+        }
+    }
+
+
+    .OperatorInfo {
+        width: 80%;
+        float: left;
+        padding-bottom: 10px;
+        padding-left: 20px;
+        position: relative;
+        box-sizing: border-box;
+    }
+
+    .no-image .OperatorInfo {
+        float: none;
+    }
+
+
+    .OperatorItem {
+        padding-right: 100px;
+        margin-bottom: 10px;
+    }
+
+
+    .OperatorItemHeading {
+        font-family: $sagovau-font-family-highlight;
+        font-weight: 500;
+    }
+
+
+    .OperatorItemContent {
+        max-width: 850px;
+
+        p {
+            margin: 0;
+        }
+    }
+
+
+    .noResults {
+        font-family: $sagovau-font-family-highlight;
+        background: #fff;
+        margin: 0;
+        padding: 40px 20px;
+        font-weight: normal;
+        font-size: 22px;
+    }
+
+
+    .type-group {
+        display: none;
+    }
+
+    .property {
+        position: relative;
+    }
+
+    .specials {
+        float: right;
+        font-size: 70%;
+        line-height: 1em;
+        text-align: right;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 0;
+        z-index: 1000;
+
+        .special {
+            clear: both;
+            background: no-repeat center top;
+            width: 90px;
+            margin: 2px 0 5px 10px;
+            padding-top: 33px;
+            cursor: help;
+            display: block;
+            overflow: hidden;
+            text-align: center;
+            background-image: url('//gadgets.impartmedia.com/img/special.png');
+
+            &.inactive {
+                background-image: url('//gadgets.impartmedia.com/img/special.png');
+                opacity: 1;
+                cursor: pointer;
+            }
+
+            &.SPY {
+                background-image: url('//gadgets.impartmedia.com/img/special-spy.png');
+            }
+
+            &.inactive.SPY {
+                background-image: url('//gadgets.impartmedia.com/img/special-spy-inactive.png');
+                opacity: 0.5;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+
+.im-pricebutton {
+    background: #dca502;
+    border: 0;
+    border-radius: 5px;
+    color: #fff;
+    display: block;
+    padding: 10px 10px 8px;
+    transition: background .3s ease-in-out;
+    outline: 0;
+    text-align: center;
+    text-decoration: none;
+    width: 140px;
+    margin: 0 auto;
+
+    .number {
+        display: block;
+        font-size: 20px;
+    }
+
+    a {
+        text-decoration: none;
+        color: #fff;
+        display: block;
+    }
+
+    &:focus,
+    &:hover {
+        background: $sagovau-color-brand;
+    }
+
+    &.sold-out,
+    .sold-out &,
+    .min-nights & {
+        background: #808080;
+        padding: 22px 10px 20px;
+
+        span.number {
+            display: none;
+        }
+
+        &:focus,
+        &:hover {
+            background: #5a5a5a;
+        }
+    }
+}
+
+
+
+div#wdHoverContainer {
+    z-index: 10000001;
+
+    div.product-info-hover,
+    div.restriction-info-hover {
+        font-size: 10pt;
+        font-family: Helvetica,Arial,sans-serif;
+        line-height: 13pt;
+        color: #000;
+        width: 600px;
+        background-color: #fff;
+        padding: 10px;
+        padding-bottom: 0;
+        border: 1px solid #aaa;
+        box-shadow: 0 2px 4px #444;
+
+        &.variable {
+            width: auto;
+            max-width: 400px;
+
+            h3 {
+                margin-bottom: 10px;
+            }
+
+            div {
+                margin-bottom: 10px;
+            }
+
+            label {
+                display: inline-block;
+                font-size: 65%;
+                color: #37c;
+                text-transform: uppercase;
+                border: solid 1px #37c;
+                padding: 2px 6px 1px 6px;
+                background-color: #eaf1fa;
+                margin-bottom: 10px;
+            }
+        }
+    }
+
+    div.restriction-info-hover {
+        width: auto;
+        max-width: 400px;
+    }
+
+    h3 {
+        margin: 0 0 .1em 0;
+        font-weight: bold;
+    }
+
+    h4 {
+        margin: 0 0 .5em 0;
+        color: #888;
+        font-style: italic;
+        font-weight: bold;
+    }
+
+    p {
+        margin: 0 0 10px 0;
+    }
+
+    hr.clear {
+        clear: both;
+        height: 0;
+        margin: 0;
+        border: none;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    div.image {
+        padding: 1px;
+        border: 1px solid #ccc;
+        float: right;
+        margin: 0 0 10px 2em;
+        overflow: hidden;
+        background-color: #fff;
+        max-width: 200px;
+        max-height: 200px;
+        overflow: hidden;
+
+        img {
+            display: block;
+            max-width: 200px;
+            max-height: 200px;
+        }
+    }
+
+    div.description {
+        font-size: 9pt;
+        line-height: 11pt;
+    }
+
+    p.specials-info div.name {
+        font-weight: bold;
+    }
+}

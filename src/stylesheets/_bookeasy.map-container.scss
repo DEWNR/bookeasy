@@ -1,0 +1,130 @@
+/*------------------------------------*\
+    #BOOKEASY MAP CONTAINER
+\*------------------------------------*/
+
+// scss-lint:disable all
+
+
+.map-container {
+    position: relative;
+    height: 623px;
+    display: none;
+
+    .product-list {
+        width: 30%;
+        height: 623px;
+        overflow: auto;
+        position: absolute;
+        left: 0;
+        top: 0;
+        border-right: 1px solid #fff;
+        z-index: 1;
+    }
+
+    .map-window {
+        height: 623px;
+        width: 70%;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 0;
+    }
+
+    .mapInfoWindow {
+        width: 260px;
+
+        .name {
+            font-size: $sagovau-font-size-base;
+            margin: 0;
+            padding: 0;
+        }
+
+        .address {
+            margin: 0 0 10px;
+        }
+
+        .details {
+            margin: 10px 0;
+
+            .room {
+                margin: 0;
+                padding: 5px 0;
+                border-bottom: 1px solid #eee;
+                overflow: hidden;
+
+                &:first-child {
+                    border-top: 1px solid #eee;
+                }
+
+                .name {
+                    font-family: $sagovau-font-family-base;
+                    color: $sagovau-color-text-base;
+                    display: block;
+                    float: left;
+                    font-size: 13px;
+                    line-height: 1;
+
+                    &:hover {
+                        color: $sagovau-color-brand;
+                    }
+                }
+
+                .price {
+                    font-family: $sagovau-font-family-base;
+                    display: block;
+                    float: right;
+                    font-size: 13px;
+                    line-height: 1;
+                    font-weight: normal;
+                }
+            }
+
+        }
+    }
+}
+
+.map-sidebar-item {
+    position: relative;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+
+    &.odd {
+        background: #f9f9f9;
+    }
+
+    &.even {
+        background: #fff;
+    }
+
+    &.highlighted {
+        background: darken(#f9f9f9, 5%);
+    }
+
+    .name {
+        font-size: $sagovau-font-size-base;
+        margin: 0 60px 0.2em 0;
+        padding: 0;
+        cursor: pointer;
+    }
+
+    .location {
+        font-size: 14px;
+        margin-right: 60px;
+    }
+
+    .from-price {
+        font-family: $sagovau-font-family-highlight;
+        position: absolute;
+        top: 22px;
+        right: 5px;
+        width: 52px;
+        text-align: center;
+        font-weight: normal;
+        color: #dca502;
+    }
+
+    .rating {
+        display: none;
+    }
+
+}

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+
+        <link rel='stylesheet prefetch' href='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
+        <link rel='stylesheet prefetch' href='//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css'>
+
+        <style>
+            body {
+                 padding: 40px;
+            }
+            tbody tr:hover,
+            tbody tr:hover td {
+                background: #ffcc78!important;
+            }
+            tr.selected {
+                background: #ffcc38!important;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <div class="container">
+            <div class="btn-group" role="group">
+                <a href="#" class="btn btn-default  btn--plain">Plain</a>
+                <a href="#" class="btn btn-default  btn--basic">Basic</a>
+                <a href="#" class="btn btn-default  btn--advanced">Advanced</a>
+            </div>
+            <br /><br />
+            <table class="table table-bordered table-striped op-descriptions plain-formatting" style="display: none;">
+                <thead>
+                    <tr>
+                        <th width="150">Operator ID</th>
+                        <th width="250">Trading name</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <table class="table table-bordered table-striped op-descriptions basic-formatting" style="display: none;">
+                <thead>
+                    <tr>
+                        <th width="150">Operator ID</th>
+                        <th width="250">Trading name</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <table class="table table-bordered table-striped op-descriptions advanced-formatting" style="display:none">
+                <thead>
+                    <tr>
+                        <th width="150">Operator ID</th>
+                        <th width="250">Trading name</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script>
+
+            $('.btn').on('click', function(){
+                var $this = $(this);
+                console.log('here')
+                // hide tables
+                $('.table').hide();
+
+                if($this.hasClass('btn--plain')) {
+                    $('.plain-formatting').show();
+                }
+
+                if($this.hasClass('btn--basic')) {
+                    $('.basic-formatting').show();
+                }
+
+                if($this.hasClass('btn--advanced')) {
+                    $('.advanced-formatting').show();
+                }
+            })
+
+            $.getJSON( "../data/operatorData.json", function( data ) {
+
+                    var operators = data;
+
+                    for (var key in operators) {
+
+                        var terms = '';
+
+                        if(typeof operators[key]['Cancellation'] !== "undefined") {
+                            terms = operators[key]['Cancellation'];
+                        }
+
+                        sTemp = '<tr><td>' + operators[key]['OperatorID'] + '</td><td>' + operators[key]['TradingName'] + '</td><td class="terms">' + terms + '</td></tr>';
+
+                        $('.plain-formatting tbody').append(sTemp);
+                        $('.basic-formatting tbody').append(sTemp);
+                        $('.advanced-formatting tbody').append(sTemp);
+
+                    }
+
+                    // apply basic formatting
+                    $('.basic-formatting .terms').html(function() {
+                        return basicFormat($(this).text());
+                    });
+
+                    // apply advanced formatting
+                    $('.advanced-formatting .terms').html(function() {
+                        return advancedFormat($(this).text());
+                    });
+
+                })
+
+
+            function basicFormat(terms) {
+
+                // change line breaks to html
+                terms = terms.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\"/g, '&quot;').replace(/\//g, '/');
+                terms = terms.replace(/\r/g, '').replace(/\n( )*?(\n)*?( )*?$/, '').replace(/\n( )*?\n/g, '</p><p>').replace(/\n/g, '<br />');
+                terms = '<p>'+terms+'</p>';
+
+                return terms;
+            }
+
+
+            function advancedFormat(terms) {
+
+                // change line breaks to html
+                terms = terms.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\"/g, '&quot;').replace(/\//g, '/');
+                terms = terms.replace(/\r/g, '').replace(/\n( )*?(\n)*?( )*?$/, '').replace(/\n( )*?\n/g, '</p><p>').replace(/\n/g, '<br />');
+                terms = '<p>'+terms+'</p>';
+
+                // replace 'TERMS'
+                terms = terms.replace(/\TERMS\b/g, '<h3>Terms</h3>');
+
+                // replace 'CONTACT'
+                terms = terms.replace(/\bCONTACT\b/g, '<h3>Contact</h3>');
+
+                // replace 'CONDITIONS'
+                terms = terms.replace(/\CONDITIONS\b/g, '<h3>Conditions</h3>');
+
+                // bold things
+                terms = terms.replace(/\Site booking\b:/g, '<strong>Site booking:</strong>');
+                terms = terms.replace(/\Smoking\b:/g, '<strong>Smoking:</strong>');
+                terms = terms.replace(/\Changes and Cancellations\b:/g, '<strong>Changes and Cancellations:</strong>');
+                terms = terms.replace(/\Changes Cancellations and Refunds\b:/g, '<strong>Changes Cancellations and Refunds:</strong>');
+                terms = terms.replace(/\Park Closure due to Fire Danger\b:/g, '<strong>Park Closure due to Fire Danger:</strong>');
+                terms = terms.replace(/\Other Park Closures\b:/g, '<strong>Other Park Closures:</strong>');
+                terms = terms.replace(/\Disclaimer\b:/g, '<strong>Disclaimer:</strong>');
+                terms = terms.replace(/\Rates\b:/g, '<strong>Rates:</strong>');
+                terms = terms.replace(/\Property\b:/g, '<strong>Property:</strong>');
+                terms = terms.replace(/\Guest numbers\b:/g, '<strong>Guest numbers:</strong>');
+                terms = terms.replace(/\Pets\b:/g, '<strong>Pets:</strong>');
+                terms = terms.replace(/\Online Bookings\b:/g, '<strong>Online Bookings:</strong>');
+                terms = terms.replace(/\Check in and Check out\b:/g, '<strong>Check in and Check out:</strong>');
+                terms = terms.replace(/\Length of a booking\b:/g, '<strong>Length of a booking:</strong>');
+
+                terms = terms.replace(/(\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*)/, "<a href=\"mailto:$1\">$1</a>");
+                terms = terms.replace('www.parks.sa.gov.au', '<a href=\"http://www.parks.sa.gov.au">www.parks.sa.gov.au</a>');
+
+                return terms;
+            }
+
+        </script>
+    </body>
+</html>

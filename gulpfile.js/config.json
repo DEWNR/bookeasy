@@ -16,34 +16,42 @@
       "dest": "./"
     },
 
+    "data": {
+      "src": "data",
+      "dest": "data"
+    },
+
     "js": {
       "src": "javascripts",
       "dest": "js",
       "files": [
           {
-            "source": ["src/javascripts/bookeasy-cart.js"],
-            "filename": "bookeasy-cart.js"
+              "source": ["src/javascripts/bookeasy-utility.js", "src/javascripts/bookeasy-mods.js"],
+              "filename": "bookeasy-mods.js"
           },{
-            "source": ["src/javascripts/parks-data.js"],
-            "filename": "parks-data.js"
+              "source": ["src/javascripts/inline/cart-gadget.js"],
+              "filename": "inline/cart-gadget.js"
           },{
-            "source": ["src/javascripts/bookeasy-details.js"],
-            "filename": "bookeasy-details.js"
+              "source": ["src/javascripts/inline/details-gadget.js"],
+              "filename": "inline/details-gadget.js"
           },{
-             "source": ["src/javascripts/bookeasy-region.js"],
-            "filename": "bookeasy-region.js"
+              "source": ["src/javascripts/inline/region-gadget.js"],
+              "filename": "inline/region-gadget.js"
           },{
-            "source": ["src/javascripts/bookeasy-booking.js"],
-            "filename": "bookeasy-booking.js"
+              "source": ["src/javascripts/inline/booking-gadget.js"],
+              "filename": "inline/booking-gadget.js"
           },{
-            "source": ["src/javascripts/bookeasy-utility.js", "src/javascripts/bookeasy-mods.js"],
-            "filename": "bookeasy-mods.js"
+              "source": ["src/javascripts/inline/confirmation-gadget.js"],
+              "filename": "inline/confirmation-gadget.js"
           },{
-            "source": ["src/javascripts/booking-statewide.js"],
-            "filename": "booking-statewide.js"
+              "source": ["src/javascripts/inline/parks-data.js"],
+              "filename": "inline/parks-data.js"
           },{
-            "source": ["src/javascripts/impart.js"],
-            "filename": "impart.js"
+              "source": ["src/javascripts/booking-statewide.js"],
+              "filename": "booking-statewide.js"
+          },{
+              "source": ["src/javascripts/gadgets.js"],
+              "filename": "gadgets.js"
           }
       ],
       "extensions": ["js"]
@@ -65,7 +73,10 @@
     "html": {
       "src": "html",
       "dest": "./",
-      "dataFile": "data/global.json",
+      "partialData": ["html", "json"],
+      "dataFiles": ["./src/html/data/*.json", "!**/global.json"],
+      "templatePaths": ["./src/html"],
+      "templateFiles": ["./src/html/**/*.html", "!**/{layouts,shared,macros,data}/**"],
       "htmlmin": {
         "collapseWhitespace": true
       },
@@ -83,12 +94,16 @@
       "src": "fonts",
       "dest": "fonts",
       "extensions": ["woff2", "woff", "eot", "ttf", "svg"]
-  },
+    },
 
     "svgSprite": {
       "src": "sprites",
       "dest": "images",
       "extensions": ["svg"]
+    },
+
+    "production": {
+      "rev": true
     }
   }
 }
