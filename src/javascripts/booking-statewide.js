@@ -6,8 +6,16 @@
 
 // BE['gadget']['region']['text']['viewMap'] = 'Map';
 // BE['gadget']['search']['text']['adults']['label'] = 'Adults';
+var isRegionGadgetPage = false;
+var dataExists = false;
+if ($('#bookeasy__region-gadget').length > 0) {
+    isRegionGadgetPage = true;
+}
+if (typeof productsData !== 'undefined') {
+    dataExists = true;
+}
 
-if (typeof productsData !== 'undefined' && $('#bookeasy__region-gadget').length > 0) {
+if (dataExists === true && isRegionGadgetPage === true) {
 
     if (typeof productsData['Nullarbor National Park, Wilderness Protection Area and Regional Reserve'] != 'undefined') {
         //create new object
@@ -233,5 +241,7 @@ if (typeof productsData !== 'undefined' && $('#bookeasy__region-gadget').length 
     }
 
 } else {
-    console.log('Missing data!');
+    if (isRegionGadgetPage === true && dataExists === false) {
+        console.log('The region-gadget id exists but data is missing!');
+    }
 }
