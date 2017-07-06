@@ -168,10 +168,17 @@
     background: #fff;
     color: $sagovau-color-text-base;
 
+    select {
+        padding: 4px;
+        font-size: 14px;
+        font-weight: 300;
+    }
+
     th,
     td {
         width: 34px;
         text-align: center;
+        padding: 0;
 
         &:first-child { border-left: 0; }
     }
@@ -243,13 +250,13 @@
 
         &#wdDatePicker-previous {
             left: 5px;
-            background-position: left -180px;
+            background-position: left -176px;
         }
 
 
         &#wdDatePicker-next {
             right: 5px;
-            background-position: -45px -180px;
+            background-position: -45px -176px;
         }
 
     }
