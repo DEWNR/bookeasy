@@ -124,6 +124,7 @@ $(document).on('gadget.script.loaded', function() {
 
 
 function updateProductRows(gadget) {
+
     var $dateHeaders = $('.im-grid thead td.date').clone();
     var sSelector = '.im-grid tr.odd, .im-grid tr.even';
 
@@ -141,7 +142,7 @@ function updateProductRows(gadget) {
             priceTable += '<tr><th>' + $dateHeaders[index].innerHTML + '</th><td class="price_table__price">' + $(this).html() + '</td></tr>';
         });
 
-        priceTable += '</td></table>'
+        priceTable += '</td></table>';
 
         // move thumbnail image
         $product.find('div.thumb').prependTo($product).wrap('<td />');
@@ -168,7 +169,6 @@ function updateProductRows(gadget) {
         // add specials
         $product.find('.product__row--total').after('<tr class="product__row  product__row--specials"><td></td></tr>');
         $product.find('.product__row--specials td').append($product.find('div.specials'));
-
     });
 
     // remove header content
