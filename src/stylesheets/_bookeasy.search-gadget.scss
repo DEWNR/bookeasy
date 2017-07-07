@@ -4,6 +4,22 @@
 
 // scss-lint:disable all
 
+/* Display concessions on certain parks */
+.Flinders.Chase.National.Park,
+.Tantanoola.Caves.Conservation.Park,
+.Piccaninnie.Ponds.Conservation.Park {
+
+    .search-gadget div.concessions {
+        display: inline-block;
+        width: 52px;
+
+        @media (min-width: 768px) {
+            width: 80px;
+        }
+    }
+
+}
+
 .search-gadget {
     background: $sagovau-color-brand;
     border: 0;
