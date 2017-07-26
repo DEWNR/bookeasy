@@ -7,6 +7,33 @@
 
 .im-grid {
 
+    @media (max-width: 768px) {
+        td.name > a {
+            display: inline-block;
+            padding-top: 10px;
+        }
+
+    }
+
+    thead {
+        display: none;
+        @media (min-width: 768px) {
+            display: table-header-group;
+        }
+
+        td.date {
+            border-left: none;
+        }
+    }
+
+    tbody td {
+        display: table-row;
+
+        @media (min-width: 768px) {
+            display: table-cell;
+        }
+    }
+
     .price_table {
         border-collapse: separate;
     }
@@ -47,7 +74,10 @@
             }
 
             &.date {
-                border-left: 1px solid $sagovau-color-brand;
+                @media (min-width: 768px) {
+                    border-left: 1px solid $sagovau-color-brand;
+                }
+
 
                 a {
                     display: block;
@@ -64,6 +94,11 @@
             }
         }
 
+    }
+
+    span.price__date {
+        font-weight: 600;
+        color: #08713e;
     }
 
     tbody {
@@ -98,12 +133,21 @@
 
                 &.quantity,
                 &.total,
+                &.date {
+                    padding: 10px;
+                }
+
+                &.quantity,
+                &.total,
                 &.date,
                 &.price {
-                    width: 8%;
-                    padding: 10px;
+                    @media (min-width: 768px) {
+                        width: 8%;
+                        border-left: 1px solid #eee;
+                    }
+
                     text-align: center;
-                    border-left: 1px solid #eee;
+
                 }
 
                 &.price {
@@ -114,7 +158,6 @@
                     font-size: $sagovau-font-size-base;
 
                     span {
-                        display: block;
                         font-family: $sagovau-font-family-highlight;
                         font-weight: bold;
                         transform: rotate(-25deg);
@@ -124,6 +167,10 @@
 
                 &.total {
                     border-left: 0;
+
+                    @media (max-width: 768px) {
+                        display: block;
+                    }
 
                     a {
                         text-decoration: none;
@@ -296,7 +343,7 @@
     border: 0;
     border-radius: 5px;
     color: #fff;
-    display: block;
+    display: inline-block;
     padding: 10px 10px 8px;
     transition: background .3s ease-in-out;
     outline: 0;

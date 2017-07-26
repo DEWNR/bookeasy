@@ -122,8 +122,27 @@ $(document).on('gadget.script.loaded', function() {
 
 
 
+// function test() {
+//     if ( !$('.mod-for-mobile').length ) {
+
+
+//         // $('.priceGrid.mod-for-mobile').removeClass('priceGrid');
+//         //clone a backup of entire .priceGrid branch
+//         $('.im-grid').clone().appendTo( '#bookeasy__details-gadget .details-gadget.BE' );
+//         //add a class to distinguish first priceGrid
+//         $('.priceGrid').first().addClass('mod-for-mobile');
+//         console.log('in test()');
+//     } else {
+//         console.log('skip');
+//     }
+
+// }
+
 
 function updateProductRows(gadget) {
+
+    // test();
+
 
     var $dateHeaders = $('.im-grid thead td.date').clone();
     var sSelector = '.im-grid tr.odd, .im-grid tr.even';
@@ -137,21 +156,30 @@ function updateProductRows(gadget) {
         var $product = $(this);
         var priceTable = '<td><table class="price_table">';
 
+        // move heading after thumbnail
+        $product.find('td.name div.thumb').eq(0).after( $product.find('td.name>a') );
+        // '<a class="name__heading">Test</a>'
+        // 'td.name>a'
+
         // create price table
         $product.find('td.price').each(function(index) {
-            priceTable += '<tr><th>' + $dateHeaders[index].innerHTML + '</th><td class="price_table__price">' + $(this).html() + '</td></tr>';
+            // console.log(index);
+            $product.find('td.price').eq(index).prepend('<span class="price__date">' + $dateHeaders[index].innerHTML + '</span>');
+            // priceTable += '<tr><th>' + $dateHeaders[index].innerHTML + '</th><td class="price_table__price price">' + $(this).html() + '</td></tr>';
         });
 
-        priceTable += '</td></table>';
+        // priceTable += '</td></table>';
 
         // move thumbnail image
-        $product.find('div.thumb').prependTo($product).wrap('<td />');
+        // $product.find('div.thumb').prependTo($product).wrap('<td />');
 
         // add price table
-        $product.append(priceTable);
+        // $product.append(priceTable);
 
-        // wrap each td in a row
-        $product.find('td').wrap('<tr class="product__row" />');
+        // wrap each td in a row *
+        // $product.find('td.name').wrap('<tr class="product__row" />');
+        // $product.find('td.total').wrap('<tr class="product__row" />');
+        // $product.find('td.price').wrap('<tr class="product__row" />');
 
         if(gadget === 'region') {
             $('.inline-header').remove();
@@ -160,8 +188,8 @@ function updateProductRows(gadget) {
         // insert new product table
         $product.wrapInner('<td><table class="product" width="100%"></td>');
 
-        // remove quantity (not needed for accomodation)
-        $('td.quantity').remove();
+        // remove quantity (not needed for accomodation) *
+        // $('td.quantity').remove();
 
         // remove quantity (not needed for accomodation)
         $('td.total').parent().addClass('product__row--total');
@@ -175,7 +203,7 @@ function updateProductRows(gadget) {
     $('thead','.im-grid').remove();
 
     // remove price columns
-    $('td.price').remove();
+    // $('td.price').remove();
 
 }
 

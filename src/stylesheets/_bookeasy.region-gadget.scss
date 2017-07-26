@@ -57,24 +57,69 @@
     }
 }
 
+.region-gadget {
+
+    @media (max-width: 768px) {
+
+        tbody {
+            width: 100%;
+
+            tr.instant-confirmation,
+            tr.instant-confirmation td:not('.price') {
+                display: block;
+                height: auto;
+            }
+
+            tr.instant-confirmation>td {
+                padding: 10px;
+                display: block;
+            }
+
+        }
+
+    }
+
+    td.property {
+        padding-bottom: 6px;
+    }
+}
+
+#bookeasy__region-gadget div.BE.region-gadget div.gadget__region-tabs div.view-choice a {
+    padding: 0.6em 1.4em 0.8em;
+}
+
+#bookeasy__region-gadget div.BE.region-gadget div.gadget__region-tabs div.view-choice a:not(.current):hover {
+    background: #b3cbbf;
+}
+
 
 
 @media (max-width: 768px) {
 
     .region-gadget a.name {
-        padding-top: 4px;
+        display: inline-block;
     }
 
-    .im-grid tbody tr td.quantity,
-    .im-grid tbody tr td.total,
-    .im-grid tbody tr td.date,
-    .im-grid tbody tr td.price {
-      padding: 4px;
-      padding-bottom: 10px;
+    tbody tr td {
+        &.price {
+            border: 0;
+        }
+        &.price span {
+            display: inline-block;
+            padding: 6px;
+            text-align: right;
+            width: 70px;
+        }
+        &.price span.price__date {
+            width: 94px;
+            text-align: right;
+            margin: 0;
+        }
     }
+
+
 
     .im-pricebutton {
-        width: 100%;
         max-width: 200px;
         padding: 10px 0px 8px;
     }
@@ -82,8 +127,6 @@
     .im-grid .thumb {
         width: 100%;
         padding: 10px 0 0;
-        // max-height: 220px;
-        // overflow-y: hidden;
     }
     .region-gadget .im-grid .thumb {
         width: 100%;
@@ -109,12 +152,9 @@
 
     .im-grid table.product {
         margin-bottom: 16px;
-        // border-bottom: 1px solid #eee;
     }
 
     .product .product__row {
-        // border-top: 1px solid #eee;
-        // border-bottom: 1px solid #eee;
         border: 0;
     }
 
@@ -126,7 +166,6 @@
         a.map-link {
             padding-top: 2px;
             padding-bottom: 10px;
-            display: block;
         }
     }
 
@@ -151,7 +190,6 @@
     .im-pricebutton.sold-out,
     .sold-out .im-pricebutton,
     .min-nights .im-pricebutton {
-        // padding: 13px 10px 14px;
         padding: 10px 0px 8px;
     }
 
@@ -183,10 +221,8 @@
     .region-gadget div.thumb {
         width: 100%;
         vertical-align: middle;
-        // padding: 20px 8px 16px 0;
         padding: 0;
         margin: 10px 10px 4px 0;
-        // max-width: 150px;
     }
 
     .region-gadget .specials div.special {
@@ -195,10 +231,6 @@
 
     .im-grid .thumb img {
         vertical-align: middle;
-    }
-
-    .region-gadget .name {
-        // padding-left: 10px;
     }
 
     .im-pricebutton {
@@ -251,41 +283,35 @@
             max-width: 100%;
         }
     }
+
     .region-gadget {
         .im-grid .thumb {
-            // width: 100%;
             padding: 0;
             margin: 10px 10px 16px 0;
-            max-width: 210px;  //150px;
+            max-width: 210px;
         }
-    }
-
-    .region-gadget .name {
-        // padding-left: 0;
-    }
-    .region-gadget .address {
-        // padding-left: 0;
     }
 
     .im-pricebutton {
         width: 98px;
     }
+
     .region-gadget {
         .im-grid tbody tr td.price {
             width: 0;
             padding: 2px;
         }
     }
-    .im-grid .property {
-        // width: 21.5%;
-    }
+
     .im-grid tbody tr td.total {
         width: 14.5%;
     }
+
     .im-grid .specials {
         left: calc( 100% + 18px);
         top: 20px;
     }
+
     .im-grid .specials .special {
         width: 60px;
     }
