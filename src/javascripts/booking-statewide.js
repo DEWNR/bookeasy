@@ -10,16 +10,22 @@
 var isRegionGadgetPage = false;
 var dataExists = false;
 var productsData;
-
 var aAllLocations;
 var aFilteredLocations = []; // contains an array of locations to show in region gadget
 var urlHash;
 var hideProductTypes = [];
 var bShowRegionGadget = 1;
+var windowURL = window.location.href;
+var dataURL = '//www.environment.sa.gov.au/feed.rss?listname=npsa-cl-products-data';
 
 
+if ( windowURL.search(/localhost/i) >= 0 || windowURL.search(/127.0.0.1/i) >= 0 ) {
+        console.log( 'using local data' );
+        dataURL = '../data/parks-data.json';
+}
 
-$.getJSON('https://www.environment.sa.gov.au/feed.rss?listname=npsa-cl-products-data', function(json){
+
+$.getJSON(dataURL, function(json){
         productsData = json;
         dataCleanAndRun();
 })
