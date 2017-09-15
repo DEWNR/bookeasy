@@ -112,6 +112,9 @@ $(document).on('gadget.script.loaded', function() {
             // load hi-res images
             insertImages('details');
 
+            // replace text
+            replaceText(document.getElementsByClassName('details-gadget')[0]);
+
         });
 
     });
@@ -252,7 +255,17 @@ function insertImages(gadget) {
 }
 
 
-
+// text replacements defined here
+function replaceText(node) {
+  if (node.nodeType == 3) {
+    node.data = node.data.replace(/Room Configuration:/g, 'Configuration');
+  }
+  if (node.nodeType == 1 && node.nodeName != "SCRIPT") {
+    for (var i = 0; i < node.childNodes.length; i++) {
+      replaceText(node.childNodes[i]);
+    }
+  }
+}
 
 
 // done resizing event

@@ -125,6 +125,6 @@ function getOperatorData(id) {
 
         }
 
-    })
+    });
 
 }

@@ -235,7 +235,8 @@ function bookeasy() {
             collapseRefineTools: true,
             customMapIcons: {
                 'accom': {
-                    icon: '//www.environment.sa.gov.au/assets/images/svg/npsa-marker-general.svg',
+                    // BookEasy doesn't support SVG icon for IE
+                    icon: '//www.environment.sa.gov.au/files/templates/00000000-0000-0000-0000-000000000000/219e8335-7a56-482d-9f78-7b3f16068846/npsa-marker-general.png',
                     pinpoint: [13,45],
                     size: [26,45]
                 }
