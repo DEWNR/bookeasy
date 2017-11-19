@@ -61,7 +61,7 @@
       "src": "stylesheets",
       "dest": "css",
       "autoprefixer": {
-        "browsers": ["last 3 version"]
+        "browsers": ["last 5 versions"]
       },
       "sass": {
         "indentedSyntax": false,

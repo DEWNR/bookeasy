@@ -258,7 +258,7 @@ function insertImages(gadget) {
 // text replacements defined here
 function replaceText(node) {
   if (node.nodeType == 3) {
-    node.data = node.data.replace(/Room Configuration:/g, 'Configuration');
+    node.data = node.data.replace(/Room Configuration:/g, 'Configuration:');
   }
   if (node.nodeType == 1 && node.nodeName != "SCRIPT") {
     for (var i = 0; i < node.childNodes.length; i++) {
