@@ -65,7 +65,7 @@
     "open": "0.0.5",
     "pretty-hrtime": "1.0.2",
     "request": "^2.81.0",
-    "require-dir": "0.3.0",
+    "require-dir": "^0.3.2",
     "slick-carousel": "^1.6.0",
     "tablesaw": "^2.0.3",
     "vinyl-source-stream": "^1.1.0"
