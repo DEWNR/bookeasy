@@ -112,6 +112,9 @@ $(document).on('gadget.script.loaded', function() {
             // load hi-res images
             insertImages('details');
 
+            // replace text
+            replaceText(document.getElementsByClassName('details-gadget')[0]);
+
         });
 
     });
@@ -123,7 +126,9 @@ $(document).on('gadget.script.loaded', function() {
 
 
 
+
 function updateProductRows(gadget) {
+
 
     var $dateHeaders = $('.im-grid thead td.date').clone();
     var sSelector = '.im-grid tr.odd, .im-grid tr.even';
@@ -137,21 +142,13 @@ function updateProductRows(gadget) {
         var $product = $(this);
         var priceTable = '<td><table class="price_table">';
 
+        // move heading after thumbnail
+        $product.find('td.name div.thumb').eq(0).after( $product.find('td.name>a') );
+
         // create price table
         $product.find('td.price').each(function(index) {
-            priceTable += '<tr><th>' + $dateHeaders[index].innerHTML + '</th><td class="price_table__price">' + $(this).html() + '</td></tr>';
+            $product.find('td.price').eq(index).prepend('<span class="price__date">' + $dateHeaders[index].innerHTML + '</span>');
         });
-
-        priceTable += '</td></table>';
-
-        // move thumbnail image
-        $product.find('div.thumb').prependTo($product).wrap('<td />');
-
-        // add price table
-        $product.append(priceTable);
-
-        // wrap each td in a row
-        $product.find('td').wrap('<tr class="product__row" />');
 
         if(gadget === 'region') {
             $('.inline-header').remove();
@@ -159,9 +156,6 @@ function updateProductRows(gadget) {
 
         // insert new product table
         $product.wrapInner('<td><table class="product" width="100%"></td>');
-
-        // remove quantity (not needed for accomodation)
-        $('td.quantity').remove();
 
         // remove quantity (not needed for accomodation)
         $('td.total').parent().addClass('product__row--total');
@@ -174,8 +168,6 @@ function updateProductRows(gadget) {
     // remove header content
     $('thead','.im-grid').remove();
 
-    // remove price columns
-    $('td.price').remove();
 
 }
 
@@ -263,7 +255,17 @@ function insertImages(gadget) {
 }
 
 
-
+// text replacements defined here
+function replaceText(node) {
+  if (node.nodeType == 3) {
+    node.data = node.data.replace(/Room Configuration:/g, 'Configuration');
+  }
+  if (node.nodeType == 1 && node.nodeName != "SCRIPT") {
+    for (var i = 0; i < node.childNodes.length; i++) {
+      replaceText(node.childNodes[i]);
+    }
+  }
+}
 
 
 // done resizing event

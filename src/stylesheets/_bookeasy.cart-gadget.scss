@@ -405,6 +405,11 @@
         font-weight: normal;
         margin-bottom: 0.3em;
         display: block;
+
+        .indicator {
+            color: #fd777d;
+            padding-left: 2px;
+        }
     }
 
 
@@ -430,7 +435,17 @@
     }
 
     .bookingQuestion-answer-field {
+        padding: 10px;
+        font-family: $sagovau-font-family-base;
+        font-size: $sagovau-font-size-base;
         width: calc(100% - 2px);
+        color: $sagovau-color-text-base;
+        border: 1px solid #ccc;
+
+        &:focus,
+        &:hover {
+            border: 1px solid $sagovau-color-brand;
+        }
 
         @media only screen and (min-width : 769px) {
             width: 300px;
@@ -468,6 +483,10 @@
 
         &:empty {
             // padding: 0;
+        }
+
+        &>div {
+            color: #dca502;
         }
     }
 }
