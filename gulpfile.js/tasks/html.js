@@ -25,7 +25,7 @@ var paths = {
 
 
 var getData = function(file) {
-    var dataPath = path.resolve(config.root.src, config.tasks.html.src, 'data/global.json')
+    var dataPath = path.resolve(config.root.src, config.tasks.html.src, '../static/data/parks-data.json')
 
     return JSON.parse(fs.readFileSync(dataPath, 'utf8'))
 }

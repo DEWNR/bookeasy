@@ -98,6 +98,10 @@ function getOperatorData(id) {
                 backLocation = 'Cape Gantheaume Conservation Park and Wilderness Protection Area';
             }
 
+            if (backLocation === 'Flinders Chase National Park') {
+                backLocation = 'Flinders Chase National Park and Ravine Des Casoars Wilderness Protection Area';
+            }
+
             backURL = '/parks/booking#' + backLocation;
             // backURL = '/#' + backLocation;
 

@@ -1,3 +1,9 @@
+# Build tools
+* run npm install
+* gulp
+* gulp production
+
+
 # BookEasy
 
 
