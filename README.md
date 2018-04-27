@@ -7,6 +7,9 @@
 *  WIP: 4a65c97fcf2b568333551e22627eb45d
 *  local: d5192d41822d0c987a0610af120d29bf
 *  kiwt: 4ae239f9decb3716790c285af3a63221
+*  parks: e65c851dcdc492aaa7db1e22e2bd2283
+*  naracoortecaves: 934373a56a57fd7c63cac40a082c2914
+*  clelandwildlifepark: 3213f2eba231919197234a011631e836
 
 
 
