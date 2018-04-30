@@ -6,35 +6,88 @@
     background-color: #fff;
     display: inline-block;
     position: relative;
-    min-width: 35%;
     margin-bottom: 20px;
-    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMjEiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAyMSAzMiI+PHBhdGggZmlsbD0iI2RkZCIgZD0iTTE5LjE5NiAxMy4xNDNxMCAwLjIzMi0wLjE3OSAwLjQxMWwtOC4zMjEgOC4zMjFxLTAuMTc5IDAuMTc5LTAuNDExIDAuMTc5dC0wLjQxMS0wLjE3OWwtOC4zMjEtOC4zMjFxLTAuMTc5LTAuMTc5LTAuMTc5LTAuNDExdDAuMTc5LTAuNDExbDAuODkzLTAuODkzcTAuMTc5LTAuMTc5IDAuNDExLTAuMTc5dDAuNDExIDAuMTc5bDcuMDE4IDcuMDE4IDcuMDE4LTcuMDE4cTAuMTc5LTAuMTc5IDAuNDExLTAuMTc5dDAuNDExIDAuMTc5bDAuODkzIDAuODkzcTAuMTc5IDAuMTc5IDAuMTc5IDAuNDExeiI+PC9wYXRoPjwvc3ZnPg==) 98% 3px no-repeat;
+    min-width: 100%;
+    @media (min-width: 768px) {
+        min-width: 35%
+    }
 }
 
-.location-selector__select {
-    padding: 8px;
-    font-size: 14px;
-    height: 40px;
-    border: 1px solid #ddd;
-    outline: none;
+.location-selector__input {
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 16px;
     width: 100%;
-    appearance: none;
-    background: none;
+    border: 0;
+    border-bottom: 3px solid tint( $sagovau-color-brand, 60% );
+    position: relative;
+
+    &.filled {
+        width: calc(100% - 10px);
+    }
+    &:focus {
+        outline: 0;
+        background: tint( $sagovau-color-brand, 90% );
+        border-bottom-color: $sagovau-color-brand;
+        transition: all $sagovau-transition-time ease-in-out;
+    }
+    &:hover {
+        cursor: text;
+    }
 }
 
-.location-selector__button {
-    padding: 12px 9px;
-    background-color: $sagovau-color-brand;
+.location-selector__list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    & li {
+        border: 1px solid #ddd;
+        margin-top: -1px;
+        padding: 3px;
+        text-decoration: none;
+        font-size: 16;
+        display: none;
+    }
+}
+
+.location-selector__clear {
+    position: absolute;
+    right: 0;
+    top: 0;
     border: 0;
-    border-radius: 5px;
-    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    background: $sagovau-color-brand;
+    color: #fff;
+    height: 100%;
+    padding: 0 10px;
+    display: none;
+    outline: 0;
+    border-radius: 0.5em 0.5em 0.5em 0;
 
     &:focus,
     &:hover {
         background-color: darken($sagovau-color-brand, 5%);
     }
+}
 
-    &:active {
-        background-color: darken($sagovau-color-brand, 10%);
+.location-selector .autocomplete-suggestions {
+    background: #fff;
+    overflow: scroll;
+    border-radius: 0 0 5px 5px;
+
+    & .autocomplete-suggestion {
+        padding: 9px 13px;
+        border-bottom: 1px solid #ccc;
+        font-size: 15px;
+        cursor: pointer;
+        &:hover {
+            background-color: tint( $sagovau-color-brand, 90% );
+            border-bottom-right-radius: 5px;
+        }
     }
+}
+
+.location-selector__clear {
+
 }

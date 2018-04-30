@@ -11,9 +11,12 @@
     <div id="bookeasy__cart-gadget"></div>
 
     <div class="location-selector  input-group">
-        <select class="location-selector__select  select-custom"></select>
-    </div>
+        {# <select class="location-selector__select  select-custom"></select> #}
 
+        <input type="text" class="location-selector__input autocomplete-suggestion" id="location-selector__input" placeholder="Search for a park...">
+        <button class="location-selector__clear" value="clear">clear</button>
+
+    </div>
 
     <div id="bookeasy__region-gadget">Loading...</div>
 
@@ -43,10 +46,44 @@
 
     <script src="/js/bookeasy-mods.js"></script>
 
-    <script src="/js/inline/parks-data.js" inline></script>
+    {# <script src="/js/inline/parks-data.js" inline></script> #}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.4.7/jquery.autocomplete.min.js"></script>
 
     <script src="/js/booking-statewide.js"></script>
 
     <script src="/js/inline/cart-gadget.js" inline></script>
+
+    {# <script>
+    var parkLocations = [
+        '-All-',
+        'Acraman Creek Conservation Park',
+        'Beachport Conservation Park',
+        'Belair National Park',
+        'Bool Lagoon Game Reserve and Hacks Lagoon Conservation Park',
+        'Canunda National Park',
+        'Cape Gantheaume Conservation Park and Wilderness Protection Area',
+        'Cape Willoughby Conservation Park',
+        'Coorong National Park',
+        'Deep Creek Conservation Park',
+        'Flinders Chase National Park',
+        'Fowlers Bay Conservation Park',
+        'Innes National Park',
+        'Lashmar Conservation Park',
+        'Little Dip Conservation Park',
+        'Mount Remarkable National Park',
+        'Nullarbor National Park Wilderness Protection Area',
+        'Piccaninnie Ponds Conservation Park',
+        'Tallaringa Conservation Park',
+        'Tantanoola Caves Conservation Park',
+        'The Dutchmans Stern Conservation Park',
+        'Vulkathunha-Gammon Ranges National Park'
+    ]
+        $('#autocomplete_input').autocomplete({
+            lookup: parkLocations,
+            onSelect: function(suggestion) {
+                window.location.hash = urlHash = $(this).val();
+            }
+        });
+    </script> #}
 
 {% endblock %}

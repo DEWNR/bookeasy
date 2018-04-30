@@ -82,13 +82,41 @@ function dataCleanAndRun() {
                 initRegionGadget();     // initialise region gadget
             }
 
-
-            // change location to display
-            $('.location-selector__select').on('change', function() {
-                // set location hash to selected location
-                window.location.hash = urlHash = $(this).val();
+            // autocomplete funciton to search for parks
+            $('#location-selector__input').autocomplete({
+                lookup: aAllLocations, // list to display
+                onSelect: function(suggestion) {
+                    window.location.hash = urlHash = $(this).val(); // update urlHash
+                    $('.location-selector__clear').show();
+                    $('.location-selector__input').addClass('filled');
+                },
+                minChars: 0,
+                autoSelectFirst: true,
+                appendTo: $('.location-selector'),
+                maxHeight: 294
             });
 
+            if ($('.location-selector__input').val() !== '') {
+                $('.location-selector__clear').show();
+                $('.location-selector__input').addClass('filled');
+            } else {
+                $('.location-selector__clear').hide();
+                $('.location-selector__input').removeClass('filled');
+            }
+
+            // clear the input field and show all
+            $('.location-selector__clear').click(function(e) {
+                e.preventDefault();
+                window.location.hash = urlHash = "";
+                $('.location-selector__input').val('');
+                $('.location-selector__input').removeClass('filled');
+                $(this).hide();
+            });
+
+            $('.location-selector__input').click(function(e) {
+                e.preventDefault();
+                $(this).val('');
+            });
 
             $('.be-fancybox').fancybox();
 
@@ -141,9 +169,9 @@ function getFilteredLocations() {
 
 function createLocationSelector() {
 
-    $.each( aAllLocations, function(key, val) {
-        $('.location-selector__select').append($('<option></option>').attr('value', val).attr('selected', urlHash == val ? true : false).text(val));
-    });
+    if (urlHash !== '-All-') {
+        $('.location-selector__input').val(urlHash);
+    }
 
 }
 
@@ -298,3 +326,8 @@ function cleanGoogleMaps(callback) {    // cleanGoogleMaps();
 //     console.log( typeof productsData );
 //     console.log('does productsData exist yet?');
 // }, 3000);
+
+
+
+
+
