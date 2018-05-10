@@ -93,7 +93,10 @@ function dataCleanAndRun() {
                 minChars: 0,
                 autoSelectFirst: true,
                 appendTo: $('.location-selector'),
-                maxHeight: 294
+                maxHeight: 294,
+                onSearchStart: function () {
+                    $('.autocomplete-suggestions').slideDown(300);
+                }
             });
 
             if ($('.location-selector__input').val() !== '') {

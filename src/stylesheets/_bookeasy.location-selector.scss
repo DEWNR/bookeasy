@@ -4,12 +4,13 @@
 
 .location-selector {
     background-color: #fff;
-    display: inline-block;
+    display: flex;
+    flex-direction: row;
     position: relative;
     margin-bottom: 20px;
-    min-width: 100%;
+    width: 100%;
     @media (min-width: 768px) {
-        min-width: 35%
+        max-width: 35%;
     }
 }
 
@@ -17,19 +18,21 @@
     padding: 10px;
     box-sizing: border-box;
     font-size: 16px;
-    width: 100%;
-    border: 0;
-    border-bottom: 3px solid tint( $sagovau-color-brand, 60% );
+    border: 2px solid tint( $sagovau-color-brand, 60% );
     position: relative;
-
+    border-radius: .5em;
+    width: 100%;
     &.filled {
-        width: calc(100% - 10px);
+        margin-right: -1px;
+        border-radius: .5em 0 0 .5em;
     }
     &:focus {
         outline: 0;
         background: tint( $sagovau-color-brand, 90% );
-        border-bottom-color: $sagovau-color-brand;
-        transition: all $sagovau-transition-time ease-in-out;
+        border-color: $sagovau-color-brand;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        transition: background-color $sagovau-transition-time ease, border-color $sagovau-transition-time ease, border-radius $sagovau-transition-time ease;
     }
     &:hover {
         cursor: text;
@@ -40,7 +43,7 @@
     list-style-type: none;
     padding: 0;
     margin: 0;
-    & li {
+    li {
         border: 1px solid #ddd;
         margin-top: -1px;
         padding: 3px;
@@ -51,19 +54,17 @@
 }
 
 .location-selector__clear {
-    position: absolute;
-    right: 0;
-    top: 0;
     border: 0;
     font-size: 16px;
     cursor: pointer;
     background: $sagovau-color-brand;
     color: #fff;
     height: 100%;
-    padding: 0 10px;
+    padding: 12px;
     display: none;
     outline: 0;
-    border-radius: 0.5em 0.5em 0.5em 0;
+    border-radius: 0 0.5em 0.5em 0;
+    z-index: 100;
 
     &:focus,
     &:hover {
@@ -75,8 +76,11 @@
     background: #fff;
     overflow: scroll;
     border-radius: 0 0 5px 5px;
+    flex: 0 0 100;
+    top: 100%;
 
-    & .autocomplete-suggestion {
+
+    .autocomplete-suggestion {
         padding: 9px 13px;
         border-bottom: 1px solid #ccc;
         font-size: 15px;
