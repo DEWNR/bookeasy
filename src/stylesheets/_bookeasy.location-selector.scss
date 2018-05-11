@@ -76,8 +76,9 @@
     background: #fff;
     overflow: scroll;
     border-radius: 0 0 5px 5px;
-    flex: 0 0 100;
+    flex: 0 0 100%;
     top: 100%;
+    left: 0;
 
 
     .autocomplete-suggestion {
