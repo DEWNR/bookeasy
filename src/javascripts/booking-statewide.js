@@ -328,6 +328,7 @@ function bookeasy() {
             limitLocations: aFilteredLocations,
             period: 1, // number of days to display
             showAllAccom: true, // show all, even if unavailable for time period
+            showCentsInPrices: true,
             showList: false, // hide details tab
             disabledTypes: hideProductTypes,
             showLocationFilter: false,
