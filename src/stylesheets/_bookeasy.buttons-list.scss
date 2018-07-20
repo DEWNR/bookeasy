@@ -18,8 +18,9 @@
     display: inline-block;
     padding: 10px 10px;
     font-size: $sagovau-font-size-base;
-    font-family: $sagovau-font-family-highlight;
-    color: #fff;
+    font-family: $sagovau-font-family-highlight !important;
+    font-weight: normal !important;
+    color: #fff !important;
     background-color: $sagovau-color-brand;
     border: 0;
     border-radius: 5px;
@@ -30,13 +31,18 @@
     cursor: pointer;
     text-decoration: none;
     text-align: center;
+}
 
-    &:hover {
+a.button-list__button {
+    border-bottom: 0;
+    &:hover,
+    &:focus {
         background-color: darken($sagovau-color-brand, 5%);
         text-decoration: unset;
+        outline: 0;
     }
 }
 
-.location-selector+.button-list__button {
+.location-selector + .button-list__button {
     margin-left: 4px;
 }

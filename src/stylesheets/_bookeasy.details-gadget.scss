@@ -8,6 +8,15 @@
 #bookeasy__details-gadget {
     font-family: $sagovau-font-family-base;
     font-size: $sagovau-font-size-base;
+
+    a {
+        border-bottom: 0;
+        font-weight: normal;
+
+        &:focus {
+            outline: 0;
+        }
+    }
 }
 
 .details-gadget {

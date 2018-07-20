@@ -9,13 +9,10 @@
     font-family: $sagovau-font-family-base;
     font-size: $sagovau-font-size-base;
     position: relative;
-    right: 110px;
-    top: 20px;
+    right: 0;
+    top: 0;
     width: 34px;
-    position: absolute;
-    // background-color: red;
-
-
+    position: relative;
 
     .item,
     .total,
@@ -26,21 +23,35 @@
     .totalDisplay {
         a {
             // background-image: url(../images/cart-white.gif);
-            background-image: url(data:image/svg+xml;base64,PHN2ZyBpZD0iQ2FydCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNzQuMDciIGhlaWdodD0iNzQuMDciIHZpZXdCb3g9IjAgMCA3NC4wNyA3NC4wNyI+DQogIDxkZWZzPg0KICAgIDxzdHlsZT4NCiAgICAgIC5jYXJ0IHsNCiAgICAgICAgZmlsbDogI2ZmZmZmZjsNCiAgICAgIH0NCg0KICAgICAgLmNscy0yIHsNCiAgICAgICAgZmlsbDogbm9uZTsNCiAgICAgIH0NCiAgICA8L3N0eWxlPg0KICA8L2RlZnM+DQogIDx0aXRsZT5jYXJ0MjwvdGl0bGU+DQogIDxnPg0KICAgIDxwYXRoIGNsYXNzPSJjYXJ0IiBkPSJNNTQuMjMsNTUuMjNhNC45Miw0LjkyLDAsMSwwLDEuNDQtMy40OEE0Ljc0LDQuNzQsMCwwLDAsNTQuMjMsNTUuMjNaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIDQpIi8+DQogICAgPHBhdGggY2xhc3M9ImNhcnQiIGQ9Ik02OC4yNywxMS42NmEyLjM3LDIuMzcsMCwwLDAtMS43My0uNzNIMjAuMzVhNS4zOCw1LjM4LDAsMCwwLS4xNy0xTDIwLDguODFhNi43OCw2Ljc4LDAsMCwwLS4yOS0xLDMuMDcsMy4wNywwLDAsMC0uNS0wLjk0LDIuNDUsMi40NSwwLDAsMC0uNzctMC42QTIuMzUsMi4zNSwwLDAsMCwxNy4zNCw2SDcuNDZhMi4zNywyLjM3LDAsMCwwLTEuNzMuNzMsMi40MSwyLjQxLDAsMCwwLS4wNSwzLjQxbDAuMDUsMC4wNWEyLjM3LDIuMzcsMCwwLDAsMS43My43M2g3Ljg1bDYuOCwzMS42NC0wLjc4LDEuNXEtMC43MSwxLjMxLTEuMTMsMi4yOWE0LjIyLDQuMjIsMCwwLDAtLjQyLDEuNTIsMi40OSwyLjQ5LDAsMCwwLDIuNDYsMi40Nkg2MS42MWEyLjQ2LDIuNDYsMCwxLDAsMC00LjkySDI2LjIzQTcuNDMsNy40MywwLDAsMCwyNy4xNSw0M2E0LjE2LDQuMTYsMCwwLDAtLjEtMC44NXEtMC4xLS40Ni0wLjIzLTF0LTAuMTctLjgzTDY2LjgsMzUuNmEyLjM5LDIuMzksMCwwLDAsMS41OC0uODNBMi40MiwyLjQyLDAsMCwwLDY5LDMzLjA4VjEzLjM5QTIuMzcsMi4zNywwLDAsMCw2OC4yNywxMS42NloiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgNCkiLz4NCiAgICA8cGF0aCBjbGFzcz0iY2FydCIgZD0iTTE5Ljc3LDU1LjIzYTQuOTIsNC45MiwwLDEsMCwxLjQ0LTMuNDhBNC43NCw0Ljc0LDAsMCwwLDE5Ljc3LDU1LjIzWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCA0KSIvPg0KICA8L2c+DQogIDxyZWN0IGNsYXNzPSJjbHMtMiIgd2lkdGg9Ijc0LjA3IiBoZWlnaHQ9Ijc0LjA3Ii8+DQo8L3N2Zz4NCg==);
+            background-image: url(data:image/svg+xml;base64,PHN2ZyBpZD0iQ2FydCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNzQuMDciIGhlaWdodD0iNzQuMDciIHZpZXdCb3g9IjAgMCA3NC4wNyA3NC4wNyI+DQogIDxkZWZzPg0KICAgIDxzdHlsZT4NCiAgICAgIC5jYXJ0IHsNCiAgICAgICAgZmlsbDogIzA4NzEzZTsNCiAgICAgIH0NCg0KICAgICAgLmNscy0yIHsNCiAgICAgICAgZmlsbDogbm9uZTsNCiAgICAgIH0NCiAgICA8L3N0eWxlPg0KICA8L2RlZnM+DQogIDx0aXRsZT5jYXJ0MjwvdGl0bGU+DQogIDxnPg0KICAgIDxwYXRoIGNsYXNzPSJjYXJ0IiBkPSJNNTQuMjMsNTUuMjNhNC45Miw0LjkyLDAsMSwwLDEuNDQtMy40OEE0Ljc0LDQuNzQsMCwwLDAsNTQuMjMsNTUuMjNaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIDQpIi8+DQogICAgPHBhdGggY2xhc3M9ImNhcnQiIGQ9Ik02OC4yNywxMS42NmEyLjM3LDIuMzcsMCwwLDAtMS43My0uNzNIMjAuMzVhNS4zOCw1LjM4LDAsMCwwLS4xNy0xTDIwLDguODFhNi43OCw2Ljc4LDAsMCwwLS4yOS0xLDMuMDcsMy4wNywwLDAsMC0uNS0wLjk0LDIuNDUsMi40NSwwLDAsMC0uNzctMC42QTIuMzUsMi4zNSwwLDAsMCwxNy4zNCw2SDcuNDZhMi4zNywyLjM3LDAsMCwwLTEuNzMuNzMsMi40MSwyLjQxLDAsMCwwLS4wNSwzLjQxbDAuMDUsMC4wNWEyLjM3LDIuMzcsMCwwLDAsMS43My43M2g3Ljg1bDYuOCwzMS42NC0wLjc4LDEuNXEtMC43MSwxLjMxLTEuMTMsMi4yOWE0LjIyLDQuMjIsMCwwLDAtLjQyLDEuNTIsMi40OSwyLjQ5LDAsMCwwLDIuNDYsMi40Nkg2MS42MWEyLjQ2LDIuNDYsMCwxLDAsMC00LjkySDI2LjIzQTcuNDMsNy40MywwLDAsMCwyNy4xNSw0M2E0LjE2LDQuMTYsMCwwLDAtLjEtMC44NXEtMC4xLS40Ni0wLjIzLTF0LTAuMTctLjgzTDY2LjgsMzUuNmEyLjM5LDIuMzksMCwwLDAsMS41OC0uODNBMi40MiwyLjQyLDAsMCwwLDY5LDMzLjA4VjEzLjM5QTIuMzcsMi4zNywwLDAsMCw2OC4yNywxMS42NloiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgNCkiLz4NCiAgICA8cGF0aCBjbGFzcz0iY2FydCIgZD0iTTE5Ljc3LDU1LjIzYTQuOTIsNC45MiwwLDEsMCwxLjQ0LTMuNDhBNC43NCw0Ljc0LDAsMCwwLDE5Ljc3LDU1LjIzWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCA0KSIvPg0KICA8L2c+DQogIDxyZWN0IGNsYXNzPSJjbHMtMiIgd2lkdGg9Ijc0LjA3IiBoZWlnaHQ9Ijc0LjA3Ii8+DQo8L3N2Zz4NCg==);
             display: block;
             width: 34px;
             height: 34px;
             background-size: cover;
             cursor: pointer;
             text-align: center;
+            border-bottom: 0;
+
+            @media only screen and (min-width: 720px) {
+                .category_home & {
+                    background-image: url(data:image/svg+xml;base64,PHN2ZyBpZD0iQ2FydCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNzQuMDciIGhlaWdodD0iNzQuMDciIHZpZXdCb3g9IjAgMCA3NC4wNyA3NC4wNyI+DQogIDxkZWZzPg0KICAgIDxzdHlsZT4NCiAgICAgIC5jYXJ0IHsNCiAgICAgICAgZmlsbDogI2ZmZmZmZjsNCiAgICAgIH0NCg0KICAgICAgLmNscy0yIHsNCiAgICAgICAgZmlsbDogbm9uZTsNCiAgICAgIH0NCiAgICA8L3N0eWxlPg0KICA8L2RlZnM+DQogIDx0aXRsZT5jYXJ0MjwvdGl0bGU+DQogIDxnPg0KICAgIDxwYXRoIGNsYXNzPSJjYXJ0IiBkPSJNNTQuMjMsNTUuMjNhNC45Miw0LjkyLDAsMSwwLDEuNDQtMy40OEE0Ljc0LDQuNzQsMCwwLDAsNTQuMjMsNTUuMjNaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIDQpIi8+DQogICAgPHBhdGggY2xhc3M9ImNhcnQiIGQ9Ik02OC4yNywxMS42NmEyLjM3LDIuMzcsMCwwLDAtMS43My0uNzNIMjAuMzVhNS4zOCw1LjM4LDAsMCwwLS4xNy0xTDIwLDguODFhNi43OCw2Ljc4LDAsMCwwLS4yOS0xLDMuMDcsMy4wNywwLDAsMC0uNS0wLjk0LDIuNDUsMi40NSwwLDAsMC0uNzctMC42QTIuMzUsMi4zNSwwLDAsMCwxNy4zNCw2SDcuNDZhMi4zNywyLjM3LDAsMCwwLTEuNzMuNzMsMi40MSwyLjQxLDAsMCwwLS4wNSwzLjQxbDAuMDUsMC4wNWEyLjM3LDIuMzcsMCwwLDAsMS43My43M2g3Ljg1bDYuOCwzMS42NC0wLjc4LDEuNXEtMC43MSwxLjMxLTEuMTMsMi4yOWE0LjIyLDQuMjIsMCwwLDAtLjQyLDEuNTIsMi40OSwyLjQ5LDAsMCwwLDIuNDYsMi40Nkg2MS42MWEyLjQ2LDIuNDYsMCwxLDAsMC00LjkySDI2LjIzQTcuNDMsNy40MywwLDAsMCwyNy4xNSw0M2E0LjE2LDQuMTYsMCwwLDAtLjEtMC44NXEtMC4xLS40Ni0wLjIzLTF0LTAuMTctLjgzTDY2LjgsMzUuNmEyLjM5LDIuMzksMCwwLDAsMS41OC0uODNBMi40MiwyLjQyLDAsMCwwLDY5LDMzLjA4VjEzLjM5QTIuMzcsMi4zNywwLDAsMCw2OC4yNywxMS42NloiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgNCkiLz4NCiAgICA8cGF0aCBjbGFzcz0iY2FydCIgZD0iTTE5Ljc3LDU1LjIzYTQuOTIsNC45MiwwLDEsMCwxLjQ0LTMuNDhBNC43NCw0Ljc0LDAsMCwwLDE5Ljc3LDU1LjIzWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCA0KSIvPg0KICA8L2c+DQogIDxyZWN0IGNsYXNzPSJjbHMtMiIgd2lkdGg9Ijc0LjA3IiBoZWlnaHQ9Ijc0LjA3Ii8+DQo8L3N2Zz4NCg==);
+                }
+            }
+
 
             span {
-                color: #555;
-                font-size: 12px;
+                color: #fff;
+                font-size: 11px;
                 font-weight: bold;
                 display: inline-block;
-                // float: right;
                 padding: 6px 0 0 5px;
+
+                .category_home & {
+                    @media only screen and (min-width: 720px) {
+                        color: $sagovau-color-brand;
+                    }
+                }
+
             }
         }
     }
@@ -53,9 +64,9 @@
 
 }
 
-@media only screen and (min-width : 720px) {
+@media only screen and (min-width : 1250px) {
     #bookeasy__cart-gadget {
-        right: 9px;
+        margin-right: 20px;
     }
 }
 

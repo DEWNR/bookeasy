@@ -109,7 +109,7 @@ function dataCleanAndRun() {
                 appendTo: $('.location-selector'),
                 maxHeight: 294,
                 onSearchStart: function () {
-                    $('.autocomplete-suggestions').slideDown(300);
+                    $('#location-selector .autocomplete-suggestions').slideDown(300);
                 }
             });
 
@@ -134,9 +134,6 @@ function dataCleanAndRun() {
                 e.preventDefault();
                 $(this).val('');
             });
-
-            $('.be-fancybox').fancybox();
-
         });
 
 

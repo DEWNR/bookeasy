@@ -12,6 +12,23 @@
 #bookeasy__region-gadget {
     font-family: $sagovau-font-family-base;
     font-size: $sagovau-font-size-base;
+
+    a {
+        border-bottom: 0;
+        font-weight: normal;
+
+        &.map-link {
+            text-decoration: underline;
+        }
+
+        &:focus,
+        &:hover {
+            color: darken($sagovau-color-brand, 5%);
+            outline: 0;
+            background-color: inherit;
+        }
+    }
+
 }
 
 .region-gadget .im-grid .thumb {
@@ -48,6 +65,8 @@
         &:focus,
         &:hover {
             color: darken($sagovau-color-brand, 5%);
+            background-color: transparent;
+            outline: 0;
         }
     }
 

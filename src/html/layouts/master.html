@@ -19,10 +19,8 @@
 
 
         <!-- Stylesheets -->
-
         <link href="/css/bookeasy.css" rel="stylesheet">
-        <link href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.css">
         <noscript>
 
             <link href="//fast.fonts.net/cssapi/e0cc203f-7221-4daf-a2d5-815483dba107.css" rel="stylesheet">
@@ -60,8 +58,13 @@
     <body>
 
         <div id="content" class="content__fullwidth">
-            {% block content %}
-            {% endblock %}
+            <div class="c-content">
+                <div class="c-content__body">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+
         </div>
 
 
@@ -79,6 +82,16 @@
 
 
         {% block local_javascript %}{% endblock %}
+
+        <script>
+            $('[data-fancybox="gallery"]').fancybox({
+                buttons : [
+                'share',
+                'thumbs',
+                'close'
+              ]
+            });
+        </script>
 
     </body>
 

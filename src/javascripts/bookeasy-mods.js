@@ -243,11 +243,11 @@ function insertImages(gadget) {
 
         if(gadget == 'details') {
             productTitle = $thumbnail.parent().prev().text();
-            $thumbnail.attr('src', imagePath).wrap('<a class="be-fancybox" href="' + imagePath + '" rel="gallery" title="' + productTitle + '"></a>');
+            $thumbnail.attr('src', imagePath).wrap('<a class="be-fancybox" href="' + imagePath + '" data-fancybox="gallery" data-caption="' + productTitle + '"></a>');
         } else {
             imagePath = imagePath.replace('thumbs/461', 'images');
             productTitle = $thumbnail.parent().siblings('.name').text();
-            $thumbnail.wrap('<a class="be-fancybox" href="' + imagePath + '" rel="gallery" title="' + productTitle + '"></a>');
+            $thumbnail.wrap('<a class="be-fancybox" href="' + imagePath + '" data-fancybox="gallery" data-caption="' + productTitle + '"></a>');
         }
 
     });
@@ -266,6 +266,21 @@ function replaceText(node) {
     }
   }
 }
+
+// wrap fancybox in IMElementExists function so it is initialised after the element exists.
+$('.be-fancybox').IMElementExists(function() {
+
+    $('[data-fancybox="gallery"]').fancybox({
+        toolbar: false,
+        hash: false,
+        clickOutside: "close",
+        clickContent: false,
+        loop: true
+    });
+
+});
+
+
 
 
 // done resizing event

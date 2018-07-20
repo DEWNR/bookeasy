@@ -27,6 +27,5 @@ $(function() {
         vcID: 188
     });
 
-    $('.be-fancybox').fancybox();
 
 });

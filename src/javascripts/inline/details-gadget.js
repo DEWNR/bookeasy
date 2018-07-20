@@ -57,7 +57,6 @@ $(function() {
             vcID: 188
         });
 
-        $('.be-fancybox').fancybox();
 
         //add type as a class so we can apply styles
         if ( $('html').hasClass('is-'+bookeasyType) ) {
