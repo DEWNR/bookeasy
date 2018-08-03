@@ -8,7 +8,10 @@
             "Tennis Courts": false,
             "Facilities": false,
             "Tours": false,
-            "School Bookings": false
+            "School Bookings": false,
+            "Commercial Tour Operator Bookings": false,
+            "Group Bookings": false,
+            "Book on website": false
         },
         "index":"1",
         "url": "/#All"
@@ -29,7 +32,8 @@
         "Things to book": {
             "Vehicle Entry Fee": true,
             "Tennis Courts": true,
-            "Facilities": true
+            "Facilities": true,
+            "School Bookings": true
             },
         "url": "booking/belair-national-park"
     },
@@ -39,6 +43,12 @@
             "Vehicle Entry Fee": true
         },
         "url": "booking/bool-lagoon-hacks-lagoon"
+    },
+    "Brookfield Conservation Park": {
+        "Things to book": {
+            "Group Bookings": true
+        },
+        "url": "booking/brookfield-conservation-park"
     },
     "Canunda National Park": {
         "Things to book": {
@@ -61,6 +71,12 @@
             "School Bookings": false
         },
         "url": "booking/cape-willoughby-conservation-park"
+    },
+    "Cleland Wildlife Park": {
+        "Things to book": {
+            "Book on website": true
+        },
+        "url": "booking/cleland-wildlife-park"
     },
     "Coorong National Park": {
         "Things to book": {
@@ -90,6 +106,28 @@
             "Camping / Accommodation": true
         },
         "url": "//www.environment.sa.gov.au/parks/Find_a_Park/Browse_by_region/Eyre_Peninsula/fowlers-bay-conservation-park/booking"
+    },
+    "Innamincka Regional Reserve": {
+        "Things to book": {
+            "Commercial Tour Operator Bookings": true
+        },
+        "url": "booking/innamincka-regional-reserve"
+    },
+    "Malkumba-Coongie Lakes National Park": {
+        "Things to book": {
+            "Camping / Accommodation": true,
+            "Vehicle Entry Fee": true,
+            "Commercial Tour Operator bookings": true,
+            "z": 0
+        },
+        "url": "booking/malkumba-coongie-lakes-national-park"
+    },
+    "Murray River National Park": {
+        "Things to book": {
+            "School Bookings": true,
+            "z": 0
+        },
+        "url": "booking/murray-river-national-park"
     },
     "Innes National Park": {
         "Things to book": {
@@ -121,6 +159,12 @@
         },
         "url": "booking/mount-remarkable-national-park"
     },
+    "Naracoorte Caves National Park": {
+        "Things to book": {
+            "Book on website": true
+        },
+        "url": "booking/naracoorte-caves"
+    },
     "Nullarbor National Park, Wilderness Protection Area and Regional Reserve" :{
         "Things to book": {
             "Camping / Accommodation": true,"Vehicle Entry Fee": true
@@ -133,6 +177,12 @@
             "Snorkelling": true
         },
         "url": "booking/piccaninnie-ponds-conservation-park"
+    },
+    "Simpson Desert Conservation Park and Regional Reserve": {
+        "Things to book": {
+            "Commercial Tour Operator Bookings": true
+        },
+        "url": "booking/simpson-desert-conservation-park-and-regional-reserve"
     },
     "Tallaringa Conservation Park": {
         "Things to book": {
@@ -159,6 +209,12 @@
         "Things to book": {
             "Camping / Accommodation": true,
             "Vehicle Entry Fee": false
+        },
+        "url": "booking/vulkathunha-national-park"
+    },
+    "Witjira National Park": {
+        "Things to book": {
+            "Commercial Tour Operator Bookings": true
         },
         "url": "booking/vulkathunha-national-park"
     }

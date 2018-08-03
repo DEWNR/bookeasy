@@ -7,7 +7,7 @@
 // BE['gadget']['region']['text']['viewMap'] = 'Map';
 // BE['gadget']['search']['text']['adults']['label'] = 'Adults';
 // var t0 = window.performance.now();  // get precise time to compare against later
-// var bookingsDisabled = true;  //set to true disable bookings
+
 if (!bookingsDisabled) {  //if undefined
     var bookingsDisabled = false;       // define it
 }
@@ -52,6 +52,35 @@ function dataCleanAndRun() {
 
 
     if (dataExists === true && isRegionGadgetPage === true) {
+
+        if (bookingsDisabled == true) {
+
+            // productsData is an object NOT an array
+            for (var parkName in productsData) {
+                if ( productsData.hasOwnProperty(parkName) ) {
+
+                    var item = productsData[parkName]['Things to book'];
+
+                    //delete all BE items
+                    delete item['Camping / Accommodation'];
+                    delete item['Diving'];
+                    delete item['Snorkelling'];
+                    delete item['Vehicle Entry Fee'];
+                    delete item['Tours'];
+                    delete item['Tennis Courts'];
+                    delete item['Facilities'];
+
+                    // console.log( $.isEmptyObject(item) );
+
+                    //if object is now empty, delete it
+                    if ( $.isEmptyObject(item) ) {
+                        delete item;
+                    }
+                }
+            }
+            console.log(productsData);
+        }
+
 
         // corrects park names when they differ from BE location names
         if (typeof productsData['Nullarbor National Park, Wilderness Protection Area and Regional Reserve'] != 'undefined') {
@@ -205,48 +234,49 @@ function displayProductsData() {
 
     //productsData[urlHash] is better than using eval to turn string into object name
     try {
-        if (bookingsDisabled == false) {
 
-            $.each(productsData[urlHash]["Things to book"], function(key, val) {
+        $.each(productsData[urlHash]["Things to book"], function(key, val) {
+
+            if (key == 'Camping / Accommodation' && val === true) {
+                hasAccomodation = true;
+            }
+
+            //we don't need to display camping button if we are already looking at camping
+            if (key !== 'Camping / Accommodation' && val === true) {
+
+                var page = '';
+
+                // fix typos
                 if (key == 'Vehicle Entry Fee') {
-                    key = 'Vehicle Entry Fees'
+                    key = 'Vehicle Entry Fees';
                 }
 
-                //we don't need to display camping button if we are already looking at camping
-                if (key !== 'Camping / Accommodation' && val === true) {
-                    //Check urls
-                    bookingURL = productsData[urlHash].url + '/' + (key.replace(/ /g , '-')).toLowerCase();
+                // convert page name to kebab case
+                page = (key.replace(/ /g , '-')).toLowerCase();
 
-                    if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
-                        bookingURL += '.html';
-                    }
-
-                    $('.button-list').append($('<a href="'+ bookingURL + '"><span>' +key+ '</span></a>').addClass('button-list__button '+key).attr('data', key));
-                    $('.'+key).click(  function(){ typeShow('tours'); }  );
+                if ( key.search(/Commercial Tour Operator bookings/) != -1 ) {
+                    page = 'cto-bookings';
                 }
 
-                if (key == 'Camping / Accommodation' && val === true) {
-                    hasAccomodation = true;
+                // assemble URLs
+                if (urlHash == 'Cleland Wildlife Park') {
+                    bookingURL = 'http://www.clelandwildlifepark.sa.gov.au/plan-your-visit/buy-tickets';
+                } else if (urlHash == 'Naracoorte Caves National Park') {
+                    bookingURL = '//www.naracoortecaves.sa.gov.au/plan-your-visit/buy-tickets';
+                } else {
+                    bookingURL = productsData[urlHash].url + '/' + page;
                 }
-            });
+                // console.log(bookingURL);
 
-        } else {
-            //still show school bookings if bookingsDisabled
-            $.each(productsData[urlHash]["Things to book"], function(key, val) {
-                if (key == 'School Bookings') {
-                    //Check urls
-                    bookingURL = productsData[urlHash].url + '/' + (key.replace(/ /g , '-')).toLowerCase();
-
-                    if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
-                        bookingURL += '.html';
-                    }
-
-                    $('.button-list').append($('<a href="'+ bookingURL + '"><span>' +key+ '</span></a>').addClass('button-list__button '+key).attr('data', key));
+                if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+                    bookingURL += '.html';
                 }
-            });
 
-        }
+                $('.button-list').append($('<a href="'+ bookingURL + '"><span>' +key+ '</span></a>').addClass('button-list__button '+key).attr('data', key));
+                $('.'+key).click(  function(){ typeShow('tours'); }  );
+            }
 
+        });
 
     } catch(error) {
         console.error('ERROR: Problem reading json data. '+error);
@@ -325,7 +355,7 @@ function bookeasy() {
             limitLocations: aFilteredLocations,
             period: 1, // number of days to display
             showAllAccom: true, // show all, even if unavailable for time period
-            showCentsInPrices: true,
+            showCentsInPrices: true,  // showRefineTools: true,
             showList: false, // hide details tab
             disabledTypes: hideProductTypes,
             showLocationFilter: false,
@@ -370,7 +400,6 @@ function cleanGoogleMaps(callback) {    // cleanGoogleMaps();
             delete google.maps;     //delete variable
         }
     }
-
     // console.log('clean done.');
 
     if (callback !== undefined) {
@@ -385,8 +414,6 @@ function cleanGoogleMaps(callback) {    // cleanGoogleMaps();
 //     console.log( typeof productsData );
 //     console.log('does productsData exist yet?');
 // }, 3000);
-
-
 
 
 
