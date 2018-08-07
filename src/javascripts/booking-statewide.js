@@ -82,6 +82,8 @@ function dataCleanAndRun() {
         }
 
 
+
+
         // corrects park names when they differ from BE location names
         if (typeof productsData['Nullarbor National Park, Wilderness Protection Area and Regional Reserve'] != 'undefined') {
             // create new object
@@ -92,11 +94,25 @@ function dataCleanAndRun() {
             delete productsData['Nullarbor National Park, Wilderness Protection Area and Regional Reserve'];
         }
 
+        if (typeof productsData['Munga-Thirri–Simpson Desert Conservation Park and Regional Reserve'] != 'undefined') {
+             // create new object renaming em-dash to dash
+            var newObject = ['Munga-Thirri-Simpson Desert Conservation Park and Regional Reserve'];
+            // clone old object into new object
+            productsData[ newObject ] = productsData['Munga-Thirri–Simpson Desert Conservation Park and Regional Reserve'];
+            // delete old object
+            delete productsData['Munga-Thirri–Simpson Desert Conservation Park and Regional Reserve'];
+        }
+
+
         aAllLocations = Object.keys(productsData).sort();
         urlHash = location.hash.replace(/^#/, '').trim();
         hideProductTypes = ['tours','carhire','events','packages'];
 
         urlHash = urlHash.replace(/%20/g, ' ');
+        urlHash = urlHash.replace(/%E2%80%93/g, '-');
+        urlHash = urlHash.replace(/–/g, ' ');
+
+
 
 
         initialIs = true;
@@ -110,6 +126,10 @@ function dataCleanAndRun() {
         if(urlHash === 'Nullarbor National Park, Wilderness Protection Area and Regional Reserve') {
             urlHash = 'Nullarbor National Park Wilderness Protection Area';
         }
+        // else // fix for Simpson Desert, possibly not needed?
+        // if (urlHash === 'Munga-Thirri–Simpson Desert Conservation Park and Regional Reserve') {
+        //     urlHash = 'Munga-Thirri-Simpson Desert Conservation Park and Regional Reserve';
+        // }
 
 
         $(function() {
@@ -254,7 +274,8 @@ function displayProductsData() {
                 // convert page name to kebab case
                 page = (key.replace(/ /g , '-')).toLowerCase();
 
-                if ( key.search(/Commercial Tour Operator bookings/) != -1 ) {
+                // alter URL for Commercial Tour Operator Bookings
+                if ( key.toLowerCase().search(/commercial tour operator bookings/) != -1 ) {
                     page = 'cto-bookings';
                 }
 
@@ -376,6 +397,11 @@ function bookeasy() {
             if (urlHash && (urlHash.indexOf('Piccaninnie') !== -1)) {
                 $('.booking__early-text').html('');
                 var $newDiv = $( '<div class="booking__early-text"><p>You will need to enter an indemnity form receipt number at the time of booking. Diving and snorkelling equipment and wetsuits are not provided, you will need to either bring your own equipment/wetsuits or hire it.</p><p>Fees apply to these self-guided activities.</p><p>Please fill out a <a class="link" style="text-decoration: underline;" href="//www.environment.sa.gov.au/parks/Find_a_Park/Browse_by_region/Limestone_Coast/piccaninnie-ponds-conservation-park/booking/diving/diving-indemnity-form" target="_blank">diving indemnity form</a> or a <a class="link" style="text-decoration: underline;" href="//www.environment.sa.gov.au/parks/Find_a_Park/Browse_by_region/Limestone_Coast/piccaninnie-ponds-conservation-park/booking/snorkelling/snorkelling-indemnity-form" target="_blank">snorkelling indemnity form</a> for each person diving/snorkelling prior to making the booking.</p><p>Camping and accommodation is not available in this park.</p></div>' );
+                $('.location-selector').after($newDiv);
+                $('#bookeasy__region-gadget').html('');
+            } else if (urlHash && (urlHash.indexOf('Brookfield') !== -1)) {
+                $('.booking__early-text').html('');
+                var $newDiv = $( '<div class="booking__early-text"><p>The Science camp is only available for groups undertaking DEW approved science, education or volunteer activities.</p></div>' );
                 $('.location-selector').after($newDiv);
                 $('#bookeasy__region-gadget').html('');
             }
