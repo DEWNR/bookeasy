@@ -1,12 +1,23 @@
+
 # Build tools
+
 * run npm install
 * gulp
 * gulp production
 
 
+
+## Manual tasks
+
+* gulp operatorData
+this task is only run manually if you wanted to update C:\WORK\bookeasy\src\data\operatorData.json with the latest data from BookEasy's API
+
+*gulp server
+you could run this after running `gulp production` if you wanted to test the current html pages compiled in \public\
+
+
+
 # BookEasy
-
-
 
 ## BookEasy keys
 *  env: 7e5893292834eb2b34cd1d9b11437df9
