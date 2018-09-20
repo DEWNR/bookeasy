@@ -9,7 +9,7 @@ var streamify    = require('gulp-streamify');
 var operatorDataTask = function(cb) {
 
     return request({
-            url: 'https://sjp.impartmedia.com/V1.1/be/getOperatorsInformation?q=188',
+            url: 'https://webapi.bookeasy.com.au/api/getOperatorsInformation?q=188',
             headers: {
                 'User-Agent': 'request'
             }
@@ -25,8 +25,7 @@ var operatorDataTask = function(cb) {
                     Locations: operators.Locations,
                     Location: operators.Location,
                     Description: operators.Description,
-                    Cancellation: operators.Cancellation,
-                    IsMothership: operators.IsMothership
+                    Cancellation: operators.Cancellation
                  };
             });
         })))

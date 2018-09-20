@@ -75,9 +75,6 @@
                   Type1
                 </td>
                 <td>
-                  isMothership
-                </td>
-                <td>
                   details
                 </td>
               </tr>
@@ -90,7 +87,6 @@
                 <td>{{ operator.vcLocations }}</td>
                 <td>{{ operator.location }}</td>
                 <td>{{ operator.type1 }}</td>
-                <td>{{ operator.isMothership }}</td>
                 <td><a href="../details-gadget.html#/{{ operator.type1 | limitTo: 5 | lowercase }}/{{ operator.operatorID }}" target="_blank">visit</a></td>
               </tr>
             </tbody>
@@ -138,8 +134,7 @@
                                 tradingName: operators[key]['TradingName'],
                                 vcLocations: sLocations,
                                 location: operators[key]['Location'],
-                                type1: operators[key]['type'],
-                                isMothership: operators[key]['IsMothership']
+                                type1: operators[key]['type']
                             });
 
                         }
