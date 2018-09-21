@@ -1,31 +1,35 @@
-.fancybox-caption {
-    text-align: center;
-}
+.category_booking {
 
-
-.fancybox-image {
-    box-shadow: 0px 0px 10px 3px rgba(0,0,0, 0.3);
-    border: 0px solid transparent !important;
-    transform: scale(0);
-
-    .fancybox-slide--complete & {
-        border-radius: 5px;
-        box-sizing: border-box;
-        border-color: #fff !important;
-        border-width: 10px !important;
-        transform: scale(1);
+    .fancybox-caption {
+        text-align: center;
     }
-}
 
-.fancybox-navigation {
-    .fancybox-button {
-        border-radius: 50%;
-        border: 1px solid #ccc;
-    }
-}
 
-.fancybox-bg {
-    .fancybox-is-open & {
-        opacity: 0.3 !important;
+    .fancybox-image {
+        box-shadow: 0px 0px 10px 3px rgba(0,0,0, 0.3);
+        border: 0px solid transparent !important;
+        transform: scale(0);
+
+        .fancybox-slide--complete & {
+            border-radius: 5px;
+            box-sizing: border-box;
+            border-color: #fff !important;
+            border-width: 10px !important;
+            transform: scale(1);
+        }
     }
+
+    .fancybox-navigation {
+        .fancybox-button {
+            border-radius: 50%;
+            border: 1px solid #ccc;
+        }
+    }
+
+    .fancybox-bg {
+        .fancybox-is-open & {
+            opacity: 0.3 !important;
+        }
+    }
+
 }
