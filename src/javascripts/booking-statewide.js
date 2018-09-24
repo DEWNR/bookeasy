@@ -356,6 +356,8 @@ function bookeasy() {
 
     // only load gadget for those with camping / accomodation
     if (hasAccomodation) {
+        // BE.gadget.region.text.bookNow = "Book Now From ";
+        BE.gadget.region.text.refineByName = "Find by site name "
 
         BE.gadget.region('#bookeasy__region-gadget', {
             accomOnlyMode: true, // only display accommodation
@@ -379,8 +381,10 @@ function bookeasy() {
             showCentsInPrices: true,  // showRefineTools: true,
             showList: false, // hide details tab
             disabledTypes: hideProductTypes,
-            showLocationFilter: false,
+            showLocationFilter: false, //doesn't actually hide the filter, just the options.
+            // showFacilitiesFilter: true,
             // showRefineTools: false,  //defaultSort wont' work if false!
+            collapseRefineTools:false,  //
             vcID: 188
         });
 

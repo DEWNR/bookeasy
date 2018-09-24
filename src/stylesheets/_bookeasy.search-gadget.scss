@@ -98,7 +98,6 @@
     div.students,
     div.observers,
     div.maxPrice,
-    div.facilities,
     div.accommTypes {
         display: none;
     }
@@ -116,7 +115,7 @@
         width: 100%;
         appearance: none;
         outline: 0;
-        line-height: 1;
+        // line-height: 1;
         font-weight: 200;
         box-sizing: border-box;
 
@@ -166,7 +165,7 @@
     }
 
     .showHideRefineTools {
-        display: none;
+        // display: none;
     }
 
 }

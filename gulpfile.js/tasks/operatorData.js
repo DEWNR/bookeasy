@@ -1,3 +1,5 @@
+// this task is only run manually if you wanted to update C:\WORK\bookeasy\src\data\operatorData.json with the latest data from BookEasy's API
+
 var config       = require('../config')
 
 var gulp         = require('gulp')
@@ -22,6 +24,7 @@ var operatorDataTask = function(cb) {
                     type: operators.Type1,
                     TradingName: operators.TradingName,
                     ResidentialAddress: operators.ResidentialAddress,
+                    Facilities: operators.Facilities,
                     Locations: operators.Locations,
                     Location: operators.Location,
                     Description: operators.Description,

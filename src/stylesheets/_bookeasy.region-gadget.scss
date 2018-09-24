@@ -27,6 +27,19 @@
             outline: 0;
             background-color: inherit;
         }
+
+        &.day,
+        &.month {
+            &:hover {
+                color: #ffffff;
+            }
+        }
+
+        &.date {
+            &:hover {
+                color: #dca502;
+            }
+        }
     }
 
 }
@@ -40,6 +53,33 @@
     font-family: $sagovau-font-family-base;
     font-size: $sagovau-font-size-base;
     font-weight: 200;
+
+    .search-gadget .refineTools {
+        display: inline;
+        // border: 1px solid red;
+
+        & > div.facilities,
+        & > div.nameFilter {
+            margin-right: 10px;
+        }
+    }
+
+    .locationFilter,
+    .sortBy,
+    .byOrder,
+    .facilities {
+        display: none;
+    }
+
+    // .facilities,
+    .nameFilter {
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+    // .nameFilter {
+    //     float: left;
+    // }
 
     .embedded-search {
         position: relative;
