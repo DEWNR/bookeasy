@@ -101,7 +101,7 @@ function getOperatorData(id) {
                 backLocation = 'Flinders Chase National Park and Ravine Des Casoars Wilderness Protection Area';
             }
 
-            backURL = '/parks/booking#' + backLocation;
+            backURL = '/booking#' + backLocation;
             // backURL = '/#' + backLocation;
 
             if(data[0].IsTourManager == true) {
