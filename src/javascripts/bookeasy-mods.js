@@ -9,7 +9,7 @@ $(document).on('gadget.script.loaded', function() {
 
 
     // get campground-data from RSS
-    $.getScript('https://www.environment.sa.gov.au/feed.rss?listname=npsa-cl-campground-data', function(){
+    $.getScript('/feed.rss?listname=npsa-cl-campground-data', function(){
 
         // if (campgroundData != null) {
         //     console.log('campgroundData available!');
@@ -77,7 +77,7 @@ $(document).on('gadget.script.loaded', function() {
 
                 // read oMaps and find a match for current operator
                 if (typeof oMaps[sOberatorID] !== 'undefined' && oMaps[sOberatorID].length) {
-                    $property.append('<a class="map-link" href="http://environment.sa.gov.au' + oMaps[sOberatorID] + '" download="filename">View map <span>(pdf)</span></a>');
+                    $property.append('<a class="map-link" href="http://www.parks.sa.gov.au' + oMaps[sOberatorID] + '" download="filename">View map <span>(pdf)</span></a>');
                 }
             });
 

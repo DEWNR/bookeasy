@@ -21,7 +21,7 @@ var urlHash;
 var hideProductTypes = [];
 var bShowRegionGadget = 1;
 var windowURL = window.location.href;
-var dataURL = '//www.parks.sa.gov.au/feed.rss?listname=npsa-cl-products-data';
+var dataURL = '/feed.rss?listname=npsa-cl-products-data';
 var initialIs;
 
 
@@ -366,7 +366,7 @@ function bookeasy() {
             customMapIcons: {
                 'accom': {
                     // BookEasy doesn't support SVG icon for IE
-                    icon: '//www.environment.sa.gov.au/files/templates/00000000-0000-0000-0000-000000000000/219e8335-7a56-482d-9f78-7b3f16068846/npsa-marker-general.png',
+                    icon: '//www.parks.sa.gov.au/files/templates/00000000-0000-0000-0000-000000000000/219e8335-7a56-482d-9f78-7b3f16068846/npsa-marker-general.png',
                     pinpoint: [13,45],
                     size: [26,45]
                 }
