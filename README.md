@@ -164,3 +164,5 @@ $w(function() {
 ```
 
 Note that the confirmation is displayed on the same page as the booking gadget. This makes it hard to track successful purchases with Google Analytics. Consider updating this so the confirmation is displayed on a separate page. See [Impart Media Booking Gadget](https://gadgets.impartmedia.com/doc/04-booking-gadget.html) and [Impart Media Confirmation Gadget](https://gadgets.impartmedia.com/doc/05-confirm-gadget.html) for more information.
+
+#
