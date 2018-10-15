@@ -21,7 +21,7 @@ var urlHash;
 var hideProductTypes = [];
 var bShowRegionGadget = 1;
 var windowURL = window.location.href;
-var dataURL = '//www.environment.sa.gov.au/feed.rss?listname=npsa-cl-products-data';
+var dataURL = '//www.parks.sa.gov.au/feed.rss?listname=npsa-cl-products-data';
 var initialIs;
 
 
@@ -136,7 +136,7 @@ function dataCleanAndRun() {
 
             // redirect to booking page if no hash and details in url
             if (window.location.href.indexOf('details') > -1 && urlHash == '') {
-                IMUtility.redirect('http://www.environment.sa.gov.au/parks/booking/');
+                IMUtility.redirect('http://www.parks.sa.gov.au/booking/');
             } else if (window.location.href.indexOf('details') > -1 ) {
                 bShowRegionGadget = 0;
             }
@@ -400,7 +400,7 @@ function bookeasy() {
             $('#bookeasy__region-gadget').html('<p>Camping and accommodation is not available in this park.</p>');
             if (urlHash && (urlHash.indexOf('Piccaninnie') !== -1)) {
                 $('.booking__early-text').html('');
-                var $newDiv = $( '<div class="booking__early-text"><p>You will need to enter an indemnity form receipt number at the time of booking. Diving and snorkelling equipment and wetsuits are not provided, you will need to either bring your own equipment/wetsuits or hire it.</p><p>Fees apply to these self-guided activities.</p><p>Please fill out a <a class="link" style="text-decoration: underline;" href="//www.environment.sa.gov.au/parks/Find_a_Park/Browse_by_region/Limestone_Coast/piccaninnie-ponds-conservation-park/booking/diving/diving-indemnity-form" target="_blank">diving indemnity form</a> or a <a class="link" style="text-decoration: underline;" href="//www.environment.sa.gov.au/parks/Find_a_Park/Browse_by_region/Limestone_Coast/piccaninnie-ponds-conservation-park/booking/snorkelling/snorkelling-indemnity-form" target="_blank">snorkelling indemnity form</a> for each person diving/snorkelling prior to making the booking.</p><p>Camping and accommodation is not available in this park.</p></div>' );
+                var $newDiv = $( '<div class="booking__early-text"><p>You will need to enter an indemnity form receipt number at the time of booking. Diving and snorkelling equipment and wetsuits are not provided, you will need to either bring your own equipment/wetsuits or hire it.</p><p>Fees apply to these self-guided activities.</p><p>Please fill out a <a class="link" style="text-decoration: underline;" href="//www.parks.sa.gov.au/Find_a_Park/Browse_by_region/Limestone_Coast/piccaninnie-ponds-conservation-park/booking/diving/diving-indemnity-form" target="_blank">diving indemnity form</a> or a <a class="link" style="text-decoration: underline;" href="//www.parks.sa.gov.au/Find_a_Park/Browse_by_region/Limestone_Coast/piccaninnie-ponds-conservation-park/booking/snorkelling/snorkelling-indemnity-form" target="_blank">snorkelling indemnity form</a> for each person diving/snorkelling prior to making the booking.</p><p>Camping and accommodation is not available in this park.</p></div>' );
                 $('.location-selector').after($newDiv);
                 $('#bookeasy__region-gadget').html('');
             } else if (urlHash && (urlHash.indexOf('Brookfield') !== -1)) {
