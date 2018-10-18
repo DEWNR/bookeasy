@@ -108,6 +108,7 @@
 
         <script>
 
+            var operatorData;
             var module = angular.module('sortApp', []);
 
             module.controller('mainController', function($scope, $http) {
@@ -116,12 +117,17 @@
                 $scope.searchOperators   = '';        // set the default search/filter term
                 $scope.operators = [];
 
-                // $http.jsonp('http://sjp.impartmedia.com/be/getOperatorsInformation?callback=JSON_CALLBACK&q=188')
+                //// $http.jsonp('http://sjp.impartmedia.com/be/getOperatorsInformation?callback=JSON_CALLBACK&q=188')
+                // $http.get('//sjp.impartmedia.com/be/getOperatorsInformation?q=188')
                 // Use above line when on FTP
-                $http.get('/data/operatorData.json')
-                    .success(function(data) {
+                $http.get('//www.parks.sa.gov.au/data/operatorData.json')
+                    .then(function(response) {
 
-                        var operators = data;
+                        // operatorData = response.data;
+                        // console.log('operatorData: ',operatorData);
+
+                        operatorData = response.data;
+                        var operators = response.data.Operators;
 
                         var aTemp = [];
 
@@ -143,7 +149,7 @@
                                 tradingName: operators[key]['TradingName'],
                                 vcLocations: sLocations,
                                 location: operators[key]['Location'],
-                                type1: operators[key]['type'],
+                                type1: operators[key]['Type1'],
                                 facilities: (operators[key]['Facilities']).join(' | ')
                             });
 
@@ -152,7 +158,8 @@
                         $scope.operators = aTemp;
 
                     })
-                    .error(function(error) {
+                    .catch(function(error) {
+                        console.log('Ooops: ', error);
                     });
             });
         </script>
