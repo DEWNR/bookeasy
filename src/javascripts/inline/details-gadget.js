@@ -1,3 +1,7 @@
+// Some variables are defined in the page template of "BookEasy booking page (advanced)" content type
+// var dcTitle
+// var bookeasyType
+// var operatorID
 var bShowGadget = 1;
 
 
@@ -87,7 +91,9 @@ function getOperatorData(id) {
 
         if (data.length) {
 
-            backLocation = data[0].Location;
+            // console.log(data[0]);
+            // This code needs refactoring
+            backLocation = data[0].Location; //fall back
 
             if (backLocation === 'Bool Lagoon Game Reserve') {
                 backLocation = 'Bool Lagoon Game Reserve and Hacks Lagoon Conservation Park';
@@ -106,8 +112,15 @@ function getOperatorData(id) {
 
             if(data[0].IsTourManager == true) {
 
-                // add location title
-                $('#bookeasy__details-gadget').before('<div class="location-header"><h1>' + data[0].Location + '</h1></div>');
+                if(operatorID == '81657') {
+                    // If Parks Passes page use appropriate title and back URL
+                    $('#bookeasy__details-gadget').before('<div class="location-header"><h1>' + dcTitle + '</h1></div>');
+                    backURL = '/booking';
+                } else {
+                    // add location title
+                    $('#bookeasy__details-gadget').before('<div class="location-header"><h1>' + data[0].Location + '</h1></div>');
+                }
+
 
             } else {
                 // add location title
