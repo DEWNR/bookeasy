@@ -1,5 +1,5 @@
 // Some variables are defined in the page template of "BookEasy booking page (advanced)" content type
-// var dcTitle
+// var dcTitle  -- no longer used
 // var bookeasyType
 // var operatorID
 var bShowGadget = 1;
@@ -114,7 +114,7 @@ function getOperatorData(id) {
 
                 if(operatorID == '81657') {
                     // If Parks Passes page use appropriate title and back URL
-                    $('#bookeasy__details-gadget').before('<div class="location-header"><h1>' + dcTitle + '</h1></div>');
+                    // $('#bookeasy__details-gadget').before('<div class="location-header"><h1>' + dcTitle + '</h1></div>');
                     backURL = '/booking';
                 } else {
                     // add location title
