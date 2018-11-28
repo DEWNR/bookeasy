@@ -385,6 +385,7 @@ function bookeasy() {
             // showFacilitiesFilter: true,
             // showRefineTools: false,  //defaultSort wont' work if false!
             collapseRefineTools:false,  //
+            googleMapsKey: 'AIzaSyAmYsDEmwvwVbQJ9WbSp_iJ4JOkBB-PKn8', // uses DEW 'JavaScript API key' key
             vcID: 188
         });
 
