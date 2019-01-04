@@ -12,8 +12,11 @@
 * gulp operatorData
 this task is only run manually if you wanted to update C:\WORK\bookeasy\src\data\operatorData.json with the latest data from BookEasy's API
 
-*gulp server
+* gulp server
 you could run this after running `gulp production` if you wanted to test the current html pages compiled in \public\
+
+* gulp static
+this will update static files such as details.html
 
 
 

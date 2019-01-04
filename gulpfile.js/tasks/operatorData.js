@@ -11,7 +11,7 @@ var streamify    = require('gulp-streamify');
 var operatorDataTask = function(cb) {
 
     return request({
-            url: 'https://webapi.bookeasy.com.au/api/getOperatorsInformation?q=188',
+            url: 'https://sjp.impartmedia.com/be/getOperatorsInformation?q=188',
             headers: {
                 'User-Agent': 'request'
             }
