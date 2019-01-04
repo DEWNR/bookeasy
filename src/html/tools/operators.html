@@ -119,14 +119,12 @@
                 //// $http.jsonp('http://sjp.impartmedia.com/be/getOperatorsInformation?callback=JSON_CALLBACK&q=188')
                 // $http.get('//sjp.impartmedia.com/be/getOperatorsInformation?q=188')
                 // '//www.parks.sa.gov.au/dev/bookeasy/data/operatorData.json'
-                // Use above line when on FTP
+                // Use an above line when on FTP
                 var dataURL = '/data/operatorData.json';
-                var live = false;
 
                 if ( window.location.href.match(/(\.sa\.gov\.au)/g) ) {
                   console.log('(live) getting data from sjp.impartmedia.com');
                   dataURL = '//sjp.impartmedia.com/be/getOperatorsInformation?q=188';
-                  live = true;
                 } else {
                   console.log('using local data /data/operatorData.json');
                 }
@@ -134,25 +132,22 @@
                 $http.get(dataURL)
                     .then(function(response) {
 
-                      var operators = response.data;
-                      console.log('operators: ', operators);
+                        console.log('response.data: ', response.data);
 
-                        if (live) { //if live map data to be consistent with operatorData gulp task.
-                          operators = operators.Operators.map(function (operators) {
-                            return {
-                              OperatorID: operators.OperatorID,
-                              type: operators.Type1,
-                              TradingName: operators.TradingName,
-                              ResidentialAddress: operators.ResidentialAddress,
-                              Facilities: operators.Facilities,
-                              Locations: operators.Locations,
-                              Location: operators.Location,
-                              Description: operators.Description,
-                              Cancellation: operators.Cancellation
-                            };
-                          });
-                          console.log('operators: ', operators);
-                        }
+                        var operators = response.data.Operators.map(function (operators) {
+                          return {
+                            OperatorID: operators.OperatorID,
+                            type: operators.Type1,
+                            TradingName: operators.TradingName,
+                            ResidentialAddress: operators.ResidentialAddress,
+                            Facilities: operators.Facilities,
+                            Locations: operators.Locations,
+                            Location: operators.Location,
+                            Description: operators.Description,
+                            Cancellation: operators.Cancellation
+                          };
+                        });
+
 
                         var cleanedOperators = [];
 

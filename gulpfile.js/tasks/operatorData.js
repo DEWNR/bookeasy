@@ -18,19 +18,7 @@ var operatorDataTask = function(cb) {
         })
         .pipe(source('operatorData.json'))
         .pipe(streamify(jeditor(function (json) {
-            return json['Operators'].map(function (operators) {
-                return {
-                    OperatorID: operators.OperatorID,
-                    type: operators.Type1,
-                    TradingName: operators.TradingName,
-                    ResidentialAddress: operators.ResidentialAddress,
-                    Facilities: operators.Facilities,
-                    Locations: operators.Locations,
-                    Location: operators.Location,
-                    Description: operators.Description,
-                    Cancellation: operators.Cancellation
-                 };
-            });
+            return json; //return the raw json to keep it consistent with live data
         })))
         .pipe(gulp.dest('./src/data'));
 
