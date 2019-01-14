@@ -4,12 +4,17 @@ var isMobile = false;
 var isAccom = false;
 var selectedDays = 1;
 var campgroundData;
+var campgroundDataHost = window.location.hostname;
 
 $(document).on('gadget.script.loaded', function() {
 
+    // if running locally point to the remote campground data
+    if ( !window.location.hostname.match('sa.gov.au') ) {
+        campgroundDataHost = 'https://www.parks.sa.gov.au';
+    }
 
     // get campground-data from RSS
-    $.getScript('/feed.rss?listname=npsa-cl-campground-data', function(){
+    $.getScript(campgroundDataHost + '/feed.rss?listname=npsa-cl-campground-data', function(){
 
         // if (campgroundData != null) {
         //     console.log('campgroundData available!');
@@ -24,6 +29,8 @@ $(document).on('gadget.script.loaded', function() {
     // initialise region gadget watchers
     IMUtility.pushRegionGadgetLoadedEvent();
     IMUtility.pushRegionGadgetChangedEvent();
+    // initialise details gadget watchers
+    IMUtility.pushDetailsContentLoadedEvent();
 
     // check if mobile device
     isMobile = windowWidth < 767 ? true : false;
@@ -46,10 +53,38 @@ $(document).on('gadget.script.loaded', function() {
 
         $('.tabs-group').addClass('gadget__region-tabs').removeClass('tabs-group');
 
+        // remove option to select 0 adults
+        $('.adults select option[value="0"]').hide();
+
+        // atleast 1 adult or 1 child should always be selected
+        // this doesn't work because it doesn't trigger the listener
+        // if ( $('.adults select').val() == 0 && $('.children select').val() == 0 ) {
+        //     // $('.adults select').val('1');
+        //     $('.adults select').get(0).selectedIndex = index_here;
+        //     console.log('b4 change');
+        //     $('.adults select').focus().change();
+        //     console.log('after change');
+        // }
+
     });
 
 
 
+
+
+    // tasks to do on details gadgets
+    $w.event.subscribe('details.content.ready', function() {
+
+        // remove option to select 0 adults
+        $('.adults select option[value="0"]').hide();
+
+        //rename 'Date' to 'Start date' for parks passes page
+        if (typeof operatorID) { // only if defined
+            if (operatorID == '81657') { // only if parks passes
+                $('.details-gadget .search-gadget .date .label span').html('Start Date');
+            }
+        }
+    });
 
 
     // region.gadget.built is fired when using the region-gadget
