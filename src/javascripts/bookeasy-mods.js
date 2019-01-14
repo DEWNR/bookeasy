@@ -82,6 +82,9 @@ $(document).on('gadget.script.loaded', function() {
         if (typeof operatorID) { // only if defined
             if (operatorID == '81657') { // only if parks passes
                 $('.details-gadget .search-gadget .date .label span').html('Start Date');
+            } else
+            if (operatorID == '65339' || operatorID == '72030' || operatorID == '96528' || operatorID == '96529' || operatorID == '96530') { // only if diving or snorkelling
+                $('.details-gadget .search-gadget .infants, .details-gadget .search-gadget .concessions').hide();
             }
         }
     });

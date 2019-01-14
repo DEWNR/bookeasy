@@ -3,7 +3,9 @@
 // var bookeasyType
 // var operatorID
 var bShowGadget = 1;
-
+// details gadget defaults
+var numberInfants = 45;
+var numberConcessions = 45;
 
 if(window.location.hash) {
     var aHash = window.location.hash.slice(1).split('/');
@@ -31,6 +33,10 @@ if(window.location.hash) {
 
 }
 
+if(window.location.pathname.toLowerCase().match('piccaninnie')) {  // if piccaninnie
+    numberInfants = 0;
+    numberConcessions = 0;
+}
 
 
 if(typeof bookeasyType == 'undefined' || typeof operatorID == 'undefined') {
@@ -57,6 +63,8 @@ $(function() {
             showAllAccom: true,
             showAllTours: true,
             showAllEvents: true,
+            noInfants: numberInfants,
+            noConcessions: numberConcessions,
 
             vcID: 188
         });
