@@ -65,6 +65,7 @@ function dataCleanAndRun() {
                     delete item['Camping / Accommodation'];
                     delete item['Diving'];
                     delete item['Snorkelling'];
+                    delete item['Diving Other Sites'];
                     delete item['Vehicle Entry Fee'];
                     delete item['Tours'];
                     delete item['Tennis Courts'];
@@ -261,8 +262,12 @@ function displayProductsData() {
                 hasAccomodation = true;
             }
 
+
+
             //we don't need to display camping button if we are already looking at camping
-            if (key !== 'Camping / Accommodation' && val === true) {
+            //also don't display 'School Bookings' anymore as there is now a generic school booking form.
+            if (key !== 'Camping / Accommodation' && val === true && key !== 'School Bookings') {
+                console.log('key: ', key);
 
                 var page = '';
 
@@ -277,6 +282,17 @@ function displayProductsData() {
                 // alter URL for Commercial Tour Operator Bookings
                 if ( key.toLowerCase().search(/commercial tour operator bookings/) != -1 ) {
                     page = 'cto-bookings';
+                }
+
+                //rename Diving button
+                if (key == 'Diving' && val === true) {
+                    key = 'Diving - Pic Ponds';
+                    page = 'diving';
+                }
+                //rename Diving Other Sites button
+                if (key == 'Diving Other Sites' && val === true) {
+                    key = 'Diving - Other Sites';
+                    page = 'diving-other-sites';
                 }
 
                 // assemble URLs
@@ -361,7 +377,6 @@ function bookeasy() {
 
         BE.gadget.region('#bookeasy__region-gadget', {
             accomOnlyMode: true, // only display accommodation
-            adults: 1,
             collapseRefineTools: true,
             customMapIcons: {
                 'accom': {

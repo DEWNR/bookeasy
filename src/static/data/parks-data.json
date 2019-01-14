@@ -174,7 +174,8 @@
     "Piccaninnie Ponds Conservation Park": {
         "Things to book": {
             "Diving": true,
-            "Snorkelling": true
+            "Snorkelling": true,
+            "Diving Other Sites": true
         },
         "url": "booking/piccaninnie-ponds-conservation-park"
     },
