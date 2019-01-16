@@ -3,8 +3,8 @@ var windowWidth = $(window).width();
 var isMobile = false;
 var isAccom = false;
 var selectedDays = 1;
+var campgroundDataHost = '';
 var campgroundData;
-var campgroundDataHost = window.location.hostname;
 
 $(document).on('gadget.script.loaded', function() {
 
@@ -16,9 +16,9 @@ $(document).on('gadget.script.loaded', function() {
     // get campground-data from RSS
     $.getScript(campgroundDataHost + '/feed.rss?listname=npsa-cl-campground-data', function(){
 
-        // if (campgroundData != null) {
-        //     console.log('campgroundData available!');
-        // }
+        if (campgroundData == null) {
+            console.warn('campgroundData not loaded!');
+        }
 
     });
 
@@ -93,35 +93,50 @@ $(document).on('gadget.script.loaded', function() {
     // region.gadget.built is fired when using the region-gadget
     $w.event.subscribe('region.gadget.built', function() {
 
+        var mapPDFsHaveLoaded = false;
+
         // detect when last row loaded
         $('.im-grid .accom tbody>tr:last-child .name').IMElementExists(function() {
-            var oMaps = getMapData();
 
-            $('.prices-grid td.date').addClass('hidden-xs'); // used in bookeasy-utility to determin if loaded
+            if(!mapPDFsHaveLoaded) { //only run if maps have not already been loaded
+                var oMaps = getMapData();
 
-            // get days selected and add/remove class
-            selectedDays = getDaysSelected('region');
+                $('.prices-grid td.date').addClass('hidden-xs'); // used in bookeasy-utility to determine if loaded
 
-            // console.log(selectedDays);
+                // get days selected and add/remove class
+                selectedDays = getDaysSelected('region');
 
-            if(isMobile) {
-                updateProductRows('region');
+                // console.log(selectedDays);
+
+                if(isMobile) {
+                    updateProductRows('region');
+                }
+
+                // add maps
+                $('.im-grid tr.odd, .im-grid tr.even').each(function(i){
+                    var $property = $(this).find('td.property');
+                    var sOberatorID = $(this).attr('id').replace('Operator', '');
+
+                    // read oMaps and find a match for current operator
+                    if (typeof oMaps[sOberatorID] !== 'undefined' && oMaps[sOberatorID].length) {
+                        $property.append('<a class="map-link" href="http://www.parks.sa.gov.au' + oMaps[sOberatorID] + '" download="filename">View map <span>(pdf)</span></a>');
+                    }
+
+                });
+
+                // if descriptions are displayed with (showRoomDetails: true) this cleans them up
+                $('.description>span').each( function(){
+                    var newstring = $(this).text().replace(/\.\.\./g, '');  // remove '...' string
+                   $(this).text(newstring);
+                })
+                $('.description>.more').hide(); // hide 'More' links
+
+
+                // load hi-res images
+                insertImages('region');
             }
 
-            // add maps
-            $('.im-grid tr.odd, .im-grid tr.even').each(function(){
-                var $property = $(this).find('td.property');
-                var sOberatorID = $(this).attr('id').replace('Operator', '');
-
-                // read oMaps and find a match for current operator
-                if (typeof oMaps[sOberatorID] !== 'undefined' && oMaps[sOberatorID].length) {
-                    $property.append('<a class="map-link" href="http://www.parks.sa.gov.au' + oMaps[sOberatorID] + '" download="filename">View map <span>(pdf)</span></a>');
-                }
-            });
-
-
-            // load hi-res images
-            insertImages('region');
+            mapPDFsHaveLoaded = true;  // so it won't run again
 
         });
 
@@ -131,7 +146,7 @@ $(document).on('gadget.script.loaded', function() {
 
 
 
-    // grid.rendered is fired when using the details-gadget
+    // is fired when details-gadget grid.rendered
     $w.event.subscribe('grid.rendered', function() {
 
         // get days selected and add/remove class
@@ -151,7 +166,7 @@ $(document).on('gadget.script.loaded', function() {
             insertImages('details');
 
             // replace text
-            replaceText(document.getElementsByClassName('details-gadget')[0]);
+            replaceRoomText(document.querySelector('.details-gadget'));
 
         });
 
@@ -293,14 +308,14 @@ function insertImages(gadget) {
 }
 
 
-// text replacements defined here
-function replaceText(node) {
+// some text replacements defined here
+function replaceRoomText(node) {
   if (node.nodeType == 3) {
     node.data = node.data.replace(/Room Configuration:/g, 'Configuration:');
   }
   if (node.nodeType == 1 && node.nodeName != "SCRIPT") {
     for (var i = 0; i < node.childNodes.length; i++) {
-      replaceText(node.childNodes[i]);
+      replaceRoomText(node.childNodes[i]);
     }
   }
 }

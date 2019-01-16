@@ -118,6 +118,16 @@
     thead a.month {
         color: #ffffff;
     }
+
+    .room-name {
+        opacity: 0.5;
+        display: none;
+    }
+
+    .description {
+        margin: 1em 0;
+        color: #666;
+    }
 }
 
 .region-gadget {

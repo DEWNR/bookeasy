@@ -267,7 +267,7 @@ function displayProductsData() {
             //we don't need to display camping button if we are already looking at camping
             //also don't display 'School Bookings' anymore as there is now a generic school booking form.
             if (key !== 'Camping / Accommodation' && val === true && key !== 'School Bookings') {
-                console.log('key: ', key);
+                // console.log('key: ', key);
 
                 var page = '';
 
@@ -399,6 +399,7 @@ function bookeasy() {
             showLocationFilter: false, //doesn't actually hide the filter, just the options.
             // showFacilitiesFilter: true,
             // showRefineTools: false,  //defaultSort wont' work if false!
+            //    showRoomDetails:    true,  //turn this on to display business details for each campground on region-gadget
             collapseRefineTools:false,  //
             googleMapsKey: 'AIzaSyAmYsDEmwvwVbQJ9WbSp_iJ4JOkBB-PKn8', // uses DEW 'JavaScript API key' key
             vcID: 188
