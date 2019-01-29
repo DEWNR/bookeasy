@@ -2,5 +2,6 @@
 *.log
 node_modules/
 temp/
+_junk/
 public/
 src/html/data/global.json

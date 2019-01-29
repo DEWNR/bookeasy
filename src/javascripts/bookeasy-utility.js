@@ -41,14 +41,12 @@ IMUtility.pushRegionGadgetLoadedEvent = function() {
 };
 
 // wait for the details content to have loaded, then publish an event
-IMUtility.pushDetailsContentLoadedEvent = function() {
-
+IMUtility.pushDetailsContentLoadedEvent = function checkOperatorInfo() {
     if ($('.OperatorInfo').size() > 0) {
         $w.event.publish('details.content.ready');
     } else {
-        setTimeout('IMUtility.pushDetailsContentLoadedEvent();', 100);
+        setTimeout(checkOperatorInfo, 100);
     }
-
 };
 
 

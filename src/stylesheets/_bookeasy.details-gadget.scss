@@ -8,6 +8,15 @@
 #bookeasy__details-gadget {
     font-family: $sagovau-font-family-base;
     font-size: $sagovau-font-size-base;
+
+    a {
+        border-bottom: 0;
+        font-weight: normal;
+
+        &:focus {
+            outline: 0;
+        }
+    }
 }
 
 .details-gadget {
@@ -25,13 +34,18 @@
             font-weight: normal;
             margin-bottom: 6px;
             padding-top: 10px;
-            // padding-left: 10px;
             width: 100%;
 
             &.OperatorInfoMore,
             &.OperatorInfoLess {
                 display: none;
             }
+        }
+    }
+
+    .product__row--specials {
+        @media (max-width: 768px) {
+            display: block;
         }
     }
 }
@@ -82,23 +96,12 @@
     }
 }
 
-.region-gadget {
-    td.property {
-        padding-bottom: 6px;
-    }
-}
-
-#bookeasy__region-gadget div.BE.region-gadget div.gadget__region-tabs div.view-choice a {
-    padding: 0.6em 1.4em 0.8em;
-}
-
-
-#bookeasy__region-gadget div.BE.region-gadget div.gadget__region-tabs div.view-choice a:not(.current):hover {
-    background: #b3cbbf;
-}
-
 .im-grid tbody tr td.sold span {
         transform: rotate(-16deg);
+
+        &.price__date {
+            transform: rotate(0);
+        }
 }
 
 #bookeasy__details-gadget {
@@ -113,6 +116,7 @@
 .im-grid .OperatorItemHeading {
     float: left;
     padding-right: 10px;
+    line-height: 18px;  //fix for IE
 }
 
 
@@ -134,10 +138,6 @@
     margin-bottom: 16px;
 }
 
-
-// .details-gadget .im-grid .thumb {
-//     width: 210px;
-// }
 
 
 @media (max-width: 768px) {
@@ -173,9 +173,7 @@
             .date.tours {
                 float: left;
                 display: block;
-                // width: 37.7%;
                 width: calc(100% - 21px);
-                // height: 43px;
             }
             .date.tours > a {
                 display: inline;
@@ -206,6 +204,21 @@
                 padding-top: 6px;
             }
 
+        }
+
+        tr>td {
+            padding: 10px;
+            display: block;
+        }
+        tbody tr td.price span {
+            display: inline-block;
+            padding: 6px;
+            width: 80px;
+        }
+
+        tbody tr td.price span.price__date {
+            width: 84px;
+            text-align: right;
         }
 
     }
@@ -263,8 +276,6 @@
 
 @media (min-width: 1231px) {
     .details-gadget div.thumb {
-        // width: 100%;
-        // vertical-align: middle;
         margin-right: 20px;
         padding: 2px 0px 8px 0;
         width: 210px;

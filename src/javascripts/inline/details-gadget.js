@@ -1,5 +1,11 @@
+// Some variables are defined in the page template of "BookEasy booking page (advanced)" content type
+// var dcTitle  -- no longer used
+// var bookeasyType
+// var operatorID
 var bShowGadget = 1;
-
+// details gadget defaults
+var numberInfants = 45;
+var numberConcessions = 45;
 
 if(window.location.hash) {
     var aHash = window.location.hash.slice(1).split('/');
@@ -27,6 +33,10 @@ if(window.location.hash) {
 
 }
 
+if(window.location.pathname.toLowerCase().match('piccaninnie')) {  // if piccaninnie
+    numberInfants = 0;
+    numberConcessions = 0;
+}
 
 
 if(typeof bookeasyType == 'undefined' || typeof operatorID == 'undefined') {
@@ -53,11 +63,12 @@ $(function() {
             showAllAccom: true,
             showAllTours: true,
             showAllEvents: true,
+            noInfants: numberInfants,
+            noConcessions: numberConcessions,
 
             vcID: 188
         });
 
-        $('.be-fancybox').fancybox();
 
         //add type as a class so we can apply styles
         if ( $('html').hasClass('is-'+bookeasyType) ) {
@@ -88,7 +99,9 @@ function getOperatorData(id) {
 
         if (data.length) {
 
-            backLocation = data[0].Location;
+            // console.log(data[0]);
+            // This code needs refactoring
+            backLocation = data[0].Location; //fall back
 
             if (backLocation === 'Bool Lagoon Game Reserve') {
                 backLocation = 'Bool Lagoon Game Reserve and Hacks Lagoon Conservation Park';
@@ -98,13 +111,24 @@ function getOperatorData(id) {
                 backLocation = 'Cape Gantheaume Conservation Park and Wilderness Protection Area';
             }
 
-            backURL = '/parks/booking#' + backLocation;
+            if (backLocation === 'Flinders Chase National Park') {
+                backLocation = 'Flinders Chase National Park and Ravine Des Casoars Wilderness Protection Area';
+            }
+
+            backURL = '/booking#' + backLocation;
             // backURL = '/#' + backLocation;
 
             if(data[0].IsTourManager == true) {
 
-                // add location title
-                $('#bookeasy__details-gadget').before('<div class="location-header"><h1>' + data[0].Location + '</h1></div>');
+                if(operatorID == '81657') {
+                    // If Parks Passes page use appropriate title and back URL
+                    // $('#bookeasy__details-gadget').before('<div class="location-header"><h1>' + dcTitle + '</h1></div>');
+                    backURL = '/booking';
+                } else {
+                    // add location title
+                    $('#bookeasy__details-gadget').before('<div class="location-header"><h1>' + data[0].Location + '</h1></div>');
+                }
+
 
             } else {
                 // add location title
@@ -125,6 +149,6 @@ function getOperatorData(id) {
 
         }
 
-    })
+    });
 
 }

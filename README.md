@@ -1,4 +1,36 @@
+
+# Build tools
+
+* run npm install
+* gulp
+* gulp production
+
+
+
+## Manual tasks
+
+* gulp operatorData
+this task is only run manually if you wanted to update C:\WORK\bookeasy\src\data\operatorData.json with the latest data from BookEasy's API
+
+* gulp server
+you could run this after running `gulp production` if you wanted to test the current html pages compiled in \public\
+
+* gulp static
+this will update static files such as details.html
+
+
+
 # BookEasy
+
+## BookEasy keys
+*  env: 7e5893292834eb2b34cd1d9b11437df9
+*  WIP: 4a65c97fcf2b568333551e22627eb45d
+*  local: d5192d41822d0c987a0610af120d29bf
+*  kiwt: 4ae239f9decb3716790c285af3a63221
+*  parks: e65c851dcdc492aaa7db1e22e2bd2283
+*  naracoortecaves: 934373a56a57fd7c63cac40a082c2914
+*  clelandwildlifepark: 3213f2eba231919197234a011631e836
+
 
 
 ## Browser support
@@ -25,6 +57,8 @@ The Impart Media Gadgets will not run in Internet Explorer 8 or below. Use condi
 </script>
 ```
 
+
+
 ## Cart gadget
 
 **IMPORTANT:** do not include this code on the checkout page, as this will cause a conflict with the booking gadget.
@@ -43,6 +77,8 @@ $w(function() {
 
 See [Impart Media Item Details and Cart Gadgets](https://gadgets.impartmedia.com/doc/03-details-and-cart-gadgets.html) for more information.
 
+
+
 ## Region gadget
 
 ```javascript
@@ -56,7 +92,7 @@ $w(function() {
   options = {
     vcID: 188,              // Our BookEasy Visitor Centre ID
     accomOnlyMode: true,    // Limit to accommodation results only. This is slightly buggy, so use in conjunction with disabledTypes
-    collapseRefineTools: true,  
+    collapseRefineTools: true,
     customMapIcons: {
       'accom': {
         icon:'//www.environment.sa.gov.au/files/templates/00000000-0000-0000-0000-000000000000/c16a6c2a-2cdc-4f08-96b9-f1c11eb6f349/npsa-marker-general.png',
@@ -82,6 +118,8 @@ $w(function() {
 ```
 
 See [Impart Media Region Gadget](https://gadgets.impartmedia.com/doc/02-region-gadget.html) for more information.
+
+
 
 ## Item details gadget
 
@@ -113,6 +151,8 @@ $w(function() {
 
 See [Impart Media Item Details and Cart Gadgets](https://gadgets.impartmedia.com/doc/03-details-and-cart-gadgets.html) for more information.
 
+
+
 ## Booking gadget
 
 ```javascript
@@ -127,3 +167,5 @@ $w(function() {
 ```
 
 Note that the confirmation is displayed on the same page as the booking gadget. This makes it hard to track successful purchases with Google Analytics. Consider updating this so the confirmation is displayed on a separate page. See [Impart Media Booking Gadget](https://gadgets.impartmedia.com/doc/04-booking-gadget.html) and [Impart Media Confirmation Gadget](https://gadgets.impartmedia.com/doc/05-confirm-gadget.html) for more information.
+
+#

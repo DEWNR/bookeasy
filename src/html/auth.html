@@ -1,0 +1,34 @@
+{% extends 'layouts/master.html' %}
+
+{% set pagetitle = 'Checkout' %}
+
+
+
+
+
+{% block content %}
+
+    <div id="bookeasy__auth-gadget"></div>
+
+{% endblock %}
+
+
+
+
+
+{% block global_javascript %}
+    {{ super() }}
+{% endblock %}
+
+
+{% block local_javascript %}
+
+    <script src="//gadgets.impartmedia.com/gadgets.jsz?key={{ bookeasy_key }}"></script>
+
+    <script>
+    $w(function() {
+        BE.gadget.auth('#bookeasy__auth-gadget', { providers: [ "Guest" ] } );
+    });
+    </script>
+
+{% endblock %}

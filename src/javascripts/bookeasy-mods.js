@@ -3,17 +3,22 @@ var windowWidth = $(window).width();
 var isMobile = false;
 var isAccom = false;
 var selectedDays = 1;
+var campgroundDataHost = '';
 var campgroundData;
 
 $(document).on('gadget.script.loaded', function() {
 
+    // if running locally point to the remote campground data
+    if ( !window.location.hostname.match('sa.gov.au') ) {
+        campgroundDataHost = 'https://www.parks.sa.gov.au';
+    }
 
     // get campground-data from RSS
-    $.getScript('https://www.environment.sa.gov.au/feed.rss?listname=npsa-cl-campground-data', function(){
+    $.getScript(campgroundDataHost + '/feed.rss?listname=npsa-cl-campground-data', function(){
 
-        // if (campgroundData != null) {
-        //     console.log('campgroundData available!');
-        // }
+        if (campgroundData == null) {
+            console.warn('campgroundData not loaded!');
+        }
 
     });
 
@@ -24,6 +29,8 @@ $(document).on('gadget.script.loaded', function() {
     // initialise region gadget watchers
     IMUtility.pushRegionGadgetLoadedEvent();
     IMUtility.pushRegionGadgetChangedEvent();
+    // initialise details gadget watchers
+    IMUtility.pushDetailsContentLoadedEvent();
 
     // check if mobile device
     isMobile = windowWidth < 767 ? true : false;
@@ -46,44 +53,90 @@ $(document).on('gadget.script.loaded', function() {
 
         $('.tabs-group').addClass('gadget__region-tabs').removeClass('tabs-group');
 
+        // remove option to select 0 adults
+        $('.adults select option[value="0"]').hide();
+
+        // atleast 1 adult or 1 child should always be selected
+        // this doesn't work because it doesn't trigger the listener
+        // if ( $('.adults select').val() == 0 && $('.children select').val() == 0 ) {
+        //     // $('.adults select').val('1');
+        //     $('.adults select').get(0).selectedIndex = index_here;
+        //     console.log('b4 change');
+        //     $('.adults select').focus().change();
+        //     console.log('after change');
+        // }
+
     });
 
 
 
 
 
+    // tasks to do on details gadgets
+    $w.event.subscribe('details.content.ready', function() {
+
+        // remove option to select 0 adults
+        $('.adults select option[value="0"]').hide();
+
+        //rename 'Date' to 'Start date' for parks passes page
+        if (typeof operatorID) { // only if defined
+            if (operatorID == '81657') { // only if parks passes
+                $('.details-gadget .search-gadget .date .label span').html('Start Date');
+            } else
+            if (operatorID == '65339' || operatorID == '72030' || operatorID == '96528' || operatorID == '96529' || operatorID == '96530') { // only if diving or snorkelling
+                $('.details-gadget .search-gadget .infants, .details-gadget .search-gadget .concessions').hide();
+            }
+        }
+    });
+
+
     // region.gadget.built is fired when using the region-gadget
     $w.event.subscribe('region.gadget.built', function() {
 
+        var mapPDFsHaveLoaded = false;
+
         // detect when last row loaded
         $('.im-grid .accom tbody>tr:last-child .name').IMElementExists(function() {
-            var oMaps = getMapData();
 
-            $('.prices-grid td.date').addClass('hidden-xs'); // used in bookeasy-utility to determin if loaded
+            if(!mapPDFsHaveLoaded) { //only run if maps have not already been loaded
+                var oMaps = getMapData();
 
-            // get days selected and add/remove class
-            selectedDays = getDaysSelected('region');
+                $('.prices-grid td.date').addClass('hidden-xs'); // used in bookeasy-utility to determine if loaded
 
-            // console.log(selectedDays);
+                // get days selected and add/remove class
+                selectedDays = getDaysSelected('region');
 
-            if(isMobile) {
-                updateProductRows('region');
+                // console.log(selectedDays);
+
+                if(isMobile) {
+                    updateProductRows('region');
+                }
+
+                // add maps
+                $('.im-grid tr.odd, .im-grid tr.even').each(function(i){
+                    var $property = $(this).find('td.property');
+                    var sOberatorID = $(this).attr('id').replace('Operator', '');
+
+                    // read oMaps and find a match for current operator
+                    if (typeof oMaps[sOberatorID] !== 'undefined' && oMaps[sOberatorID].length) {
+                        $property.append('<a class="map-link" href="http://www.parks.sa.gov.au' + oMaps[sOberatorID] + '" download="filename">View map <span>(pdf)</span></a>');
+                    }
+
+                });
+
+                // if descriptions are displayed with (showRoomDetails: true) this cleans them up
+                $('.description>span').each( function(){
+                    var newstring = $(this).text().replace(/\.\.\./g, '');  // remove '...' string
+                   $(this).text(newstring);
+                })
+                $('.description>.more').hide(); // hide 'More' links
+
+
+                // load hi-res images
+                insertImages('region');
             }
 
-            // add maps
-            $('.im-grid tr.odd, .im-grid tr.even').each(function(){
-                var $property = $(this).find('td.property');
-                var sOberatorID = $(this).attr('id').replace('Operator', '');
-
-                // read oMaps and find a match for current operator
-                if (typeof oMaps[sOberatorID] !== 'undefined' && oMaps[sOberatorID].length) {
-                    $property.append('<a class="map-link" href="http://environment.sa.gov.au' + oMaps[sOberatorID] + '" download="filename">View map <span>(pdf)</span></a>');
-                }
-            });
-
-
-            // load hi-res images
-            insertImages('region');
+            mapPDFsHaveLoaded = true;  // so it won't run again
 
         });
 
@@ -93,7 +146,7 @@ $(document).on('gadget.script.loaded', function() {
 
 
 
-    // grid.rendered is fired when using the details-gadget
+    // is fired when details-gadget grid.rendered
     $w.event.subscribe('grid.rendered', function() {
 
         // get days selected and add/remove class
@@ -112,6 +165,9 @@ $(document).on('gadget.script.loaded', function() {
             // load hi-res images
             insertImages('details');
 
+            // replace text
+            replaceRoomText(document.querySelector('.details-gadget'));
+
         });
 
     });
@@ -123,7 +179,10 @@ $(document).on('gadget.script.loaded', function() {
 
 
 
+
 function updateProductRows(gadget) {
+
+
     var $dateHeaders = $('.im-grid thead td.date').clone();
     var sSelector = '.im-grid tr.odd, .im-grid tr.even';
 
@@ -136,21 +195,13 @@ function updateProductRows(gadget) {
         var $product = $(this);
         var priceTable = '<td><table class="price_table">';
 
+        // move heading after thumbnail
+        $product.find('td.name div.thumb').eq(0).after( $product.find('td.name>a') );
+
         // create price table
         $product.find('td.price').each(function(index) {
-            priceTable += '<tr><th>' + $dateHeaders[index].innerHTML + '</th><td class="price_table__price">' + $(this).html() + '</td></tr>';
+            $product.find('td.price').eq(index).prepend('<span class="price__date">' + $dateHeaders[index].innerHTML + '</span>');
         });
-
-        priceTable += '</td></table>'
-
-        // move thumbnail image
-        $product.find('div.thumb').prependTo($product).wrap('<td />');
-
-        // add price table
-        $product.append(priceTable);
-
-        // wrap each td in a row
-        $product.find('td').wrap('<tr class="product__row" />');
 
         if(gadget === 'region') {
             $('.inline-header').remove();
@@ -160,22 +211,16 @@ function updateProductRows(gadget) {
         $product.wrapInner('<td><table class="product" width="100%"></td>');
 
         // remove quantity (not needed for accomodation)
-        $('td.quantity').remove();
-
-        // remove quantity (not needed for accomodation)
         $('td.total').parent().addClass('product__row--total');
 
         // add specials
         $product.find('.product__row--total').after('<tr class="product__row  product__row--specials"><td></td></tr>');
         $product.find('.product__row--specials td').append($product.find('div.specials'));
-
     });
 
     // remove header content
     $('thead','.im-grid').remove();
 
-    // remove price columns
-    $('td.price').remove();
 
 }
 
@@ -251,17 +296,42 @@ function insertImages(gadget) {
 
         if(gadget == 'details') {
             productTitle = $thumbnail.parent().prev().text();
-            $thumbnail.attr('src', imagePath).wrap('<a class="be-fancybox" href="' + imagePath + '" rel="gallery" title="' + productTitle + '"></a>');
+            $thumbnail.attr('src', imagePath).wrap('<a class="be-fancybox" href="' + imagePath + '" data-fancybox="gallery" data-caption="' + productTitle + '"></a>');
         } else {
             imagePath = imagePath.replace('thumbs/461', 'images');
             productTitle = $thumbnail.parent().siblings('.name').text();
-            $thumbnail.wrap('<a class="be-fancybox" href="' + imagePath + '" rel="gallery" title="' + productTitle + '"></a>');
+            $thumbnail.wrap('<a class="be-fancybox" href="' + imagePath + '" data-fancybox="gallery" data-caption="' + productTitle + '"></a>');
         }
 
     });
 
 }
 
+
+// some text replacements defined here
+function replaceRoomText(node) {
+  if (node.nodeType == 3) {
+    node.data = node.data.replace(/Room Configuration:/g, 'Configuration:');
+  }
+  if (node.nodeType == 1 && node.nodeName != "SCRIPT") {
+    for (var i = 0; i < node.childNodes.length; i++) {
+      replaceRoomText(node.childNodes[i]);
+    }
+  }
+}
+
+// wrap fancybox in IMElementExists function so it is initialised after the element exists.
+$('.be-fancybox').IMElementExists(function() {
+
+    $('[data-fancybox="gallery"]').fancybox({
+        toolbar: false,
+        hash: false,
+        clickOutside: "close",
+        clickContent: false,
+        loop: true
+    });
+
+});
 
 
 

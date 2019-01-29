@@ -30,6 +30,14 @@ $sagovau-namespace: null;
  * of a colour.
  **/
 
+ @function tint($color, $percent) {
+     @return mix(white, $color, $percent);
+ }
+ @function shade($color, $percent) {
+     @return mix(black, $color, $percent);
+ }
+
+
 $sagovau-tint-base: 90%;
 $sagovau-shade-base: $sagovau-tint-base;
 

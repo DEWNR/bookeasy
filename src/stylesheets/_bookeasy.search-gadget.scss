@@ -4,6 +4,22 @@
 
 // scss-lint:disable all
 
+/* Display concessions on certain parks */
+.Flinders.Chase.National.Park,
+.Tantanoola.Caves.Conservation.Park,
+.Piccaninnie.Ponds.Conservation.Park {
+
+    .search-gadget div.concessions {
+        display: inline-block;
+        width: 52px;
+
+        @media (min-width: 768px) {
+            width: 80px;
+        }
+    }
+
+}
+
 .search-gadget {
     background: $sagovau-color-brand;
     border: 0;
@@ -82,7 +98,6 @@
     div.students,
     div.observers,
     div.maxPrice,
-    div.facilities,
     div.accommTypes {
         display: none;
     }
@@ -100,7 +115,7 @@
         width: 100%;
         appearance: none;
         outline: 0;
-        line-height: 1;
+        // line-height: 1;
         font-weight: 200;
         box-sizing: border-box;
 
@@ -150,7 +165,7 @@
     }
 
     .showHideRefineTools {
-        display: none;
+        // display: none;
     }
 
 }
@@ -168,10 +183,17 @@
     background: #fff;
     color: $sagovau-color-text-base;
 
+    select {
+        padding: 4px;
+        font-size: 14px;
+        font-weight: 300;
+    }
+
     th,
     td {
         width: 34px;
         text-align: center;
+        padding: 0;
 
         &:first-child { border-left: 0; }
     }
@@ -243,13 +265,13 @@
 
         &#wdDatePicker-previous {
             left: 5px;
-            background-position: left -180px;
+            background-position: left -176px;
         }
 
 
         &#wdDatePicker-next {
             right: 5px;
-            background-position: -45px -180px;
+            background-position: -45px -176px;
         }
 
     }
