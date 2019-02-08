@@ -101,7 +101,12 @@ function getOperatorData(id) {
 
             // console.log(data[0]);
             // This code needs refactoring
-            backLocation = data[0].Location; //fall back
+            if(data[0].Location == undefined) {
+                console.log('BE Location not set');
+                backLocation = 'Location';
+            } else {
+                backLocation = data[0].Location; //fall back
+            }
 
             if (backLocation === 'Bool Lagoon Game Reserve') {
                 backLocation = 'Bool Lagoon Game Reserve and Hacks Lagoon Conservation Park';
@@ -126,13 +131,13 @@ function getOperatorData(id) {
                     backURL = '/booking';
                 } else {
                     // add location title
-                    $('#bookeasy__details-gadget').before('<div class="location-header"><h1>' + data[0].Location + '</h1></div>');
+                    $('#bookeasy__details-gadget').before('<div class="location-header"><h1>' + backLocation + '</h1></div>');
                 }
 
 
             } else {
                 // add location title
-                $('#bookeasy__details-gadget').before('<div class="location-header"><h1>' + data[0].Location + '</h1><h2 class="location-name">' + data[0].TradingName + '</h2></div>');
+                $('#bookeasy__details-gadget').before('<div class="location-header"><h1>' + backLocation + '</h1><h2 class="location-name">' + data[0].TradingName + '</h2></div>');
             }
 
 
@@ -147,6 +152,8 @@ function getOperatorData(id) {
             // insert t&c information
             $('#bookeasy__conditions').html('<h3>Terms and conditions</h3>' + text2HTML(data[0].CancellationPolicy));
 
+        } else {
+            console.log('error requesting getOperatorsDetailsShort data')
         }
 
     });
