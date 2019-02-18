@@ -343,6 +343,28 @@ function typeShow(productType) {
 
 function bookeasy() {
 
+    //last minute location rename
+    if (aFilteredLocations == 'Bool Lagoon Game Reserve and Hacks Lagoon Conservation Park') {
+        aFilteredLocations = ['Bool Lagoon Game Reserve'];
+    } else
+    if (aFilteredLocations == 'Cape Gantheaume Conservation Park and Wilderness Protection Area') {
+        aFilteredLocations = ['Cape Gantheaume Conservation Park and Wilderness P'];
+    } else
+    if (aFilteredLocations == 'Danggali Conservation Park and Wilderness Protection Area') {
+        aFilteredLocations = ['Danggali Conservation Park and Wilderness Protecti'];
+    } else
+    if (aFilteredLocations == 'The Dutchmans Stern Conservation Park') {
+        aFilteredLocations = ['Dutchmans Stern Conservation Park'];
+    } else
+    if (aFilteredLocations == 'Flinders Chase National Park and Ravine Des Casoars Wilderness Protection Area') {
+        aFilteredLocations = ['Flinders Chase National Park'];
+    } else
+    if (aFilteredLocations == 'Loch Luna and Moorook Game Reserves') {
+        aFilteredLocations = ['Loch Luna and Moorook Game Reserve'];
+    }
+
+    // console.log('be aFilteredLocations: ', aFilteredLocations);
+
     cleanGoogleMaps();
 
     if (initialIs == false) {
