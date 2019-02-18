@@ -54,7 +54,7 @@ $(document).on('gadget.script.loaded', function() {
         $('.tabs-group').addClass('gadget__region-tabs').removeClass('tabs-group');
 
         // remove option to select 0 adults
-        $('.adults select option[value="0"]').hide();
+        $('.adults select option[value=0]').attr('disabled', 'disabled').hide();
 
         // atleast 1 adult or 1 child should always be selected
         // this doesn't work because it doesn't trigger the listener
@@ -76,7 +76,7 @@ $(document).on('gadget.script.loaded', function() {
     $w.event.subscribe('details.content.ready', function() {
 
         // remove option to select 0 adults
-        $('.adults select option[value="0"]').hide();
+        $('.adults select option[value="0"]').attr('disabled', 'disabled').hide();
 
         //rename 'Date' to 'Start date' for parks passes page
         if (typeof operatorID) { // only if defined
@@ -84,7 +84,7 @@ $(document).on('gadget.script.loaded', function() {
                 $('.details-gadget .search-gadget .date .label span').html('Start Date');
             } else
             if (operatorID == '65339' || operatorID == '72030' || operatorID == '96528' || operatorID == '96529' || operatorID == '96530') { // only if diving or snorkelling
-                $('.details-gadget .search-gadget .infants, .details-gadget .search-gadget .concessions').hide();
+                $('.details-gadget .search-gadget .infants, .details-gadget .search-gadget .concessions').attr('disabled', 'disabled').hide();
             }
         }
     });
@@ -129,7 +129,7 @@ $(document).on('gadget.script.loaded', function() {
                     var newstring = $(this).text().replace(/\.\.\./g, '');  // remove '...' string
                    $(this).text(newstring);
                 })
-                $('.description>.more').hide(); // hide 'More' links
+                $('.description>.more').attr('disabled', 'disabled').hide(); // hide 'More' links
 
 
                 // load hi-res images
