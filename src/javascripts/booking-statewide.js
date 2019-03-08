@@ -104,6 +104,15 @@ function dataCleanAndRun() {
             delete productsData['Munga-Thirri–Simpson Desert Conservation Park and Regional Reserve'];
         }
 
+        // if (typeof productsData['Flinders Chase National Park and Ravine Des Casoars Wilderness Protection Area'] != 'undefined') {
+        //     // create new object renaming em-dash to dash
+        //    var newObject = ['Flinders Chase National Park'];
+        //    // clone old object into new object
+        //    productsData[ newObject ] = productsData['Flinders Chase National Park and Ravine Des Casoars Wilderness Protection Area'];
+        //    // delete old object
+        //    delete productsData['Flinders Chase National Park and Ravine Des Casoars Wilderness Protection Area'];
+        // }
+
 
         aAllLocations = Object.keys(productsData).sort();
         urlHash = location.hash.replace(/^#/, '').trim();
@@ -437,17 +446,32 @@ function bookeasy() {
         } else {
 
             $('#bookeasy__region-gadget').html('<p>Camping and accommodation is not available in this park.</p>');
-            if (urlHash && (urlHash.indexOf('Piccaninnie') !== -1)) {
-                $('.booking__early-text').html('');
-                var $newDiv = $( '<div class="booking__early-text"><p>You will need to enter an indemnity form receipt number at the time of booking. Diving and snorkelling equipment and wetsuits are not provided, you will need to either bring your own equipment/wetsuits or hire it.</p><p>Fees apply to these self-guided activities.</p><p>Please fill out a <a class="link" style="text-decoration: underline;" href="//www.parks.sa.gov.au/Find_a_Park/Browse_by_region/Limestone_Coast/piccaninnie-ponds-conservation-park/booking/diving/diving-indemnity-form" target="_blank">diving indemnity form</a> or a <a class="link" style="text-decoration: underline;" href="//www.parks.sa.gov.au/Find_a_Park/Browse_by_region/Limestone_Coast/piccaninnie-ponds-conservation-park/booking/snorkelling/snorkelling-indemnity-form" target="_blank">snorkelling indemnity form</a> for each person diving/snorkelling prior to making the booking.</p><p>Camping and accommodation is not available in this park.</p></div>' );
-                $('.location-selector').after($newDiv);
-                $('#bookeasy__region-gadget').html('');
-            } else if (urlHash && (urlHash.indexOf('Brookfield') !== -1)) {
-                $('.booking__early-text').html('');
-                var $newDiv = $( '<div class="booking__early-text"><p>The Science camp is only available for groups undertaking DEW approved science, education or volunteer activities.</p></div>' );
-                $('.location-selector').after($newDiv);
-                $('#bookeasy__region-gadget').html('');
+            if (urlHash) {
+                if (urlHash.indexOf('Piccaninnie') !== -1) {
+                    $('.booking__early-text').html('');
+                    var $newDiv = $( '<div class="booking__early-text"><p>You will need to enter an indemnity form receipt number at the time of booking. Diving and snorkelling equipment and wetsuits are not provided, you will need to either bring your own equipment/wetsuits or hire it.</p><p>Fees apply to these self-guided activities.</p><p>Please fill out a <a class="link" style="text-decoration: underline;" href="//www.parks.sa.gov.au/Find_a_Park/Browse_by_region/Limestone_Coast/piccaninnie-ponds-conservation-park/booking/diving/diving-indemnity-form" target="_blank">diving indemnity form</a> or a <a class="link" style="text-decoration: underline;" href="//www.parks.sa.gov.au/Find_a_Park/Browse_by_region/Limestone_Coast/piccaninnie-ponds-conservation-park/booking/snorkelling/snorkelling-indemnity-form" target="_blank">snorkelling indemnity form</a> for each person diving/snorkelling prior to making the booking.</p><p>Camping and accommodation is not available in this park.</p></div>' );
+                    $('.location-selector').after($newDiv);
+                    $('#bookeasy__region-gadget').html('');
+                } else if (urlHash.indexOf('Brookfield') !== -1) {
+                    $('.booking__early-text').html('');
+                    var $newDiv = $( '<div class="booking__early-text"><p>The Science camp is only available for groups undertaking DEW approved science, education or volunteer activities.</p></div>' );
+                    $('.location-selector').after($newDiv);
+                    $('#bookeasy__region-gadget').html('');
+                } else if (urlHash.indexOf('Simpson Desert') !== -1) {
+                    var texthtml = '<div class="booking__early-text"><p>It is mandatory to <a href="https://www.parks.sa.gov.au/book-and-pay/parks-passes/park-passes-online">buy a Desert Park Pass</a> to enter and camp in this park. A Desert Parks Pass gets you unlimited vehicle entry and camping to this park, for 12 months.</p></div>';
+                    $('.booking__early-text').html('');
+                    var $newDiv = $( texthtml );
+                    $('.location-selector').after($newDiv);
+                    $('#bookeasy__region-gadget').html('');
+                } else if (urlHash.indexOf('Naracoorte Caves') !== -1) {
+                    var texthtml = '<div class="booking__early-text"><p>Entry, tours, camping and accommodation are available for this park and can be bought via the button below.</p></div>';
+                    $('.booking__early-text').html('');
+                    var $newDiv = $( texthtml );
+                    $('.location-selector').after($newDiv);
+                    $('#bookeasy__region-gadget').html('');
+                }
             }
+
 
         }
 
