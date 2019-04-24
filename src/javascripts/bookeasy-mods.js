@@ -76,15 +76,20 @@ $(document).on('gadget.script.loaded', function() {
     $w.event.subscribe('details.content.ready', function() {
 
         // remove option to select 0 adults
-        $('.adults select option[value="0"]').attr('disabled', 'disabled').hide();
+        if (operatorID != '72030') {  //except for snorkelling which has concessions
+            $('.adults select option[value="0"]').attr('disabled', 'disabled').hide();
+        }
 
         //rename 'Date' to 'Start date' for parks passes page
         if (typeof operatorID) { // only if defined
             if (operatorID == '81657') { // only if parks passes
                 $('.details-gadget .search-gadget .date .label span').html('Start Date');
             } else
-            if (operatorID == '65339' || operatorID == '72030' || operatorID == '96528' || operatorID == '96529' || operatorID == '96530') { // only if diving or snorkelling
+            if (operatorID == '65339' || operatorID == '96528' || operatorID == '96529' || operatorID == '96530') { // remove concessions & infants if diving
                 $('.details-gadget .search-gadget .infants, .details-gadget .search-gadget .concessions').attr('disabled', 'disabled').hide();
+            } else
+            if (operatorID == '72030' || operatorID == '91777') { // remove infants if snorkelling
+                $('.details-gadget .search-gadget .infants').attr('disabled', 'disabled').hide();
             }
         }
     });

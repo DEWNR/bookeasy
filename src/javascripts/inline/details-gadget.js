@@ -35,7 +35,7 @@ if(window.location.hash) {
 
 if(window.location.pathname.toLowerCase().match('piccaninnie')) {  // if piccaninnie
     numberInfants = 0;
-    numberConcessions = 0;
+    numberConcessions = 4;      // max number of concessions possible
 }
 
 
