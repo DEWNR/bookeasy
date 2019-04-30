@@ -317,6 +317,7 @@
   "Para Wirra Conservation Park": {
     "Things to book": {
       "Camping / Accommodation": true,
+      "Park of the Month event": true,
       "Vehicle Entry Fee": true,
       "School Bookings": true,
       "z": 0
