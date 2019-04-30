@@ -303,6 +303,10 @@ function displayProductsData() {
                     key = 'Diving - Other Sites';
                     page = 'diving-other-sites';
                 }
+                //rename Park of the Month event button
+                if (key == 'Park of the Month event' && val === true) {
+                    page = 'potm-event';
+                }
 
                 // assemble URLs
                 if (urlHash == 'Cleland Wildlife Park') {
