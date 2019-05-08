@@ -118,8 +118,8 @@ function dataCleanAndRun() {
         urlHash = location.hash.replace(/^#/, '').trim();
         hideProductTypes = ['tours','carhire','events','packages'];
 
-        urlHash = urlHash.replace(/%20/g, ' ');
-        urlHash = urlHash.replace(/%E2%80%93/g, '-');
+        urlHash = decodeURI(urlHash);
+        urlHash = urlHash.replace(/%2C/g, ',');
         urlHash = urlHash.replace(/–/g, ' ');
 
 
