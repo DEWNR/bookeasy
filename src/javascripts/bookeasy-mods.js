@@ -1,3 +1,5 @@
+console.log('bookeasy-mods');
+
 var resizeTimer;
 var windowWidth = $(window).width();
 var isMobile = false;
@@ -26,7 +28,7 @@ $(document).on('gadget.script.loaded', function() {
     // window.scrollTo(0, 1);  // potential fix for images still loading
 
 
-    // initialise region gadget watchers
+    // initialise region gadget watchers // may be required when filters change?
     IMUtility.pushRegionGadgetLoadedEvent();
     IMUtility.pushRegionGadgetChangedEvent();
     // initialise details gadget watchers
@@ -43,9 +45,16 @@ $(document).on('gadget.script.loaded', function() {
 
 
 
+    /**
+     * Subscribe to built in gadget events
+     */
+    $w.event.subscribe('region.gadget.loaded', function() {
+        console.log(' region.gadget.loaded');
+    });
 
     // style tabs once refine tools are built
     $w.event.subscribe('region.refinetools.built', function() {
+        console.log('region.refinetools.built');
 
         if (($('.tabs-group').size() > 0) && ($('.gadget__region-tabs').size() > 0)) {
             $('.gadget__region-tabs').remove();
@@ -75,12 +84,19 @@ $(document).on('gadget.script.loaded', function() {
     // tasks to do on details gadgets
     $w.event.subscribe('details.content.ready', function() {
 
+        console.log('details.content.ready');
+
+        // if Kangaroo Island Tour Pass display concession input
+        if ( operatorID == '97738' ) {
+            $('.search-gadget div.concessions').css({'display': 'inline-block', 'width': '80px'});
+        }
+
         // remove option to select 0 adults
         if (operatorID != '72030') {  //except for snorkelling which has concessions
             $('.adults select option[value="0"]').attr('disabled', 'disabled').hide();
         }
 
-        //rename 'Date' to 'Start date' for parks passes page
+        // rename 'Date' to 'Start date' for parks passes page
         if (typeof operatorID) { // only if defined
             if (operatorID == '81657') { // only if parks passes
                 $('.details-gadget .search-gadget .date .label span').html('Start Date');
@@ -95,8 +111,87 @@ $(document).on('gadget.script.loaded', function() {
     });
 
 
+    // is fired when details-gadget grid.rendered
+    $w.event.subscribe('grid.rendered', function() {
+
+        console.log('grid.rendered');
+
+        // get days selected and add/remove class
+        selectedDays = getDaysSelected('details');
+
+        // console.log(selectedDays);
+
+        // detect when last row loaded
+        $('.im-grid tbody>tr:last-child .OperatorInfo').IMElementExists(function() {
+            var oMaps = getMapData;
+
+            if(isMobile) {
+                updateProductRows('details');
+            }
+
+            // load hi-res images
+            insertImages('details');
+
+            // replace text
+            replaceRoomText(document.querySelector('.details-gadget'));
+
+        });
+
+    });
+
+
+    // Cart Gadget Events
+    $w.event.subscribe('cart.save.complete', function(any) {
+        console.log('cart.save.complete');
+        console.log('any: ', any);
+        setTimeout('pushCartItemsLoadedEvent();', 300);
+    });
+    // $w.event.subscribe('cart.display.loading.end', function() {
+    //     console.log('cart.display.loading.end');
+    // });
+    // $w.event.subscribe('cart.add.click', function() {
+    //     console.log('cart.add.click');
+    // });
+    // $w.event.subscribe('cart.remove.click', function() {
+    //     console.log('cart.remove.click');
+    // });
+
+    // Item Gadget Events
+    // $w.event.subscribe('item.book.click', function(item) {
+    //     console.log('item.book.click');
+    //     console.log(item);
+    // });
+    // $w.event.subscribe('details.begin', function() {
+    //     console.log('details.begin');
+    // });
+    $w.event.subscribe('details.init.start', function() {
+        console.warn('details.init.start');
+        balanceNoConcessionsOrAdults();
+    });
+    // $w.event.subscribe('details.getdata.start', function() {
+    //     console.log('details.getdata.start');
+    // });
+
+
+
+    $w.event.subscribe('region.view.change', function() {
+        console.log(' region.view.change');
+    });
+    $w.event.subscribe('region-search-locations-loaded', function() {
+        console.log('region-search-locations-loaded');
+    });
+    $w.event.subscribe('region.loading.end', function() {
+        console.log('region.loading.end');
+    });
+    $w.event.subscribe('region.loading.start', function() {
+        console.log('region.loading.start');
+    });
+
+
     // region.gadget.built is fired when using the region-gadget
     $w.event.subscribe('region.gadget.built', function() {
+
+        // console.log('region.gadget.built');
 
         var mapPDFsHaveLoaded = false;
 
@@ -143,35 +238,7 @@ $(document).on('gadget.script.loaded', function() {
 
             mapPDFsHaveLoaded = true;  // so it won't run again
 
-        });
-
-    });
-
-
-
-
-
-    // is fired when details-gadget grid.rendered
-    $w.event.subscribe('grid.rendered', function() {
-
-        // get days selected and add/remove class
-        selectedDays = getDaysSelected('details');
-
-        // console.log(selectedDays);
-
-        // detect when last row loaded
-        $('.im-grid tbody>tr:last-child .OperatorInfo').IMElementExists(function() {
-            var oMaps = getMapData;
-
-            if(isMobile) {
-                updateProductRows('details');
-            }
-
-            // load hi-res images
-            insertImages('details');
-
-            // replace text
-            replaceRoomText(document.querySelector('.details-gadget'));
+            //console.log('region.gadget.finished');
 
         });
 
@@ -180,6 +247,106 @@ $(document).on('gadget.script.loaded', function() {
 
 });
 
+
+function isConcessionsHidden() {  //tests if the concession input is hidden
+    var hidden = true;
+    if ( $('.concessions').length ) {
+        hidden = false;
+    } else if ( $('.concessions').is(":hidden") ) {
+        hidden = false;
+    }
+    return hidden;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function balanceNoConcessionsOrAdults() {
+    console.log('balanceNoConcessionsOrAdults');
+    //only run if no concessions
+    var be_cookie_data = JSON.parse( readCookie('TUOQQQSQVSPTOqaWQfPyveRwVpSzPTTr') );
+    console.log(be_cookie_data.adults);
+    if ( isConcessionsHidden() ) {
+        var adultsval = 2;
+        if ( (be_cookie_data.adults > 0) && (!isNaN(be_cookie_data.adults)) ) {
+            adultsval = be_cookie_data.adults;
+        }
+        be_cookie_data.adults = adultsval;
+        $(".adults .input select").val(adultsval).trigger('change'); //set current to 1
+        console.warn("adults value changed.");
+        eraseCookie('TUOQQQSQVSPTOqaWQfPyveRwVpSzPTTr');
+        createCookie('TUOQQQSQVSPTOqaWQfPyveRwVpSzPTTr', be_cookie_data, 1);
+    }
+
+
+    var adultsinput = '';
+    var concessionsinput = '';
+    $(".adults .input select").change(function () {
+        concessionsinput = $(".concessions .input select").val();
+        console.log('concessionsinput: ', concessionsinput);
+        if ($(this).val() == '0') {
+            if (concessionsinput == '0') {
+                $(".concessions .input select").val('1').trigger('change'); //set current to 1
+                console.error("0 disabled for concessionsinput.");
+            }
+            $('.concessions .input select option[value="0"]').attr('disabled', 'disabled').hide(); //hide 0
+        }
+        else if (concessionsinput != '0') {
+            $('.concessions .input select option[value="0"]').removeAttr('disabled').show(); //show 0
+            console.error("0 enabled for concessionsinput.");
+        }
+    });
+    $(".concessions .input select").change(function () {
+        window.sessionStorage.setItem("BE_concessions", $(this).val()); //store number of concessions
+        adultsinput = $(".adults .input select").val();
+        console.log('adultsinput: ', adultsinput);
+        if ($(this).val() == '0') {
+            if (adultsinput == '0') {
+                $(".adults .input select").val('1').trigger('change'); //set current to 1
+                console.error("0 disabled for concessionsinput.");
+            }
+            $('.adults .input select option[value="0"]').attr('disabled', 'disabled').hide(); //hide 0
+        }
+        else if (adultsinput != '0') {
+            $('.adults .input select option[value="0"]').removeAttr('disabled').show(); //show 0
+            console.error("0 enabled for adultsinput.");
+        }
+    });
+}
 
 
 
@@ -198,7 +365,7 @@ function updateProductRows(gadget) {
     // loop over each product row and modify
     $(sSelector).each(function() {
         var $product = $(this);
-        var priceTable = '<td><table class="price_table">';
+        // var priceTable = '<td><table class="price_table">';
 
         // move heading after thumbnail
         $product.find('td.name div.thumb').eq(0).after( $product.find('td.name>a') );
@@ -353,3 +520,102 @@ $('.be-fancybox').IMElementExists(function() {
 //   }, 250);
 //
 // });
+
+
+
+function getAccomRatesGridData() {
+    console.log('run get API data');
+    //      here we fetch from BE api only if we don't have a local storage cache
+    //      to keep API requests lower
+
+    // read from local storage cache if it exists
+    var JSONcache = JSON.parse( localStorage.getItem('cacheAccomRatesGridData') );
+
+    // if no local storage cache then fetch
+    if (JSONcache === null ) {
+
+        // setup fetch
+        var apiurl = 'https://webapi.bookeasy.com.au/api/getAccomRatesGrid';
+        var parameters = '?q=188'
+            + '&enforceBookingConditions=false'
+            + '&enforceEntirePeriod=false'
+            + '&ExternalSearch=false'
+            + '&includeInactiveOperators=false';
+
+        getDataFromAPI(apiurl + parameters, function(data) {
+            console.log('callback has run: ', data);
+            accomRatesGridData = data;
+        } );
+
+    } else {
+        //store data in local storage
+        console.log('found localstorage.');
+        console.log( JSONcache );
+        return JSONcache;
+    }
+  }
+
+
+
+function getDataFromAPI(fullApiUri, callback) {
+
+    var requestHeader = {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+        },
+    };
+
+    // do fetch
+    fetch(fullApiUri, requestHeader)
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(dataFromAPI) {
+            console.log('fetched data: ', dataFromAPI);
+            // after fetch write response to local storage cache
+            var cache_asString = JSON.stringify(dataFromAPI);
+            localStorage.setItem('cacheAccomRatesGridData', cache_asString);
+            console.log('wrote cache to localstorage: ', dataFromAPI);
+            // write data to react state
+            callback(dataFromAPI);
+        });
+
+}
+
+// const test = anerror => {
+//     console.log('a test error', anerror);
+// }
+
+
+// Cookie functions from https://www.quirksmode.org/js/cookies.html
+function createCookie(name, value, days) {
+    var expires;
+
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toGMTString();
+    } else {
+        expires = "";
+    }
+    document.cookie = encodeURIComponent(name) + "=" + encodeURIComponent(value) + expires + "; path=/";
+}
+
+function readCookie(name) {
+    var nameEQ = encodeURIComponent(name) + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) === ' ')
+            c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) === 0)
+            return decodeURIComponent(c.substring(nameEQ.length, c.length));
+    }
+    return null;
+}
+
+function eraseCookie(name) {
+    createCookie(name, "", -1);
+}
