@@ -84,7 +84,7 @@ $(function() {
 
 
 
-
+// Gets operatorData, fixes back buttons, displays notices, displays terms & conditions
 function getOperatorData(id) {
 
     $.ajax({
