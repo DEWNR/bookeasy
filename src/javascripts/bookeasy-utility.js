@@ -44,7 +44,7 @@ IMUtility.pushRegionGadgetLoadedEvent = function() {
 
 // wait for the details content to have loaded, then publish an event
 IMUtility.pushDetailsContentLoadedEvent = function checkOperatorInfo() {
-    if ($('.OperatorInfo').size() > 0) {
+    if ($('#bookeasy__details-gadget .OperatorInfo').size() > 0) {
         $w.event.publish('details.content.ready');
     } else {
         setTimeout(checkOperatorInfo, 100);
