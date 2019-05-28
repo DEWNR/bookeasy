@@ -102,124 +102,119 @@
         color: #08713e;
     }
 
-    tbody {
+    tbody tr {
+        border-bottom: 1px solid #eee;
 
-        tr {
+        td {
+            background: none;
 
-            border-bottom: 1px solid #eee;
+            &.name {
+                position: relative;
+            }
 
-            td {
-                background: none;
+            &.thumb {
+                width: 15%;
+                vertical-align: top;
 
-                &.name {
-                    position: relative;
+                .thumb {
+                    padding: 10px 0 6px 10px;
                 }
 
-                &.thumb {
-                    width: 15%;
-                    vertical-align: top;
-
-                    .thumb {
-                        padding: 10px 0 6px 10px;
-                    }
-
-                    a {
-                        display: block;
-                    }
-
-                    img {
-                        width: 100%;
-                    }
+                a {
+                    display: block;
                 }
 
-                &.quantity,
-                &.total,
-                &.date {
-                    padding: 10px;
-                }
-
-                &.quantity,
-                &.total,
-                &.date,
-                &.price {
-                    @media (min-width: 768px) {
-                        width: 8%;
-                        border-left: 1px solid #eee;
-                    }
-
-                    text-align: center;
-
-                }
-
-                &.price {
-                    font-weight: normal;
-                }
-
-                &.sold {
-                    font-size: $sagovau-font-size-base;
-
-                    span {
-                        font-family: $sagovau-font-family-highlight;
-                        font-weight: bold;
-                        transform: rotate(-25deg);
-                        opacity: 0.5;
-                    }
-                }
-
-                &.total {
-                    border-left: 0;
-
-                    @media (max-width: 768px) {
-                        display: block;
-                    }
-
-                    a {
-                        text-decoration: none;
-                    }
+                img {
+                    width: 100%;
                 }
             }
 
-            &.odd {
-                background: #f9f9f9;
+            &.quantity,
+            &.total,
+            &.date {
+                padding: 10px;
             }
 
-            &.even {
-                background: #fff;
-            }
+            &.quantity,
+            &.total,
+            &.date,
+            &.price {
+                @media (min-width: 768px) {
+                    width: 8%;
+                    border-left: 1px solid #eee;
+                }
 
-            &.inline-header {
-                font-family: $sagovau-font-family-highlight;
-                background: darken($sagovau-color-brand, 5%);
                 text-align: center;
-                color: #fff;
-                font-size: $sagovau-font-size-base;
-                font-weight: normal;
 
-                .title,
-                .label {
-                    text-align: left;
-                    padding: 5px 10px;
+            }
+
+            &.price {
+                font-weight: normal;
+            }
+
+            &.sold {
+                font-size: $sagovau-font-size-base;
+
+                span {
+                    font-family: $sagovau-font-family-highlight;
+                    font-weight: bold;
+                    transform: rotate(-25deg);
+                    opacity: 0.5;
+                }
+            }
+
+            &.total {
+                border-left: 0;
+
+                @media (max-width: 768px) {
+                    display: block;
                 }
 
-                .date {
-                    border-color: $sagovau-color-brand;
-
-                    a {
-                        display: block;
-                        font-size: 12px;
-                        line-height: 1.1;
-                        font-weight: normal;
-
-                        &.date {
-                            color: #dca502;
-                            font-weight: bold;
-                            font-size: $sagovau-font-size-base;
-                        }
-                    }
+                a {
+                    text-decoration: none;
                 }
             }
         }
 
+        &.odd {
+            background: #f9f9f9;
+        }
+
+        &.even {
+            background: #fff;
+        }
+
+        &.inline-header {
+            font-family: $sagovau-font-family-highlight;
+            background: darken($sagovau-color-brand, 5%);
+            text-align: center;
+            color: #fff;
+            font-size: $sagovau-font-size-base;
+            font-weight: normal;
+
+            .title,
+            .label {
+                text-align: left;
+                padding: 5px 10px;
+            }
+
+            .date {
+                border-color: $sagovau-color-brand;
+
+                a {
+                    display: block;
+                    font-size: 12px;
+                    line-height: 1.1;
+                    font-weight: normal;
+
+                    &.date {
+                        color: #dca502;
+                        font-weight: bold;
+                        font-size: $sagovau-font-size-base;
+                    }
+                }
+            }
+        }
     }
 
 
@@ -244,12 +239,29 @@
 
 
     .OperatorInfo {
-        width: 80%;
-        float: left;
+        width: 100%;
+        // float: left;
         padding-bottom: 10px;
-        padding-left: 20px;
+        // padding-left: 20px;
         position: relative;
         box-sizing: border-box;
+
+        // @media (min-width: 768px) {
+        //     width: 80%;
+        // }
+
+        .specials-info {
+            display: none;
+        }
+
+        .OperatorDescription {
+            line-height: 0;
+
+            .OperatorItemHeading,
+            .OperatorItemContent {
+                line-height: 1.6em;
+            }
+        }
     }
 
     .no-image .OperatorInfo {
@@ -258,8 +270,16 @@
 
 
     .OperatorItem {
-        padding-right: 100px;
-        margin-bottom: 10px;
+        // padding-right: 100px;
+        // margin-bottom: 10px;
+        padding-right: 0;
+        margin-bottom: 0;
+
+
+        @media (min-width: 768px) {
+            padding-right: 20px;
+            font-size: 1rem;
+        }
     }
 
 
@@ -271,6 +291,16 @@
 
     .OperatorItemContent {
         max-width: 850px;
+        // font-size: calc( 0.6vw + 0.8em );
+        font-size: calc( 14px + 0.7vw );
+        // font-size: calc( 4vw - ( (6e18px + 100vw - 6e18px) / 1024) );
+
+        // margin-left: 0;
+
+        @media (min-width: 768px) {
+            // margin-left: 220px;
+            font-size: 1rem;
+        }
 
         p {
             margin: 0;
@@ -300,7 +330,7 @@
         float: right;
         font-size: 70%;
         line-height: 1em;
-        text-align: right;
+        text-align: center;
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
@@ -316,8 +346,18 @@
             cursor: help;
             display: block;
             overflow: hidden;
-            text-align: center;
+            // text-align: center;
             background-image: url('//gadgets.impartmedia.com/img/special.png');
+
+            // background-color: #dd2200;
+            // border-radius: 5px;
+            // color: #fff;
+            // font-size: 14px;
+            // padding: 8px 10px;
+
+            // &::before {
+            //     content: "SPECIAL!";
+            // }
 
             &.inactive {
                 background-image: url('//gadgets.impartmedia.com/img/special.png');
@@ -479,4 +519,41 @@ div#wdHoverContainer {
     p.specials-info div.name {
         font-weight: bold;
     }
+}
+
+
+
+@media (min-width: 1231px) {
+
+    .im-grid {
+
+        .specials {
+            left: calc( 100% + 18px);
+            top: 20px;
+            margin: 10px 0 0 0;
+            width: 140px;
+        }
+
+        .specials .special {
+            width: 60px;
+            margin: 20px auto 5px auto;
+        }
+
+        tbody tr td.total {
+            width: 14.5%;
+        }
+
+        .manyCols & {
+            tbody tr td.total {
+                width: 8%;
+            }
+        }
+
+    }
+
+
+    .im-pricebutton {
+        width: 98px;
+    }
+
 }

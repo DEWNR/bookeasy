@@ -435,9 +435,11 @@ function bookeasy() {
             showLocationFilter: false, //doesn't actually hide the filter, just the options.
             // showFacilitiesFilter: true,
             // showRefineTools: false,  //defaultSort wont' work if false!
-            //    showRoomDetails:    true,  //turn this on to display business details for each campground on region-gadget
+            showRoomDetails: true,          // REQUIRED TO DISPLAY FULL DESCRIPTIONS (Business Details)
+            showRoomDetailsInline: true,    // REQUIRED TO DISPLAY FULL DESCRIPTIONS (Business Details)
+            descriptionHover: true,         // REQUIRED TO DISPLAY FULL DESCRIPTIONS (Business Details)
+            showHoverInline: true,          // REQUIRED TO DISPLAY FULL DESCRIPTIONS (Business Details)
             collapseRefineTools:false,  //
-            //descriptionHover:true,  // ATTEMPT TO DISPLAY CAMPGROUND DESCRIPTIONS
             googleMapsKey: 'AIzaSyAmYsDEmwvwVbQJ9WbSp_iJ4JOkBB-PKn8', // uses DEW 'JavaScript API key' key
             vcID: 188
         });

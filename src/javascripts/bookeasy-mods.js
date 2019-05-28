@@ -24,8 +24,6 @@ $(document).on('gadget.script.loaded', function() {
 
     });
 
-    // setTimeout();
-    // window.scrollTo(0, 1);  // potential fix for images still loading
 
 
     // initialise region gadget watchers // may be required when filters change?
@@ -48,9 +46,6 @@ $(document).on('gadget.script.loaded', function() {
     /**
      * Subscribe to built in gadget events
      */
-    $w.event.subscribe('region.gadget.loaded', function() {
-        console.log(' region.gadget.loaded');
-    });
 
     // style tabs once refine tools are built
     $w.event.subscribe('region.refinetools.built', function() {
@@ -65,15 +60,6 @@ $(document).on('gadget.script.loaded', function() {
         // remove option to select 0 adults
         $('.adults select option[value=0]').attr('disabled', 'disabled').hide();
 
-        // atleast 1 adult or 1 child should always be selected
-        // this doesn't work because it doesn't trigger the listener
-        // if ( $('.adults select').val() == 0 && $('.children select').val() == 0 ) {
-        //     // $('.adults select').val('1');
-        //     $('.adults select').get(0).selectedIndex = index_here;
-        //     console.log('b4 change');
-        //     $('.adults select').focus().change();
-        //     console.log('after change');
-        // }
 
     });
 
@@ -119,11 +105,9 @@ $(document).on('gadget.script.loaded', function() {
         // get days selected and add/remove class
         selectedDays = getDaysSelected('details');
 
-        // console.log(selectedDays);
 
         // detect when last row loaded
         $('.im-grid tbody>tr:last-child .OperatorInfo').IMElementExists(function() {
-            var oMaps = getMapData;
 
             if(isMobile) {
                 updateProductRows('details');
@@ -146,31 +130,11 @@ $(document).on('gadget.script.loaded', function() {
         console.log('any: ', any);
         setTimeout('pushCartItemsLoadedEvent();', 300);
     });
-    // $w.event.subscribe('cart.display.loading.end', function() {
-    //     console.log('cart.display.loading.end');
-    // });
-    // $w.event.subscribe('cart.add.click', function() {
-    //     console.log('cart.add.click');
-    // });
-    // $w.event.subscribe('cart.remove.click', function() {
-    //     console.log('cart.remove.click');
-    // });
-
-    // Item Gadget Events
-    // $w.event.subscribe('item.book.click', function(item) {
-    //     console.log('item.book.click');
-    //     console.log(item);
-    // });
-    // $w.event.subscribe('details.begin', function() {
-    //     console.log('details.begin');
-    // });
     $w.event.subscribe('details.init.start', function() {
         console.warn('details.init.start');
         balanceNoConcessionsOrAdults();
     });
-    // $w.event.subscribe('details.getdata.start', function() {
-    //     console.log('details.getdata.start');
-    // });
+
 
 
 
@@ -188,59 +152,46 @@ $(document).on('gadget.script.loaded', function() {
     });
 
 
-    // region.gadget.built is fired when using the region-gadget
-    $w.event.subscribe('region.gadget.built', function() {
+    $w.event.subscribe('region.gadget.loaded', function() {
+        // region.gadget.loaded only occurs after the last row of the prices-grid is rendered
 
-        // console.log('region.gadget.built');
+        // console.warn('region.gadget.loaded');
 
-        var mapPDFsHaveLoaded = false;
+        // show hidden descriptions
+        $('.OperatorInfoHidden').removeClass('.OperatorInfoHidden');
 
-        // detect when last row loaded
-        $('.im-grid .accom tbody>tr:last-child .name').IMElementExists(function() {
+        // hide unneccesary info
+        $('.im-grid tbody tr.inline-header').hide();
 
-            if(!mapPDFsHaveLoaded) { //only run if maps have not already been loaded
-                var oMaps = getMapData();
+        var oMaps = getMapData();
 
-                $('.prices-grid td.date').addClass('hidden-xs'); // used in bookeasy-utility to determine if loaded
+        $('.prices-grid td.date').addClass('hidden-xs'); // used in bookeasy-utility to determine if loaded
 
-                // get days selected and add/remove class
-                selectedDays = getDaysSelected('region');
-
-                // console.log(selectedDays);
-
-                if(isMobile) {
-                    updateProductRows('region');
-                }
-
-                // add maps
-                $('.im-grid tr.odd, .im-grid tr.even').each(function(i){
-                    var $property = $(this).find('td.property');
-                    var sOberatorID = $(this).attr('id').replace('Operator', '');
-
-                    // read oMaps and find a match for current operator
-                    if (typeof oMaps[sOberatorID] !== 'undefined' && oMaps[sOberatorID].length) {
-                        $property.append('<a class="map-link" href="http://www.parks.sa.gov.au' + oMaps[sOberatorID] + '" download="filename">View map <span>(pdf)</span></a>');
-                    }
-
-                });
-
-                // if descriptions are displayed with (showRoomDetails: true) this cleans them up
-                $('.description>span').each( function(){
-                    var newstring = $(this).text().replace(/\.\.\./g, '');  // remove '...' string
-                   $(this).text(newstring);
-                })
-                $('.description>.more').attr('disabled', 'disabled').hide(); // hide 'More' links
+        // get days selected and add/remove class
+        selectedDays = getDaysSelected('region');
 
 
-                // load hi-res images
-                insertImages('region');
+        if(isMobile) {
+            updateProductRows('region');
+        }
+
+        // console.log('insert map.');
+
+        // add maps
+        $('.im-grid tr.even').each(function(i){  // for each row
+            var $property = $(this).find('td.property');
+            var sOberatorID = $(this).attr('id').replace('Operator', '');
+
+            // read oMaps and find a match for current operator
+            if (typeof oMaps[sOberatorID] !== 'undefined' && oMaps[sOberatorID].length) {
+                $property.append('<a class="map-link" href="http://www.parks.sa.gov.au' + oMaps[sOberatorID] + '" download="filename">View map <span>(pdf)</span></a>');
             }
 
-            mapPDFsHaveLoaded = true;  // so it won't run again
-
-            //console.log('region.gadget.finished');
-
         });
+
+
+        // load hi-res images
+        insertImages('region');
 
     });
 
@@ -299,17 +250,26 @@ function balanceNoConcessionsOrAdults() {
     console.log('balanceNoConcessionsOrAdults');
     //only run if no concessions
     var be_cookie_data = JSON.parse( readCookie('TUOQQQSQVSPTOqaWQfPyveRwVpSzPTTr') );
-    console.log(be_cookie_data.adults);
-    if ( isConcessionsHidden() ) {
-        var adultsval = 2;
-        if ( (be_cookie_data.adults > 0) && (!isNaN(be_cookie_data.adults)) ) {
-            adultsval = be_cookie_data.adults;
+    if ( typeof be_cookie_data ) {
+        if ( be_cookie_data != null ) {
+            if ( typeof be_cookie_data.adults ) {
+                //
+                console.log(be_cookie_data.adults);
+                if ( isConcessionsHidden() ) {
+                    var adultsval = 2;
+                    if ( (be_cookie_data.adults > 0) && (!isNaN(be_cookie_data.adults)) ) {
+                        adultsval = be_cookie_data.adults;
+                    }
+                    be_cookie_data.adults = adultsval;
+                    $(".adults .input select").val(adultsval).trigger('change'); //set current to 1
+                    console.warn("adults value changed.");
+                    eraseCookie('TUOQQQSQVSPTOqaWQfPyveRwVpSzPTTr');
+                    createCookie('TUOQQQSQVSPTOqaWQfPyveRwVpSzPTTr', be_cookie_data, 1);
+                }
+                //
+            }
+            //
         }
-        be_cookie_data.adults = adultsval;
-        $(".adults .input select").val(adultsval).trigger('change'); //set current to 1
-        console.warn("adults value changed.");
-        eraseCookie('TUOQQQSQVSPTOqaWQfPyveRwVpSzPTTr');
-        createCookie('TUOQQQSQVSPTOqaWQfPyveRwVpSzPTTr', be_cookie_data, 1);
     }
 
 
@@ -356,14 +316,14 @@ function updateProductRows(gadget) {
 
 
     var $dateHeaders = $('.im-grid thead td.date').clone();
-    var sSelector = '.im-grid tr.odd, .im-grid tr.even';
+    var rowsString = '.im-grid tr.odd, .im-grid tr.even';
 
     if(gadget === 'region') {
-        sSelector = '.im-grid .accom tr.odd, .im-grid .accom tr.even';
+        rowsString = '.im-grid .accom tr.odd, .im-grid .accom tr.even';
     }
 
     // loop over each product row and modify
-    $(sSelector).each(function() {
+    $(rowsString).each(function() {
         var $product = $(this);
         // var priceTable = '<td><table class="price_table">';
 
@@ -386,8 +346,8 @@ function updateProductRows(gadget) {
         $('td.total').parent().addClass('product__row--total');
 
         // add specials
-        $product.find('.product__row--total').after('<tr class="product__row  product__row--specials"><td></td></tr>');
-        $product.find('.product__row--specials td').append($product.find('div.specials'));
+        $product.find('.product__row--total .total').after('<td class="product__row--specials"></td>');
+        $product.find('.product__row--specials').append($product.find('div.specials').addClass('product__row--specials'));
     });
 
     // remove header content
@@ -522,71 +482,82 @@ $('.be-fancybox').IMElementExists(function() {
 // });
 
 
+// get AccomRatesGridData from local storage or BE API
+getAccomRatesGridData();
+
+var theDataYouAreLookingFor;
+
+function actOnData(returnedData) {
+    // console.log( 'AccomRatesGridData: ', returnedData );
+    theDataYouAreLookingFor = returnedData;
+}
 
 function getAccomRatesGridData() {
-    console.log('run get API data');
+    // console.log('run get API data');
     //      here we fetch from BE api only if we don't have a local storage cache
     //      to keep API requests lower
 
     // read from local storage cache if it exists
     var JSONcache = JSON.parse( localStorage.getItem('cacheAccomRatesGridData') );
-
+    var cacheFound = false;
     // if no local storage cache then fetch
     if (JSONcache === null ) {
-
         // setup fetch
+        setupRequest(cacheFound);
+    } else {
+        cacheFound = true;
+        //store data in local storage
+        console.log('found localstorage.');
+        actOnData(JSONcache);
+        setupRequest(cacheFound); //we make a request even if we have local storage to update the local storage.
+    }
+
+
+    function setupRequest(cacheFound) {
         var apiurl = 'https://webapi.bookeasy.com.au/api/getAccomRatesGrid';
         var parameters = '?q=188'
             + '&enforceBookingConditions=false'
             + '&enforceEntirePeriod=false'
             + '&ExternalSearch=false'
             + '&includeInactiveOperators=false';
+        getDataFromAPI(apiurl + parameters, function (dataFromAPI) {
+            // after fetch write response to local storage cache
+            var cache_asString = JSON.stringify(dataFromAPI);
+            localStorage.setItem('cacheAccomRatesGridData', cache_asString);
+            // console.log('wrote cache to localstorage: ');
 
-        getDataFromAPI(apiurl + parameters, function(data) {
-            console.log('callback has run: ', data);
-            accomRatesGridData = data;
-        } );
-
-    } else {
-        //store data in local storage
-        console.log('found localstorage.');
-        console.log( JSONcache );
-        return JSONcache;
+            if (!cacheFound) {
+                actOnData(dataFromAPI);
+            }
+        });
     }
+
   }
 
 
 
 function getDataFromAPI(fullApiUri, callback) {
 
-    var requestHeader = {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json",
-        },
-    };
+    // console.log('before ajax');
 
-    // do fetch
-    fetch(fullApiUri, requestHeader)
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(dataFromAPI) {
-            console.log('fetched data: ', dataFromAPI);
-            // after fetch write response to local storage cache
-            var cache_asString = JSON.stringify(dataFromAPI);
-            localStorage.setItem('cacheAccomRatesGridData', cache_asString);
-            console.log('wrote cache to localstorage: ', dataFromAPI);
-            // write data to react state
-            callback(dataFromAPI);
-        });
+    $.ajax({
+        type: "GET",
+        url: fullApiUri,
+        dataType: "json",
+        success: function (response) {
+            callback(response.Data);
+            // callback returns response.Data;
+        },
+        failure: function (response) {
+            console.error('error from ajax get request: ', response);
+        }
+    });
+
+    // console.log('after ajax');
 
 }
 
-// const test = anerror => {
-//     console.log('a test error', anerror);
-// }
+
 
 
 // Cookie functions from https://www.quirksmode.org/js/cookies.html

@@ -52,27 +52,27 @@ IMUtility.pushDetailsContentLoadedEvent = function checkOperatorInfo() {
 };
 
 
+
 // sometimes the changes we do to the DOM are lost, e.g. after user changes the number of nights or number of adults... we need to re-publish the events when this happens
 IMUtility.pushRegionGadgetChangedEvent = function() {
-    if ($('.tabs-group').size() > 0) {
+    var regionGadgetHasRunOnce = false;
+
+    if ( $('.tabs-group').size() > 0 ) {   //  ||  $('#bookeasy__region-gadget .gadget__all-tabs').size() > 0
         $w.event.publish('region.refinetools.built');
     }
-    if (($('.prices-grid td.date').size() > 0) && ($('.prices-grid td.date.hidden-xs').size() == 0)) {
+    if (($('.prices-grid td.date').size() > 0) ) {  // && ($('.prices-grid td.date.hidden-xs').size() == 0)
         // console.log('region.gadget.built');
         $w.event.publish('region.gadget.built');
 
-        var regionGadgetHasRunOnce = false;
 
         // detect when last row loaded
         $('.im-grid .accom tbody>tr:last-child .name').IMElementExists(function() {
 
-            if(!regionGadgetHasRunOnce) {
-                console.log('region.gadget has not run once.');
+            if (!regionGadgetHasRunOnce) {
+                // console.log('region.gadget has not run once.');
+                $w.event.publish('region.gadget.loaded');
             }
-            regionGadgetHasRunOnce = true;  // so it won't run again
-
-            // console.log('region.gadget.loaded');
-            $w.event.publish('region.gadget.loaded');
+            regionGadgetHasRunOnce = true;  // so it can't run again
 
         });
 

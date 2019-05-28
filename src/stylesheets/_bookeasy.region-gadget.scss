@@ -10,16 +10,43 @@
 }
 
 #bookeasy__region-gadget {
+    color: $sagovau-color-text-base;
     font-family: $sagovau-font-family-base;
     font-size: $sagovau-font-size-base;
+    font-weight: 200;
     min-height: 110px;
 
-    a {
+    thead {
+        .date.hidden-xs {
+            > .day,
+            > .month {
+                &:focus,
+                &:hover {
+                    color: inherit;
+                }
+            }
+
+            > .date {
+                &:focus,
+                &:hover {
+                    color: #dca502;
+                }
+            }
+        }
+    }
+
+    tbody a {
         border-bottom: 0;
         font-weight: normal;
 
         &.map-link {
             text-decoration: underline;
+            margin-left: 0;
+
+            @media (min-width: 768px) {
+                margin-left: 220px;
+                display: block;
+            }
         }
 
         &:focus,
@@ -30,34 +57,41 @@
         }
 
         &.day,
+        &.date,
         &.month {
             &:hover {
-                color: #ffffff;
-            }
-        }
-
-        &.date {
-            &:hover {
-                color: #dca502;
+                color: #08713e;
             }
         }
     }
 
 }
 
-.region-gadget .im-grid .thumb {
-    width: 210px;
-}
 
 .region-gadget {
-    color: $sagovau-color-text-base;
-    font-family: $sagovau-font-family-base;
-    font-size: $sagovau-font-size-base;
-    font-weight: 200;
+
+    .im-grid {
+        .OperatorAddress {
+            display: none;
+        }
+        .OperatorDescription {
+            display: none;  // remove this when campground descriptions go live
+        }
+        .OperatorDescription > .OperatorItemHeading {
+            display: none;
+        }
+
+        .OperatorItem {
+            font-size: 4.1vw;
+        }
+
+        .thumb {
+            width: 210px;
+        }
+    }
 
     .search-gadget .refineTools {
         display: inline;
-        // border: 1px solid red;
 
         & > div.facilities,
         & > div.nameFilter {
@@ -72,15 +106,10 @@
         display: none;
     }
 
-    // .facilities,
     .nameFilter {
         display: inline-block;
         margin-right: 10px;
     }
-
-    // .nameFilter {
-    //     float: left;
-    // }
 
     .embedded-search {
         position: relative;
@@ -93,7 +122,8 @@
         min-height: 102px;
     }
 
-    .name {
+
+    .property > .name {
         color: $sagovau-color-brand;
         font-family: $sagovau-font-family-highlight;
         font-size: 22px;
@@ -138,13 +168,16 @@
         tbody {
             width: 100%;
 
-            tr.instant-confirmation,
-            tr.instant-confirmation td:not(.price) {
+            tr.odd,
+            tr.even,
+            tr.odd td:not(.price),
+            tr.even td:not(.price) {
                 display: block;
                 height: auto;
             }
 
-            tr.instant-confirmation>td {
+            tr.odd>td,
+            tr.even>td {
                 padding: 10px;
                 display: block;
             }
@@ -170,9 +203,19 @@
 
 @media (max-width: 768px) {
 
-    .region-gadget a.name {
-        display: inline-block;
+
+    .region-gadget {
+
+        .im-grid .thumb {
+            width: 100%;
+        }
+
+        a.name {
+            display: inline-block;
+        }
+
     }
+
 
     tbody tr td {
         &.price {
@@ -192,40 +235,38 @@
     }
 
 
-
     .im-pricebutton {
         max-width: 200px;
-        padding: 10px 0px 8px;
     }
 
-    .im-grid .thumb {
-        width: 100%;
-        padding: 10px 0 0;
-    }
-    .region-gadget .im-grid .thumb {
-        width: 100%;
-    }
 
-    .im-grid .specials {
-        float: none;
-        position: static;
-        top: 0;
-        transform: translateY(0);
-        margin-left: auto;
-        margin-right: auto;
-        width: 110px;
-    }
+    .im-grid {
+        .thumb {
+            width: 100%;
+            padding: 10px 0 0;
+        }
 
-    .im-grid tbody tr {
-        border-bottom: 0px;
-    }
+        .specials {
+            float: none;
+            position: static;
+            top: 0;
+            transform: translateY(0);
+            margin-left: auto;
+            margin-right: auto;
+            width: 110px;
+        }
 
-    .im-grid tbody>tr {
-        border-bottom: 1px solid #eee;
-    }
+        tbody tr {
+            border-bottom: 0px;
+        }
 
-    .im-grid table.product {
-        margin-bottom: 16px;
+        tbody>tr {
+            border-bottom: 1px solid #eee;
+        }
+
+        table.product {
+            margin-bottom: 16px;
+        }
     }
 
     .product .product__row {
@@ -264,16 +305,15 @@
     .im-pricebutton.sold-out,
     .sold-out .im-pricebutton,
     .min-nights .im-pricebutton {
-        padding: 10px 0px 8px;
+        padding: 8px 10px;
     }
-
-
 
 
     .wrap {
         width: 100%;
     }
-    tr.odd {  //.instant-confirmation.min-nights.min-nights
+
+    tr.odd {
         height: 70px;
     }
 
@@ -282,112 +322,108 @@
 
 
 
-
 @media (min-width: 768px) and (max-width: 1230px) {
 
-    //.manyCols class exists when more than 5 nights selected
-    .manyCols {
-        .region-gadget div.thumb {
-            max-width: 100%;
+    .region-gadget {
+
+        //.manyCols class exists when more than 5 nights selected
+        .manyCols & {
+            div.thumb {
+                max-width: 100%;
+            }
+
+            .im-grid tbody tr td.total {
+                width: 8%;
+            }
         }
+
+        div.thumb {
+            width: 100%;
+            vertical-align: middle;
+            padding: 0;
+            margin: 10px 20px 4px 0;
+        }
+
+        .specials {
+            width: 140px;
+        }
+
+        .im-grid .property {
+            min-width: 21.5%;
+        }
+
     }
 
-    .region-gadget div.thumb {
-        width: 100%;
-        vertical-align: middle;
-        padding: 0;
-        margin: 10px 10px 4px 0;
-    }
 
-    .region-gadget .specials div.special {
-        margin: 20px 0 5px 10px;
-    }
+    .im-grid {
+        .thumb img {
+            vertical-align: middle;
+        }
 
-    .im-grid .thumb img {
-        vertical-align: middle;
+        .specials {
+            left: 100%;
+            top: 20px;
+        }
+
+        .specials .special {
+            width: 80px;
+            margin: 20px auto 5px auto;
+        }
+
+        .property {
+            min-width: 21.5%;
+        }
+
+        tbody tr td.total {
+            width: 14.5%;
+        }
+
+        tbody tr td.price {
+            width: 0;
+            padding: 2px;
+        }
     }
 
     .im-pricebutton {
         width: 100px;
     }
 
-    .im-grid .specials {
-        left: 100%;
-        top: 20px;
-    }
-
-    .im-grid .specials .special {
-        width: 60px;
-    }
-
-    .region-gadget {
-        .im-grid .property {
-            min-width: 21.5%;
-        }
-        .im-grid tbody tr td.total {
-            width: 1%;
-        }
-    }
-
-    .im-grid .property {
-        min-width: 21.5%;
-    }
-
-    .im-grid tbody tr td.total {
-        width: 14.5%;
-    }
 
     a.map-link {
         padding-top: 2px;
         display: inline-block;
         width: 160px;
     }
-    .im-grid tbody tr td.price {
-        width: 0;
-        padding: 2px;
-    }
-
 
 }
 
+
+
 @media (min-width: 1231px) {
 
-    .manyCols {
-        .region-gadget div.thumb {
-            max-width: 100%;
-        }
-    }
-
     .region-gadget {
+
+        .description {
+            // width: calc( 100% - 240px);
+            margin-left: 220px;
+        }
+
+        .manyCols & {
+            div.thumb {
+                max-width: 100%;
+            }
+        }
+
         .im-grid .thumb {
             padding: 0;
             margin: 10px 10px 16px 0;
             max-width: 210px;
         }
-    }
 
-    .im-pricebutton {
-        width: 98px;
-    }
-
-    .region-gadget {
         .im-grid tbody tr td.price {
             width: 0;
             padding: 2px;
         }
-    }
-
-    .im-grid tbody tr td.total {
-        width: 14.5%;
-    }
-
-    .im-grid .specials {
-        left: calc( 100% + 18px);
-        top: 20px;
-    }
-
-    .im-grid .specials .special {
-        width: 60px;
     }
 
 }

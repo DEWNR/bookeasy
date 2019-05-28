@@ -104,7 +104,7 @@
         }
 }
 
-#bookeasy__details-gadget {
+.details-gadget {
     .im-grid .OperatorItem {
         padding-right: 0;
     }
@@ -116,7 +116,7 @@
 .im-grid .OperatorItemHeading {
     float: left;
     padding-right: 10px;
-    line-height: 18px;  //fix for IE
+    // line-height: 18px;  //fix for IE
 }
 
 
@@ -141,7 +141,7 @@
 
 
 @media (max-width: 768px) {
-    #bookeasy__details-gadget {
+    .details-gadget {
 
         .is-tours {
 
@@ -213,11 +213,16 @@
         tbody tr td.price span {
             display: inline-block;
             padding: 6px;
-            width: 80px;
+            // width: 80px;
+        }
+        tbody tr td.price span:last-of-type {
+            // background-color: crimson;
+            width: 15%;
+            margin-right: 20%;
         }
 
         tbody tr td.price span.price__date {
-            width: 84px;
+            width: 40%;
             text-align: right;
         }
 
@@ -226,7 +231,7 @@
 
 @media (min-width: 768px) {  // when not mobile
     .im-grid tbody tr td.name {
-        padding-top: 8px;
+        // padding-top: 8px;
     }
     .manyCols {
         .im-grid tbody tr td.name {
@@ -252,25 +257,43 @@
     .details-gadget div.thumb {
         width: 210px;
         max-width: 210px;
-        padding: 2px 0px 8px 0;
-        margin-right: 20px;
+        padding: 0;
+        margin: 10px 20px 0 0;
+        // padding: 2px 0px 8px 0;
+        // margin-right: 20px;
+        // margin-top: 10px;
+    }
+    .details-gadget .specials {
+        width: 140px;
+        margin: 10px 0 0 20px;
+
+        .special {
+            margin: 0 auto;
+        }
     }
     .manyCols .details-gadget div.thumb {  //when manyColumns are displayed
         max-width: 150px;
         margin-right: 10px;
     }
-    #bookeasy__details-gadget .im-grid .OperatorInfo {
-        width: calc( 100% - 240px );
-        display: inline-block;
+    .details-gadget .im-grid .OperatorInfo {
+        // width: calc( 100% - 240px );
+        // display: inline-block;
     }
-    .manyCols #bookeasy__details-gadget {
+    .manyCols .details-gadget {
         .im-grid .OperatorInfo {
             width: calc( 100% - 0px );
             display: block;
+            margin-top: 12px;
         }
     }
-    .im-grid .specials .special {
-        margin: 44px 0 5px 10px;
+    .im-grid .specials {
+
+        top: calc( 50% - 80px );
+
+        .special {
+            // margin: 110px 0 5px 10px;
+            // margin-top: 40px;
+        }
     }
 }
 
@@ -285,17 +308,14 @@
         max-width: 150px;
         margin-right: 10px;
     }
-    #bookeasy__details-gadget .im-grid .OperatorInfo {
+    .details-gadget .im-grid .OperatorInfo {
         width: calc( 100% - 240px );
         display: inline-block;
     }
-    .manyCols #bookeasy__details-gadget {
+    .manyCols .details-gadget {
         .im-grid .OperatorInfo {
             width: calc( 100% - 0px );
             display: block;
         }
-    }
-    .im-grid .specials .special {
-        margin: 44px 0 5px 10px;
     }
 }
