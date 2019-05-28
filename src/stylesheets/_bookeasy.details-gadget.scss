@@ -41,6 +41,7 @@
                 display: none;
             }
         }
+
     }
 
     .product__row--specials {
@@ -49,6 +50,7 @@
         }
     }
 }
+
 .manyCols .details-gadget { //only when many Columns are displayed
     .name {
         > a {
@@ -72,20 +74,18 @@
     vertical-align: top;
 }
 
-
 .im-grid-roominfo {
     padding: 20px 10px 5px;
 }
 
-    .im-grid-roominfo__roomname {
+.im-grid-roominfo__roomname {
+    font-weight: normal;
+    margin: 0;
+
+    a {
         font-weight: normal;
-        margin: 0;
-
-        a {
-            font-weight: normal;
-        }
     }
-
+}
 
 .im-grid-operatorinfo {
     padding: 0 40px 10px 10px;
@@ -113,12 +113,11 @@
         width: calc( 100% - 0px );
     }
 }
+
 .im-grid .OperatorItemHeading {
     float: left;
     padding-right: 10px;
-    // line-height: 18px;  //fix for IE
 }
-
 
 .details-gadget {
     thead a.day,
@@ -131,7 +130,6 @@
     }
 }
 
-
 .location-name {
     font-weight: 800;
     color: #222;
@@ -143,107 +141,125 @@
 @media (max-width: 768px) {
     .details-gadget {
 
-        .is-tours {
-
-            .details-gadget .total {
-                width: 22%;
-            }
-
-            .title {
-                height: 0;
-                opacity: 0;
-                padding: 0;
-                float: left;
-                display: block;
-                width: 94%;
-            }
-            .details-gadget thead .total {
-                height: 0;
-                opacity: 0;
-                padding: 0;
-                width: 0;
-                height: 43px;
-            }
-            .details-gadget .total {
-                float: left;
-                display: block;
-                width: 50%;
-
-            }
-            .date.tours {
-                float: left;
-                display: block;
-                width: calc(100% - 21px);
-            }
-            .date.tours > a {
-                display: inline;
-            }
-            .name {
-                float: left;
-                display: block;
-                padding-top: 4px;
-            }
-            .price.tour-date {
-                float: left;
-                display: block;
-                width: 40%;
-            }
-            .price span {
-                height: 33px;
-                display: inline-block;
-                padding-top: 21px;
-            }
-            .im-grid .thumb {
-                padding: 0 0 0;
-            }
-            .OperatorInfo {
-                padding-top: 8px;
-            }
-
-            .search-gadget span.label {
-                padding-top: 6px;
-            }
-
-        }
-
         tr>td {
             padding: 10px;
             display: block;
         }
-        tbody tr td.price span {
+
+        tbody td.price {
+
+            span.price__date {
+                // width: 40%;
+                text-align: right;
+            }
+
+            span:not(.price__date) {
+                text-align: center;
+            }
+
+            > span span:last-of-type:not(.year) {
+                margin-right: 20%;
+                width: 15%;
+            }
+
+        }
+
+        .tour-date > span:not(.price__date) {
+            display: block;
+            width: 100% !important;
+            margin: 0;
+        }
+
+    }
+
+
+    tbody td {
+        &.price {
+            border: 0;
+        }
+        &.price span {
+            text-align: right;
+            width: 70px;
+        }
+        &.price > span {
             display: inline-block;
             padding: 6px;
-            // width: 80px;
         }
-        tbody tr td.price span:last-of-type {
-            // background-color: crimson;
-            width: 15%;
-            margin-right: 20%;
-        }
-
-        tbody tr td.price span.price__date {
-            width: 40%;
+        &.price span.price__date {
+            width: 94px;
             text-align: right;
+            margin: 0;
+        }
+        &.tour-date {
+            span {
+                display: inline;
+            }
+        }
+    }
+
+
+    .im-pricebutton {
+        max-width: 200px;
+    }
+
+
+    .im-grid {
+        .thumb {
+            width: 100%;
+            padding: 10px 0 0;
         }
 
+        .specials {
+            float: none;
+            position: static;
+            top: 0;
+            transform: translateY(0);
+            margin-left: auto;
+            margin-right: auto;
+            width: 110px;
+        }
+
+        tbody tr {
+            border-bottom: 0px;
+        }
+
+        tbody>tr {
+            border-bottom: 1px solid #eee;
+        }
+
+        table.product {
+            margin-bottom: 16px;
+        }
+    }
+
+    .product .product__row {
+        border: 0;
+    }
+
+    .product__row td.price {
+        border-right: 1px solid #eee;
+    }
+
+    .property {
+        a.map-link {
+            padding-top: 2px;
+            padding-bottom: 10px;
+        }
     }
 }
 
 @media (min-width: 768px) {  // when not mobile
-    .im-grid tbody tr td.name {
-        // padding-top: 8px;
-    }
-    .manyCols {
-        .im-grid tbody tr td.name {
-            padding-top: 0;
-        }
-    }
+
     .details-gadget .name > a {
         width: calc( 100% - 240px );
         padding-bottom: 10px;
         display: inline-block;
     }
+
     .manyCols {
+        .im-grid tbody tr td.name {
+            padding-top: 0;
+        }
         .details-gadget .name > a {
             width: calc( 100% - 0px );
             padding-bottom: 0;
@@ -254,68 +270,74 @@
 }
 
 @media (min-width: 768px) and (max-width: 1230px) {
-    .details-gadget div.thumb {
-        width: 210px;
-        max-width: 210px;
-        padding: 0;
-        margin: 10px 20px 0 0;
-        // padding: 2px 0px 8px 0;
-        // margin-right: 20px;
-        // margin-top: 10px;
-    }
-    .details-gadget .specials {
-        width: 140px;
-        margin: 10px 0 0 20px;
 
-        .special {
-            margin: 0 auto;
+    .details-gadget {
+        div.thumb {
+            width: 210px;
+            max-width: 210px;
+            padding: 0;
+            margin: 10px 20px 0 0;
+        }
+        .specials {
+            width: 140px;
+            margin: 10px 0 0 20px;
+
+            .special {
+                margin: 0 auto;
+            }
         }
     }
-    .manyCols .details-gadget div.thumb {  //when manyColumns are displayed
-        max-width: 150px;
-        margin-right: 10px;
-    }
-    .details-gadget .im-grid .OperatorInfo {
-        // width: calc( 100% - 240px );
-        // display: inline-block;
-    }
+
     .manyCols .details-gadget {
+        div.thumb {  //when manyColumns are displayed
+            max-width: 150px;
+            margin-right: 10px;
+        }
         .im-grid .OperatorInfo {
             width: calc( 100% - 0px );
             display: block;
             margin-top: 12px;
         }
     }
+
     .im-grid .specials {
-
         top: calc( 50% - 80px );
-
-        .special {
-            // margin: 110px 0 5px 10px;
-            // margin-top: 40px;
-        }
     }
+
 }
 
+
 @media (min-width: 1231px) {
-    .details-gadget div.thumb {
-        margin-right: 20px;
-        padding: 2px 0px 8px 0;
-        width: 210px;
-        max-width: 210px;
+
+    .details-gadget {
+
+        div.thumb {
+            margin-right: 20px;
+            padding: 2px 0px 8px 0;
+            width: 210px;
+            max-width: 210px;
+        }
+
+        .im-grid .OperatorInfo {
+            width: calc( 100% - 240px );
+            display: inline-block;
+        }
+
     }
-    .manyCols .details-gadget div.thumb {  //when manyColumns are displayed
-        max-width: 150px;
-        margin-right: 10px;
-    }
-    .details-gadget .im-grid .OperatorInfo {
-        width: calc( 100% - 240px );
-        display: inline-block;
-    }
+
+
     .manyCols .details-gadget {
+
+        div.thumb {  //when manyColumns are displayed
+            max-width: 150px;
+            margin-right: 10px;
+        }
+
         .im-grid .OperatorInfo {
             width: calc( 100% - 0px );
             display: block;
         }
+
     }
+
 }

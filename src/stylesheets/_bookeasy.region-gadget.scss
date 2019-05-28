@@ -75,7 +75,7 @@
             display: none;
         }
         .OperatorDescription {
-            display: none;  // remove this when campground descriptions go live
+            // display: none;  // remove this when campground descriptions go live
         }
         .OperatorDescription > .OperatorItemHeading {
             display: none;
@@ -191,12 +191,14 @@
     }
 }
 
-#bookeasy__region-gadget div.BE.region-gadget div.gadget__region-tabs div.view-choice a {
-    padding: 0.6em 1.4em 0.8em;
-}
+#bookeasy__region-gadget div.BE.region-gadget div.gadget__region-tabs div.view-choice {
+    a {
+        padding: 0.6em 1.4em 0.8em;
+    }
 
-#bookeasy__region-gadget div.BE.region-gadget div.gadget__region-tabs div.view-choice a:not(.current):hover {
-    background: #b3cbbf;
+    a:not(.current):hover {
+        background: #b3cbbf;
+    }
 }
 
 
@@ -217,72 +219,6 @@
     }
 
 
-    tbody tr td {
-        &.price {
-            border: 0;
-        }
-        &.price span {
-            display: inline-block;
-            padding: 6px;
-            text-align: right;
-            width: 70px;
-        }
-        &.price span.price__date {
-            width: 94px;
-            text-align: right;
-            margin: 0;
-        }
-    }
-
-
-    .im-pricebutton {
-        max-width: 200px;
-    }
-
-
-    .im-grid {
-        .thumb {
-            width: 100%;
-            padding: 10px 0 0;
-        }
-
-        .specials {
-            float: none;
-            position: static;
-            top: 0;
-            transform: translateY(0);
-            margin-left: auto;
-            margin-right: auto;
-            width: 110px;
-        }
-
-        tbody tr {
-            border-bottom: 0px;
-        }
-
-        tbody>tr {
-            border-bottom: 1px solid #eee;
-        }
-
-        table.product {
-            margin-bottom: 16px;
-        }
-    }
-
-    .product .product__row {
-        border: 0;
-    }
-
-    .product__row td.price {
-        border-right: 1px solid #eee;
-    }
-
-    .property {
-        a.map-link {
-            padding-top: 2px;
-            padding-bottom: 10px;
-        }
-    }
 
     a.button-list__button {
         font-size: 15px;
@@ -294,13 +230,16 @@
         margin-right: 8px;
     }
 
-    .search-gadget.BE div.product,
-    .search-gadget.BE div.period,
-    .search-gadget.BE div.adults,
-    .search-gadget.BE div.children,
-    .search-gadget.BE div.infants {
-        width: 52px;
+    .search-gadget.BE div {
+        &.product,
+        &.period,
+        &.adults,
+        &.children,
+        &.infants {
+            width: 52px;
+        }
     }
+
 
     .im-pricebutton.sold-out,
     .sold-out .im-pricebutton,
