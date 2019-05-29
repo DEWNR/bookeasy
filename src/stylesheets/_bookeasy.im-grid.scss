@@ -5,6 +5,12 @@
 // scss-lint:disable all
 
 
+.BE.BE {  // overide any styles we don't want coming from Parks main-xxxxxxxxxx.css
+    a {
+        border: none;
+    }
+}
+
 .im-grid {
 
     @media (max-width: 768px) {

@@ -49,6 +49,7 @@
             display: block;
         }
     }
+
 }
 
 .manyCols .details-gadget { //only when many Columns are displayed
@@ -149,12 +150,14 @@
         tbody td.price {
 
             span.price__date {
-                // width: 40%;
                 text-align: right;
             }
 
             span:not(.price__date) {
                 text-align: center;
+                label {
+                    display: inline;
+                }
             }
 
             > span span:last-of-type:not(.year) {
