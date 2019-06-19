@@ -46,6 +46,10 @@ IMUtility.pushRegionGadgetLoadedEvent = function() {
 IMUtility.pushDetailsContentLoadedEvent = function checkOperatorInfo() {
     if ($('#bookeasy__details-gadget .OperatorInfo').size() > 0) {
         $w.event.publish('details.content.ready');
+        if ($('.location-header').length > 0) { // if there is a ".location-header"
+            $w.event.publish('details.gadget.locationheader');
+            // console.log('published details.gadget.locationheader');
+        }
     } else {
         setTimeout(checkOperatorInfo, 100);
     }

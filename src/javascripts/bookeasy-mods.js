@@ -178,7 +178,8 @@ $(document).on('gadget.script.loaded', function() {
         // console.log('insert map.');
 
         // add maps
-        $('.im-grid tr.even').each(function(i){  // for each row
+        $('.im-grid tr.odd, .im-grid tr.even').each(function(i){  // for each row (odd & even rows)
+
             var $property = $(this).find('td.property');
             var sOberatorID = $(this).attr('id').replace('Operator', '');
 
@@ -485,12 +486,36 @@ $('.be-fancybox').IMElementExists(function() {
 // get AccomRatesGridData from local storage or BE API
 getAccomRatesGridData();
 
-var theDataYouAreLookingFor;
+var generalImages;
+var generalImagesData;
 
 function actOnData(returnedData) {
     // console.log( 'AccomRatesGridData: ', returnedData );
-    theDataYouAreLookingFor = returnedData;
+    // filter to current OperatorID
+    generalImagesData = returnedData;
 }
+
+$w.event.subscribe('details.gadget.locationheader', function() {
+    console.log('details.gadget.locationheader');
+    // console.log(operatorID);
+    $(generalImagesData).each(function(){ if (this.OperatorId == operatorID){ generalImages = this.OtherImages; } });
+    // console.log('generalImages: ', generalImages);
+    var tiles = '';
+
+    if (generalImages.length > 0) {
+
+        for (var i = 0; i < generalImages.length; i++) {
+            var thumb = generalImages[i].ThumbnailImage;
+            var fullImg = generalImages[i].FullSizeImage;
+            // tiles = tiles + '<div data-fancybox="gallery" style="background-image:url(' + thumb + ')" data-srcset="' + fullImg + '" href="' + fullImg + '" data-caption=""> </div>';
+            tiles = tiles + '<li><a data-fancybox="general-gallery" href="'+ fullImg +'"><img src="'+ thumb +'"> </a></li>';
+        }
+
+        // $('.location-header').append('<div class="general-images"><h3>General images</h3><ul class="general-images__wrap">' + tiles + '</ul></div>');
+    }
+
+
+});
 
 function getAccomRatesGridData() {
     // console.log('run get API data');
