@@ -72,13 +72,13 @@ $(document).on('gadget.script.loaded', function() {
 
         console.log('details.content.ready');
 
-        // if Kangaroo Island Tour Pass display concession input
-        if ( operatorID == '97738' ) {
+        // Display concession input for Kangaroo Island Tour Pass & Ewens Ponds CP & Pic Ponds CP
+        if ( operatorID == '97738' || operatorID == '91777' || operatorID == '72030' ) {
             $('.search-gadget div.concessions').css({'display': 'inline-block', 'width': '80px'});
         }
 
         // remove option to select 0 adults
-        if (operatorID != '72030') {  //except for snorkelling which has concessions
+        if ( operatorID != '97738' || operatorID != '72030' || operatorID != '91777') {  //except for Pic snorkelling & Ewens snorkelling which have concessions
             $('.adults select option[value="0"]').attr('disabled', 'disabled').hide();
         }
 
@@ -131,7 +131,7 @@ $(document).on('gadget.script.loaded', function() {
         setTimeout('pushCartItemsLoadedEvent();', 300);
     });
     $w.event.subscribe('details.init.start', function() {
-        console.warn('details.init.start');
+        console.log('details.init.start');
         balanceNoConcessionsOrAdults();
     });
 
@@ -219,43 +219,27 @@ function isConcessionsHidden() {  //tests if the concession input is hidden
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function balanceNoConcessionsOrAdults() {
     console.log('balanceNoConcessionsOrAdults');
+
+    //cookie names change so we need to find the right cookie
+    function findBookeasyCookieName() {
+        // uses a known portion of the cookie value to return the cookieName
+        // console.log('document.cookie: ', document.cookie);
+        var cookieName = document.cookie.substr(0, document.cookie.indexOf('=%7B%22product%22%3A%22'));
+        cookieName = cookieName.substr(cookieName.length - 32);
+        // console.log('cookieName: ', cookieName);
+        return cookieName;
+    }
+
+    var beCookieName = findBookeasyCookieName();
+
     //only run if no concessions
-    var be_cookie_data = JSON.parse( readCookie('TUOQQQSQVSPTOqaWQfPyveRwVpSzPTTr') );
+    var be_cookie_data = JSON.parse( readCookie( beCookieName ) );
     if ( typeof be_cookie_data ) {
         if ( be_cookie_data != null ) {
             if ( typeof be_cookie_data.adults ) {
-                //
-                console.log(be_cookie_data.adults);
+                // console.log(be_cookie_data.adults);
                 if ( isConcessionsHidden() ) {
                     var adultsval = 2;
                     if ( (be_cookie_data.adults > 0) && (!isNaN(be_cookie_data.adults)) ) {
@@ -264,8 +248,8 @@ function balanceNoConcessionsOrAdults() {
                     be_cookie_data.adults = adultsval;
                     $(".adults .input select").val(adultsval).trigger('change'); //set current to 1
                     console.warn("adults value changed.");
-                    eraseCookie('TUOQQQSQVSPTOqaWQfPyveRwVpSzPTTr');
-                    createCookie('TUOQQQSQVSPTOqaWQfPyveRwVpSzPTTr', be_cookie_data, 1);
+                    eraseCookie(beCookieName);
+                    createCookie(beCookieName, be_cookie_data, 1);
                 }
                 //
             }
@@ -276,6 +260,7 @@ function balanceNoConcessionsOrAdults() {
 
     var adultsinput = '';
     var concessionsinput = '';
+
     $(".adults .input select").change(function () {
         concessionsinput = $(".concessions .input select").val();
         console.log('concessionsinput: ', concessionsinput);
@@ -291,8 +276,9 @@ function balanceNoConcessionsOrAdults() {
             console.error("0 enabled for concessionsinput.");
         }
     });
+
     $(".concessions .input select").change(function () {
-        window.sessionStorage.setItem("BE_concessions", $(this).val()); //store number of concessions
+        // window.sessionStorage.setItem("BE_concessions", $(this).val()); //store number of concessions
         adultsinput = $(".adults .input select").val();
         console.log('adultsinput: ', adultsinput);
         if ($(this).val() == '0') {
@@ -307,6 +293,7 @@ function balanceNoConcessionsOrAdults() {
             console.error("0 enabled for adultsinput.");
         }
     });
+
 }
 
 
@@ -486,36 +473,67 @@ $('.be-fancybox').IMElementExists(function() {
 // get AccomRatesGridData from local storage or BE API
 getAccomRatesGridData();
 
-var generalImages;
-var generalImagesData;
+var GENERAL_IMAGES;
 
+var cachedAccomRatesGridData;
 function actOnData(returnedData) {
-    // console.log( 'AccomRatesGridData: ', returnedData );
-    // filter to current OperatorID
-    generalImagesData = returnedData;
+    cachedAccomRatesGridData = returnedData;
 }
 
+
 $w.event.subscribe('details.gadget.locationheader', function() {
-    console.log('details.gadget.locationheader');
-    // console.log(operatorID);
-    $(generalImagesData).each(function(){ if (this.OperatorId == operatorID){ generalImages = this.OtherImages; } });
-    // console.log('generalImages: ', generalImages);
-    var tiles = '';
+    // console.log('details.gadget.locationheader');
 
-    if (generalImages.length > 0) {
-
-        for (var i = 0; i < generalImages.length; i++) {
-            var thumb = generalImages[i].ThumbnailImage;
-            var fullImg = generalImages[i].FullSizeImage;
-            // tiles = tiles + '<div data-fancybox="gallery" style="background-image:url(' + thumb + ')" data-srcset="' + fullImg + '" href="' + fullImg + '" data-caption=""> </div>';
-            tiles = tiles + '<li><a data-fancybox="general-gallery" href="'+ fullImg +'"><img src="'+ thumb +'"> </a></li>';
-        }
-
-        // $('.location-header').append('<div class="general-images"><h3>General images</h3><ul class="general-images__wrap">' + tiles + '</ul></div>');
-    }
-
+    // The below line enables campground General images
+    // displayGeneralCampgroundImages();
 
 });
+
+function displayGeneralCampgroundImages() {
+
+    // filter to current OperatorID
+    // set generalImages with images from the current operatorID
+    $(cachedAccomRatesGridData).each(function () {
+        if (operatorID == this.OperatorId) {
+            GENERAL_IMAGES = this.OtherImages;
+        };
+    });
+
+    var imageTiles = '';
+    var captions = {};
+
+    // example captions. To view http://localhost:3000/details-gadget.html#/accom/65306.
+    // Comment out when compiling for production.
+    // captions = {
+    //     '465870': 'Caption for image one.',
+    //     '465871': 'image two',
+    //     '465872': 'Caption for image three',
+    //     '465873': 'Caption for image four',
+    //     '465874': 'Caption for image five'
+    // };
+
+    if (GENERAL_IMAGES.length > 0) { // if there are general images
+
+        // prepare HTML for each image
+        for (var i = 0; i < GENERAL_IMAGES.length; i++) {
+            var thumb = GENERAL_IMAGES[i].ThumbnailImage;
+            var fullImg = GENERAL_IMAGES[i].FullSizeImage;
+            //set default caption as the image Id
+            var caption = '<span class=\'dark\'>' + GENERAL_IMAGES[i].Id + ':</span> ';
+            // console.log('generalImages[i].Id: ', generalImages[i].Id);
+            // console.log('captions.458042: ', captions[458042]);
+            //set caption if we have one for that specific image Id
+            if (captions[GENERAL_IMAGES[i].Id]) {
+                caption = '<span class=\'dark\'>' + GENERAL_IMAGES[i].Id + ':</span> ' + captions[GENERAL_IMAGES[i].Id];
+            }
+            imageTiles = imageTiles + '<li><a data-fancybox="general-gallery" href="' + fullImg + '" data-caption="' + caption + '"><img src="' + thumb + '"> </a></li>';
+        }
+
+        $('.location-header').append('<div class="general-images"><h3>General images</h3><ul class="general-images__wrap">' + imageTiles + '</ul></div>');
+
+    }
+
+}
 
 function getAccomRatesGridData() {
     // console.log('run get API data');
