@@ -29,7 +29,7 @@
             > .date {
                 &:focus,
                 &:hover {
-                    color: #dca502;
+                    color: $sagovau-color-book;
                 }
             }
         }
@@ -60,7 +60,7 @@
         &.date,
         &.month {
             &:hover {
-                color: #08713e;
+                color: $sagovau-color-brand;
             }
         }
     }
@@ -147,7 +147,7 @@
 
     thead a.day,
     thead a.month {
-        color: #ffffff;
+        color: $sagovau-color-text-reverse;
     }
 
     .room-name {
@@ -157,7 +157,7 @@
 
     .description {
         margin: 1em 0;
-        color: #666;
+        color: $sagovau-color-text-base-light;
     }
 }
 
@@ -197,7 +197,7 @@
     }
 
     a:not(.current):hover {
-        background: #b3cbbf;
+        background: tint($sagovau-color-brand, 80%);
     }
 }
 

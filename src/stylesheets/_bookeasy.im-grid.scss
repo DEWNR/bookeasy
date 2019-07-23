@@ -71,7 +71,7 @@
             background: darken($sagovau-color-brand, 5%);
             text-align: center;
             padding: 5px 10px;
-            color: #fff;
+            color: $sagovau-color-text-reverse;
             font-size: $sagovau-font-size-base;
             font-weight: normal;
 
@@ -93,7 +93,7 @@
                     font-weight: normal;
 
                     &.date {
-                        color: #dca502;
+                        color: $sagovau-color-book;
                         font-weight: bold;
                         font-size: $sagovau-font-size-base;
                     }
@@ -105,11 +105,11 @@
 
     span.price__date {
         font-weight: 600;
-        color: #08713e;
+        color: $sagovau-color-brand;
     }
 
     tbody tr {
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid $sagovau-color-border;
 
         td {
             background: none;
@@ -147,7 +147,7 @@
             &.price {
                 @media (min-width: 768px) {
                     width: 8%;
-                    border-left: 1px solid #eee;
+                    border-left: 1px solid $sagovau-color-border;
                 }
 
                 text-align: center;
@@ -183,18 +183,18 @@
         }
 
         &.odd {
-            background: #f9f9f9;
+            background: $sagovau-color-background-odd;
         }
 
         &.even {
-            background: #fff;
+            background: $sagovau-color-background-base;
         }
 
         &.inline-header {
             font-family: $sagovau-font-family-highlight;
             background: darken($sagovau-color-brand, 5%);
             text-align: center;
-            color: #fff;
+            color: $sagovau-color-text-reverse;
             font-size: $sagovau-font-size-base;
             font-weight: normal;
 
@@ -214,7 +214,7 @@
                     font-weight: normal;
 
                     &.date {
-                        color: #dca502;
+                        color: $sagovau-color-book;
                         font-weight: bold;
                         font-size: $sagovau-font-size-base;
                     }
@@ -316,7 +316,7 @@
 
     .noResults {
         font-family: $sagovau-font-family-highlight;
-        background: #fff;
+        background: $sagovau-color-background-base;
         margin: 0;
         padding: 40px 20px;
         font-weight: normal;
@@ -355,9 +355,9 @@
             // text-align: center;
             background-image: url('//gadgets.impartmedia.com/img/special.png');
 
-            // background-color: #dd2200;
+            // background-color: $sagovau-color-special;
             // border-radius: 5px;
-            // color: #fff;
+            // color: $sagovau-color-text-reverse;
             // font-size: 14px;
             // padding: 8px 10px;
 
@@ -386,10 +386,10 @@
 
 
 .im-pricebutton, a.im-pricebutton {
-    background: #dca502;
+    background: $sagovau-color-book;
     border: 0;
     border-radius: 5px;
-    color: #fff !important;
+    color: $sagovau-color-text-reverse !important;
     display: inline-block;
     padding: 10px 10px 8px;
     transition: background .3s ease-in-out;
@@ -412,7 +412,7 @@
     &.sold-out,
     .sold-out &,
     .min-nights & {
-        background: #808080;
+        background: $sagovau-color-sold-out-light;
         padding: 22px 10px 20px;
 
         span.number {
@@ -421,11 +421,14 @@
 
         &:focus,
         &:hover {
-            background: #5a5a5a;
+            background: $sagovau-color-sold-out;
         }
     }
 }
 
+h4 {
+    color: $sagovau-color-text-base-light;
+}
 
 
 div#wdHoverContainer {
@@ -436,13 +439,13 @@ div#wdHoverContainer {
         font-size: 10pt;
         font-family: Helvetica,Arial,sans-serif;
         line-height: 13pt;
-        color: #000;
+        color: $sagovau-color-black;
         width: 600px;
-        background-color: #fff;
+        background-color: $sagovau-color-background-base;
         padding: 10px;
         padding-bottom: 0;
-        border: 1px solid #aaa;
-        box-shadow: 0 2px 4px #444;
+        border: 1px solid $sagovau-color-black--60;
+        box-shadow: 0 2px 4px $sagovau-color-black--10;
 
         &.variable {
             width: auto;
@@ -459,11 +462,11 @@ div#wdHoverContainer {
             label {
                 display: inline-block;
                 font-size: 65%;
-                color: #37c;
+                color: $sagovau-color-label;
                 text-transform: uppercase;
-                border: solid 1px #37c;
+                border: solid 1px $sagovau-color-label;
                 padding: 2px 6px 1px 6px;
-                background-color: #eaf1fa;
+                background-color: $sagovau-color-label-grey;
                 margin-bottom: 10px;
             }
         }
@@ -481,7 +484,7 @@ div#wdHoverContainer {
 
     h4 {
         margin: 0 0 .5em 0;
-        color: #888;
+        color: $sagovau-color-text-base-light;
         font-style: italic;
         font-weight: bold;
     }
@@ -501,11 +504,11 @@ div#wdHoverContainer {
 
     div.image {
         padding: 1px;
-        border: 1px solid #ccc;
+        border: 1px solid $sagovau-color-text-base-extralight;
         float: right;
         margin: 0 0 10px 2em;
         overflow: hidden;
-        background-color: #fff;
+        background-color: $sagovau-color-background-base;
         max-width: 200px;
         max-height: 200px;
         overflow: hidden;

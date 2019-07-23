@@ -9,12 +9,10 @@ $images-gap: 20px;
 
 .general-images {
     width: 100%;
-    // height: 300px;
     // background-color: #eee;
     margin: 0 10px 20px 10px;
 
     h3 {
-        // padding: 0 10px;
         margin: 0;
         margin-bottom: 10px;
         color: #222;
@@ -34,8 +32,6 @@ $images-gap: 20px;
         li {
             flex-grow: 0;
             flex-basis: calc((100% / 3) - 20px);
-            // min-height: 150px;
-            // margin: 10px 20px;
             padding-left: 20px;
             padding-bottom: 20px;
         }
@@ -48,12 +44,9 @@ $images-gap: 20px;
 
         a {
             border-bottom: none;
-            // line-height: 0;
 
             &:hover {
                 opacity: 0.8;
-                // transition-duration: 1s;
-                // transition-property: opacity;
                 transition: visibility 0s,opacity .3s linear;
                 border-bottom: none;
 
@@ -220,11 +213,18 @@ $images-gap: 20px;
 }
 
 .location-name {
+    display: inline;
     font-weight: 800;
     color: #222;
     margin-bottom: 16px;
 }
 
+.location-parklink {
+    // float: right;
+    display: block;
+    margin-top: 9px;
+    // text-align: right;
+}
 
 
 @media (max-width: 768px) {
@@ -341,10 +341,20 @@ $images-gap: 20px;
 
 @media (min-width: 768px) {  // when not mobile
 
-    .details-gadget .name > a {
-        width: calc( 100% - 240px );
-        padding-bottom: 10px;
-        display: inline-block;
+    .location-parklink {
+        float: right;
+        margin-top: 0;
+        text-align: right;
+    }
+
+    .details-gadget {
+
+        .name > a {
+            width: calc( 100% - 240px );
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
     }
 
     .manyCols {
