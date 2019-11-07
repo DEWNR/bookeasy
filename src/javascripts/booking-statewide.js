@@ -249,6 +249,16 @@ function createLocationSelector() {
 }
 
 
+function rename(oldName, newName, link) {
+    if (key == oldName) {
+        key = newName;
+
+        if (link) {
+            page = link;
+        }
+    }
+};
+
 
 function displayProductsData() {
 
@@ -267,64 +277,57 @@ function displayProductsData() {
 
         $.each(productsData[urlHash]["Things to book"], function(key, val) {
 
-            if (key == 'Camping / Accommodation' && val === true) {
-                hasAccomodation = true;
-            }
+            if (val === true) {
 
-
-
-            //we don't need to display camping button if we are already looking at camping
-            //also don't display 'School Bookings' anymore as there is now a generic school booking form.
-            //BUT do display 'School Bookings' for Belair National Park.
-            if ( (key !== 'Camping / Accommodation' && val === true && key !== 'School Bookings') || (key !== 'Camping / Accommodation' && val === true && urlHash == 'Belair National Park')) {
-                // console.log('key: ', key);
-
-                var page = '';
-
-                // fix typos
-                if (key == 'Vehicle Entry Fee') {
-                    key = 'Vehicle Entry Fees';
+                if (key == 'Camping / Accommodation') {
+                    hasAccomodation = true;
                 }
 
-                // convert page name to kebab case
-                page = (key.replace(/ /g , '-')).toLowerCase();
+                //we don't need to display camping button if we are already looking at camping
+                //also don't display 'School Bookings' anymore as there is now a generic school booking form.
+                //BUT do display 'School Bookings' for Belair National Park.
+                if ( (key !== 'Camping / Accommodation' && key !== 'School Bookings') || (key !== 'Camping / Accommodation' && urlHash == 'Belair National Park')) {
+                    // console.log('key: ', key);
 
-                // alter URL for Commercial Tour Operator Bookings
-                if ( key.toLowerCase().search(/commercial tour operator bookings/) != -1 ) {
-                    page = 'cto-bookings';
+                    var page = '';
+
+                    // fix typos
+                    // rename('Vehicle Entry Fee', 'Vehicle Entry Fees');
+                    // if (key == 'Vehicle Entry Fee') {
+                    //     key = 'Vehicle Entry Fees';
+                    // }
+
+                    // convert page name to kebab case
+                    page = (key.replace(/ /g , '-')).toLowerCase();
+
+                    // alter URL for Commercial Tour Operator Bookings
+                    if ( key.toLowerCase().search(/commercial tour operator bookings/) != -1 ) {
+                        page = 'cto-bookings';
+                    }
+
+                    //rename Park of the Month event button
+                    if (key == 'Park of the Month event') {
+                        page = 'potm-event';
+                    }
+
+                    // assemble URLs
+                    if (urlHash == 'Cleland Wildlife Park') {
+                        bookingURL = 'http://www.clelandwildlifepark.sa.gov.au/plan-your-visit/buy-tickets';
+                    } else if (urlHash == 'Naracoorte Caves National Park') {
+                        bookingURL = '//www.naracoortecaves.sa.gov.au/plan-your-visit/buy-tickets';
+                    } else {
+                        bookingURL = productsData[urlHash].url + '/' + page;
+                    }
+                    // console.log(bookingURL);
+
+                    if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+                        bookingURL += '.html';
+                    }
+
+                    $('.button-list').append($('<a href="'+ bookingURL + '"><span>' +key+ '</span></a>').addClass('button-list__button '+key).attr('data', key));
+                    $('.'+key).click(  function(){ typeShow('tours'); }  );
                 }
 
-                //rename Diving button
-                if (key == 'Diving' && val === true) {
-                    key = 'Diving - Pic Ponds';
-                    page = 'diving';
-                }
-                //rename Diving Other Sites button
-                if (key == 'Diving Other Sites' && val === true) {
-                    key = 'Diving - Other Sites';
-                    page = 'diving-other-sites';
-                }
-                //rename Park of the Month event button
-                if (key == 'Park of the Month event' && val === true) {
-                    page = 'potm-event';
-                }
-
-                // assemble URLs
-                if (urlHash == 'Cleland Wildlife Park') {
-                    bookingURL = 'http://www.clelandwildlifepark.sa.gov.au/plan-your-visit/buy-tickets';
-                } else if (urlHash == 'Naracoorte Caves National Park') {
-                    bookingURL = '//www.naracoortecaves.sa.gov.au/plan-your-visit/buy-tickets';
-                } else {
-                    bookingURL = productsData[urlHash].url + '/' + page;
-                }
-                // console.log(bookingURL);
-
-                if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
-                    bookingURL += '.html';
-                }
-
-                $('.button-list').append($('<a href="'+ bookingURL + '"><span>' +key+ '</span></a>').addClass('button-list__button '+key).attr('data', key));
-                $('.'+key).click(  function(){ typeShow('tours'); }  );
             }
 
         });

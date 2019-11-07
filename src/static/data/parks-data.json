@@ -5,6 +5,7 @@
       "Vehicle Entry Fee": false,
       "Diving": false,
       "Snorkelling": false,
+      "Diving or Snorkelling": false,
       "Tennis Courts": false,
       "Facilities": false,
       "School Bookings": false,
@@ -76,6 +77,13 @@
     },
     "url": "https://www.parks.sa.gov.au/find-a-park/Browse_by_region/kangaroo-island/cape-willoughby-conservation-park/booking"
   },
+  "Chadinga Conservation Park": {
+    "Things to book": {
+      "Camping / Accommodation": true,
+      "z": 0
+    },
+    "url": "https://www.parks.sa.gov.au/find-a-park/Browse_by_region/Eyre_Peninsula/chadinga-conservation-park/booking"
+  },
   "Chowilla Game Reserve": {
     "Things to book": {
       "Camping / Accommodation": true,
@@ -123,6 +131,13 @@
       "z": 0
     },
     "url": "https://www.parks.sa.gov.au/find-a-park/Browse_by_region/Fleurieu_Peninsula/deep-creek-conservation-park/booking"
+  },
+  "Ewens Ponds Conservation Park": {
+    "Things to book": {
+      "Diving or Snorkelling": true,
+      "z": 0
+    },
+    "url": "https://www.parks.sa.gov.au/find-a-park/Browse_by_region/Limestone_Coast/ewens-ponds-conservation-park/booking"
   },
   "Flinders Chase National Park and Ravine Des Casoars Wilderness Protection Area": {
     "Things to book": {
@@ -317,7 +332,6 @@
   "Para Wirra Conservation Park": {
     "Things to book": {
       "Camping / Accommodation": true,
-      "Park of the Month event": true,
       "Vehicle Entry Fee": true,
       "School Bookings": true,
       "z": 0
@@ -328,7 +342,6 @@
     "Things to book": {
       "School Bookings": true,
       "Diving": true,
-      "Other Diving Sites": true,
       "Snorkelling": true,
       "z": 0
     },

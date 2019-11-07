@@ -33,9 +33,17 @@ if(window.location.hash) {
 
 }
 
-if(window.location.pathname.toLowerCase().match('piccaninnie')) {  // if piccaninnie
-    numberInfants = 0;
-    numberConcessions = 4;      // max number of concessions possible
+if (typeof operatorID !== 'undefined') {
+
+    if(operatorID == '65339') {  // if piccaninnie diving
+        numberInfants = 0;
+        numberConcessions = 0;
+    }
+    if(operatorID == '72030') {  // if piccaninnie diving
+        numberInfants = 0;
+        numberConcessions = 4;      // max number of concessions possible
+    }
+
 }
 
 
@@ -100,6 +108,7 @@ function getOperatorData(id) {
         if (data.length) {
 
             // console.log(data[0]);
+
             // This code needs refactoring
             if(data[0].Location == undefined) {
                 console.log('BE Location not set');
@@ -123,7 +132,20 @@ function getOperatorData(id) {
             backURL = '/booking#' + backLocation;
             // backURL = '/#' + backLocation;
 
+            var parkPageLink = linkToPark(backLocation);
+            // console.log('parkPageLink: ', parkPageLink);
+            var parkLinkText = '';
+            if (parkPageLink.length > 5) {
+                parkLinkText = 'click <a href="' + parkPageLink + '">here</a> for more information about this park.';
+            }
+
+
             if(data[0].IsTourManager == true) {
+
+                if (operatorID == '97738') {
+                    backLocation = '';
+                    backURL = '/book-and-pay/parks-passes';
+                }
 
                 if(operatorID == '81657') {
                     // If Parks Passes page use appropriate title and back URL
@@ -137,7 +159,7 @@ function getOperatorData(id) {
 
             } else {
                 // add location title
-                $('#bookeasy__details-gadget').before('<div class="location-header"><h1>' + backLocation + '</h1><h2 class="location-name">' + data[0].TradingName + '</h2></div>');
+                $('#bookeasy__details-gadget').before('<div class="location-header"><h1>' + backLocation + '</h1><h2 class="location-name">' + data[0].TradingName + '</h2> <span class="location-parklink">' + parkLinkText + '</span></div>');
             }
 
 
@@ -181,4 +203,35 @@ function getOperatorData(id) {
 
     });
 
+}
+
+// below is commented out for production builds
+// var AUTOCOMPLETE_SUGGESTIONS = [
+//     {value: "Acraman Creek Conservation Park ", url: "https://www.parks.sa.gov.au/find-a-park/Browse_by_…on/Eyre_Peninsula/acraman-creek-conservation-park"},
+//     {value: "Adelaide Dolphin Sanctuary", url: "https://www.parks.sa.gov.au/find-a-park/Browse_by_region/Adelaide/adelaide-dolphin-sanctuary"},
+//     {value: "Adelaide International Bird Sanctuary National Park ", url: "https://www.parks.sa.gov.au/find-a-park/Browse_by_…elaide-international-bird-sanctuary-national-park"},
+//     {value: "Aldinga Scrub Conservation Park ", url: "https://www.parks.sa.gov.au/find-a-park/Browse_by_…leurieu_Peninsula/aldinga-scrub-conservation-park"},
+//     {value: "Angove Conservation Park ", url: "https://www.parks.sa.gov.au/find-a-park/Browse_by_region/Adelaide_Hills/angove-conservation-park"},
+//     {value: "Coorong National Park ", url: "https://www.parks.sa.gov.au/find-a-park/Browse_by_region/Limestone_Coast/coorong-national-park"}
+// ];
+
+// console.log('AUTOCOMPLETE_SUGGESTIONS: ', AUTOCOMPLETE_SUGGESTIONS);
+
+// uses autoComplete suggestions URL for Park page link
+function linkToPark(parkName) {
+    try {
+        var parkPageUrl = '';
+        $.each(AUTOCOMPLETE_SUGGESTIONS, function(key, val){
+            if (val.value.trim().indexOf(parkName.trim()) > -1) {
+                // console.log(parkName);
+                // console.log('a val.value', val.value);
+                // console.log('a val.url', val.url);
+                parkPageUrl = val.url;
+            }
+        });
+        return parkPageUrl;
+    } catch (error) {
+        console.error(error);
+        return parkPageUrl;
+    }
 }

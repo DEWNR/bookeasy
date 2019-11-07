@@ -55,7 +55,7 @@
         }
 
         span {
-            color: #fff;
+            color: $sagovau-color-text-reverse;
             font-size: 10px;
             margin: 5px auto;
             position: relative;
@@ -108,8 +108,8 @@
         font-family: $sagovau-font-family-base;
         font-size: $sagovau-font-size-base;
         padding: .5em;
-        background: #fff;
-        border: 2px solid #fff;
+        background: $sagovau-color-background-base;
+        border: 2px solid $sagovau-color-background-base;
         border-radius: 3px;
         color: $sagovau-color-text-base;
         width: 100%;
@@ -120,7 +120,7 @@
         box-sizing: border-box;
 
         &:focus {
-            border-color: #fff;
+            border-color: $sagovau-color-background-base;
         }
     }
 
@@ -140,7 +140,7 @@
     .label {
         font-family: $sagovau-font-family-highlight;
         display: block;
-        color: #fff;
+        color: $sagovau-color-text-reverse;
         overflow: hidden;
         font-size: 14px;
         font-weight: normal;
@@ -173,14 +173,14 @@
 
 .wdDatePicker-Outer {
     display: block;
-    border: 1px solid #08713e;
-    background: #f3f3f3;
+    border: 1px solid $sagovau-color-brand;
+    background: $sagovau-color-background-odd; // #f3f3f3;
 }
 
 
 .wdDatePicker_calendar {
     font-family: $sagovau-font-family-base;
-    background: #fff;
+    background: $sagovau-color-background-base;
     color: $sagovau-color-text-base;
 
     select {
@@ -201,10 +201,10 @@
     th {
         line-height: 20px;
         text-transform: uppercase;
-        background: #f3f3f3;
-        border-left: 1px solid #f3f3f3;
+        background: $sagovau-color-background-odd;
+        border-left: 1px solid $sagovau-color-background-odd;
         font-size: 12px;
-        border-top: 1px solid #c2c2c2;
+        border-top: 1px solid $sagovau-color-border; // #c2c2c2;
         padding-top: 10px;
         padding-bottom: 10px;
     }
@@ -212,8 +212,8 @@
     td {
         font-size: 11px;
         font-weight: bold;
-        border-top: 1px solid #c2c2c2;
-        border-left: 1px solid #c2c2c2;
+        border-top: 1px solid $sagovau-color-border; // #c2c2c2;
+        border-left: 1px solid $sagovau-color-border; // #c2c2c2;
 
         b,
         i {
@@ -232,7 +232,7 @@
         }
 
         &.disabled {
-            background: #f3f3f3;
+            background: $sagovau-color-background-odd;
         }
 
         &.unavailable {
@@ -265,6 +265,7 @@
 
         &#wdDatePicker-previous {
             left: 5px;
+            margin-left: 5px;
             background-position: left -176px;
         }
 

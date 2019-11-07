@@ -44,15 +44,26 @@ $sagovau-shade-base: $sagovau-tint-base;
 
 /* == High-level colours == */
 
-$sagovau-color-brand: #08713e;
+$sagovau-color-brand: #184736; // 08713e
 
 $sagovau-color-brand-secondary: null;
-
+$sagovau-color-book: #dca502;
+$sagovau-color-sold-out: #5a5a5a;
+$sagovau-color-sold-out-light: tint($sagovau-color-sold-out, 23%);
+$sagovau-color-special: #dd2200;
+$sagovau-color-border: #eee;
+$sagovau-color-label: #37c;
+$sagovau-color-label-grey: #eaf1fa;
+$sagovau-color-black: #2e2925;
+$sagovau-color-black--60: tint($sagovau-color-black, 56%); // ~ #aaa
+$sagovau-color-black--10: tint($sagovau-color-black, 12%); // ~ #444
 
 $sagovau-color-text-base: #333;
+$sagovau-color-text-base-light: tint($sagovau-color-black, 41%); // ~ #888
+$sagovau-color-text-base-extralight: tint($sagovau-color-black, 76%); // ~ #ccc
 $sagovau-color-text-reverse: #fff;
 $sagovau-color-background-base: #fff;
-
+$sagovau-color-background-odd: #f9f9f9;
 
 
 
