@@ -7,22 +7,30 @@ var bShowGadget = 1;
 var numberInfants = 45;
 var numberConcessions = 45;
 
+
 if(window.location.hash) {
-    var aHash = window.location.hash.slice(1).split('/');
-    var sType = aHash[1];
+
+    var urlHash = window.location.hash.slice(1);
+    var regexSplit = /(?:\D+\/\d+)(.)/; // (non-group non-Digits 1orMore + '/' + digits 1orMore) then (group any-character)
+    var splitChar = urlHash.match(regexSplit)[1];  // the 2nd array item is the character we want
+    var aHash = urlHash.split( splitChar );  // remove non relevant trailing string
+    var usefulHash = aHash[0].split('/');
+    var sType = usefulHash[1];
     var aValidTypes = ['accom','tours','events','carhire','packages'];
 
-    if(aHash.length && $.inArray( sType, aValidTypes) !== -1) {
+    if(usefulHash.length && $.inArray( sType, aValidTypes) !== -1) {
 
-        var operatorIDregex = /^\d{5}$/;
+        var operatorIDregex = /^\d*$/;
         var xDays = 1;
 
-        // check if operatorID is 5 digits
-        if (operatorIDregex.test(aHash[2])) {
+        // check if operatorID is digits
+        if (operatorIDregex.test(usefulHash[2])) {
 
             bookeasyType = sType;
-            operatorID = aHash[2];
+            operatorID = usefulHash[2];
 
+        } else {
+            console.warn('operatorID is not digits!');
         }
 
         if (bookeasyType == 'accom') {
