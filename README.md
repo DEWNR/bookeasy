@@ -1,9 +1,9 @@
 
 # Build tools
 
-* run npm install
-* gulp
-* gulp production
+* `run npm install`
+* `gulp`
+* `gulp production`
 
 
 
