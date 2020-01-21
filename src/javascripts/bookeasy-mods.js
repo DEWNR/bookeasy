@@ -77,6 +77,11 @@ $(document).on('gadget.script.loaded', function() {
             $('.search-gadget div.concessions').css({'display': 'inline-block', 'width': '80px'});
         }
 
+        // Memory cove hide adults, children, infants
+        if ( operatorID == '100780' ) {
+            $('.search-gadget div.adults, .search-gadget div.children, .search-gadget div.infants').css({'display': 'none'});
+        }
+
         // remove option to select 0 adults
         if ( operatorID != '97738' || operatorID != '72030' || operatorID != '91777') {  //except for Pic snorkelling & Ewens snorkelling which have concessions
             $('.adults select option[value="0"]').attr('disabled', 'disabled').hide();
