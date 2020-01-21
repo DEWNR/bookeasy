@@ -509,7 +509,7 @@ function displayGeneralCampgroundImages() {
     var imageTiles = '';
     var captions = {};
 
-    // Captions. To view http://localhost:3000/details-gadget.html#/accom/65306.
+    // Captions. To test view http://localhost:3000/details-gadget.html#/accom/65306.
     captions = {
         '439165': 'Inneston Lake',
         '450136': 'Engineers Lodge',
@@ -550,9 +550,22 @@ function displayGeneralCampgroundImages() {
             imageTiles = imageTiles + '<li><a data-fancybox="general-gallery" href="' + fullImg + '" data-caption="' + caption + '"><img src="' + thumb + '"> </a></li>';
         }
 
+        // write to DOM once outside of loop
         $('.location-header').append('<div class="general-images"><h3>General images</h3><ul class="general-images__wrap">' + imageTiles + '</ul></div>');
 
     }
+
+    // console.log('..displayGeneralCampgroundImages written to DOM');
+
+    // initialise fancybox for
+    // gallery of images in the general images area
+    $('[data-fancybox="general-gallery"]').fancybox({
+        toolbar: false,
+        hash: false,
+        clickOutside: "close",
+        clickContent: false,
+        loop: true
+    });
 
 }
 
