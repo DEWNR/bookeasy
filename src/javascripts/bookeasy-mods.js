@@ -446,8 +446,10 @@ function replaceRoomText(node) {
 }
 
 // wrap fancybox in IMElementExists function so it is initialised after the element exists.
-$('.be-fancybox').IMElementExists(function() {
+$('.be-fancybox:first').IMElementExists(function() {
 
+    // initialise priceGrid fancybox
+    // gallery of images in the priceGrid
     $('[data-fancybox="gallery"]').fancybox({
         toolbar: false,
         hash: false,
