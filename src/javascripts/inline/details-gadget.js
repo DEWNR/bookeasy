@@ -10,10 +10,19 @@ var numberConcessions = 45;
 
 if(window.location.hash) {
 
-    var urlHash = window.location.hash.slice(1);
-    var regexSplit = /(?:\D+\/\d+)(.)/; // (non-group non-Digits 1orMore + '/' + digits 1orMore) then (group any-character)
+    var urlHash = window.location.hash.slice(1); // regex to ignore url characters added by ATDW / SATC
+    var regexSplit = /(?:\D+\/)(?:\d+)(.)/; // (non-group non-Digits 1orMore + '/' + digits 1orMore) then (group any-character)
     var splitChar = urlHash.match(regexSplit)[1];  // the 2nd array item is the character we want
-    var aHash = urlHash.split( splitChar );  // remove non relevant trailing string
+
+    function is_numeric_char(c) {
+        return /\d/.test(c);
+    }
+    console.log( is_numeric_char(splitChar) );
+    var aHash = [urlHash];
+    if ( !is_numeric_char(splitChar) ) {
+        aHash = urlHash.split( splitChar );  // remove non relevant trailing string
+    }
+
     var usefulHash = aHash[0].split('/');
     var sType = usefulHash[1];
     var aValidTypes = ['accom','tours','events','carhire','packages'];
