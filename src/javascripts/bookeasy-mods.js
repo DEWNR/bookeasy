@@ -485,7 +485,7 @@ $w.event.subscribe('details.gadget.locationheader', function() {
     // console.log('details.gadget.locationheader');
 
     // The below line enables campground General images
-    // displayGeneralCampgroundImages();
+    displayGeneralCampgroundImages();
 
 });
 
@@ -502,15 +502,29 @@ function displayGeneralCampgroundImages() {
     var imageTiles = '';
     var captions = {};
 
-    // example captions. To view http://localhost:3000/details-gadget.html#/accom/65306.
-    // Comment out when compiling for production.
-    // captions = {
-    //     '465870': 'Caption for image one.',
-    //     '465871': 'image two',
-    //     '465872': 'Caption for image three',
-    //     '465873': 'Caption for image four',
-    //     '465874': 'Caption for image five'
-    // };
+    // Captions. To view http://localhost:3000/details-gadget.html#/accom/65306.
+    captions = {
+        '439165': 'Inneston Lake',
+        '450136': 'Engineers Lodge',
+        '471372': 'Bedroom One, Norfolk Lodge',
+        '471373': 'Bedroom Two, Norfolk Lodge',
+        '471374': 'Lounge Room, Norfolk Lodge',
+        '471375': 'Woodfire, Norfolk Lodge',
+        '471376': 'Sitting Room, Mallee Lodge, ',
+        '471377': 'Kitchen, Mallee Lodge',
+        '471378': 'Bathroom, Mallee Lodge',
+        '471379': 'Lounge Room, Managers Lodge',
+        '471380': 'Kitchen and Dining, Managers Lodge',
+        '471381': 'Bedroom One, Managers Lodge',
+        '471451': 'Bedroom, Managers Room',
+        '471452': 'Bathroom, Managers Room',
+        '471453': 'Kitchen, Managers Room',
+        '471454': 'Kitchen, Shearers Quarters',
+        '471455': 'Sitting Room, Shearers Quarters',
+        '471456': 'Bedroom, Shearers Quarters',
+        '471457': 'Outdoor firepit, Shearers Quarters',
+        '471458': 'Bathroom, Shearers Quarters'
+    };
 
     if (GENERAL_IMAGES.length > 0) { // if there are general images
 
