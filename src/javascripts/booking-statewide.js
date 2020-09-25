@@ -305,6 +305,8 @@ function displayProductsData() {
                         bookingURL = 'http://www.clelandwildlifepark.sa.gov.au/plan-your-visit/buy-tickets';
                     } else if (urlHash == 'Naracoorte Caves National Park') {
                         bookingURL = '//www.naracoortecaves.sa.gov.au/plan-your-visit/buy-tickets';
+                    } else if (urlHash == 'Cape Borda Lightstation') {
+                        bookingURL = 'https://environmentsa.rezdy.com/412198/cape-borda-lightstation-self-guided-tour';
                     } else {
                         bookingURL = productsData[urlHash].url + '/' + page;
                     }
