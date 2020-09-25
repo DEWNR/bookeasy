@@ -122,15 +122,13 @@ function dataCleanAndRun() {
         urlHash = urlHash.replace(/%2C/g, ',');
         urlHash = urlHash.replace(/–/g, ' ');
 
-
-
-
         initialIs = true;
         // console.log('initial urlHash: ' + urlHash);
         if(window.ga && ga.create) {
             ga('send', 'event', 'Booking statewide', 'initial filter', urlHash);
         }
 
+        urlHash = urlHash.split('?')[0];  //ignore question mark and all characters after
 
         // fix for Nullarbor
         if(urlHash === 'Nullarbor National Park, Wilderness Protection Area and Regional Reserve') {
@@ -154,6 +152,7 @@ function dataCleanAndRun() {
             if (bShowRegionGadget) {
                 initRegionGadget();     // initialise region gadget
             }
+
 
             // autocomplete funciton to search for parks
             $('#location-selector__input').autocomplete({
@@ -193,6 +192,8 @@ function dataCleanAndRun() {
                 e.preventDefault();
                 $(this).val('');
             });
+
+
         });
 
 
@@ -249,16 +250,6 @@ function createLocationSelector() {
 }
 
 
-function rename(oldName, newName, link) {
-    if (key == oldName) {
-        key = newName;
-
-        if (link) {
-            page = link;
-        }
-    }
-};
-
 
 function displayProductsData() {
 
@@ -291,11 +282,10 @@ function displayProductsData() {
 
                     var page = '';
 
-                    // fix typos
-                    // rename('Vehicle Entry Fee', 'Vehicle Entry Fees');
-                    // if (key == 'Vehicle Entry Fee') {
-                    //     key = 'Vehicle Entry Fees';
-                    // }
+                    // fix typos e.g. Innes Vehicle Entry. /booking/vehicle-entry-fees
+                    if (key == 'Vehicle Entry Fee') {
+                        key = 'Vehicle Entry Fees';
+                    }
 
                     // convert page name to kebab case
                     page = (key.replace(/ /g , '-')).toLowerCase();
