@@ -7,6 +7,7 @@ var isAccom = false;
 var selectedDays = 1;
 var campgroundDataHost = '';
 var campgroundData;
+var oMaps;
 
 $(document).on('gadget.script.loaded', function() {
 
@@ -21,6 +22,8 @@ $(document).on('gadget.script.loaded', function() {
         if (campgroundData == null) {
             console.warn('campgroundData not loaded!');
         }
+
+        oMaps = cleanMapList();
 
     });
 
@@ -157,6 +160,7 @@ $(document).on('gadget.script.loaded', function() {
     });
 
 
+
     $w.event.subscribe('region.gadget.loaded', function() {
         // region.gadget.loaded only occurs after the last row of the prices-grid is rendered
 
@@ -168,8 +172,6 @@ $(document).on('gadget.script.loaded', function() {
         // hide unneccesary info
         $('.im-grid tbody tr.inline-header').hide();
 
-        var oMaps = getMapData();
-
         $('.prices-grid td.date').addClass('hidden-xs'); // used in bookeasy-utility to determine if loaded
 
         // get days selected and add/remove class
@@ -180,20 +182,39 @@ $(document).on('gadget.script.loaded', function() {
             updateProductRows('region');
         }
 
-        // console.log('insert map.');
 
-        // add maps
-        $('.im-grid tr.odd, .im-grid tr.even').each(function(i){  // for each row (odd & even rows)
+        var startTime = new Date();
+        function waitForMapLinks() {
+            // if oMaps has a value yet, insert (pdf) map links.
+            var endTime = new Date();
+            var timeDiff = endTime - startTime; //in ms
+            console.log('ms waited for MapLinks: ', timeDiff);
 
-            var $property = $(this).find('td.property');
-            var sOberatorID = $(this).attr('id').replace('Operator', '');
-
-            // read oMaps and find a match for current operator
-            if (typeof oMaps[sOberatorID] !== 'undefined' && oMaps[sOberatorID].length) {
-                $property.append('<a class="map-link" href="http://www.parks.sa.gov.au' + oMaps[sOberatorID] + '" download="filename">View map <span>(pdf)</span></a>');
+            if(window.ga && ga.create) {
+                ga('send', 'event', 'Booking statewide', 'MapLinks wait', timeDiff);
             }
 
-        });
+            if (oMaps) {
+
+                // add maps links
+                $('.im-grid tr.odd, .im-grid tr.even').each(function(i){  // for each row (odd & even rows)
+
+                    var $property = $(this).find('td.property');
+                    var sOberatorID = $(this).attr('id').replace('Operator', '');
+
+                    // read oMaps and find a match for current operator
+                    if (typeof oMaps[sOberatorID] !== 'undefined' && oMaps[sOberatorID].length) {
+                        $property.append('<a class="map-link" href="http://www.parks.sa.gov.au' + oMaps[sOberatorID] + '" download="filename">View map <span>(pdf)</span></a>');
+                    }
+
+                });
+            }
+            else{
+                setTimeout(waitForMapLinks, 200);
+            }
+        }
+
+        waitForMapLinks()
 
 
         // load hi-res images
@@ -383,26 +404,27 @@ function getDaysSelected(gadgetType) {
 
 
 
-function getMapData() {
-    var oReturn = [];
+function cleanMapList() {
+    var aCleanedList = [];
 
     $.each(campgroundData, function(key, value) {
 
+        // if any combined operatorIDs exists split them
         if ( key.indexOf(',') != -1 ){
 
-            var aIDs = key.split(',');
+            var aOperatorIDs = key.split(',');
 
-            $.each(aIDs, function(i) {
-                oReturn[aIDs[i]] = value;
+            $.each(aOperatorIDs, function(i) {
+                aCleanedList[aOperatorIDs[i]] = value;
             });
 
         } else {
-            oReturn[key] = value;
+            aCleanedList[key] = value;
         }
 
     });
 
-    return oReturn;
+    return aCleanedList;
 }
 
 
@@ -533,7 +555,7 @@ function displayGeneralCampgroundImages() {
         '471458': 'Bathroom, Shearers Quarters'
     };
 
-    if (GENERAL_IMAGES.length > 0) { // if there are general images
+    if (GENERAL_IMAGES && GENERAL_IMAGES.length > 0) { // if there are general images
 
         // prepare HTML for each image
         for (var i = 0; i < GENERAL_IMAGES.length; i++) {
