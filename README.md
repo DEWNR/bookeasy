@@ -1,6 +1,8 @@
 
 # Build tools
 
+Use Node 6.x
+
 * `run npm install`
 * `gulp`
 * `gulp production`

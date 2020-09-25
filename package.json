@@ -59,7 +59,7 @@
     "gulp-watch": "^4.3.11",
     "inline-svg": "^2.2.3",
     "jquery.mmenu": "^6.1.8",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.19",
     "lodash.compact": "^3.0.1",
     "morgan": "^1.9.0",
     "open": "^0.0.5",
