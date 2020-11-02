@@ -133,6 +133,8 @@ function dataCleanAndRun() {
         // fix for Nullarbor
         if(urlHash === 'Nullarbor National Park, Wilderness Protection Area and Regional Reserve') {
             urlHash = 'Nullarbor National Park Wilderness Protection Area';
+        } else if (urlHash === 'Dhilba Guuranda-Innes National Park') {
+            urlHash = 'Innes National Park';
         }
         // else // fix for Simpson Desert, possibly not needed?
         // if (urlHash === 'Munga-Thirri–Simpson Desert Conservation Park and Regional Reserve') {
