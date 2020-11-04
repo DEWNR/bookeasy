@@ -104,6 +104,15 @@ function dataCleanAndRun() {
             delete productsData['Munga-Thirri–Simpson Desert Conservation Park and Regional Reserve'];
         }
 
+    //     if (typeof productsData['Dhilba Guuranda-Innes National Park'] != 'undefined') {
+    //         // create new object renaming park
+    //        var newObject = ['Innes National Park'];
+    //        // clone old object into new object
+    //        productsData[ newObject ] = productsData['Dhilba Guuranda-Innes National Park'];
+    //        // delete old object
+    //        delete productsData['Dhilba Guuranda-Innes National Park'];
+    //    }
+
         // if (typeof productsData['Flinders Chase National Park and Ravine Des Casoars Wilderness Protection Area'] != 'undefined') {
         //     // create new object renaming em-dash to dash
         //    var newObject = ['Flinders Chase National Park'];
@@ -130,16 +139,14 @@ function dataCleanAndRun() {
 
         urlHash = urlHash.split('?')[0];  //ignore question mark and all characters after
 
-        // fix for Nullarbor
+        // fix links from park pages to statewide gadget
         if(urlHash === 'Nullarbor National Park, Wilderness Protection Area and Regional Reserve') {
+            // fix for Nullarbor National Park
             urlHash = 'Nullarbor National Park Wilderness Protection Area';
-        } else if (urlHash === 'Dhilba Guuranda-Innes National Park') {
-            urlHash = 'Innes National Park';
+        } else if (urlHash === 'Munga-Thirri–Simpson Desert Conservation Park and Regional Reserve') {
+            // fix for Simpson Desert
+            urlHash = 'Munga-Thirri-Simpson Desert Conservation Park and Regional Reserve';
         }
-        // else // fix for Simpson Desert, possibly not needed?
-        // if (urlHash === 'Munga-Thirri–Simpson Desert Conservation Park and Regional Reserve') {
-        //     urlHash = 'Munga-Thirri-Simpson Desert Conservation Park and Regional Reserve';
-        // }
 
 
         $(function() {
